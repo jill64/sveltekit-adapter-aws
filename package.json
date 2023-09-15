@@ -1,0 +1,62 @@
+{
+  "name": "@jill64/sveltekit-adapter-aws",
+  "description": "AWS adapter for SvelteKit with multiple architecture",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "author": "jill64 <intents.turrets0h@icloud.com> (https://github.com/jill64)",
+  "bugs": "https://github.com/jill64/sveltekit-adapter-aws/issues",
+  "homepage": "https://github.com/jill64/sveltekit-adapter-aws#readme",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "keywords": [
+    "svelte",
+    "aws-cdk"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jill64/sveltekit-adapter-aws.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "pnpm build:adapter && cd packages/site && pnpm dev",
+    "build": "pnpm build:adapter && pnpm build:site && publint",
+    "build:adapter": "cd packages/adapter && tsc",
+    "build:bin": "cd packages/bin && tsc",
+    "build:site": "cd packages/site && pnpm build",
+    "preview": "pnpm build:adapter && cd packages/site && pnpm preview",
+    "check": "cd packages/site && pnpm check",
+    "test": "playwright test",
+    "format": "prettier --write . --plugin prettier-plugin-svelte .",
+    "lint": "prettier --check . --plugin prettier-plugin-svelte . && eslint ."
+  },
+  "peerDependencies": {
+    "@sveltejs/kit": "^1.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.37.1",
+    "@typescript-eslint/eslint-plugin": "6.7.0",
+    "@typescript-eslint/parser": "6.7.0",
+    "eslint": "8.49.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-svelte": "^2.33.1",
+    "prettier": "3.0.3",
+    "prettier-plugin-svelte": "^3.0.3",
+    "publint": "0.2.2",
+    "typescript": "5.2.2"
+  },
+  "dependencies": {
+    "@sveltejs/kit": "1.25.0",
+    "esbuild": "^0.19.3"
+  }
+}
