@@ -1,0 +1,98 @@
+name: CI
+
+on: push
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest
+          run_install: true
+      - run: pnpm lint
+      - run: pnpm check
+
+  deploy-lambda-mono:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest
+          run_install: true
+      - run: pnpm build
+        env:
+          ADAPTER_ARCHITECTURE: lambda-mono
+          PUBLIC_SENTRY_DSN: ${{secrets.PUBLIC_SENTRY_DSN}}
+          SENTRY_ORG: ${{secrets.SENTRY_ORG}}
+          SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
+          SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
+
+  deploy-lambda-s3:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest
+          run_install: true
+      - run: pnpm build
+        env:
+          ADAPTER_ARCHITECTURE: lambda-s3
+          PUBLIC_SENTRY_DSN: ${{secrets.PUBLIC_SENTRY_DSN}}
+          SENTRY_ORG: ${{secrets.SENTRY_ORG}}
+          SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
+          SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
+
+  deploy-edge-bundled:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest
+          run_install: true
+      - run: pnpm build
+        env:
+          ADAPTER_ARCHITECTURE: edge-bundled
+          PUBLIC_SENTRY_DSN: ${{secrets.PUBLIC_SENTRY_DSN}}
+          SENTRY_ORG: ${{secrets.SENTRY_ORG}}
+          SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
+          SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
+
+  deploy-edge-unbundled:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest
+          run_install: true
+      - run: pnpm build
+        env:
+          ADAPTER_ARCHITECTURE: edge-unbundled
+          PUBLIC_SENTRY_DSN: ${{secrets.PUBLIC_SENTRY_DSN}}
+          SENTRY_ORG: ${{secrets.SENTRY_ORG}}
+          SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
+          SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
