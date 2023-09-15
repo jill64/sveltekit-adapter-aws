@@ -57,6 +57,8 @@
   },
   "dependencies": {
     "@sveltejs/kit": "1.25.0",
-    "esbuild": "^0.19.3"
+    "aws-cdk": "^2.96.2",
+    "esbuild": "^0.19.3",
+    "ts-pattern": "^5.0.5"
   }
 }
