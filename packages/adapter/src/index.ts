@@ -19,7 +19,7 @@ const adapter = (options?: AdapterOptions) => {
       const tmp = builder.getBuildDirectory(name)
       builder.rimraf(tmp)
 
-      await(
+      await (
         match(architecture)
           .with('lambda-s3', () => lambdaS3)
           .with('lambda-mono', () => lambdaMono)
