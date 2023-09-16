@@ -19,3 +19,9 @@ Since a single Lambda handles all requests involving static assets, you are like
 
 - Test
 - Development
+
+## Notices
+
+- Lambda IAM authentication is unavailable when enable CloudFront
+- CloudFront caches only client assets (/\_app/\*).
+- The total file size must be less than the Lambda package size limit (50MB: Zipped, 250MB: Unzipped). (Including client assets, server scripts, and pre-rendered pages)
