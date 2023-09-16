@@ -31,7 +31,7 @@
   "scripts": {
     "dev": "pnpm build:adapter && cd packages/site && pnpm dev",
     "build": "pnpm build:adapter && pnpm build:site && publint",
-    "build:adapter": "cd packages/adapter && tsc",
+    "build:adapter": "cd packages/adapter && pnpm build",
     "build:bin": "cd packages/bin && tsc",
     "build:site": "cd packages/site && pnpm build",
     "preview": "pnpm build:adapter && cd packages/site && pnpm preview",
@@ -57,6 +57,7 @@
   },
   "dependencies": {
     "@sveltejs/kit": "1.25.0",
+    "@types/node": "^20.6.1",
     "aws-cdk": "^2.96.2",
     "esbuild": "^0.19.3",
     "ts-pattern": "^5.0.5"
