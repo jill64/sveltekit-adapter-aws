@@ -3,18 +3,13 @@ import { build } from 'esbuild'
 import { readFile, writeFile } from 'fs/promises'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import { PropagationArgs } from '../../types/PropagationArgs.js'
+import { Context } from '../../types/Context.js'
 import { listFiles } from '../../util/listFiles.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-export const lambdaMono = async ({
-  builder,
-  options,
-  tmp,
-  out
-}: PropagationArgs) => {
+export const lambdaMono = async ({ builder, options, tmp, out }: Context) => {
   const assets = path.join(out, 'assets')
 
   builder.writeClient(assets)

@@ -1,7 +1,7 @@
 import type { Builder } from '@sveltejs/kit'
 import type { AdapterOptions } from './AdapterOptions.js'
 
-export type PropagationArgs = {
+export type Context = {
   builder: Builder
   tmp: string
   out: string
