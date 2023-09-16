@@ -1,6 +1,6 @@
 {
   "type": "module",
   "scripts": {
-    "build": "rm -f -r ../../dist && tsx ./scripts/build.ts && tsc"
+    "build": "rm -f -r ../../dist && tsc"
   }
 }
