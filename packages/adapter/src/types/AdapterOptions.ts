@@ -8,7 +8,7 @@ export type AdapterOptions = {
   // Architecture type (default: 'lambda-s3')
   architecture?: ArchitectureType
 
-  // Automatically deploy with SvelteKit build steps (default: process.env.CI)
+  // Automatically deploy with SvelteKit build steps (default: false)
   deploy?: boolean
 
   // Override esbuild options
