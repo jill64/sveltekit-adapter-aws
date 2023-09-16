@@ -1,7 +1,7 @@
 {
   "type": "module",
   "scripts": {
-    "build": "tsx ./scripts/build.ts"
+    "build": "rm -f -r ../../dist && tsx ./scripts/build.ts && tsc"
   },
   "devDependencies": {
     "tsx": "^3.12.10"

@@ -1,11 +1,13 @@
-import { execSync } from 'child_process'
 import { copyFile, mkdir } from 'fs/promises'
 import path from 'path'
 
-execSync('rm -f -r ../../dist')
-
 const arch = '../../dist/arch'
-const list = ['lambda-mono', 'lambda-s3', 'edge-bundled', 'edge-unbundled']
+const list = [
+  'lambda-mono'
+  // 'lambda-s3',
+  // 'edge-bundled',
+  // 'edge-unbundled'
+]
 
 await Promise.all(
   list.map((name) => mkdir(path.join(arch, name, 'mock'), { recursive: true }))
@@ -22,5 +24,3 @@ await Promise.all([
     )
   )
 ])
-
-execSync('pnpm exec tsc')
