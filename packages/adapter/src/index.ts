@@ -1,5 +1,5 @@
 import type { Adapter } from '@sveltejs/kit'
-import { build, cleanup, deploy, setup } from './step/index.js'
+import { build, cleanup, deploy, setup } from './steps/index.js'
 import type { AdapterOptions } from './types/AdapterOptions.js'
 
 const name = 'adapter-aws'
