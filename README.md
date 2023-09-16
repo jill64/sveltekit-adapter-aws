@@ -81,6 +81,7 @@ WIP
 |     |                                       |
 | --- | ------------------------------------- |
 | #   | Copy files from package by setup step |
+| $   | Copy files from package by build step |
 | \*  | Injection value by build step         |
 | +   | Generate files by build step          |
 
@@ -91,7 +92,7 @@ WIP
       - types(#)
       - utils(#)
     - server
-      - index.ts(#)
+      - index.ts($)
     - index.js
     - manifest.js
 - build
@@ -101,7 +102,7 @@ WIP
     - ...static(+)
     - ...pre-rendered(+)
   - bin
-    - cdk-stack.ts(#)
+    - cdk-stack.ts($)
     - synth.ts(#)
   - server.js(+)
   - edge.js(+)
