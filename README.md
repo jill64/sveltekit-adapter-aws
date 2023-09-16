@@ -67,3 +67,42 @@ WIP
 ## Manual Deploy
 
 WIP
+
+## Directory
+
+### Package
+
+- dist - Export Adapter
+- embed - Server Source
+- cdk - AWS-CDK Stacks
+
+### App
+
+|     |                                       |
+| --- | ------------------------------------- |
+| #   | Copy files from package by setup step |
+| \*  | Injection value by build step         |
+| +   | Generate files by build step          |
+
+- .sveltekit
+  - adapter-aws
+    - external
+      - params(\*)
+      - types(#)
+      - utils(#)
+    - server
+      - index.ts(#)
+    - index.js
+    - manifest.js
+- build
+  - assets
+    - \_app(+)
+    - \[pre-rendered\](+)
+    - ...static(+)
+    - ...pre-rendered(+)
+  - bin
+    - cdk-stack.ts(#)
+    - synth.ts(#)
+  - server.js(+)
+  - edge.js(+)
+  - cdk.json(#)
