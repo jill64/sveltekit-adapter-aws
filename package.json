@@ -32,7 +32,6 @@
     "dev": "pnpm build:adapter && cd packages/site && pnpm dev",
     "build": "pnpm build:adapter && pnpm build:site && publint",
     "build:adapter": "cd packages/adapter && pnpm build",
-    "build:bin": "cd packages/bin && tsc",
     "build:site": "cd packages/site && pnpm build",
     "preview": "pnpm build:adapter && cd packages/site && pnpm preview",
     "check": "cd packages/site && pnpm check",
