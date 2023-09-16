@@ -35,6 +35,12 @@ export const lambdaMono = async ({ builder, options, tmp, out }: Context) => {
     .filter((file) => !file.startsWith('/_app/'))
     .map((file) => path.join(base, file))
 
+  // Copy CDK Stack
+  builder.copy(
+    '../cdk/arch/lambda-mono.ts',
+    path.join(out, 'bin', 'cdk-stack.ts')
+  )
+
   // Embed values
   const params = path.join('external', 'params')
   const staticAssetsPath = path.join(params, 'staticAssetsPaths.ts')
