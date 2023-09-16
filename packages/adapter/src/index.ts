@@ -4,7 +4,6 @@ import { match, P } from 'ts-pattern'
 import { lambdaMono } from './arch/lambda-mono/index.js'
 // import { lambdaS3 } from './arch/lambdaS3/index.js'
 // import { edgeUnbundled } from './arch/edgeUnbundled/index.js'
-import path from 'path'
 import { deploy } from './deploy/index.js'
 import type { AdapterOptions } from './types/AdapterOptions.js'
 
@@ -24,12 +23,6 @@ const adapter = (options?: AdapterOptions) => {
 
       const tmp = builder.getBuildDirectory(name)
       builder.rimraf(tmp)
-
-      const client = path.join(out, 'client')
-      builder.writeClient(client)
-
-      const prerendered = path.join(out, 'pre-rendered')
-      builder.writePrerendered(prerendered)
 
       await (
         match(architecture)
@@ -51,7 +44,7 @@ const adapter = (options?: AdapterOptions) => {
           }) ??
         // lambdaS3
         lambdaMono
-      )({ builder, options, tmp, out, client, prerendered })
+      )({ builder, options, tmp, out })
 
       if (deployStep) {
         await deploy(out)

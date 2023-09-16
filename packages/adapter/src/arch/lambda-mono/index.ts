@@ -13,6 +13,8 @@ export const lambdaMono = async ({
   tmp,
   out
 }: PropagationArgs) => {
+  builder.writeClient(out)
+  builder.writePrerendered(out)
   builder.writeServer(tmp)
 
   await writeFile(

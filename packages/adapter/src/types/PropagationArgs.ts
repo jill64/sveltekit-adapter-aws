@@ -5,7 +5,5 @@ export type PropagationArgs = {
   builder: Builder
   tmp: string
   out: string
-  client: string
-  prerendered: string
   options: AdapterOptions | undefined
 }
