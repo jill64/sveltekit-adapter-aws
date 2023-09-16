@@ -2,14 +2,11 @@ import type { SSRManifest, Server as ServerType } from '@sveltejs/kit'
 import { createReadStream } from 'fs'
 import { lookup } from 'mime-types'
 import path from 'path'
-import { Server } from './index.js'
-import { manifest } from './manifest.js'
-
-type ResponseStream = WritableStream & {
-  write: (chunk: Buffer | Uint8Array | string | null) => void
-  end: () => void
-  setContentType: (contentType: string) => void
-}
+import { base } from '../external/inject/base.js'
+import { staticAssetsPaths } from '../external/inject/staticAssetsPaths.js'
+import { ResponseStream } from '../external/types/ResponseStream.js'
+import { Server } from '../index.js'
+import { manifest } from '../manifest.js'
 
 declare const awslambda: {
   streamifyResponse: (
@@ -39,11 +36,6 @@ declare const awslambda: {
   }
 }
 
-// Embed static asset paths at build time
-const staticAssetsPaths: Set<string> = new Set(
-  [] /* $$__STATIC_ASSETS_PATHS__$$ */
-)
-
 export const handler = awslambda.streamifyResponse(
   async (request, responseStream) => {
     const { requestContext, rawPath, rawQueryString, isBase64Encoded } = request
@@ -64,26 +56,22 @@ export const handler = awslambda.streamifyResponse(
     }
 
     const assetsHandling = (assetsPath: string) => {
-      const type = lookup(assetsPath)
+      const filePath = assetsPath.replace(base, '')
+      const type = lookup(filePath)
 
       setResponseHeader(200, {
         'content-type': type ? type : 'application/octet-stream'
       })
 
-      const src = createReadStream(
-        path.join(process.cwd(), 'assets', assetsPath)
-      )
+      const src = createReadStream(path.join(process.cwd(), 'assets', filePath))
 
       src.on('data', (chunk) => responseStream.write(chunk))
       src.on('end', () => closeResponseStream())
-
-      return
     }
 
     // Handling static asset requests
-    if (rawPath.startsWith('/_app/') || staticAssetsPaths.has(rawPath)) {
-      assetsHandling(rawPath)
-      return
+    if (rawPath.startsWith(`${base}/_app/`) || staticAssetsPaths.has(rawPath)) {
+      return assetsHandling(rawPath)
     }
 
     // SSG requests fallback
@@ -91,12 +79,11 @@ export const handler = awslambda.streamifyResponse(
       rawPath.endsWith('/') &&
       staticAssetsPaths.has(`${rawPath}index.html`)
     ) {
-      assetsHandling(`${rawPath}index.html`)
-      return
+      return assetsHandling(`${rawPath}index.html`)
     }
+
     if (staticAssetsPaths.has(`${rawPath}.html`)) {
-      assetsHandling(`${rawPath}.html`)
-      return
+      return assetsHandling(`${rawPath}.html`)
     }
 
     const {
@@ -137,16 +124,14 @@ export const handler = awslambda.streamifyResponse(
     )
 
     if (!response.body) {
-      closeResponseStream()
-      return
+      return closeResponseStream()
     }
 
     const reader = response.body.getReader()
 
     const readNext = (chunk: ReadableStreamReadResult<Uint8Array>) => {
       if (chunk.done) {
-        responseStream.end()
-        return
+        return responseStream.end()
       }
 
       responseStream.write(chunk.value)
