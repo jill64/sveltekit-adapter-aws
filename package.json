@@ -63,6 +63,9 @@
     "aws-cdk": "^2.96.2",
     "esbuild": "^0.19.3",
     "mime-types": "^2.1.35",
-    "ts-pattern": "^5.0.5"
+    "ts-pattern": "^5.0.5",
+    "tsx": "^3.12.10",
+    "aws-cdk-lib": "2.96.2",
+    "constructs": "^10.0.0"
   }
 }
