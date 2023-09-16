@@ -51,8 +51,7 @@
     "eslint-plugin-svelte": "^2.33.1",
     "prettier": "3.0.3",
     "prettier-plugin-svelte": "^3.0.3",
-    "publint": "0.2.2",
-    "typescript": "5.2.2"
+    "publint": "0.2.2"
   },
   "dependencies": {
     "@jill64/unfurl": "^0.1.0",
@@ -64,6 +63,7 @@
     "mime-types": "^2.1.35",
     "ts-pattern": "^5.0.5",
     "tsx": "^3.12.10",
+    "typescript": "5.2.2",
     "aws-cdk-lib": "2.96.2",
     "constructs": "^10.0.0"
   }
