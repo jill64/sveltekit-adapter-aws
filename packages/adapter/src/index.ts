@@ -11,7 +11,11 @@ import type { AdapterOptions } from './types/AdapterOptions.js'
 const name = 'adapter-aws'
 
 const adapter = (options?: AdapterOptions) => {
-  const { out = 'build', architecture, deploy: deployStep } = options ?? {}
+  const {
+    out = 'build',
+    architecture,
+    deploy: deployStep = process.env.CI
+  } = options ?? {}
 
   return {
     name,
