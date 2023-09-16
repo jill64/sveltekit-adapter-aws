@@ -9,7 +9,9 @@
   "bugs": "https://github.com/jill64/sveltekit-adapter-aws/issues",
   "homepage": "https://github.com/jill64/sveltekit-adapter-aws#readme",
   "files": [
-    "dist"
+    "dist",
+    "embed",
+    "cdk"
   ],
   "exports": {
     ".": {
