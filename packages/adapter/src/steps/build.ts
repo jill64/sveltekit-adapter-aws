@@ -1,8 +1,8 @@
 import { match, P } from 'ts-pattern'
-// import { edgeBundled } from './edgeBundled/index.js'
-import { lambdaMono } from '../arch/lambda-mono/index.js'
-// import { lambdaS3 } from './lambdaS3/index.js'
-// import { edgeUnbundled } from './edgeUnbundled/index.js'
+// import { edgeBundled } from '../arch/edge-bundled.js'
+import { lambdaMono } from '../arch/lambda-mono.js'
+// import { lambdaS3 } from '../arch/lambda-s3.js'
+// import { edgeUnbundled } from '../arch/edge-unbundled.js'
 import type { Context } from '../types/Context.js'
 
 export const build = async (context: Context) => {
