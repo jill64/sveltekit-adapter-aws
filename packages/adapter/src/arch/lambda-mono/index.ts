@@ -1,8 +1,10 @@
+import { unfurl } from '@jill64/unfurl'
 import { build } from 'esbuild'
-import { writeFile } from 'fs/promises'
+import { readFile, writeFile } from 'fs/promises'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { PropagationArgs } from '../../types/PropagationArgs.js'
+import { listFiles } from '../../util/listFiles.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -13,23 +15,41 @@ export const lambdaMono = async ({
   tmp,
   out
 }: PropagationArgs) => {
-  builder.writeClient(out)
-  builder.writePrerendered(out)
+  const assets = path.join(out, 'assets')
+
+  builder.writeClient(assets)
+  builder.writePrerendered(assets)
   builder.writeServer(tmp)
 
-  await writeFile(
-    path.join(tmp, 'manifest.js'),
-    `export const manifest = ${builder.generateManifest({
-      relativePath: './'
-    })};\n\n` +
-      `export const prerendered = new Set(${JSON.stringify(
-        builder.prerendered.paths
-      )});\n`
+  const { list, serverSource } = await unfurl(
+    {
+      list: listFiles(assets),
+      serverSource: readFile(path.join(__dirname, 'mock/server.ts')).then(
+        (res) => res.toString()
+      )
+    },
+    writeFile(
+      path.join(tmp, 'manifest.js'),
+      `export const manifest = ${builder.generateManifest({
+        relativePath: './'
+      })};\n\n` +
+        `export const prerendered = new Set(${JSON.stringify(
+          builder.prerendered.paths
+        )});\n`
+    )
   )
 
-  const serverSource = path.join(__dirname, 'mock/server.ts')
+  const staticAssetsPaths = list
+    .map((file) => file.replace(assets, ''))
+    .filter((file) => !file.startsWith('/_app/'))
+
+  const convertedServerSource = serverSource.replace(
+    '[] /* $$__STATIC_ASSETS_PATHS__$$ */',
+    JSON.stringify(staticAssetsPaths)
+  )
+
   const serverEntryPoint = path.join(tmp, 'server.ts')
-  builder.copy(serverSource, serverEntryPoint)
+  await writeFile(serverEntryPoint, convertedServerSource)
 
   const outfile = path.join(out, 'server.js')
   const shimsSource = path.join(__dirname, 'shims.ts')

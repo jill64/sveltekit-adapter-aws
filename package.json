@@ -56,10 +56,13 @@
     "typescript": "5.2.2"
   },
   "dependencies": {
+    "@jill64/unfurl": "^0.1.0",
     "@sveltejs/kit": "1.25.0",
+    "@types/mime-types": "^2.1.1",
     "@types/node": "^20.6.1",
     "aws-cdk": "^2.96.2",
     "esbuild": "^0.19.3",
+    "mime-types": "^2.1.35",
     "ts-pattern": "^5.0.5"
   }
 }

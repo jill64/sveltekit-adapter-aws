@@ -8,9 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@jill64/unfurl':
+        specifier: ^0.1.0
+        version: 0.1.0
       '@sveltejs/kit':
         specifier: 1.25.0
         version: 1.25.0(svelte@4.2.0)(vite@4.4.9)
+      '@types/mime-types':
+        specifier: ^2.1.1
+        version: 2.1.1
       '@types/node':
         specifier: ^20.6.1
         version: 20.6.1
@@ -20,6 +26,9 @@ importers:
       esbuild:
         specifier: ^0.19.3
         version: 0.19.3
+      mime-types:
+        specifier: ^2.1.35
+        version: 2.1.35
       ts-pattern:
         specifier: ^5.0.5
         version: 5.0.5
@@ -581,6 +590,10 @@ packages:
       svelte-french-toast: 1.2.0(svelte@4.2.0)
     dev: true
 
+  /@jill64/unfurl@0.1.0:
+    resolution: {integrity: sha512-DST+NXLDYZ2cKJ2mKaw69714/Tws2IqDmNQw+4NNwbuaoaNVCI2tKPHEYvjV2HRHRFKu3qwQschz5K3ASiM1RA==}
+    dev: false
+
   /@jridgewell/gen-mapping@0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}
     engines: {node: '>=6.0.0'}
@@ -810,6 +823,10 @@ packages:
   /@types/json-schema@7.0.12:
     resolution: {integrity: sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==}
     dev: true
+
+  /@types/mime-types@2.1.1:
+    resolution: {integrity: sha512-vXOTGVSLR2jMw440moWTC7H19iUyLtP3Z1YTj7cSsubOICinjMxFeb/V57v9QdyyPGbbWolUFSSmSiRSn94tFw==}
+    dev: false
 
   /@types/node@20.6.1:
     resolution: {integrity: sha512-4LcJvuXQlv4lTHnxwyHQZ3uR9Zw2j7m1C9DfuwoTFQQP4Pmu04O6IfLYgMmHoOCt0nosItLLZAH+sOrRE0Bo8g==}
@@ -1740,6 +1757,18 @@ packages:
       braces: 3.0.2
       picomatch: 2.3.1
     dev: true
+
+  /mime-db@1.52.0:
+    resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==}
+    engines: {node: '>= 0.6'}
+    dev: false
+
+  /mime-types@2.1.35:
+    resolution: {integrity: sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==}
+    engines: {node: '>= 0.6'}
+    dependencies:
+      mime-db: 1.52.0
+    dev: false
 
   /mime@3.0.0:
     resolution: {integrity: sha512-jSCU7/VB1loIWBZe14aEYHU/+1UMEHoaO7qxCOVJOw9GgH72VAWppxNcjU+x9a2k3GSIBXNKxXQFqRvvZ7vr3A==}

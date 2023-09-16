@@ -1,4 +1,7 @@
 import type { SSRManifest, Server as ServerType } from '@sveltejs/kit'
+import { createReadStream } from 'fs'
+import { lookup } from 'mime-types'
+import path from 'path'
 import { Server } from './index.js'
 import { manifest } from './manifest.js'
 
@@ -36,6 +39,11 @@ declare const awslambda: {
   }
 }
 
+// Embed static asset paths at build time
+const staticAssetsPaths: Set<string> = new Set(
+  [] /* $$__STATIC_ASSETS_PATHS__$$ */
+)
+
 export const handler = awslambda.streamifyResponse(
   async (request, responseStream) => {
     const { requestContext, rawPath, rawQueryString, isBase64Encoded } = request
@@ -53,6 +61,22 @@ export const handler = awslambda.streamifyResponse(
     const closeResponseStream = () => {
       responseStream.write('')
       responseStream.end()
+    }
+
+    // Handling static asset requests
+    if (rawPath.startsWith('/_app/') || staticAssetsPaths.has(rawPath)) {
+      const type = lookup(rawPath)
+
+      setResponseHeader(200, {
+        'content-type': type ? type : 'application/octet-stream'
+      })
+
+      const src = createReadStream(path.join(process.cwd(), 'assets', rawPath))
+
+      src.on('data', (chunk) => responseStream.write(chunk))
+      src.on('end', () => closeResponseStream())
+
+      return
     }
 
     const {
