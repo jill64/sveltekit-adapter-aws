@@ -40,6 +40,7 @@ jobs:
       - run: pnpm build
         env:
           ADAPTER_ARCHITECTURE: lambda-mono
+          PUBLIC_SENTRY_DSN: ${{secrets.PUBLIC_SENTRY_DSN}}
           SENTRY_ORG: ${{secrets.SENTRY_ORG}}
           SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
           SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
