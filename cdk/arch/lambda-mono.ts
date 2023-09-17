@@ -31,7 +31,10 @@ export class CDKStack extends Stack {
     const originStr = Fn.select(2, Fn.split('/', lambdaURL.url))
     const origin = new aws_cloudfront_origins.HttpOrigin(originStr, {
       protocolPolicy: aws_cloudfront.OriginProtocolPolicy.HTTPS_ONLY,
-      originSslProtocols: [aws_cloudfront.OriginSslPolicy.TLS_V1_2]
+      originSslProtocols: [aws_cloudfront.OriginSslPolicy.TLS_V1_2],
+      customHeaders: {
+        'Bridge-Authorization': `Plain __BRIDGE_AUTH_TOKEN__`
+      }
     })
 
     const originRequestPolicy =

@@ -3,6 +3,8 @@ import { createReadStream } from 'fs'
 import { lookup } from 'mime-types'
 import path from 'path'
 import { base } from '../external/params/base.js'
+import { bridgeAuthToken } from '../external/params/bridgeAuthToken.js'
+import { cdn } from '../external/params/cdn.js'
 import { staticAssetsPaths } from '../external/params/staticAssetsPaths.js'
 import { ResponseStream } from '../external/types/ResponseStream.js'
 import { Server } from '../index.js'
@@ -14,7 +16,7 @@ declare const awslambda: {
       event: {
         rawPath: string
         rawQueryString: string
-        headers: HeadersInit
+        headers: Record<string, string>
         requestContext: {
           domainName: string
           http: {
@@ -38,7 +40,13 @@ declare const awslambda: {
 
 export const handler = awslambda.streamifyResponse(
   async (request, responseStream) => {
-    const { requestContext, rawPath, rawQueryString, isBase64Encoded } = request
+    const {
+      requestContext,
+      headers,
+      rawPath,
+      rawQueryString,
+      isBase64Encoded
+    } = request
 
     const setResponseHeader = (
       statusCode: number,
@@ -53,6 +61,12 @@ export const handler = awslambda.streamifyResponse(
     const closeResponseStream = () => {
       responseStream.write('')
       responseStream.end()
+    }
+
+    if (cdn && headers['bridge-authorization'] !== `Plain ${bridgeAuthToken}`) {
+      setResponseHeader(403, {})
+      responseStream.write('403 Forbidden')
+      return closeResponseStream()
     }
 
     const assetsHandling = (assetsPath: string) => {
