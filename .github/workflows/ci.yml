@@ -15,8 +15,6 @@ jobs:
           version: latest
           run_install: true
       - run: pnpm lint
-      - run: pnpm build:adapter
-      - run: pnpm check
 
   deploy-lambda-mono:
     needs: lint
@@ -42,6 +40,7 @@ jobs:
           SENTRY_ORG: ${{secrets.SENTRY_ORG}}
           SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
           SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
+      - run: pnpm check
 
   deploy-lambda-s3:
     needs: lint
@@ -67,6 +66,7 @@ jobs:
           SENTRY_ORG: ${{secrets.SENTRY_ORG}}
           SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
           SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
+      - run: pnpm check
 
   deploy-edge-bundled:
     needs: lint
@@ -92,6 +92,7 @@ jobs:
           SENTRY_ORG: ${{secrets.SENTRY_ORG}}
           SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
           SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
+      - run: pnpm check
 
   deploy-edge-unbundled:
     needs: lint
@@ -117,3 +118,4 @@ jobs:
           SENTRY_ORG: ${{secrets.SENTRY_ORG}}
           SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
           SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
+      - run: pnpm check
