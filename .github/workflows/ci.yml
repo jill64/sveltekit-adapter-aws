@@ -43,77 +43,77 @@ jobs:
           SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
           SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
 
-  deploy-lambda-s3:
-    needs: lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - uses: pnpm/action-setup@v2
-        with:
-          version: latest
-          run_install: true
-      - uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
-      - run: pnpm build
-        env:
-          ADAPTER_ARCHITECTURE: lambda-s3
-          PUBLIC_SENTRY_DSN: ${{secrets.PUBLIC_SENTRY_DSN}}
-          SENTRY_ORG: ${{secrets.SENTRY_ORG}}
-          SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
-          SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
+  # deploy-lambda-s3:
+  #   needs: lint
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 18
+  #     - uses: pnpm/action-setup@v2
+  #       with:
+  #         version: latest
+  #         run_install: true
+  #     - uses: aws-actions/configure-aws-credentials@v1
+  #       with:
+  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #         aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+  #     - run: pnpm build
+  #       env:
+  #         ADAPTER_ARCHITECTURE: lambda-s3
+  #         PUBLIC_SENTRY_DSN: ${{secrets.PUBLIC_SENTRY_DSN}}
+  #         SENTRY_ORG: ${{secrets.SENTRY_ORG}}
+  #         SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
+  #         SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
 
-  deploy-edge-bundled:
-    needs: lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - uses: pnpm/action-setup@v2
-        with:
-          version: latest
-          run_install: true
-      - uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
-      - run: pnpm build
-        env:
-          ADAPTER_ARCHITECTURE: edge-bundled
-          PUBLIC_SENTRY_DSN: ${{secrets.PUBLIC_SENTRY_DSN}}
-          SENTRY_ORG: ${{secrets.SENTRY_ORG}}
-          SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
-          SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
+  # deploy-edge-bundled:
+  #   needs: lint
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 18
+  #     - uses: pnpm/action-setup@v2
+  #       with:
+  #         version: latest
+  #         run_install: true
+  #     - uses: aws-actions/configure-aws-credentials@v1
+  #       with:
+  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #         aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+  #     - run: pnpm build
+  #       env:
+  #         ADAPTER_ARCHITECTURE: edge-bundled
+  #         PUBLIC_SENTRY_DSN: ${{secrets.PUBLIC_SENTRY_DSN}}
+  #         SENTRY_ORG: ${{secrets.SENTRY_ORG}}
+  #         SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
+  #         SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
 
-  deploy-edge-unbundled:
-    needs: lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - uses: pnpm/action-setup@v2
-        with:
-          version: latest
-          run_install: true
-      - uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
-      - run: pnpm build
-        env:
-          ADAPTER_ARCHITECTURE: edge-unbundled
-          PUBLIC_SENTRY_DSN: ${{secrets.PUBLIC_SENTRY_DSN}}
-          SENTRY_ORG: ${{secrets.SENTRY_ORG}}
-          SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
-          SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
+  # deploy-edge-unbundled:
+  #   needs: lint
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 18
+  #     - uses: pnpm/action-setup@v2
+  #       with:
+  #         version: latest
+  #         run_install: true
+  #     - uses: aws-actions/configure-aws-credentials@v1
+  #       with:
+  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #         aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+  #     - run: pnpm build
+  #       env:
+  #         ADAPTER_ARCHITECTURE: edge-unbundled
+  #         PUBLIC_SENTRY_DSN: ${{secrets.PUBLIC_SENTRY_DSN}}
+  #         SENTRY_ORG: ${{secrets.SENTRY_ORG}}
+  #         SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
+  #         SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}

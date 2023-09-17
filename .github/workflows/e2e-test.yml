@@ -22,50 +22,50 @@ jobs:
         env:
           PREVIEW_URL: ${{secrets.LAMBDA_MONO_PREVIEW_URL}}
 
-  test-lambda-s3:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - uses: pnpm/action-setup@v2
-        with:
-          version: latest
-          run_install: true
-      - run: pnpx playwright install
-      - run: pnpm test
-        env:
-          PREVIEW_URL: ${{secrets.LAMBDA_S3_PREVIEW_URL}}
+  # test-lambda-s3:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 18
+  #     - uses: pnpm/action-setup@v2
+  #       with:
+  #         version: latest
+  #         run_install: true
+  #     - run: pnpx playwright install
+  #     - run: pnpm test
+  #       env:
+  #         PREVIEW_URL: ${{secrets.LAMBDA_S3_PREVIEW_URL}}
 
-  test-edge-bundled:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - uses: pnpm/action-setup@v2
-        with:
-          version: latest
-          run_install: true
-      - run: pnpx playwright install
-      - run: pnpm test
-        env:
-          PREVIEW_URL: ${{secrets.EDGE_BUNDLED_PREVIEW_URL}}
+  # test-edge-bundled:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 18
+  #     - uses: pnpm/action-setup@v2
+  #       with:
+  #         version: latest
+  #         run_install: true
+  #     - run: pnpx playwright install
+  #     - run: pnpm test
+  #       env:
+  #         PREVIEW_URL: ${{secrets.EDGE_BUNDLED_PREVIEW_URL}}
 
-  test-edge-unbundled:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - uses: pnpm/action-setup@v2
-        with:
-          version: latest
-          run_install: true
-      - run: pnpx playwright install
-      - run: pnpm test
-        env:
-          PREVIEW_URL: ${{secrets.EDGE_UNBUNDLED_PREVIEW_URL}}
+  # test-edge-unbundled:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 18
+  #     - uses: pnpm/action-setup@v2
+  #       with:
+  #         version: latest
+  #         run_install: true
+  #     - run: pnpx playwright install
+  #     - run: pnpm test
+  #       env:
+  #         PREVIEW_URL: ${{secrets.EDGE_UNBUNDLED_PREVIEW_URL}}
