@@ -6,8 +6,10 @@ const config = {
   preprocess: vitePreprocess(),
   kit: {
     adapter: adapter({
+      architecture: process.env.ADAPTER_ARCHITECTURE,
       deploy: true,
-      memory: 1024
+      memory: 1024,
+      cdn: true
     })
   }
 }

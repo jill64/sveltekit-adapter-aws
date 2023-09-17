@@ -46,7 +46,12 @@ export type AdapterOptions = {
    */
   cdn?: boolean
 
-  // FQDN?: string // Full qualified domain name of CloudFront deployment (e.g. demo.example.com)
-  // LOG_RETENTION_DAYS?: number // Log retention in days of SSR lambda (default 7 days)
+  /**
+   * FQDN (Full Qualified Domain Name) of CloudFront distribution
+   * @default undefined
+   * @example 'demo.example.com'
+   */
+  // domain?: string
+
   // zoneName?: string // The name of the hosted zone in Route 53 (defaults to the TLD from the FQDN)
 }
