@@ -15,7 +15,7 @@ jobs:
           version: latest
           run_install: true
       - run: pnpm lint
-      - run: pnpm buld:adapter
+      - run: pnpm build:adapter
       - run: pnpm check
         env:
           PUBLIC_SENTRY_DSN: ${{secrets.PUBLIC_SENTRY_DSN}}
