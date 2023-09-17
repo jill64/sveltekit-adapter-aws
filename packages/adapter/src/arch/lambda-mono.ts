@@ -41,7 +41,8 @@ export const lambdaMono = async ({ builder, options, tmp, out }: Context) => {
     path.join(root, 'cdk/arch/lambda-mono.ts'),
     path.join(out, 'bin', 'cdk-stack.ts'),
     {
-      '0 /* $$__MEMORY_SIZE__$$ */': (options?.memory ?? 128).toString()
+      '128 /* $$__MEMORY_SIZE__$$ */': (options?.memory ?? 128).toString(),
+      'false /* $$__ENABLE_CDN__$$ */': options?.cdn ? 'true' : 'false'
     }
   )
 

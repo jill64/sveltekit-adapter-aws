@@ -38,11 +38,13 @@ export type AdapterOptions = {
    */
   memory?: number
 
-  // // Enable CloudFront distribution (default: false)
-  // // By enabling this option, static assets are served from a CDN,
-  // // which helps reduce the load on your origin and speeds up delivery to your users.
-  // // This option is only available for 'lambda-mono' or 'lambda-s3'
-  // cloudfront?: boolean
+  /**
+   * Enable CloudFront distribution.
+   * Static assets are served from his CDN, reducing the load on your origin and speeding up delivery to your users.
+   * This option only works with "lambda-mono" or "lambda-s3".
+   * @default false
+   */
+  cdn?: boolean
 
   // FQDN?: string // Full qualified domain name of CloudFront deployment (e.g. demo.example.com)
   // LOG_RETENTION_DAYS?: number // Log retention in days of SSR lambda (default 7 days)
