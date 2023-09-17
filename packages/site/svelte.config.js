@@ -7,7 +7,7 @@ const config = {
   kit: {
     adapter: adapter({
       architecture: process.env.ADAPTER_ARCHITECTURE,
-      deploy: true,
+      deploy: process.env.CI,
       memory: 1024,
       cdn: true
     })
