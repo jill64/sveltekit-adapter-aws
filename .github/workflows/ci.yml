@@ -29,6 +29,11 @@ jobs:
         with:
           version: latest
           run_install: true
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
       - run: pnpm build
         env:
           ADAPTER_ARCHITECTURE: lambda-mono
@@ -49,6 +54,11 @@ jobs:
         with:
           version: latest
           run_install: true
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
       - run: pnpm build
         env:
           ADAPTER_ARCHITECTURE: lambda-s3
@@ -69,6 +79,11 @@ jobs:
         with:
           version: latest
           run_install: true
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
       - run: pnpm build
         env:
           ADAPTER_ARCHITECTURE: edge-bundled
@@ -89,6 +104,11 @@ jobs:
         with:
           version: latest
           run_install: true
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
       - run: pnpm build
         env:
           ADAPTER_ARCHITECTURE: edge-unbundled
