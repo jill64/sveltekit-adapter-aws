@@ -1,26 +1,26 @@
+import { spawn } from 'child_process'
 import { Context } from '../types/Context.js'
-// import { exec } from '../util/exec.js'
 
-export const deploy = async (context: Context) => {
-  const { builder, options } = context
+export const deploy = async ({ builder, options, out }: Context) => {
   const { deploy: deployStep } = options ?? {}
 
-  // const run = async (command: string) => {
-  //   const { stdout, stderr } = await exec(command)
+  const run = (cmd: string) =>
+    new Promise<void>((resolve) => {
+      const res = spawn(cmd, {
+        shell: true,
+        cwd: out
+      })
 
-  //   if (stderr) {
-  //     builder.log.error(stderr)
-  //   }
-
-  //   if (stdout) {
-  //     builder.log.minor(stdout)
-  //   }
-  // }
+      res.stdout.on('data', (data) => builder.log(data.toString()))
+      res.stderr.on('data', (data) => builder.log(data.toString()))
+      res.on('close', resolve)
+    })
 
   if (deployStep) {
     builder.log.minor('Deploying...')
 
-    // await run('cd ${} && (yes | npm exec cdk deploy)')
+    // await run('npx cdk bootstrap')
+    await run('npx cdk deploy --require-approval never')
 
     return
   }
@@ -31,5 +31,5 @@ export const deploy = async (context: Context) => {
 
   builder.log.minor('Generating CloudFormation Template...')
 
-  // await run('cd ${} && (yes | npm exec cdk synth)')
+  await run('npx cdk synth')
 }
