@@ -47,19 +47,19 @@ export const lambdaMono = async ({ builder, options, tmp, out }: Context) => {
   const staticAssetsPath = path.join(params, 'staticAssetsPaths.ts')
   const basePath = path.join(params, 'base.ts')
 
-  await Promise.all([
-    copy(
-      path.join(root, 'embed', staticAssetsPath),
-      path.join(tmp, staticAssetsPath),
-      {
-        '[] /* $$__STATIC_ASSETS_PATHS__$$ */':
-          JSON.stringify(staticAssetsPaths)
-      }
-    ),
-    copy(path.join(root, 'embed', basePath), path.join(tmp, basePath), {
-      "'' /* $$__BASE_PATH__$$ */": `'${base}'`
-    })
-  ])
+  await copy(
+    path.join(root, 'embed', staticAssetsPath),
+    path.join(tmp, staticAssetsPath),
+    {
+      '[] /* $$__STATIC_ASSETS_PATHS__$$ */': JSON.stringify(staticAssetsPaths)
+    }
+  )
+
+  builder.copy(path.join(root, 'embed', basePath), path.join(tmp, basePath), {
+    replace: {
+      __BASE_PATH__: base
+    }
+  })
 
   const serverEntryPoint = path.join(tmp, 'server', 'index.ts')
   builder.copy(path.join(root, 'embed/arch/lambda-mono.ts'), serverEntryPoint)
