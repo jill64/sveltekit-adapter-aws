@@ -6,7 +6,8 @@ const config = {
   preprocess: vitePreprocess(),
   kit: {
     adapter: adapter({
-      deploy: true
+      deploy: true,
+      memory: 1024
     })
   }
 }

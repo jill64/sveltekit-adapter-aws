@@ -9,7 +9,12 @@ export class CDKStack extends Stack {
     new lambda.Function(this, 'Server', {
       runtime: lambda.Runtime.NODEJS_18_X,
       code: lambda.Code.fromAsset('lambda'),
-      handler: 'server.handler'
+      handler: 'server.handler',
+      architecture: lambda.Architecture.ARM_64,
+      memorySize: 128
+    }).addFunctionUrl({
+      authType: lambda.FunctionUrlAuthType.NONE,
+      invokeMode: lambda.InvokeMode.RESPONSE_STREAM
     })
   }
 }

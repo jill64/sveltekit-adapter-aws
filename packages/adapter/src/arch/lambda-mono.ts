@@ -39,7 +39,12 @@ export const lambdaMono = async ({ builder, options, tmp, out }: Context) => {
   // Copy CDK Stack
   builder.copy(
     path.join(root, 'cdk/arch/lambda-mono.ts'),
-    path.join(out, 'bin', 'cdk-stack.ts')
+    path.join(out, 'bin', 'cdk-stack.ts'),
+    {
+      replace: {
+        128: (options?.memory ?? 128).toString()
+      }
+    }
   )
 
   // Embed values
