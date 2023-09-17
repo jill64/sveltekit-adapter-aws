@@ -96,14 +96,14 @@ WIP
     - index.js
     - manifest.js
 - build
-  - assets
-    - \_app(+)
-    - \[pre-rendered\](+)
-    - ...static(+)
-    - ...pre-rendered(+)
+  - \[resource\] - lambda | s3 | edge
+    - assets
+      - \_app(+)
+      - \[pre-rendered\](+)
+      - ...static(+)
+      - ...pre-rendered(+)
+    - server.js(+)
   - bin
     - cdk-stack.ts($)
     - synth.ts(#)
-  - server.js(+)
-  - edge.js(+)
   - cdk.json(#)

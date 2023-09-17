@@ -8,7 +8,7 @@ import { listFiles } from '../utils/listFiles.js'
 import { root } from '../utils/root.js'
 
 export const lambdaMono = async ({ builder, options, tmp, out }: Context) => {
-  const assets = path.join(out, 'assets')
+  const assets = path.join(out, 'lambda', 'assets')
 
   builder.writeClient(assets)
   builder.writePrerendered(assets)
@@ -71,7 +71,7 @@ export const lambdaMono = async ({ builder, options, tmp, out }: Context) => {
     external: ['node:*', '@aws-sdk/*'],
     ...options?.esbuild,
     entryPoints: [serverEntryPoint],
-    outfile: path.join(out, 'server.js'),
+    outfile: path.join(out, 'lambda', 'server.js'),
     platform: 'node',
     inject: [path.join(root, 'embed/shims.ts')]
   })
