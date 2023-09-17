@@ -80,9 +80,9 @@ cd ./build && npx cdk deploy
 
 ### Package
 
-- dist - Export Adapter
-- embed - Server Source
-- cdk - AWS-CDK Stacks
+- `dist` - Export Adapter
+- `embed` - Server Source
+- `cdk` - AWS-CDK Stacks
 
 ### App
 
@@ -93,25 +93,25 @@ cd ./build && npx cdk deploy
 | \*  | Injection value by build step         |
 | +   | Generate files by build step          |
 
-- .sveltekit
-  - adapter-aws
-    - external
-      - params(\*)
-      - types(#)
-      - utils(#)
-    - server
-      - index.ts($)
-    - index.js
-    - manifest.js
-- build
-  - \[resource\] - lambda | s3 | edge
-    - assets
-      - \_app(+)
-      - \[pre-rendered\](+)
-      - ...static(+)
-      - ...pre-rendered(+)
-    - server.js(+)
-  - bin
-    - cdk-stack.ts($)
-    - synth.ts(#)
-  - cdk.json(#)
+- `.sveltekit`
+  - `adapter-aws`
+    - `external`
+      - `params`(\*)
+      - `types`(#)
+      - `utils`(#)
+    - `server`
+      - `index.ts`($)
+    - `index.js`
+    - `manifest.js`
+- `build`
+  - `[resource]` - lambda | s3 | edge
+    - `assets`
+      - `_app`(+)
+      - `[pre-rendered]`(+)
+      - ...`static`(+)
+      - ...`pre-rendered`(+)
+    - `server.js`(+)
+  - `bin`
+    - `cdk-stack.ts`($)
+    - `synth.ts`(#)
+  - `cdk.json`(#)
