@@ -20,7 +20,7 @@ jobs:
       - run: pnpx playwright install
       - run: pnpm test
         env:
-          PREVIEW_URL: ${{secrets.LAMBDA_MONO_PREVIEW_URL}}
+          PREVIEW_URL: ${{vars.LAMBDA_MONO_PREVIEW_URL}}
 
   # test-lambda-s3:
   #   runs-on: ubuntu-latest
