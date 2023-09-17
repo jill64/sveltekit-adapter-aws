@@ -1,5 +1,4 @@
 import { expect, test } from '@playwright/test'
-import 'dotenv/config'
 
 test('Top', async ({ page }) => {
   await page.goto('/')
