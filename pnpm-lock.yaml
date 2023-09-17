@@ -61,16 +61,16 @@ importers:
         specifier: 8.49.0
         version: 8.49.0
       eslint-config-prettier:
-        specifier: ^9.0.0
+        specifier: 9.0.0
         version: 9.0.0(eslint@8.49.0)
       eslint-plugin-svelte:
-        specifier: ^2.33.1
+        specifier: 2.33.1
         version: 2.33.1(eslint@8.49.0)(svelte@4.2.0)
       prettier:
         specifier: 3.0.3
         version: 3.0.3
       prettier-plugin-svelte:
-        specifier: ^3.0.3
+        specifier: 3.0.3
         version: 3.0.3(prettier@3.0.3)(svelte@4.2.0)
       publint:
         specifier: 0.2.2
@@ -81,22 +81,22 @@ importers:
   packages/site:
     devDependencies:
       '@jill64/sentry-sveltekit-cloudflare':
-        specifier: ^0.4.3
+        specifier: 0.4.3
         version: 0.4.3(@sveltejs/kit@1.25.0)(svelte@4.2.0)
       '@jill64/svelte-toast':
-        specifier: ^0.1.0
+        specifier: 0.1.0
         version: 0.1.0(svelte@4.2.0)
       svelte:
-        specifier: ^4.0.5
+        specifier: 4.2.0
         version: 4.2.0
       svelte-check:
-        specifier: ^3.4.3
+        specifier: 3.5.1
         version: 3.5.1(postcss@8.4.29)(svelte@4.2.0)
       tslib:
-        specifier: ^2.4.1
+        specifier: 2.6.2
         version: 2.6.2
       vite:
-        specifier: ^4.4.2
+        specifier: 4.4.9
         version: 4.4.9(@types/node@20.6.2)
 
 packages:
