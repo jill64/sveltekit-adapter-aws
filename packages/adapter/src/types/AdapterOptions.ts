@@ -44,12 +44,6 @@ export type AdapterOptions = {
   // // This option is only available for 'lambda-mono' or 'lambda-s3'
   // cloudfront?: boolean
 
-  // // AWS region (default: us-east-1)
-  // region?: string
-
-  // // Deploy stage
-  // stage?: string
-
   // FQDN?: string // Full qualified domain name of CloudFront deployment (e.g. demo.example.com)
   // LOG_RETENTION_DAYS?: number // Log retention in days of SSR lambda (default 7 days)
   // zoneName?: string // The name of the hosted zone in Route 53 (defaults to the TLD from the FQDN)

@@ -11,7 +11,7 @@ export class CDKStack extends Stack {
       code: lambda.Code.fromAsset('lambda'),
       handler: 'server.handler',
       architecture: lambda.Architecture.ARM_64,
-      memorySize: 128
+      memorySize: 0 /* $$__MEMORY_SIZE__$$ */
     }).addFunctionUrl({
       authType: lambda.FunctionUrlAuthType.NONE,
       invokeMode: lambda.InvokeMode.RESPONSE_STREAM

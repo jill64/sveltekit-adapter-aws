@@ -37,13 +37,11 @@ export const lambdaMono = async ({ builder, options, tmp, out }: Context) => {
     .map((file) => path.join(base, file))
 
   // Copy CDK Stack
-  builder.copy(
+  await copy(
     path.join(root, 'cdk/arch/lambda-mono.ts'),
     path.join(out, 'bin', 'cdk-stack.ts'),
     {
-      replace: {
-        128: (options?.memory ?? 128).toString()
-      }
+      '0 /* $$__MEMORY_SIZE__$$ */': (options?.memory ?? 128).toString()
     }
   )
 
