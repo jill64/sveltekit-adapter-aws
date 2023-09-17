@@ -6,13 +6,11 @@ This architecture uploads static assets to S3 and handles server requests with L
 
 ## Pros
 
-- Reducing Lambda load
+- Reducing Lambda load for static assets request
 
 ## Cons
 
-- Require Multiple Origin
-
-If you use your custom domain, you will need to manage multiple domains such as subdomains.
+- Splitting Origin when without CloudFront
 
 - Limited Pre-rendering
 

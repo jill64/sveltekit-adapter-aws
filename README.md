@@ -49,24 +49,32 @@ See [Adapter Options](./packages/adapter/src/types/AdapterOptions.ts)
 This adapter allows you to choose from multiple architectures depending on your use case.
 
 - [lambda-mono](./docs/lambda-mono/README.md)
-- [lambda-s3](./docs/lambda-s3/README.md)
-- [edge-bundled](./docs/edge-bundled/README.md)
-- [edge-unbundled](./docs/edge-unbundled/README.md)
+- [lambda-s3](./docs/lambda-s3/README.md)(WIP)(Default)
+- [edge-bundled](./docs/edge-bundled/README.md)(WIP)
+- [edge-unbundled](./docs/edge-unbundled/README.md)(WIP)
 
-|                | Streaming | Scaling | Round Trip | Same Origin |
-| -------------- | --------- | ------- | ---------- | ----------- |
-| lambda-mono    | ✅        |         | ✅         | ✅          |
-| lambda-s3      | ✅        | ✅      | ✅         |             |
-| edge-bundled   |           | ✅      | ✅         | ✅          |
-| edge-unbundled | ✅        | ✅      |            | ✅          |
+|                | Streaming | Scaling | Round Trip |
+| -------------- | --------- | ------- | ---------- |
+| lambda-mono    | ✅        |         | ✅         |
+| lambda-s3      | ✅        | ✅      | ✅         |
+| edge-bundled   |           | ✅      | ✅         |
+| edge-unbundled | ✅        | ✅      |            |
 
 ## CI/CD
 
-WIP
+[GitHub Actions Example](./.github/workflows)
+
+1. Setup AWS CLI
+2. Setup AWS Credential
+3. Build Application
 
 ## Manual Deploy
 
-WIP
+If the automatic deployment option is false, you can deploy the app at any time by running the following command after the app build is complete.
+
+```sh
+cd ./build && npx cdk deploy
+```
 
 ## Directory
 
