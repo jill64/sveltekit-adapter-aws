@@ -15,7 +15,7 @@ export class CDKStack extends Stack {
 
     const memorySize = 128 /* $$__MEMORY_SIZE__$$ */
     const ENABLE_CDN = false /* $$__ENABLE_CDN__$$ */
-    const base = '' /* $$__BASE_PATH__$$ */
+    const base = '__BASE_PATH__'
 
     const lambdaURL = new aws_lambda.Function(this, 'Server', {
       runtime: aws_lambda.Runtime.NODEJS_18_X,
