@@ -14,8 +14,8 @@ export type AdapterOptions = {
   // Override esbuild options
   esbuild?: BuildOptions
 
-  // // AWS-CDK CloudFormation Stackname (default: AWSAdapterStack-Default)
-  // project?: string
+  // AWS-CDK CloudFormation Stack Name (default: SvelteKit-App-Default)
+  name?: string
 
   // // Enable CloudFront distribution (default: false)
   // // By enabling this option, static assets are served from a CDN,
