@@ -12,7 +12,7 @@ This architecture uploads static assets to S3 and handles server requests with L
 
 - Require Multiple Origin
 
-If you use your original domain, you will need to manage multiple domains such as subdomains.
+If you use your custom domain, you will need to manage multiple domains such as subdomains.
 
 - Limited Pre-rendering
 
