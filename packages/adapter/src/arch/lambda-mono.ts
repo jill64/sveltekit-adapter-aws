@@ -1,12 +1,12 @@
 import { unfurl } from '@jill64/unfurl'
 import { build } from 'esbuild'
 import { writeFile } from 'fs/promises'
+import { nanoid } from 'nanoid'
 import path from 'path'
 import { Context } from '../types/Context.js'
 import { copy } from '../utils/copy.js'
 import { listFiles } from '../utils/listFiles.js'
 import { root } from '../utils/root.js'
-import { nanoid } from 'nanoid'
 
 export const lambdaMono = async ({ builder, options, tmp, out }: Context) => {
   const assets = path.join(out, 'lambda', 'assets')
@@ -47,7 +47,8 @@ export const lambdaMono = async ({ builder, options, tmp, out }: Context) => {
       '128 /* $$__MEMORY_SIZE__$$ */': (options?.memory ?? 128).toString(),
       'false /* $$__ENABLE_CDN__$$ */': options?.cdn ? 'true' : 'false',
       __BASE_PATH__: base,
-      __BRIDGE_AUTH_TOKEN__: bridgeAuthToken
+      __BRIDGE_AUTH_TOKEN__: bridgeAuthToken,
+      __DOTENV_PATH__: path.resolve(tmp, '../../', '.env')
     }
   )
 
