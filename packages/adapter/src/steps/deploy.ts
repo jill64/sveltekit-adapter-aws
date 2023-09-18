@@ -5,7 +5,7 @@ export const deploy = async ({ builder, options, out }: Context) => {
   const { deploy: deployStep } = options ?? {}
 
   const run = (cmd: string) =>
-    new Promise<void>((resolve) => {
+    new Promise<void>((resolve, reject) => {
       const res = spawn(cmd, {
         shell: true,
         cwd: out
@@ -13,13 +13,20 @@ export const deploy = async ({ builder, options, out }: Context) => {
 
       res.stdout.on('data', (data) => builder.log(data.toString()))
       res.stderr.on('data', (data) => builder.log(data.toString()))
-      res.on('close', resolve)
+      res.on('close', (code) => {
+        if (code !== 0) {
+          reject(new Error(`Command '${cmd}' exited with code ${code}`))
+        } else {
+          resolve()
+        }
+      })
     })
+
+  await run('npx cdk bootstrap')
 
   if (deployStep) {
     builder.log.minor('Deploying...')
 
-    // await run('npx cdk bootstrap')
     await run('npx cdk deploy --require-approval never')
 
     return

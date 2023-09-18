@@ -47,11 +47,21 @@ export type AdapterOptions = {
   cdn?: boolean
 
   /**
-   * FQDN (Full Qualified Domain Name) of CloudFront distribution
+   * Custom domain of CloudFront distribution
    * @default undefined
-   * @example 'demo.example.com'
    */
-  // domain?: string
+  domain?: {
+    /**
+     * FQDN (Full Qualified Domain Name) to set on CloudFront
+     * @example 'demo.example.com'
+     */
+    fqdn: string
 
-  // zoneName?: string // The name of the hosted zone in Route 53 (defaults to the TLD from the FQDN)
+    /**
+     * ARN of the SSL certificate created with AWS Certificate Manager (ACM).
+     * It must be created in the us-east1 region.
+     * @example 'arn:aws:acm:us-east1:<accountId>:certificate/<certificateId>'
+     */
+    certificateArn: string
+  }
 }
