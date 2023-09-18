@@ -45,4 +45,23 @@ export type AdapterOptions = {
    * @default false
    */
   cdn?: boolean
+
+  /**
+   * Custom domain of CloudFront distribution
+   * @default undefined
+   */
+  domain?: {
+    /**
+     * FQDN (Full Qualified Domain Name) to set on CloudFront
+     * @example 'demo.example.com'
+     */
+    fqdn: string
+
+    /**
+     * ARN of the SSL certificate created with AWS Certificate Manager (ACM).
+     * It must be created in the us-east1 region.
+     * @example 'arn:aws:acm:us-east1:<accountId>:certificate/<certificateId>'
+     */
+    certificateArn: string
+  }
 }
