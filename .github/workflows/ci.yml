@@ -60,6 +60,8 @@ jobs:
         run: pnpm build
         env:
           ADAPTER_ARCHITECTURE: lambda-mono
+          ADAPTER_FQDN: lambda-mono.adapter-aws.com
+          ADAPTER_CERTIFICATE_ARN: ${{secrets.LAMBDA_MONO_CERTIFICATE_ARN}}
           PUBLIC_SENTRY_DSN: ${{secrets.PUBLIC_SENTRY_DSN}}
           SENTRY_ORG: ${{secrets.SENTRY_ORG}}
           SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}

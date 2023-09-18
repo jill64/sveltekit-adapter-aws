@@ -8,8 +8,12 @@ const config = {
     adapter: adapter({
       architecture: process.env.ADAPTER_ARCHITECTURE,
       deploy: process.env.CI,
-      memory: 1024,
-      cdn: true
+      memory: 256,
+      cdn: true,
+      domain: {
+        fqdn: process.env.ADAPTER_FQDN,
+        certificateArn: process.env.ADAPTER_CERTIFICATE_ARN
+      }
     })
   }
 }

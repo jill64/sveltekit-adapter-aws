@@ -29,7 +29,7 @@ jobs:
       - name: Test
         run: pnpm test
         env:
-          PREVIEW_URL: ${{vars.LAMBDA_MONO_PREVIEW_URL}}
+          ADAPTER_FQDN: lambda-mono.adapter-aws.com
 
   # test-lambda-s3:
   #   runs-on: ubuntu-latest
