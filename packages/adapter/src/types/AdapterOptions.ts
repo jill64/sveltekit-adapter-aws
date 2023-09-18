@@ -45,13 +45,4 @@ export type AdapterOptions = {
    * @default false
    */
   cdn?: boolean
-
-  /**
-   * FQDN (Full Qualified Domain Name) of CloudFront distribution
-   * @default undefined
-   * @example 'demo.example.com'
-   */
-  // domain?: string
-
-  // zoneName?: string // The name of the hosted zone in Route 53 (defaults to the TLD from the FQDN)
 }
