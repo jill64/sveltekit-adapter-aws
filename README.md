@@ -76,6 +76,12 @@ If the automatic deployment option is false, you can deploy the app at any time 
 cd ./build && npx cdk deploy
 ```
 
+## Delete All Resources
+
+```sh
+cd ./build && npx cdk destroy
+```
+
 ## Directory
 
 ### Package
