@@ -56,7 +56,7 @@
     "publint": "0.2.2"
   },
   "dependencies": {
-    "@jill64/unfurl": "^0.1.0",
+    "@jill64/unfurl": "^1.0.0",
     "@sveltejs/kit": "1.25.0",
     "@types/mime-types": "^2.1.1",
     "@types/node": "^20.6.2",
