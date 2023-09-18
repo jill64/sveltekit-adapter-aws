@@ -2,7 +2,7 @@ import type { PlaywrightTestConfig } from '@playwright/test'
 
 const config: PlaywrightTestConfig = {
   use: {
-    baseURL: process.env.ADAPTER_FQDN
+    baseURL: `https://${process.env.ADAPTER_FQDN}`
   },
   testDir: 'tests',
   testMatch: /(.+\.)?(test|spec)\.[jt]s/,
