@@ -21,4 +21,3 @@ export const adapter = (options?: AdapterOptions): Adapter => {
     }
   }
 }
-
