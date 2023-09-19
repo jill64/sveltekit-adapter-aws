@@ -1,7 +1,7 @@
 import { match, P } from 'ts-pattern'
 // import { edgeBundled } from '../arch/edge-bundled.js'
 import { lambdaMono } from '../arch/lambda-mono.js'
-// import { lambdaS3 } from '../arch/lambda-s3.js'
+import { lambdaS3 } from '../arch/lambda-s3.js'
 // import { edgeUnbundled } from '../arch/edge-unbundled.js'
 import type { Context } from '../types/Context.js'
 
@@ -12,7 +12,7 @@ export const build = async (context: Context) => {
   const process =
     match(architecture)
       .with('lambda-mono', () => lambdaMono)
-      // .with('lambda-s3', () => lambdaS3)
+      .with('lambda-s3', () => lambdaS3)
       // .with('edge-bundled', () => edgeBundled)
       // .with('edge-unbundled', () => edgeUnbundled)
       .with(P.nullish, () => {
@@ -26,9 +26,7 @@ export const build = async (context: Context) => {
           `Option 'architecture' is invalid. Use the default value 'lambda-s3'.`
         )
         return null
-      }) ??
-    // lambdaS3
-    lambdaMono
+      }) ?? lambdaS3
 
   builder.log.minor('Building...')
   await process({ builder, options, tmp, out })
