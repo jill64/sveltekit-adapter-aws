@@ -1,5 +1,5 @@
-import type { EdgeBodyEncoding } from './EdgeBodyEncoding'
-import type { EdgeHeaders } from './EdgeHeaders'
+import type { EdgeBodyEncoding } from './EdgeBodyEncoding.js'
+import type { EdgeHeaders } from './EdgeHeaders.js'
 
 export type EdgeResponse = {
   body?: string

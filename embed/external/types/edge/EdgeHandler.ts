@@ -1,6 +1,6 @@
-import type { EdgeEvent } from './EdgeEvent'
-import type { EdgeRequest } from './EdgeRequest'
-import type { EdgeResponse } from './EdgeResponse'
+import type { EdgeEvent } from './EdgeEvent.js'
+import type { EdgeRequest } from './EdgeRequest.js'
+import type { EdgeResponse } from './EdgeResponse.js'
 
 export type EdgeHandler = (
   event: EdgeEvent

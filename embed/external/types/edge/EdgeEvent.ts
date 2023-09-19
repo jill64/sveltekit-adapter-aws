@@ -1,4 +1,4 @@
-import { EdgeRequest } from './EdgeRequest'
+import { EdgeRequest } from './EdgeRequest.js'
 
 export type EdgeEvent = {
   Records: [
