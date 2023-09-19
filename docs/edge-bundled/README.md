@@ -13,7 +13,7 @@ Static assets are served from S3, and page data requests are handled by Lambda@E
 ## Cons
 
 - Streaming responses are not available due to Lambda@Edge limitations
-- Poor Lambda execution environment (Execution Time : < 5sec, Package Size : < 1MB)
+- Poor Lambda execution environment. Applying Lambda@Edge [Viewer Request limits](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cloudfront-limits.html#limits-lambda-at-edge)
 
 ## Use cases
 
