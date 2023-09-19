@@ -17,17 +17,18 @@ export const build = async (context: Context) => {
       // .with('edge-unbundled', () => edgeUnbundled)
       .with(P.nullish, () => {
         builder.log.minor(
-          `Option 'architecture' is not defined. Use the default value 'lambda-s3'.`
+          `Option 'architecture' is not defined. Use the default value 'lambda-mono'.`
         )
         return null
       })
       .otherwise(() => {
         builder.log.warn(
-          `Option 'architecture' is invalid. Use the default value 'lambda-s3'.`
+          `Option 'architecture' is invalid. Use the default value 'lambda-mono'.`
         )
         return null
-      }) ?? lambdaS3
+      }) ?? lambdaMono
 
   builder.log.minor('Building...')
+
   await process({ builder, options, tmp, out })
 }

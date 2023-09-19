@@ -50,8 +50,8 @@ See [Adapter Options](./packages/adapter/src/types/AdapterOptions.ts)
 
 This adapter allows you to choose from multiple architectures depending on your use case.
 
-- [lambda-mono](./docs/lambda-mono/README.md)
-- [lambda-s3](./docs/lambda-s3/README.md)(WIP)(Default)
+- [lambda-mono](./docs/lambda-mono/README.md)(Default)
+- [lambda-s3](./docs/lambda-s3/README.md)
 - [edge-bundled](./docs/edge-bundled/README.md)(WIP)
 - [edge-unbundled](./docs/edge-unbundled/README.md)(WIP)
 

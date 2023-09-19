@@ -15,7 +15,7 @@ export const adapter = (options?: AdapterOptions): Adapter => {
       const context = { builder, options, tmp, out }
 
       cleanup(context)
-      await setup(context)
+      setup(context)
       await build(context)
       await deploy(context)
     }
