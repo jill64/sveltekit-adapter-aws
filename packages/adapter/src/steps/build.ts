@@ -1,5 +1,5 @@
 import { match, P } from 'ts-pattern'
-// import { edgeBundled } from '../arch/edge-bundled.js'
+import { edgeBundled } from '../arch/edge-bundled.js'
 import { lambdaMono } from '../arch/lambda-mono.js'
 import { lambdaS3 } from '../arch/lambda-s3.js'
 // import { edgeUnbundled } from '../arch/edge-unbundled.js'
@@ -13,7 +13,7 @@ export const build = async (context: Context) => {
     match(architecture)
       .with('lambda-mono', () => lambdaMono)
       .with('lambda-s3', () => lambdaS3)
-      // .with('edge-bundled', () => edgeBundled)
+      .with('edge-bundled', () => edgeBundled)
       // .with('edge-unbundled', () => edgeUnbundled)
       .with(P.nullish, () => {
         builder.log.minor(
