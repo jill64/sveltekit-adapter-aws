@@ -19,3 +19,7 @@ Static assets are served from S3, and page data requests are handled by Lambda@E
 
 - Large scale SSG
 - Small amount of server processing
+
+## Additional limitations
+
+- The server always sends the response body as text.
