@@ -1,6 +1,6 @@
 import { unfurl } from '@jill64/unfurl'
 import { build } from 'esbuild'
-import { rmdir, writeFile } from 'fs/promises'
+import { rm, writeFile } from 'fs/promises'
 import { nanoid } from 'nanoid'
 import path from 'path'
 import { Context } from '../types/Context.js'
@@ -20,7 +20,7 @@ export const lambdaS3 = async ({ builder, options, tmp, out }: Context) => {
 
   builder.copy(lambdaApp, path.join(out, 's3', base, '_app'))
 
-  await rmdir(lambdaApp, { recursive: true })
+  await rm(lambdaApp, { recursive: true })
 
   builder.writeServer(tmp)
 
