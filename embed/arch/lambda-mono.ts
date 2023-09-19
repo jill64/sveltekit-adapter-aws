@@ -69,6 +69,11 @@ export const handler = awslambda.streamifyResponse(
       return closeResponseStream()
     }
 
+    const {
+      http: { method, sourceIp },
+      domainName
+    } = requestContext
+
     const assetsHandling = (assetsPath: string) => {
       const filePath = assetsPath.replace(base, '')
       const type = lookup(filePath)
@@ -77,33 +82,37 @@ export const handler = awslambda.streamifyResponse(
         'content-type': type ? type : 'application/octet-stream'
       })
 
+      if (method === 'HEAD') {
+        return closeResponseStream()
+      }
+
       const src = createReadStream(path.join(process.cwd(), 'assets', filePath))
 
       src.on('data', (chunk) => responseStream.write(chunk))
       src.on('end', () => closeResponseStream())
     }
 
-    // Handling static asset requests
-    if (rawPath.startsWith(`${base}/_app/`) || staticAssetsPaths.has(rawPath)) {
-      return assetsHandling(rawPath)
-    }
+    if (method === 'GET' || method === 'HEAD') {
+      // Handling static asset requests
+      if (
+        rawPath.startsWith(`${base}/_app/`) ||
+        staticAssetsPaths.has(rawPath)
+      ) {
+        return assetsHandling(rawPath)
+      }
 
-    // SSG requests fallback
-    if (
-      rawPath.endsWith('/') &&
-      staticAssetsPaths.has(`${rawPath}index.html`)
-    ) {
-      return assetsHandling(`${rawPath}index.html`)
-    }
+      // SSG requests fallback
+      if (
+        rawPath.endsWith('/') &&
+        staticAssetsPaths.has(`${rawPath}index.html`)
+      ) {
+        return assetsHandling(`${rawPath}index.html`)
+      }
 
-    if (staticAssetsPaths.has(`${rawPath}.html`)) {
-      return assetsHandling(`${rawPath}.html`)
+      if (staticAssetsPaths.has(`${rawPath}.html`)) {
+        return assetsHandling(`${rawPath}.html`)
+      }
     }
-
-    const {
-      http: { method, sourceIp },
-      domainName
-    } = requestContext
 
     const env = Object.fromEntries(
       Object.entries(process.env).map(([key, value]) => [key, value ?? ''])
