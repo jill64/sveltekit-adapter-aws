@@ -95,7 +95,7 @@ jobs:
       - name: Build
         run: pnpm build
         env:
-          ADAPTER_ARCHITECTURE: lambda-mono
+          ADAPTER_ARCHITECTURE: lambda-s3
           ADAPTER_FQDN: lambda-s3.adapter-aws.com
           ADAPTER_CERTIFICATE_ARN: ${{secrets.LAMBDA_S3_CERTIFICATE_ARN}}
           PUBLIC_SENTRY_DSN: ${{secrets.PUBLIC_SENTRY_DSN}}
