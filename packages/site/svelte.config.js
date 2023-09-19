@@ -6,6 +6,9 @@ const config = {
   preprocess: vitePreprocess(),
   kit: {
     adapter: adapter({
+      name: process.env.ADAPTER_ARCHITECTURE
+        ? `${process.env.ADAPTER_ARCHITECTURE}-preview-site`
+        : undefined,
       architecture: process.env.ADAPTER_ARCHITECTURE,
       deploy: process.env.CI,
       memory: 256,
