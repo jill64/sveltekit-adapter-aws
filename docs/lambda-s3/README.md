@@ -10,11 +10,9 @@ This architecture uploads static assets to S3 and handles server requests with L
 
 ## Cons
 
-- Splitting Origin when without CloudFront
-
 - Limited Pre-rendering
 
-Pre-rendered content is served from Lambda to unify the origin. When using a large SSG, you may reach the Lambda package size limit. (50MB:zipped, 250MB:unzipped)
+Files outside of the \_app directory will continue to be served by lambda.When using a large SSG, you may reach the Lambda package size limit. (50MB:zipped, 250MB:unzipped)
 
 ## Use cases
 
