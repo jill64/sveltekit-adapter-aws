@@ -7,9 +7,7 @@ import {
   aws_certificatemanager,
   aws_cloudfront,
   aws_cloudfront_origins,
-  aws_lambda,
-  aws_route53,
-  aws_route53_targets
+  aws_lambda
 } from 'aws-cdk-lib'
 import { Construct } from 'constructs'
 import { config } from 'dotenv'
@@ -39,12 +37,6 @@ export class CDKStack extends Stack {
     })
 
     if (enableCDN) {
-      const hostedZone = domainName
-        ? new aws_route53.HostedZone(this, 'HostedZone', {
-            zoneName: domainName
-          })
-        : null
-
       const certificate = certificateArn
         ? aws_certificatemanager.Certificate.fromCertificateArn(
             this,
@@ -92,23 +84,20 @@ export class CDKStack extends Stack {
         }
       })
 
-      if (hostedZone) {
-        new aws_route53.ARecord(this, 'Route53RecordSet', {
-          recordName: domainName,
-          zone: hostedZone,
-          target: aws_route53.RecordTarget.fromAlias(
-            new aws_route53_targets.CloudFrontTarget(cdn)
-          )
+      if (domainName) {
+        new CfnOutput(this, 'Deployed URL', {
+          description: 'Deployed URL',
+          value: `https://${domainName}`
         })
       }
 
-      new CfnOutput(this, 'Deployed URL', {
-        description: 'Deployed URL',
+      new CfnOutput(this, 'CloudFront URL', {
+        description: 'CloudFront URL',
         value: `https://${cdn.distributionDomainName}`
       })
     } else {
-      new CfnOutput(this, 'Deployed URL', {
-        description: 'Deployed URL',
+      new CfnOutput(this, 'Lambda URL', {
+        description: 'Lambda URL',
         value: lambdaURL.url
       })
     }
