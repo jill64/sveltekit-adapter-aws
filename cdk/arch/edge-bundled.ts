@@ -16,6 +16,7 @@ export class CDKStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props)
 
+    const base = '__BASE_PATH__'
     const domainName = '__DOMAIN_NAME__'
     const certificateArn = '__CERTIFICATE_ARN__'
 
@@ -28,6 +29,17 @@ export class CDKStack extends Stack {
 
     const s3 = new aws_s3.Bucket(this, 'Bucket')
 
+    const appPath = `${base}/_app/*`
+
+    const behaviorBase = {
+      cachePolicy: aws_cloudfront.CachePolicy.CACHING_OPTIMIZED,
+      viewerProtocolPolicy:
+        aws_cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+      originRequestPolicy:
+        aws_cloudfront.OriginRequestPolicy.ALL_VIEWER_EXCEPT_HOST_HEADER,
+      origin: new aws_cloudfront_origins.S3Origin(s3)
+    }
+
     const cdn = new aws_cloudfront.Distribution(this, 'CloudFront', {
       domainNames: domainName ? [domainName] : undefined,
       certificate: certificateArn
@@ -38,12 +50,8 @@ export class CDKStack extends Stack {
           )
         : undefined,
       defaultBehavior: {
-        allowedMethods: aws_cloudfront.AllowedMethods.ALLOW_GET_HEAD,
-        cachePolicy: aws_cloudfront.CachePolicy.CACHING_OPTIMIZED,
-        viewerProtocolPolicy:
-          aws_cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
-        originRequestPolicy: aws_cloudfront.OriginRequestPolicy.ALL_VIEWER,
-        origin: new aws_cloudfront_origins.S3Origin(s3),
+        ...behaviorBase,
+        allowedMethods: aws_cloudfront.AllowedMethods.ALLOW_ALL,
         edgeLambdas: [
           {
             functionVersion: edge,
@@ -52,7 +60,13 @@ export class CDKStack extends Stack {
           }
         ]
       },
-      httpVersion: aws_cloudfront.HttpVersion.HTTP2_AND_3
+      httpVersion: aws_cloudfront.HttpVersion.HTTP2_AND_3,
+      additionalBehaviors: {
+        [appPath]: {
+          ...behaviorBase,
+          allowedMethods: aws_cloudfront.AllowedMethods.ALLOW_GET_HEAD
+        }
+      }
     })
 
     new aws_s3_deployment.BucketDeployment(this, 'S3Deploy', {
