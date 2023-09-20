@@ -5,6 +5,8 @@ export const handler: OriginRequestHandler = async (event) => {
   const request = event.Records[0].cf.request
   const { uri, method } = request
 
+  console.log('request', request)
+
   if (method === 'GET' || method === 'HEAD') {
     const s3Domain = request.origin.custom.customHeaders['S3-Domain']
 
@@ -12,6 +14,8 @@ export const handler: OriginRequestHandler = async (event) => {
     if (staticAssetsPaths.has(uri)) {
       request.origin.custom.domainName = s3Domain
       request.headers['host'] = [{ key: 'host', value: s3Domain }]
+
+      console.log('rewrote request', request)
 
       return request
     }
@@ -22,6 +26,8 @@ export const handler: OriginRequestHandler = async (event) => {
       request.headers['host'] = [{ key: 'host', value: s3Domain }]
       request.uri = `${uri}index.html`
 
+      console.log('rewrote request', request)
+
       return request
     }
 
@@ -29,6 +35,8 @@ export const handler: OriginRequestHandler = async (event) => {
       request.origin.custom.domainName = s3Domain
       request.headers['host'] = [{ key: 'host', value: s3Domain }]
       request.uri = `${uri}.html`
+
+      console.log('rewrote request', request)
 
       return request
     }
