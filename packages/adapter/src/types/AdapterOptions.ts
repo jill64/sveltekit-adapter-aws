@@ -47,6 +47,12 @@ export type AdapterOptions = {
   cdn?: boolean
 
   /**
+   * Environment variables to set in Lambda
+   * @default undefined
+   */
+  env?: Record<string, string>
+
+  /**
    * Custom domain of CloudFront distribution
    * @default undefined
    */

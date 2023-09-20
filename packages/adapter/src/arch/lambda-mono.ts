@@ -48,9 +48,9 @@ export const lambdaMono = async ({ builder, options, tmp, out }: Context) => {
       'false /* $$__ENABLE_CDN__$$ */': options?.cdn ? 'true' : 'false',
       __BASE_PATH__: base,
       __BRIDGE_AUTH_TOKEN__: bridgeAuthToken,
-      __DOTENV_PATH__: path.resolve(tmp, '../../', '.env'),
       __DOMAIN_NAME__: options?.domain?.fqdn ?? '',
-      __CERTIFICATE_ARN__: options?.domain?.certificateArn ?? ''
+      __CERTIFICATE_ARN__: options?.domain?.certificateArn ?? '',
+      '{} /* $$__ENVIRONMENT__$$ */': JSON.stringify(options?.env ?? {})
     }
   )
 
