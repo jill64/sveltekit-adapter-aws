@@ -16,6 +16,7 @@ export class CDKStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props)
 
+    const appDir = '__APP_DIR__'
     const base = '__BASE_PATH__'
     const domainName = '__DOMAIN_NAME__'
     const certificateArn = '__CERTIFICATE_ARN__'
@@ -29,7 +30,7 @@ export class CDKStack extends Stack {
 
     const s3 = new aws_s3.Bucket(this, 'Bucket')
 
-    const appPath = `${base}/_app/*`
+    const appPath = `${base}/${appDir}/*`
 
     const behaviorBase = {
       cachePolicy: aws_cloudfront.CachePolicy.CACHING_OPTIMIZED,

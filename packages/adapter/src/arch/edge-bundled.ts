@@ -8,7 +8,10 @@ import { listFiles } from '../utils/listFiles.js'
 import { root } from '../utils/root.js'
 
 export const edgeBundled = async ({ builder, options, tmp, out }: Context) => {
-  const base = builder.config.kit.paths.base
+  const {
+    appDir,
+    paths: { base }
+  } = builder.config.kit
 
   const s3Assets = path.join(out, 's3', base)
 
@@ -33,7 +36,7 @@ export const edgeBundled = async ({ builder, options, tmp, out }: Context) => {
 
   const staticAssetsPaths = list
     .map((file) => file.replace(s3Assets, ''))
-    .filter((file) => !file.startsWith('/_app/'))
+    .filter((file) => !file.startsWith(`/${appDir}/`))
     .map((file) => path.join(base, file))
 
   // Copy CDK Stack
@@ -42,6 +45,7 @@ export const edgeBundled = async ({ builder, options, tmp, out }: Context) => {
     path.join(out, 'bin', 'cdk-stack.ts'),
     {
       replace: {
+        __APP_DIR__: appDir,
         __BASE_PATH__: base,
         __DOMAIN_NAME__: options?.domain?.fqdn ?? '',
         __CERTIFICATE_ARN__: options?.domain?.certificateArn ?? ''
@@ -67,6 +71,17 @@ export const edgeBundled = async ({ builder, options, tmp, out }: Context) => {
       __BASE_PATH__: base
     }
   })
+
+  const appDirPath = path.join(params, 'appDir.ts')
+  builder.copy(
+    path.join(root, 'embed', appDirPath),
+    path.join(tmp, appDirPath),
+    {
+      replace: {
+        __APP_DIR__: appDir
+      }
+    }
+  )
 
   const domainName = path.join(params, 'domainName.ts')
   builder.copy(
