@@ -94,11 +94,17 @@ export const edgeBundled = async ({ builder, options, tmp, out }: Context) => {
     }
   )
 
-  // Copy .env file
-  builder.copy(
-    path.resolve(tmp, '../../', '.env'),
-    path.join(out, 'edge', '.env')
-  )
+  // Make .env file
+  if (options?.env) {
+    builder.mkdirp(path.join(out, 'edge'))
+    await writeFile(
+      path.join(out, 'edge', '.env'),
+      Object.entries(options.env).reduce(
+        (acc, [key, value]) => `${acc}${key}=${value}\n`,
+        ''
+      )
+    )
+  }
 
   const edgeEntryPoint = path.join(tmp, 'edge', 'index.ts')
   builder.copy(

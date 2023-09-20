@@ -2,6 +2,8 @@
 
 ![github-actions-ci](https://github.com/jill64/sveltekit-adapter-aws/actions/workflows/ci.yml/badge.svg)
 
+![github-actions-deploy-test](https://github.com/jill64/sveltekit-adapter-aws/actions/workflows/deploy-test.yml/badge.svg)
+
 AWS adapter for SvelteKit with multiple architecture
 
 ## Introduction

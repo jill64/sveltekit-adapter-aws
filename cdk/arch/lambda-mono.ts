@@ -10,7 +10,6 @@ import {
   aws_lambda
 } from 'aws-cdk-lib'
 import { Construct } from 'constructs'
-import { config } from 'dotenv'
 
 export class CDKStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -22,7 +21,7 @@ export class CDKStack extends Stack {
     const base = '__BASE_PATH__'
     const domainName = '__DOMAIN_NAME__'
     const certificateArn = '__CERTIFICATE_ARN__'
-    const environment = config({ path: '__DOTENV_PATH__' }).parsed ?? {}
+    const environment = {} /* $$__ENVIRONMENT__$$ */
 
     const lambdaURL = new aws_lambda.Function(this, 'Server', {
       runtime: aws_lambda.Runtime.NODEJS_18_X,

@@ -16,6 +16,11 @@ const config = {
       domain: {
         fqdn: process.env.ADAPTER_FQDN,
         certificateArn: process.env.ADAPTER_CERTIFICATE_ARN
+      },
+      env: {
+        KEY1: 'VALUE1',
+        KEY2: 'VALUE2',
+        KEY3: 'VALUE3'
       }
     })
   }

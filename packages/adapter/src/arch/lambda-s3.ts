@@ -57,9 +57,9 @@ export const lambdaS3 = async ({ builder, options, tmp, out }: Context) => {
       __APP_DIR__: appDir,
       __BASE_PATH__: base,
       __BRIDGE_AUTH_TOKEN__: bridgeAuthToken,
-      __DOTENV_PATH__: path.resolve(tmp, '../../', '.env'),
       __DOMAIN_NAME__: options?.domain?.fqdn ?? '',
-      __CERTIFICATE_ARN__: options?.domain?.certificateArn ?? ''
+      __CERTIFICATE_ARN__: options?.domain?.certificateArn ?? '',
+      '{} /* $$__ENVIRONMENT__$$ */': JSON.stringify(options?.env ?? {})
     }
   )
 
