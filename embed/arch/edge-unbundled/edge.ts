@@ -1,7 +1,7 @@
 import { staticAssetsPaths } from '../../external/params/staticAssetsPaths.js'
 import type { OriginRequestHandler } from '../../external/types/edge/OriginRequestHandler.js'
 
-export const handler: OriginRequestHandler = (event) => {
+export const handler: OriginRequestHandler = async (event) => {
   const request = event.Records[0].cf.request
   const { uri, method } = request
 
