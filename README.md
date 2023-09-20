@@ -52,7 +52,7 @@ This adapter allows you to choose from multiple architectures depending on your 
 
 - [lambda-mono](./docs/lambda-mono/README.md)(Default)
 - [lambda-s3](./docs/lambda-s3/README.md)
-- [edge-bundled](./docs/edge-bundled/README.md)(WIP)
+- [edge-bundled](./docs/edge-bundled/README.md)
 - [edge-unbundled](./docs/edge-unbundled/README.md)(WIP)
 
 |                | Streaming | Scaling | Round Trip |
