@@ -5,6 +5,7 @@ import path from 'path'
 import { base } from '../external/params/base.js'
 import { bridgeAuthToken } from '../external/params/bridgeAuthToken.js'
 import { cdn } from '../external/params/cdn.js'
+import { appDir } from '../external/params/appDir.js'
 import { staticAssetsPaths } from '../external/params/staticAssetsPaths.js'
 import { ResponseStream } from '../external/types/ResponseStream.js'
 import { Server } from '../index.js'
@@ -95,7 +96,7 @@ export const handler = awslambda.streamifyResponse(
     if (method === 'GET' || method === 'HEAD') {
       // Handling static asset requests
       if (
-        rawPath.startsWith(`${base}/_app/`) ||
+        rawPath.startsWith(`${base}/${appDir}/`) ||
         staticAssetsPaths.has(rawPath)
       ) {
         return assetsHandling(rawPath)

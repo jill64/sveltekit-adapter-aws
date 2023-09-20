@@ -14,11 +14,14 @@ export const lambdaS3 = async ({ builder, options, tmp, out }: Context) => {
   builder.writeClient(lambdaAssets)
   builder.writePrerendered(lambdaAssets)
 
-  const lambdaApp = path.join(lambdaAssets, '_app')
+  const {
+    appDir,
+    paths: { base }
+  } = builder.config.kit
 
-  const base = builder.config.kit.paths.base
+  const lambdaApp = path.join(lambdaAssets, appDir)
 
-  builder.copy(lambdaApp, path.join(out, 's3', base, '_app'))
+  builder.copy(lambdaApp, path.join(out, 's3', base, appDir))
 
   await rm(lambdaApp, { recursive: true })
 
@@ -51,6 +54,7 @@ export const lambdaS3 = async ({ builder, options, tmp, out }: Context) => {
     path.join(out, 'bin', 'cdk-stack.ts'),
     {
       '128 /* $$__MEMORY_SIZE__$$ */': (options?.memory ?? 128).toString(),
+      __APP_DIR__: appDir,
       __BASE_PATH__: base,
       __BRIDGE_AUTH_TOKEN__: bridgeAuthToken,
       __DOTENV_PATH__: path.resolve(tmp, '../../', '.env'),
@@ -77,6 +81,17 @@ export const lambdaS3 = async ({ builder, options, tmp, out }: Context) => {
       __BASE_PATH__: base
     }
   })
+
+  const appDirPath = path.join(params, 'appDir.ts')
+  builder.copy(
+    path.join(root, 'embed', appDirPath),
+    path.join(tmp, appDirPath),
+    {
+      replace: {
+        __APP_DIR__: base
+      }
+    }
+  )
 
   const bridgeAuthTokenPath = path.join(params, 'bridgeAuthToken.ts')
   builder.copy(

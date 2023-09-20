@@ -19,6 +19,7 @@ export class CDKStack extends Stack {
     super(scope, id, props)
 
     const memorySize = 128 /* $$__MEMORY_SIZE__$$ */
+    const appDir = '__APP_DIR__'
     const base = '__BASE_PATH__'
     const domainName = '__DOMAIN_NAME__'
     const certificateArn = '__CERTIFICATE_ARN__'
@@ -45,7 +46,7 @@ export class CDKStack extends Stack {
         )
       : undefined
 
-    const appPath = `${base}/_app/*`
+    const appPath = `${base}/${appDir}/*`
 
     const originRequestPolicy =
       aws_cloudfront.OriginRequestPolicy.ALL_VIEWER_EXCEPT_HOST_HEADER

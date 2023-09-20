@@ -30,11 +30,14 @@ export const lambdaMono = async ({ builder, options, tmp, out }: Context) => {
     )
   )
 
-  const base = builder.config.kit.paths.base
+  const {
+    appDir,
+    paths: { base }
+  } = builder.config.kit
 
   const staticAssetsPaths = list
     .map((file) => file.replace(assets, ''))
-    .filter((file) => !file.startsWith('/_app/'))
+    .filter((file) => !file.startsWith(`/${appDir}/`))
     .map((file) => path.join(base, file))
 
   const bridgeAuthToken = nanoid()
@@ -46,6 +49,7 @@ export const lambdaMono = async ({ builder, options, tmp, out }: Context) => {
     {
       '128 /* $$__MEMORY_SIZE__$$ */': (options?.memory ?? 128).toString(),
       'false /* $$__ENABLE_CDN__$$ */': options?.cdn ? 'true' : 'false',
+      __APP_DIR__: appDir,
       __BASE_PATH__: base,
       __BRIDGE_AUTH_TOKEN__: bridgeAuthToken,
       __DOTENV_PATH__: path.resolve(tmp, '../../', '.env'),
@@ -72,6 +76,17 @@ export const lambdaMono = async ({ builder, options, tmp, out }: Context) => {
       __BASE_PATH__: base
     }
   })
+
+  const appDirPath = path.join(params, 'appDir.ts')
+  builder.copy(
+    path.join(root, 'embed', appDirPath),
+    path.join(tmp, appDirPath),
+    {
+      replace: {
+        __APP_DIR__: base
+      }
+    }
+  )
 
   const cdnPath = path.join(params, 'cdn.ts')
   await copy(path.join(root, 'embed', cdnPath), path.join(tmp, cdnPath), {
