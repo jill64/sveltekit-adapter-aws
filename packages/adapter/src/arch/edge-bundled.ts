@@ -78,7 +78,7 @@ export const edgeBundled = async ({ builder, options, tmp, out }: Context) => {
     path.join(tmp, appDirPath),
     {
       replace: {
-        __APP_DIR__: base
+        __APP_DIR__: appDir
       }
     }
   )
