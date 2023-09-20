@@ -1,4 +1,5 @@
 import 'dotenv/config.js'
+import { appDir } from '../external/params/appDir.js'
 import { base } from '../external/params/base.js'
 import { domainName } from '../external/params/domainName.js'
 import { staticAssetsPaths } from '../external/params/staticAssetsPaths.js'
@@ -22,7 +23,7 @@ export const handler: EdgeHandler = async ({
 
   if (method === 'GET' || method === 'HEAD') {
     // Handling static asset requests
-    if (uri.startsWith(`${base}/_app/`) || staticAssetsPaths.has(uri)) {
+    if (uri.startsWith(`${base}/${appDir}/`) || staticAssetsPaths.has(uri)) {
       return request
     }
 
