@@ -28,10 +28,12 @@ export const handler: EdgeHandler = async ({
 
     // SSG requests fallback
     if (uri.endsWith('/') && staticAssetsPaths.has(`${uri}index.html`)) {
+      request.uri = `${uri}index.html`
       return request
     }
 
     if (staticAssetsPaths.has(`${uri}.html`)) {
+      request.uri = `${uri}.html`
       return request
     }
   }
