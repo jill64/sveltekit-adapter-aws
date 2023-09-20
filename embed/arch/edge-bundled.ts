@@ -1,5 +1,6 @@
 import 'dotenv/config.js'
 import { base } from '../external/params/base.js'
+import { domainName } from '../external/params/domainName.js'
 import { staticAssetsPaths } from '../external/params/staticAssetsPaths.js'
 import type { EdgeHandler } from '../external/types/edge/EdgeHandler.js'
 import { forbiddenHeaderPrefix } from '../external/utils/edge/forbiddenHeaderPrefix.js'
@@ -38,6 +39,14 @@ export const handler: EdgeHandler = async ({
   const env = Object.fromEntries(
     Object.entries(process.env).map(([key, value]) => [key, value ?? ''])
   )
+
+  // Rewrite origin header from pre-defined FQDN
+  if (
+    domainName &&
+    request.headers.origin?.[0]?.value === `https://${domainName}`
+  ) {
+    request.headers.origin[0].value = `https://${distributionDomainName}`
+  }
 
   const hasBody = method !== 'GET' && method !== 'HEAD'
 

@@ -68,6 +68,17 @@ export const edgeBundled = async ({ builder, options, tmp, out }: Context) => {
     }
   })
 
+  const domainName = path.join(params, 'domainName.ts')
+  builder.copy(
+    path.join(root, 'embed', domainName),
+    path.join(tmp, domainName),
+    {
+      replace: {
+        __DOMAIN_NAME__: options?.domain?.fqdn ?? ''
+      }
+    }
+  )
+
   // Copy .env file
   builder.copy(
     path.resolve(tmp, '../../', '.env'),
