@@ -27,7 +27,7 @@ export const deploy = async ({ builder, options, out }: Context) => {
   if (deployStep) {
     builder.log.minor('Deploying...')
 
-    await run('npx cdk deploy --require-approval never')
+    await run('npx cdk deploy --require-approval never --all')
 
     return
   }

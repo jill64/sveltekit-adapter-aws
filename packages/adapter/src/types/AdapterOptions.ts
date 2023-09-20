@@ -41,7 +41,7 @@ export type AdapterOptions = {
   /**
    * Enable CloudFront distribution.
    * Static assets are served from his CDN, reducing the load on your origin and speeding up delivery to your users.
-   * This option only works with "lambda-mono" or "lambda-s3".
+   * This option only works with "lambda-mono".
    * @default false
    */
   cdn?: boolean

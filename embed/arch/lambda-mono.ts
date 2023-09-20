@@ -141,9 +141,15 @@ export const handler = awslambda.streamifyResponse(
     // TODO: If the response header is too long, a 502 error will occur on Gateway, so delete it.
     response.headers.delete('link')
 
+    const responseHeadersEntries = [] as [string, string][]
+
+    response.headers.forEach((value, key) => {
+      responseHeadersEntries.push([key, value])
+    })
+
     setResponseHeader(
       response.status,
-      Object.fromEntries(response.headers.entries())
+      Object.fromEntries(responseHeadersEntries)
     )
 
     if (!response.body) {
@@ -152,7 +158,9 @@ export const handler = awslambda.streamifyResponse(
 
     const reader = response.body.getReader()
 
-    const readNext = (chunk: ReadableStreamReadResult<Uint8Array>) => {
+    const readNext = (
+      chunk: ReadableStreamReadResult<Uint8Array>
+    ): Promise<void> | void => {
       if (chunk.done) {
         return responseStream.end()
       }

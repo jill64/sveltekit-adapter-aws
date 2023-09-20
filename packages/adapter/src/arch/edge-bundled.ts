@@ -1,51 +1,105 @@
-// import path from 'path'
-// import type { PropagationArgs } from '../../types/PropagationArgs.js'
+import { unfurl } from '@jill64/unfurl'
+import { build } from 'esbuild'
+import { writeFile } from 'fs/promises'
+import path from 'path'
+import { Context } from '../types/Context.js'
+import { copy } from '../utils/copy.js'
+import { listFiles } from '../utils/listFiles.js'
+import { root } from '../utils/root.js'
 
-// export const edgeBundled = async (args: PropagationArgs) => {
-//   const { builder } = args
+export const edgeBundled = async ({ builder, options, tmp, out }: Context) => {
+  const base = builder.config.kit.paths.base
 
-//   const clientDir = path.join(tmp, 'client')
-//   builder.writeClient(clientDir)
+  const s3Assets = path.join(out, 's3', base)
 
-//   const preRenderedDir = path.join(tmp, 'pre-rendered')
-//   builder.writePrerendered(preRenderedDir)
+  builder.writeClient(s3Assets)
+  builder.writePrerendered(s3Assets)
+  builder.writeServer(tmp)
 
-//   const list = await listFiles(clientDir)
+  const { list } = await unfurl(
+    {
+      list: listFiles(s3Assets)
+    },
+    writeFile(
+      path.join(tmp, 'manifest.js'),
+      `export const manifest = ${builder.generateManifest({
+        relativePath: './'
+      })};\n\n` +
+        `export const prerendered = new Set(${JSON.stringify(
+          builder.prerendered.paths
+        )});\n`
+    )
+  )
 
-//   const serverSource = readFileSync('./adapter/src/server.ts').toString()
-//   const convertedServerSource = serverSource.replace(
-//     '[] /* $$__STATIC_ASSETS_PATHS__$$ */',
-//     JSON.stringify(list)
-//   )
+  const staticAssetsPaths = list
+    .map((file) => file.replace(s3Assets, ''))
+    .filter((file) => !file.startsWith('/_app/'))
+    .map((file) => path.join(base, file))
 
-//   await writeFile(
-//     path.join(tmp, 'manifest.js'),
-//     `export const manifest = ${builder.generateManifest({
-//       relativePath: './'
-//     })};\n\n`
-//   )
+  // Copy CDK Stack
+  builder.copy(
+    path.join(root, 'cdk/arch/edge-bundled.ts'),
+    path.join(out, 'bin', 'cdk-stack.ts'),
+    {
+      replace: {
+        __BASE_PATH__: base,
+        __DOMAIN_NAME__: options?.domain?.fqdn ?? '',
+        __CERTIFICATE_ARN__: options?.domain?.certificateArn ?? ''
+      }
+    }
+  )
 
-//   writeFile(
-//     path.join(tmp, 'manifest.js'),
-//     `export const manifest = ${builder.generateManifest({
-//       relativePath: './'
-//     })};\n\n` +
-//       `export const prerendered = new Set(${JSON.stringify(
-//         builder.prerendered.paths
-//       )});\n`
-//   )
-//   const convertedServerSourcePath = `${tmp}/server.ts`
+  // Embed values
+  const params = path.join('external', 'params')
+  const staticAssetsPath = path.join(params, 'staticAssetsPaths.ts')
 
-//   writeFile(convertedServerSourcePath, convertedServerSource)
+  await copy(
+    path.join(root, 'embed', staticAssetsPath),
+    path.join(tmp, staticAssetsPath),
+    {
+      '[] /* $$__STATIC_ASSETS_PATHS__$$ */': JSON.stringify(staticAssetsPaths)
+    }
+  )
 
-//   build({
-//     entryPoints: [convertedServerSourcePath],
-//     outfile: `${out}/server.js`,
-//     inject: ['./adapter/src/shims.ts'],
-//     external: ['node:*', 'sharp', '@aws-sdk/*'],
-//     format: 'cjs',
-//     bundle: true,
-//     platform: 'node',
-//     minify: true
-//   })
-// }
+  const basePath = path.join(params, 'base.ts')
+  builder.copy(path.join(root, 'embed', basePath), path.join(tmp, basePath), {
+    replace: {
+      __BASE_PATH__: base
+    }
+  })
+
+  const domainName = path.join(params, 'domainName.ts')
+  builder.copy(
+    path.join(root, 'embed', domainName),
+    path.join(tmp, domainName),
+    {
+      replace: {
+        __DOMAIN_NAME__: options?.domain?.fqdn ?? ''
+      }
+    }
+  )
+
+  // Copy .env file
+  builder.copy(
+    path.resolve(tmp, '../../', '.env'),
+    path.join(out, 'edge', '.env')
+  )
+
+  const edgeEntryPoint = path.join(tmp, 'edge', 'index.ts')
+  builder.copy(
+    path.join(root, 'embed', 'arch', 'edge-bundled.ts'),
+    edgeEntryPoint
+  )
+
+  await build({
+    format: 'cjs',
+    bundle: true,
+    minify: true,
+    external: ['node:*'],
+    ...options?.esbuild,
+    entryPoints: [edgeEntryPoint],
+    outfile: path.join(out, 'edge', 'server.js'),
+    platform: 'node',
+    inject: [path.join(root, 'embed', 'shims.ts')]
+  })
+}
