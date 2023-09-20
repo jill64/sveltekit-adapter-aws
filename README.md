@@ -32,9 +32,8 @@ const config = {
   kit: {
     adapter: adapter({
       // ...
-      // Options
+      // Adapter Options
       // ...
-      deploy: true
     })
   }
 }
@@ -42,9 +41,7 @@ const config = {
 export default config
 ```
 
-## Config
-
-See [Adapter Options](./packages/adapter/src/types/AdapterOptions.ts)
+See [All Adapter Options](./packages/adapter/src/types/AdapterOptions.ts)
 
 ## Architecture
 
@@ -55,12 +52,12 @@ This adapter allows you to choose from multiple architectures depending on your 
 - [edge-bundled](./docs/edge-bundled/README.md)
 - [edge-unbundled](./docs/edge-unbundled/README.md)(WIP)
 
-|                | Streaming | Scaling | Round Trip |
-| -------------- | --------- | ------- | ---------- |
-| lambda-mono    | ✅        |         | ✅         |
-| lambda-s3      | ✅        | ✅      | ✅         |
-| edge-bundled   |           | ✅      | ✅         |
-| edge-unbundled | ✅        | ✅      |            |
+|                | Response Streaming | Assets Scaling | Low Round Trip | Unlimited SSG |
+| -------------- | ------------------ | -------------- | -------------- | ------------- |
+| lambda-mono    | ✅                 |                | ✅             |               |
+| lambda-s3      | ✅                 | ✅             | ✅             |               |
+| edge-bundled   |                    | ✅             | ✅             | ✅            |
+| edge-unbundled | ✅                 | ✅             |                | ✅            |
 
 ## CI/CD
 
