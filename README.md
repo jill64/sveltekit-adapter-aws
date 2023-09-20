@@ -51,7 +51,7 @@ This adapter allows you to choose from multiple architectures depending on your 
 - [lambda-mono](./docs/lambda-mono/README.md)(Default)
 - [lambda-s3](./docs/lambda-s3/README.md)
 - [edge-bundled](./docs/edge-bundled/README.md)
-- [edge-unbundled](./docs/edge-unbundled/README.md)(WIP)
+- [edge-unbundled](./docs/edge-unbundled/README.md)
 
 |                | Response Streaming | Assets Scaling | Low Round Trip | Unlimited SSG |
 | -------------- | ------------------ | -------------- | -------------- | ------------- |
@@ -106,6 +106,8 @@ cd ./build && npx cdk destroy
       - `types`(#)
       - `utils`(#)
     - `server`
+      - `index.ts`($)
+    - `edge`
       - `index.ts`($)
     - `index.js`
     - `manifest.js`
