@@ -41,7 +41,7 @@ export class CDKStack extends Stack {
       code: aws_lambda.Code.fromAsset('edge'),
       handler: 'server.handler',
       runtime: aws_lambda.Runtime.NODEJS_18_X,
-      timeout: Duration.seconds(5)
+      timeout: Duration.seconds(30)
     })
 
     const s3 = new aws_s3.Bucket(this, 'Bucket')
@@ -66,8 +66,6 @@ export class CDKStack extends Stack {
         originRequestPolicy:
           aws_cloudfront.OriginRequestPolicy.ALL_VIEWER_EXCEPT_HOST_HEADER,
         origin: new aws_cloudfront_origins.HttpOrigin(originStr, {
-          protocolPolicy: aws_cloudfront.OriginProtocolPolicy.HTTPS_ONLY,
-          originSslProtocols: [aws_cloudfront.OriginSslPolicy.TLS_V1_2],
           customHeaders: {
             'Bridge-Authorization': `Plain __BRIDGE_AUTH_TOKEN__`,
             'S3-Domain': s3.bucketDomainName
@@ -77,21 +75,18 @@ export class CDKStack extends Stack {
         edgeLambdas: [
           {
             functionVersion: edge,
-            eventType: aws_cloudfront.LambdaEdgeEventType.ORIGIN_REQUEST,
-            includeBody: true
+            eventType: aws_cloudfront.LambdaEdgeEventType.ORIGIN_REQUEST
           }
         ]
       },
       httpVersion: aws_cloudfront.HttpVersion.HTTP2_AND_3,
       additionalBehaviors: {
         [appPath]: {
-          cachePolicy: aws_cloudfront.CachePolicy.CACHING_OPTIMIZED,
           viewerProtocolPolicy:
             aws_cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
           originRequestPolicy:
             aws_cloudfront.OriginRequestPolicy.ALL_VIEWER_EXCEPT_HOST_HEADER,
-          origin: new aws_cloudfront_origins.S3Origin(s3),
-          allowedMethods: aws_cloudfront.AllowedMethods.ALLOW_GET_HEAD
+          origin: new aws_cloudfront_origins.S3Origin(s3)
         }
       }
     })
