@@ -96,6 +96,7 @@ export const edgeBundled = async ({ builder, options, tmp, out }: Context) => {
 
   // Make .env file
   if (options?.env) {
+    builder.mkdirp(path.join(out, 'edge'))
     await writeFile(
       path.join(out, 'edge', '.env'),
       Object.entries(options.env).reduce(
