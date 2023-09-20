@@ -12,11 +12,11 @@ const config = {
       architecture: process.env.ADAPTER_ARCHITECTURE,
       deploy: process.env.CI,
       memory: 256,
-      cdn: true,
-      domain: {
-        fqdn: process.env.ADAPTER_FQDN,
-        certificateArn: process.env.ADAPTER_CERTIFICATE_ARN
-      }
+      cdn: true
+      // domain: {
+      //   fqdn: process.env.ADAPTER_FQDN,
+      //   certificateArn: process.env.ADAPTER_CERTIFICATE_ARN
+      // }
     })
   }
 }
