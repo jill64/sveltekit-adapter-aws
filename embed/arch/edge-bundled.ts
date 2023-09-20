@@ -1,115 +1,102 @@
-// import type { SSRManifest, Server as ServerType } from '@sveltejs/kit'
-// import { Server } from './index.js'
-// import { manifest } from './manifest.js'
+import 'dotenv/config.js'
+import { base } from '../external/params/base.js'
+import { staticAssetsPaths } from '../external/params/staticAssetsPaths.js'
+import type { EdgeHandler } from '../external/types/edge/EdgeHandler.js'
+import { forbiddenHeaderPrefix } from '../external/utils/edge/forbiddenHeaderPrefix.js'
+import { forbiddenHeaders } from '../external/utils/edge/forbiddenHeaders.js'
+import { Server } from '../index.js'
+import { manifest } from '../manifest.js'
 
-// type ResponseStream = WritableStream & {
-//   write: (chunk: Buffer | Uint8Array | string | null) => void
-//   end: () => void
-//   setContentType: (contentType: string) => void
-// }
+export const handler: EdgeHandler = async ({
+  Records: [
+    {
+      cf: {
+        config: { distributionDomainName },
+        request
+      }
+    }
+  ]
+}) => {
+  const { uri, querystring, method, clientIp } = request
 
-// declare const awslambda: {
-//   streamifyResponse: (
-//     handler: (
-//       event: {
-//         rawPath: string
-//         rawQueryString: string
-//         headers: HeadersInit
-//         requestContext: {
-//           domainName: string
-//           http: {
-//             method: string
-//             sourceIp: string
-//           }
-//         }
-//         body: BodyInit
-//         isBase64Encoded: boolean
-//       },
-//       responseStream: ResponseStream
-//     ) => Promise<void>
-//   ) => unknown
-//   HttpResponseStream: {
-//     from: (
-//       responseStream: ResponseStream,
-//       metadata: { statusCode: number; headers: Record<string, string> }
-//     ) => ResponseStream
-//   }
-// }
+  if (method === 'GET' || method === 'HEAD') {
+    // Handling static asset requests
+    if (uri.startsWith(`${base}/_app/`) || staticAssetsPaths.has(uri)) {
+      return request
+    }
 
-// export const handler = awslambda.streamifyResponse(
-//   async (request, responseStream) => {
-//     const { requestContext, rawPath, rawQueryString, isBase64Encoded } = request
+    // SSG requests fallback
+    if (uri.endsWith('/') && staticAssetsPaths.has(`${uri}index.html`)) {
+      return request
+    }
 
-//     const setResponseHeader = (
-//       statusCode: number,
-//       headers: Record<string, string>
-//     ) => {
-//       responseStream = awslambda.HttpResponseStream.from(responseStream, {
-//         statusCode,
-//         headers
-//       })
-//     }
+    if (staticAssetsPaths.has(`${uri}.html`)) {
+      return request
+    }
+  }
 
-//     const closeResponseStream = () => {
-//       responseStream.write('')
-//       responseStream.end()
-//     }
+  const env = Object.fromEntries(
+    Object.entries(process.env).map(([key, value]) => [key, value ?? ''])
+  )
 
-//     const {
-//       http: { method, sourceIp },
-//       domainName
-//     } = requestContext
+  const hasBody = method !== 'GET' && method !== 'HEAD'
 
-//     const env = Object.fromEntries(
-//       Object.entries(process.env).map(([key, value]) => [key, value ?? ''])
-//     )
+  const isBase64Encoded = hasBody ? request.body?.encoding === 'base64' : false
 
-//     const url = `https://${domainName}${rawPath}${
-//       rawQueryString ? `?${rawQueryString}` : ''
-//     }`
+  const url = `https://${distributionDomainName}${uri}${
+    querystring ? `?${querystring}` : ''
+  }`
 
-//     const app = new Server(manifest as SSRManifest) as ServerType
+  const app = new Server(manifest)
 
-//     await app.init({ env })
+  await app.init({ env })
 
-//     const response = await app.respond(
-//       new Request(url, {
-//         method,
-//         body: request.body,
-//         headers: request.headers
-//       }),
-//       {
-//         getClientAddress: () => sourceIp,
-//         platform: { isBase64Encoded }
-//       }
-//     )
+  const response = await app.respond(
+    new Request(url, {
+      method,
+      body: hasBody ? request.body?.data : undefined,
+      headers: Object.entries(request.headers).map(
+        ([, [{ key, value }]]) => [key, value] satisfies [string, string]
+      )
+    }),
+    {
+      getClientAddress: () => clientIp,
+      platform: { isBase64Encoded }
+    }
+  )
 
-//     // TODO: If the response header is too long, a 502 error will occur on Gateway, so delete it.
-//     response.headers.delete('link')
+  // TODO: If the response header is too long, a 502 error will occur on Gateway, so delete it.
+  response.headers.delete('link')
 
-//     setResponseHeader(
-//       response.status,
-//       Object.fromEntries(response.headers.entries())
-//     )
+  const responseHeadersEntries = [] as [string, string][]
 
-//     if (!response.body) {
-//       closeResponseStream()
-//       return
-//     }
+  response.headers.forEach((value, key) => {
+    if (
+      forbiddenHeaderPrefix.some((prefix) =>
+        key.toLowerCase().startsWith(prefix)
+      ) ||
+      forbiddenHeaders.includes(key.toLowerCase())
+    ) {
+      return
+    }
 
-//     const reader = response.body.getReader()
+    responseHeadersEntries.push([key, value])
+  })
 
-//     const readNext = (chunk: ReadableStreamReadResult<Uint8Array>) => {
-//       if (chunk.done) {
-//         responseStream.end()
-//         return
-//       }
+  const responseBase = {
+    status: response.status.toString(),
+    headers: Object.fromEntries(
+      responseHeadersEntries.map(([key, value]) => [
+        key.toLowerCase(),
+        [{ key, value }]
+      ])
+    )
+  }
 
-//       responseStream.write(chunk.value)
-
-//       return reader.read().then(readNext)
-//     }
-
-//     return reader.read().then(readNext)
-//   }
-// )
+  return response.status === 204
+    ? responseBase
+    : {
+        ...responseBase,
+        body: await response.text()
+      }
+}
