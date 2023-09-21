@@ -38,6 +38,7 @@ export const setup = async ({ builder, tmp, options, out }: Context) => {
 
   const bridgeAuthToken = nanoid()
 
+  builder.mkdirp(path.join(out, 'external'))
   await copy(
     path.join(cdkPath, 'external', 'params.ts'),
     path.join(out, 'external', 'params.ts'),
