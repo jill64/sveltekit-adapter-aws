@@ -1,7 +1,7 @@
-import type { EdgeEvent } from './EdgeEvent.js'
 import type { EdgeRequest } from './EdgeRequest.js'
 import type { EdgeResponse } from './EdgeResponse.js'
+import { ViewerRequestEvent } from './ViewerRequestEvent.js'
 
-export type EdgeHandler = (
-  event: EdgeEvent
+export type ViewerRequestHandler = (
+  event: ViewerRequestEvent
 ) => Promise<EdgeResponse | EdgeRequest>
