@@ -22,5 +22,8 @@ export const lambdaS3 = async (context: Context) => {
   builder.copy(lambdaApp, path.join(out, 's3', base, appDir))
   await rm(lambdaApp, { recursive: true })
 
-  await buildServer(context, 'lambda-s3.ts')
+  await buildServer(context, {
+    source: 'lambda-s3.ts',
+    entryPoint: path.join('lambda', 'index.ts')
+  })
 }

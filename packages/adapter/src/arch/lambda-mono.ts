@@ -5,5 +5,8 @@ import { writeAssets } from '../utils/writeAssets.js'
 
 export const lambdaMono = async (context: Context) => {
   await writeAssets(context, path.join('lambda', 'assets'))
-  await buildServer(context, 'lambda-mono.ts')
+  await buildServer(context, {
+    source: 'lambda-mono.ts',
+    entryPoint: path.join('lambda', 'index.ts')
+  })
 }

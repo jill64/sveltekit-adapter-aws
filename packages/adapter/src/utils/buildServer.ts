@@ -5,9 +5,15 @@ import { root } from '../utils/root.js'
 
 export const buildServer = async (
   { tmp, builder, options }: Context,
-  source: string
+  {
+    source,
+    entryPoint
+  }: {
+    source: string
+    entryPoint: string
+  }
 ) => {
-  const serverEntryPoint = path.join(tmp, 'server', 'index.ts')
+  const serverEntryPoint = path.join(tmp, entryPoint)
 
   builder.copy(path.join(root, 'embed', 'arch', source), serverEntryPoint)
 
