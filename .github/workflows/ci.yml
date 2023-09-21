@@ -10,4 +10,24 @@ jobs:
     with:
       build-command: pnpm build:adapter
   check:
-    uses: jill64/reusable-workflow/.github/workflows/check.yml@main
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3
+        with:
+          node-version: 18
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+          run_install: true
+
+      - name: Build Adapter
+        run: pnpm build:adapter
+
+      - name: Check
+        run: pnpm check
