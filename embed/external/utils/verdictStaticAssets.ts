@@ -2,26 +2,29 @@ import { appDir, base, staticAssetsPaths } from '../params.js'
 
 export const verdictStaticAssets = ({
   method,
-  path
+  pathname
 }: {
   method: string
-  path: string
+  pathname: string
 }) => {
   if (method !== 'GET' && method !== 'HEAD') {
     return ''
   }
 
-  if (path.startsWith(`${base}/${appDir}/`) || staticAssetsPaths.has(path)) {
-    return path
+  if (
+    pathname.startsWith(`${base}/${appDir}/`) ||
+    staticAssetsPaths.has(pathname)
+  ) {
+    return pathname
   }
 
-  const extendIndex = `${path}index.html`
+  const extendIndex = `${pathname}index.html`
 
-  if (path.endsWith('/') && staticAssetsPaths.has(extendIndex)) {
+  if (pathname.endsWith('/') && staticAssetsPaths.has(extendIndex)) {
     return extendIndex
   }
 
-  const extendHtml = `${path}.html`
+  const extendHtml = `${pathname}.html`
 
   if (staticAssetsPaths.has(extendHtml)) {
     return extendHtml
