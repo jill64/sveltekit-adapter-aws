@@ -1,15 +1,10 @@
 import 'dotenv/config.js'
+import { domainName } from '../external/params.js'
 import type { ViewerRequestHandler } from '../external/types/edge/ViewerRequestHandler.js'
 import { forbiddenHeaderPrefix } from '../external/utils/edge/forbiddenHeaderPrefix.js'
 import { forbiddenHeaders } from '../external/utils/edge/forbiddenHeaders.js'
-import { Server } from '../index.js'
-import { manifest } from '../manifest.js'
-import {
-  appDir,
-  base,
-  domainName,
-  staticAssetsPaths
-} from '../external/params.js'
+import { respond } from '../external/utils/respond.js'
+import { verdictStaticAssets } from '../external/utils/verdictStaticAssets.js'
 
 export const handler: ViewerRequestHandler = async ({
   Records: [
@@ -21,29 +16,17 @@ export const handler: ViewerRequestHandler = async ({
     }
   ]
 }) => {
-  const { uri, querystring, method, clientIp } = request
+  const { uri, querystring, method, clientIp: sourceIp } = request
 
-  if (method === 'GET' || method === 'HEAD') {
-    // Handling static asset requests
-    if (uri.startsWith(`${base}/${appDir}/`) || staticAssetsPaths.has(uri)) {
-      return request
-    }
+  const assetPath = verdictStaticAssets({
+    method,
+    path: uri
+  })
 
-    // SSG requests fallback
-    if (uri.endsWith('/') && staticAssetsPaths.has(`${uri}index.html`)) {
-      request.uri = `${uri}index.html`
-      return request
-    }
-
-    if (staticAssetsPaths.has(`${uri}.html`)) {
-      request.uri = `${uri}.html`
-      return request
-    }
+  if (assetPath) {
+    request.uri = assetPath
+    return request
   }
-
-  const env = Object.fromEntries(
-    Object.entries(process.env).map(([key, value]) => [key, value ?? ''])
-  )
 
   // Rewrite origin header from pre-defined FQDN
   if (
@@ -61,21 +44,18 @@ export const handler: ViewerRequestHandler = async ({
     querystring ? `?${querystring}` : ''
   }`
 
-  const app = new Server(manifest)
-
-  await app.init({ env })
-
-  const response = await app.respond(
-    new Request(url, {
+  const response = await respond(
+    url,
+    {
       method,
       body: hasBody ? request.body?.data : undefined,
       headers: Object.entries(request.headers).map(
         ([, [{ key, value }]]) => [key, value] satisfies [string, string]
       )
-    }),
+    },
     {
-      getClientAddress: () => clientIp,
-      platform: { isBase64Encoded }
+      sourceIp,
+      isBase64Encoded
     }
   )
 

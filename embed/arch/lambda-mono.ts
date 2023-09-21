@@ -1,45 +1,10 @@
-import type { SSRManifest, Server as ServerType } from '@sveltejs/kit'
 import { createReadStream } from 'fs'
 import { lookup } from 'mime-types'
 import path from 'path'
-import { ResponseStream } from '../external/types/ResponseStream.js'
-import { Server } from '../index.js'
-import { manifest } from '../manifest.js'
-import {
-  appDir,
-  base,
-  bridgeAuthToken,
-  cdn,
-  staticAssetsPaths
-} from '../external/params.js'
-
-declare const awslambda: {
-  streamifyResponse: (
-    handler: (
-      event: {
-        rawPath: string
-        rawQueryString: string
-        headers: Record<string, string>
-        requestContext: {
-          domainName: string
-          http: {
-            method: string
-            sourceIp: string
-          }
-        }
-        body: BodyInit
-        isBase64Encoded: boolean
-      },
-      responseStream: ResponseStream
-    ) => Promise<void>
-  ) => unknown
-  HttpResponseStream: {
-    from: (
-      responseStream: ResponseStream,
-      metadata: { statusCode: number; headers: Record<string, string> }
-    ) => ResponseStream
-  }
-}
+import { base, bridgeAuthToken, cdn } from '../external/params.js'
+import { awslambda } from '../external/types/awslambda.js'
+import { respond } from '../external/utils/respond.js'
+import { verdictStaticAssets } from '../external/utils/verdictStaticAssets.js'
 
 export const handler = awslambda.streamifyResponse(
   async (request, responseStream) => {
@@ -77,67 +42,41 @@ export const handler = awslambda.streamifyResponse(
       domainName
     } = requestContext
 
-    const assetsHandling = (assetsPath: string) => {
-      const filePath = assetsPath.replace(base, '')
+    const assetPath = verdictStaticAssets({
+      method,
+      path: rawPath
+    })
+
+    if (assetPath) {
+      const filePath = assetPath.replace(base, '')
       const type = lookup(filePath)
 
       setResponseHeader(200, {
         'content-type': type ? type : 'application/octet-stream'
       })
 
-      if (method === 'HEAD') {
-        return closeResponseStream()
-      }
-
       const src = createReadStream(path.join(process.cwd(), 'assets', filePath))
 
       src.on('data', (chunk) => responseStream.write(chunk))
       src.on('end', () => closeResponseStream())
+
+      return
     }
-
-    if (method === 'GET' || method === 'HEAD') {
-      // Handling static asset requests
-      if (
-        rawPath.startsWith(`${base}/${appDir}/`) ||
-        staticAssetsPaths.has(rawPath)
-      ) {
-        return assetsHandling(rawPath)
-      }
-
-      // SSG requests fallback
-      if (
-        rawPath.endsWith('/') &&
-        staticAssetsPaths.has(`${rawPath}index.html`)
-      ) {
-        return assetsHandling(`${rawPath}index.html`)
-      }
-
-      if (staticAssetsPaths.has(`${rawPath}.html`)) {
-        return assetsHandling(`${rawPath}.html`)
-      }
-    }
-
-    const env = Object.fromEntries(
-      Object.entries(process.env).map(([key, value]) => [key, value ?? ''])
-    )
 
     const url = `https://${domainName}${rawPath}${
       rawQueryString ? `?${rawQueryString}` : ''
     }`
 
-    const app = new Server(manifest as SSRManifest) as ServerType
-
-    await app.init({ env })
-
-    const response = await app.respond(
-      new Request(url, {
+    const response = await respond(
+      url,
+      {
         method,
         body: request.body,
         headers: request.headers
-      }),
+      },
       {
-        getClientAddress: () => sourceIp,
-        platform: { isBase64Encoded }
+        sourceIp,
+        isBase64Encoded
       }
     )
 

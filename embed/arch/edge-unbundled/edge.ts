@@ -1,28 +1,25 @@
-import { staticAssetsPaths } from '../../external/params.js'
 import type { OriginRequestHandler } from '../../external/types/edge/OriginRequestHandler.js'
+import { verdictStaticAssets } from '../../external/utils/verdictStaticAssets.js'
 
-export const handler: OriginRequestHandler = async (event) => {
-  const request = event.Records[0].cf.request
+export const handler: OriginRequestHandler = async ({
+  Records: [
+    {
+      cf: { request }
+    }
+  ]
+}) => {
   const { uri, method } = request
 
   console.log('request', JSON.stringify(request, null, 2))
 
-  if (method === 'GET' || method === 'HEAD') {
-    // Handling static asset requests
-    if (staticAssetsPaths.has(uri)) {
-      return request
-    }
+  const assetsPath = verdictStaticAssets({
+    method,
+    path: uri
+  })
 
-    // SSG requests fallback
-    if (uri.endsWith('/') && staticAssetsPaths.has(`${uri}index.html`)) {
-      request.uri = `${uri}index.html`
-      return request
-    }
-
-    if (staticAssetsPaths.has(`${uri}.html`)) {
-      request.uri = `${uri}.html`
-      return request
-    }
+  if (assetsPath) {
+    request.uri = assetsPath
+    return request
   }
 
   const lambdaDomain = request.origin.s3.customHeaders['lambda-domain'][0].value
