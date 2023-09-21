@@ -12,17 +12,18 @@ import {
   aws_s3_deployment
 } from 'aws-cdk-lib'
 import { Construct } from 'constructs'
+import {
+  appPath,
+  bridgeAuthToken,
+  certificateArn,
+  domainName,
+  environment,
+  memorySize
+} from '../external/params'
 
 export class CDKStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props)
-
-    const memorySize = 128 /* $$__MEMORY_SIZE__$$ */
-    const appDir = '__APP_DIR__'
-    const base = '__BASE_PATH__'
-    const domainName = '__DOMAIN_NAME__'
-    const certificateArn = '__CERTIFICATE_ARN__'
-    const environment = {} /* $$__ENVIRONMENT__$$ */
 
     const lambdaURL = new aws_lambda.Function(this, 'Server', {
       runtime: aws_lambda.Runtime.NODEJS_18_X,
@@ -44,8 +45,6 @@ export class CDKStack extends Stack {
           certificateArn
         )
       : undefined
-
-    const appPath = `${base}/${appDir}/*`
 
     const originRequestPolicy =
       aws_cloudfront.OriginRequestPolicy.ALL_VIEWER_EXCEPT_HOST_HEADER
@@ -69,7 +68,7 @@ export class CDKStack extends Stack {
             protocolPolicy: aws_cloudfront.OriginProtocolPolicy.HTTPS_ONLY,
             originSslProtocols: [aws_cloudfront.OriginSslPolicy.TLS_V1_2],
             customHeaders: {
-              'Bridge-Authorization': `Plain __BRIDGE_AUTH_TOKEN__`
+              'Bridge-Authorization': `Plain ${bridgeAuthToken}`
             }
           }
         )
@@ -77,8 +76,6 @@ export class CDKStack extends Stack {
       httpVersion: aws_cloudfront.HttpVersion.HTTP2_AND_3,
       additionalBehaviors: {
         [appPath]: {
-          allowedMethods: aws_cloudfront.AllowedMethods.ALLOW_GET_HEAD,
-          cachePolicy: aws_cloudfront.CachePolicy.CACHING_OPTIMIZED,
           viewerProtocolPolicy,
           originRequestPolicy,
           origin: new aws_cloudfront_origins.S3Origin(s3)

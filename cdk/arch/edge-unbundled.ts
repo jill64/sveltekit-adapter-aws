@@ -12,17 +12,18 @@ import {
   aws_s3_deployment
 } from 'aws-cdk-lib'
 import { Construct } from 'constructs'
+import {
+  appPath,
+  bridgeAuthToken,
+  certificateArn,
+  domainName,
+  environment,
+  memorySize
+} from '../external/params'
 
 export class CDKStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props)
-
-    const memorySize = 128 /* $$__MEMORY_SIZE__$$ */
-    const appDir = '__APP_DIR__'
-    const base = '__BASE_PATH__'
-    const domainName = '__DOMAIN_NAME__'
-    const certificateArn = '__CERTIFICATE_ARN__'
-    const environment = {} /* $$__ENVIRONMENT__$$ */
 
     const lambdaURL = new aws_lambda.Function(this, 'Server', {
       runtime: aws_lambda.Runtime.NODEJS_18_X,
@@ -46,8 +47,6 @@ export class CDKStack extends Stack {
 
     const s3 = new aws_s3.Bucket(this, 'Bucket')
 
-    const appPath = `${base}/${appDir}/*`
-
     const lambdaOriginStr = Fn.select(2, Fn.split('/', lambdaURL.url))
 
     const viewerProtocolPolicy =
@@ -70,7 +69,7 @@ export class CDKStack extends Stack {
         originRequestPolicy,
         origin: new aws_cloudfront_origins.S3Origin(s3, {
           customHeaders: {
-            'Bridge-Authorization': `Plain __BRIDGE_AUTH_TOKEN__`,
+            'Bridge-Authorization': `Plain ${bridgeAuthToken}`,
             'Lambda-Domain': lambdaOriginStr
           }
         }),

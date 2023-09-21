@@ -10,18 +10,19 @@ import {
   aws_lambda
 } from 'aws-cdk-lib'
 import { Construct } from 'constructs'
+import {
+  appPath,
+  bridgeAuthToken,
+  cdn,
+  certificateArn,
+  domainName,
+  environment,
+  memorySize
+} from '../external/params'
 
 export class CDKStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props)
-
-    const memorySize = 128 /* $$__MEMORY_SIZE__$$ */
-    const enableCDN = false /* $$__ENABLE_CDN__$$ */
-    const appDir = '__APP_DIR__'
-    const base = '__BASE_PATH__'
-    const domainName = '__DOMAIN_NAME__'
-    const certificateArn = '__CERTIFICATE_ARN__'
-    const environment = {} /* $$__ENVIRONMENT__$$ */
 
     const lambdaURL = new aws_lambda.Function(this, 'Server', {
       runtime: aws_lambda.Runtime.NODEJS_18_X,
@@ -36,7 +37,7 @@ export class CDKStack extends Stack {
       invokeMode: aws_lambda.InvokeMode.RESPONSE_STREAM
     })
 
-    if (enableCDN) {
+    if (cdn) {
       const certificate = certificateArn
         ? aws_certificatemanager.Certificate.fromCertificateArn(
             this,
@@ -45,14 +46,12 @@ export class CDKStack extends Stack {
           )
         : undefined
 
-      const appPath = `${base}/${appDir}/*`
-
       const originStr = Fn.select(2, Fn.split('/', lambdaURL.url))
       const origin = new aws_cloudfront_origins.HttpOrigin(originStr, {
         protocolPolicy: aws_cloudfront.OriginProtocolPolicy.HTTPS_ONLY,
         originSslProtocols: [aws_cloudfront.OriginSslPolicy.TLS_V1_2],
         customHeaders: {
-          'Bridge-Authorization': `Plain __BRIDGE_AUTH_TOKEN__`
+          'Bridge-Authorization': `Plain ${bridgeAuthToken}`
         }
       })
 
@@ -62,7 +61,7 @@ export class CDKStack extends Stack {
       const viewerProtocolPolicy =
         aws_cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS
 
-      const cdn = new aws_cloudfront.Distribution(this, 'CloudFront', {
+      const cloudfront = new aws_cloudfront.Distribution(this, 'CloudFront', {
         domainNames: domainName ? [domainName] : undefined,
         certificate,
         defaultBehavior: {
@@ -75,7 +74,6 @@ export class CDKStack extends Stack {
         httpVersion: aws_cloudfront.HttpVersion.HTTP2_AND_3,
         additionalBehaviors: {
           [appPath]: {
-            allowedMethods: aws_cloudfront.AllowedMethods.ALLOW_GET_HEAD,
             cachePolicy: aws_cloudfront.CachePolicy.CACHING_OPTIMIZED,
             viewerProtocolPolicy,
             originRequestPolicy,
@@ -93,7 +91,7 @@ export class CDKStack extends Stack {
 
       new CfnOutput(this, 'CloudFront URL', {
         description: 'CloudFront URL',
-        value: `https://${cdn.distributionDomainName}`
+        value: `https://${cloudfront.distributionDomainName}`
       })
     } else {
       new CfnOutput(this, 'Lambda URL', {
