@@ -1,16 +1,14 @@
 import 'dotenv/config.js'
-import type { ViewerRequestHandler } from '../external/types/edge/ViewerRequestHandler.js'
-import { forbiddenHeaderPrefix } from '../external/utils/edge/forbiddenHeaderPrefix.js'
-import { forbiddenHeaders } from '../external/utils/edge/forbiddenHeaders.js'
-import { Server } from '../index.js'
-import { manifest } from '../manifest.js'
 import {
   appDir,
   base,
   domainName,
   staticAssetsPaths
 } from '../external/params.js'
-import { env } from '../external/utils/env.js'
+import type { ViewerRequestHandler } from '../external/types/edge/ViewerRequestHandler.js'
+import { forbiddenHeaderPrefix } from '../external/utils/edge/forbiddenHeaderPrefix.js'
+import { forbiddenHeaders } from '../external/utils/edge/forbiddenHeaders.js'
+import { respond } from '../external/utils/respond.js'
 
 export const handler: ViewerRequestHandler = async ({
   Records: [
@@ -22,7 +20,7 @@ export const handler: ViewerRequestHandler = async ({
     }
   ]
 }) => {
-  const { uri, querystring, method, clientIp } = request
+  const { uri, querystring, method, clientIp: sourceIp } = request
 
   if (method === 'GET' || method === 'HEAD') {
     // Handling static asset requests
@@ -58,21 +56,18 @@ export const handler: ViewerRequestHandler = async ({
     querystring ? `?${querystring}` : ''
   }`
 
-  const app = new Server(manifest)
-
-  await app.init({ env })
-
-  const response = await app.respond(
-    new Request(url, {
+  const response = await respond(
+    url,
+    {
       method,
       body: hasBody ? request.body?.data : undefined,
       headers: Object.entries(request.headers).map(
         ([, [{ key, value }]]) => [key, value] satisfies [string, string]
       )
-    }),
+    },
     {
-      getClientAddress: () => clientIp,
-      platform: { isBase64Encoded }
+      sourceIp,
+      isBase64Encoded
     }
   )
 

@@ -1,12 +1,9 @@
-import type { SSRManifest, Server as ServerType } from '@sveltejs/kit'
 import { createReadStream } from 'fs'
 import { lookup } from 'mime-types'
 import path from 'path'
 import { base, bridgeAuthToken, staticAssetsPaths } from '../external/params.js'
 import { awslambda } from '../external/types/awslambda.js'
-import { Server } from '../index.js'
-import { manifest } from '../manifest.js'
-import { env } from '../external/utils/env.js'
+import { respond } from '../external/utils/respond.js'
 
 export const handler = awslambda.streamifyResponse(
   async (request, responseStream) => {
@@ -85,19 +82,16 @@ export const handler = awslambda.streamifyResponse(
       rawQueryString ? `?${rawQueryString}` : ''
     }`
 
-    const app = new Server(manifest as SSRManifest) as ServerType
-
-    await app.init({ env })
-
-    const response = await app.respond(
-      new Request(url, {
+    const response = await respond(
+      url,
+      {
         method,
         body: request.body,
         headers: request.headers
-      }),
+      },
       {
-        getClientAddress: () => sourceIp,
-        platform: { isBase64Encoded }
+        sourceIp,
+        isBase64Encoded
       }
     )
 
