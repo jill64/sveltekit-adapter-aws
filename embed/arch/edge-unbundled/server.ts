@@ -1,6 +1,8 @@
 import { bridgeAuthToken } from '../../external/params.js'
-import { awslambda } from '../../external/types/awslambda.js'
+import type { AwsLambda } from '../../external/types/awslambda.js'
 import { respond } from '../../external/utils/respond.js'
+
+declare const awslambda: AwsLambda
 
 export const handler = awslambda.streamifyResponse(
   async (request, responseStream) => {

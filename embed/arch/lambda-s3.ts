@@ -2,9 +2,11 @@ import { createReadStream } from 'fs'
 import { lookup } from 'mime-types'
 import path from 'path'
 import { base, bridgeAuthToken } from '../external/params.js'
-import { awslambda } from '../external/types/awslambda.js'
+import type { AwsLambda } from '../external/types/awslambda.js'
 import { respond } from '../external/utils/respond.js'
 import { verdictStaticAssets } from '../external/utils/verdictStaticAssets.js'
+
+declare const awslambda: AwsLambda
 
 export const handler = awslambda.streamifyResponse(
   async (request, responseStream) => {
