@@ -4,6 +4,11 @@ import type { AdapterOptions } from './AdapterOptions.js'
 export type Context = {
   readonly builder: Builder
   readonly tmp: string
-  readonly out: string
-  readonly options: AdapterOptions | undefined
+  readonly options: AdapterOptions &
+    Required<
+      Pick<
+        AdapterOptions,
+        'name' | 'out' | 'memory' | 'architecture' | 'deploy' | 'cdn'
+      >
+    >
 }
