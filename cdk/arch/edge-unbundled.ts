@@ -41,7 +41,7 @@ export class CDKStack extends Stack {
       code: aws_lambda.Code.fromAsset('edge'),
       handler: 'server.handler',
       runtime: aws_lambda.Runtime.NODEJS_18_X,
-      timeout: Duration.seconds(30)
+      timeout: Duration.seconds(5)
     })
 
     const s3 = new aws_s3.Bucket(this, 'Bucket')
