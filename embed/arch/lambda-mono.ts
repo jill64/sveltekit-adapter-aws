@@ -2,14 +2,16 @@ import type { SSRManifest, Server as ServerType } from '@sveltejs/kit'
 import { createReadStream } from 'fs'
 import { lookup } from 'mime-types'
 import path from 'path'
-import { base } from '../external/params/base.js'
-import { bridgeAuthToken } from '../external/params/bridgeAuthToken.js'
-import { cdn } from '../external/params/cdn.js'
-import { appDir } from '../external/params/appDir.js'
-import { staticAssetsPaths } from '../external/params/staticAssetsPaths.js'
 import { ResponseStream } from '../external/types/ResponseStream.js'
 import { Server } from '../index.js'
 import { manifest } from '../manifest.js'
+import {
+  appDir,
+  base,
+  bridgeAuthToken,
+  cdn,
+  staticAssetsPaths
+} from '../external/params.js'
 
 declare const awslambda: {
   streamifyResponse: (

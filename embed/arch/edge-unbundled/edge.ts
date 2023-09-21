@@ -1,4 +1,4 @@
-import { staticAssetsPaths } from '../../external/params/staticAssetsPaths.js'
+import { staticAssetsPaths } from '../../external/params.js'
 import type { OriginRequestHandler } from '../../external/types/edge/OriginRequestHandler.js'
 
 export const handler: OriginRequestHandler = async (event) => {
