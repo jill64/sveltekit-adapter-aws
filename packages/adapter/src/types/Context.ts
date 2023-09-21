@@ -2,8 +2,8 @@ import type { Builder } from '@sveltejs/kit'
 import type { AdapterOptions } from './AdapterOptions.js'
 
 export type Context = {
-  builder: Builder
-  tmp: string
-  out: string
-  options: AdapterOptions | undefined
+  readonly builder: Builder
+  readonly tmp: string
+  readonly out: string
+  readonly options: AdapterOptions | undefined
 }
