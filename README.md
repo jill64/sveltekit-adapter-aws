@@ -79,8 +79,15 @@ cd ./build && npx cdk deploy
 ## Delete All Resources
 
 ```sh
-cd ./build && npx cdk destroy
+cd ./build && npx cdk destroy --all
 ```
+
+## Preview Sites
+
+- [lambda-mono](https://lambda-mono.adapter-aws.com)
+- [lambda-s3](https://lambda-s3.adapter-aws.com)
+- [edge-bundled](https://edge-bundled.adapter-aws.com)
+- [edge-unbundled](https://edge-unbundled.adapter-aws.com)
 
 ## Directory
 

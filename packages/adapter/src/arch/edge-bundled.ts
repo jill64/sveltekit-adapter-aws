@@ -17,6 +17,7 @@ export const edgeBundled = async ({ builder, options, tmp, out }: Context) => {
 
   builder.writeClient(s3Assets)
   builder.writePrerendered(s3Assets)
+
   builder.writeServer(tmp)
 
   const { list } = await unfurl(
@@ -41,56 +42,16 @@ export const edgeBundled = async ({ builder, options, tmp, out }: Context) => {
 
   // Copy CDK Stack
   builder.copy(
-    path.join(root, 'cdk/arch/edge-bundled.ts'),
-    path.join(out, 'bin', 'cdk-stack.ts'),
-    {
-      replace: {
-        __APP_DIR__: appDir,
-        __BASE_PATH__: base,
-        __DOMAIN_NAME__: options?.domain?.fqdn ?? '',
-        __CERTIFICATE_ARN__: options?.domain?.certificateArn ?? ''
-      }
-    }
+    path.join(root, 'cdk', 'arch', 'edge-bundled.ts'),
+    path.join(out, 'bin', 'cdk-stack.ts')
   )
 
   // Embed values
-  const params = path.join('external', 'params')
-  const staticAssetsPath = path.join(params, 'staticAssetsPaths.ts')
-
   await copy(
-    path.join(root, 'embed', staticAssetsPath),
-    path.join(tmp, staticAssetsPath),
+    path.join(out, 'external', 'params.ts'),
+    path.join(tmp, 'external', 'params.ts'),
     {
       '[] /* $$__STATIC_ASSETS_PATHS__$$ */': JSON.stringify(staticAssetsPaths)
-    }
-  )
-
-  const basePath = path.join(params, 'base.ts')
-  builder.copy(path.join(root, 'embed', basePath), path.join(tmp, basePath), {
-    replace: {
-      __BASE_PATH__: base
-    }
-  })
-
-  const appDirPath = path.join(params, 'appDir.ts')
-  builder.copy(
-    path.join(root, 'embed', appDirPath),
-    path.join(tmp, appDirPath),
-    {
-      replace: {
-        __APP_DIR__: appDir
-      }
-    }
-  )
-
-  const domainName = path.join(params, 'domainName.ts')
-  builder.copy(
-    path.join(root, 'embed', domainName),
-    path.join(tmp, domainName),
-    {
-      replace: {
-        __DOMAIN_NAME__: options?.domain?.fqdn ?? ''
-      }
     }
   )
 

@@ -1,13 +1,15 @@
 import 'dotenv/config.js'
-import { appDir } from '../external/params/appDir.js'
-import { base } from '../external/params/base.js'
-import { domainName } from '../external/params/domainName.js'
-import { staticAssetsPaths } from '../external/params/staticAssetsPaths.js'
 import type { ViewerRequestHandler } from '../external/types/edge/ViewerRequestHandler.js'
 import { forbiddenHeaderPrefix } from '../external/utils/edge/forbiddenHeaderPrefix.js'
 import { forbiddenHeaders } from '../external/utils/edge/forbiddenHeaders.js'
 import { Server } from '../index.js'
 import { manifest } from '../manifest.js'
+import {
+  appDir,
+  base,
+  domainName,
+  staticAssetsPaths
+} from '../external/params.js'
 
 export const handler: ViewerRequestHandler = async ({
   Records: [

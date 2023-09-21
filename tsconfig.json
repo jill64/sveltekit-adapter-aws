@@ -3,7 +3,7 @@
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "ESNext",
+    "module": "NodeNext",
     "moduleResolution": "NodeNext"
   }
 }

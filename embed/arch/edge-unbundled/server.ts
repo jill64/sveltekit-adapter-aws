@@ -1,4 +1,4 @@
-import { bridgeAuthToken } from '../../external/params/bridgeAuthToken.js'
+import { bridgeAuthToken } from '../../external/params.js'
 import { ResponseStream } from '../../external/types/ResponseStream.js'
 import { Server } from '../../index.js'
 import { manifest } from '../../manifest.js'
