@@ -13,6 +13,7 @@ export type OriginRequestEvent = {
             custom: {
               customHeaders: EdgeHeaders
               domainName: string
+              path: string
             }
           }
         }

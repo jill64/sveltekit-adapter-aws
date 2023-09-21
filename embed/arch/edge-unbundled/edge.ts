@@ -15,6 +15,7 @@ export const handler: OriginRequestHandler = async (event) => {
     if (staticAssetsPaths.has(uri)) {
       request.origin.custom.domainName = s3Domain
       request.headers['host'] = [{ key: 'Host', value: s3Domain }]
+      request.origin.custom.path = uri
 
       console.log('rewrote request', JSON.stringify(request, null, 2))
 
@@ -24,7 +25,9 @@ export const handler: OriginRequestHandler = async (event) => {
     // SSG requests fallback
     if (uri.endsWith('/') && staticAssetsPaths.has(`${uri}index.html`)) {
       request.origin.custom.domainName = s3Domain
+      request.origin.custom.path = uri
       request.headers['host'] = [{ key: 'Host', value: s3Domain }]
+      request.origin.custom.path = `${uri}index.html`
       request.uri = `${uri}index.html`
 
       console.log('rewrote request', JSON.stringify(request, null, 2))
@@ -35,6 +38,7 @@ export const handler: OriginRequestHandler = async (event) => {
     if (staticAssetsPaths.has(`${uri}.html`)) {
       request.origin.custom.domainName = s3Domain
       request.headers['host'] = [{ key: 'Host', value: s3Domain }]
+      request.origin.custom.path = `${uri}.html`
       request.uri = `${uri}.html`
 
       console.log('rewrote request', JSON.stringify(request, null, 2))
