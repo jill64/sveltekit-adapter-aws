@@ -6,7 +6,10 @@ on:
       - main
 
 jobs:
-  deploy-lambda-mono:
+  deploy:
+    strategy:
+      matrix:
+        architecture: [lambda-mono, lambda-s3, edge-bundled, edge-unbundled]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,16 +36,19 @@ jobs:
       - name: Build
         run: pnpm build
         env:
-          ADAPTER_ARCHITECTURE: lambda-mono
-          ADAPTER_FQDN: lambda-mono.adapter-aws.com
+          ADAPTER_ARCHITECTURE: ${{ matrix.architecture }}
+          ADAPTER_FQDN: ${{ format('{0}.adapter-aws.com', matrix.architecture) }}
           ADAPTER_CERTIFICATE_ARN: ${{secrets.LAMBDA_MONO_CERTIFICATE_ARN}}
           PUBLIC_SENTRY_DSN: ${{secrets.PUBLIC_SENTRY_DSN}}
           SENTRY_ORG: ${{secrets.SENTRY_ORG}}
           SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
           SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
 
-  test-lambda-mono:
-    needs: deploy-lambda-mono
+  test:
+    needs: deploy
+    strategy:
+      matrix:
+        architecture: [lambda-mono, lambda-s3, edge-bundled, edge-unbundled]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -65,126 +71,4 @@ jobs:
       - name: Test
         run: pnpm test
         env:
-          ADAPTER_FQDN: lambda-mono.adapter-aws.com
-
-  deploy-lambda-s3:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3
-        with:
-          node-version: 18
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: latest
-          run_install: true
-
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@8c3f20df09ac63af7b3ae3d7c91f105f857d8497 # v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
-
-      - name: Build
-        run: pnpm build
-        env:
-          ADAPTER_ARCHITECTURE: lambda-s3
-          ADAPTER_FQDN: lambda-s3.adapter-aws.com
-          ADAPTER_CERTIFICATE_ARN: ${{secrets.LAMBDA_S3_CERTIFICATE_ARN}}
-          PUBLIC_SENTRY_DSN: ${{secrets.PUBLIC_SENTRY_DSN}}
-          SENTRY_ORG: ${{secrets.SENTRY_ORG}}
-          SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
-          SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
-
-  test-lambda-s3:
-    needs: deploy-lambda-s3
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3
-        with:
-          node-version: 18
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: latest
-          run_install: true
-
-      - name: Install Playwright
-        run: pnpx playwright install
-
-      - name: Test
-        run: pnpm test
-        env:
-          ADAPTER_FQDN: lambda-s3.adapter-aws.com
-
-  deploy-edge-bundled:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3
-        with:
-          node-version: 18
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: latest
-          run_install: true
-
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@8c3f20df09ac63af7b3ae3d7c91f105f857d8497 # v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
-
-      - name: Build
-        run: pnpm build
-        env:
-          ADAPTER_ARCHITECTURE: edge-bundled
-          ADAPTER_FQDN: edge-bundled.adapter-aws.com
-          ADAPTER_CERTIFICATE_ARN: ${{secrets.EDGE_BUNDLED_CERTIFICATE_ARN}}
-          PUBLIC_SENTRY_DSN: ${{secrets.PUBLIC_SENTRY_DSN}}
-          SENTRY_ORG: ${{secrets.SENTRY_ORG}}
-          SENTRY_PROJECT: ${{secrets.SENTRY_PROJECT}}
-          SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
-
-  test-edge-bundled:
-    needs: deploy-edge-bundled
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3
-        with:
-          node-version: 18
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: latest
-          run_install: true
-
-      - name: Install Playwright
-        run: pnpx playwright install
-
-      - name: Test
-        run: pnpm test
-        env:
-          ADAPTER_FQDN: edge-bundled.adapter-aws.com
+          ADAPTER_FQDN: ${{ format('{0}.adapter-aws.com', matrix.architecture) }}
