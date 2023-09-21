@@ -1,35 +1,8 @@
 import { bridgeAuthToken } from '../../external/params.js'
-import { ResponseStream } from '../../external/types/ResponseStream.js'
+import { awslambda } from '../../external/types/awslambda.js'
 import { Server } from '../../index.js'
 import { manifest } from '../../manifest.js'
-
-declare const awslambda: {
-  streamifyResponse: (
-    handler: (
-      event: {
-        rawPath: string
-        rawQueryString: string
-        headers: Record<string, string>
-        requestContext: {
-          domainName: string
-          http: {
-            method: string
-            sourceIp: string
-          }
-        }
-        body: BodyInit
-        isBase64Encoded: boolean
-      },
-      responseStream: ResponseStream
-    ) => Promise<void>
-  ) => unknown
-  HttpResponseStream: {
-    from: (
-      responseStream: ResponseStream,
-      metadata: { statusCode: number; headers: Record<string, string> }
-    ) => ResponseStream
-  }
-}
+import { env } from '../../external/utils/env.js'
 
 export const handler = awslambda.streamifyResponse(
   async (request, responseStream) => {
@@ -66,10 +39,6 @@ export const handler = awslambda.streamifyResponse(
       http: { method, sourceIp },
       domainName
     } = requestContext
-
-    const env = Object.fromEntries(
-      Object.entries(process.env).map(([key, value]) => [key, value ?? ''])
-    )
 
     const url = `https://${domainName}${rawPath}${
       rawQueryString ? `?${rawQueryString}` : ''

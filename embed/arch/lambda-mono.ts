@@ -2,9 +2,6 @@ import type { SSRManifest, Server as ServerType } from '@sveltejs/kit'
 import { createReadStream } from 'fs'
 import { lookup } from 'mime-types'
 import path from 'path'
-import { ResponseStream } from '../external/types/ResponseStream.js'
-import { Server } from '../index.js'
-import { manifest } from '../manifest.js'
 import {
   appDir,
   base,
@@ -12,34 +9,10 @@ import {
   cdn,
   staticAssetsPaths
 } from '../external/params.js'
-
-declare const awslambda: {
-  streamifyResponse: (
-    handler: (
-      event: {
-        rawPath: string
-        rawQueryString: string
-        headers: Record<string, string>
-        requestContext: {
-          domainName: string
-          http: {
-            method: string
-            sourceIp: string
-          }
-        }
-        body: BodyInit
-        isBase64Encoded: boolean
-      },
-      responseStream: ResponseStream
-    ) => Promise<void>
-  ) => unknown
-  HttpResponseStream: {
-    from: (
-      responseStream: ResponseStream,
-      metadata: { statusCode: number; headers: Record<string, string> }
-    ) => ResponseStream
-  }
-}
+import { awslambda } from '../external/types/awslambda.js'
+import { env } from '../external/utils/env.js'
+import { Server } from '../index.js'
+import { manifest } from '../manifest.js'
 
 export const handler = awslambda.streamifyResponse(
   async (request, responseStream) => {
@@ -116,10 +89,6 @@ export const handler = awslambda.streamifyResponse(
         return assetsHandling(`${rawPath}.html`)
       }
     }
-
-    const env = Object.fromEntries(
-      Object.entries(process.env).map(([key, value]) => [key, value ?? ''])
-    )
 
     const url = `https://${domainName}${rawPath}${
       rawQueryString ? `?${rawQueryString}` : ''

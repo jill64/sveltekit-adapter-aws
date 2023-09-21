@@ -10,6 +10,7 @@ import {
   domainName,
   staticAssetsPaths
 } from '../external/params.js'
+import { env } from '../external/utils/env.js'
 
 export const handler: ViewerRequestHandler = async ({
   Records: [
@@ -40,10 +41,6 @@ export const handler: ViewerRequestHandler = async ({
       return request
     }
   }
-
-  const env = Object.fromEntries(
-    Object.entries(process.env).map(([key, value]) => [key, value ?? ''])
-  )
 
   // Rewrite origin header from pre-defined FQDN
   if (
