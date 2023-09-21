@@ -48,7 +48,12 @@ export class CDKStack extends Stack {
 
     const appPath = `${base}/${appDir}/*`
 
-    const originStr = Fn.select(2, Fn.split('/', lambdaURL.url))
+    const lambdaOriginStr = Fn.select(2, Fn.split('/', lambdaURL.url))
+
+    const viewerProtocolPolicy =
+      aws_cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS
+    const originRequestPolicy =
+      aws_cloudfront.OriginRequestPolicy.ALL_VIEWER_EXCEPT_HOST_HEADER
 
     const distribution = new aws_cloudfront.Distribution(this, 'CloudFront', {
       domainNames: domainName ? [domainName] : undefined,
@@ -61,14 +66,12 @@ export class CDKStack extends Stack {
         : undefined,
       defaultBehavior: {
         cachePolicy: aws_cloudfront.CachePolicy.CACHING_DISABLED,
-        viewerProtocolPolicy:
-          aws_cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
-        originRequestPolicy:
-          aws_cloudfront.OriginRequestPolicy.ALL_VIEWER_EXCEPT_HOST_HEADER,
-        origin: new aws_cloudfront_origins.HttpOrigin(originStr, {
+        viewerProtocolPolicy,
+        originRequestPolicy,
+        origin: new aws_cloudfront_origins.S3Origin(s3, {
           customHeaders: {
             'Bridge-Authorization': `Plain __BRIDGE_AUTH_TOKEN__`,
-            'S3-Domain': s3.bucketDomainName
+            'Lambda-Domain': lambdaOriginStr
           }
         }),
         allowedMethods: aws_cloudfront.AllowedMethods.ALLOW_ALL,
@@ -82,10 +85,8 @@ export class CDKStack extends Stack {
       httpVersion: aws_cloudfront.HttpVersion.HTTP2_AND_3,
       additionalBehaviors: {
         [appPath]: {
-          viewerProtocolPolicy:
-            aws_cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
-          originRequestPolicy:
-            aws_cloudfront.OriginRequestPolicy.ALL_VIEWER_EXCEPT_HOST_HEADER,
+          viewerProtocolPolicy,
+          originRequestPolicy,
           origin: new aws_cloudfront_origins.S3Origin(s3)
         }
       }

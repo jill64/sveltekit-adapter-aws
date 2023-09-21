@@ -10,7 +10,7 @@ export type OriginRequestEvent = {
         config: CfConfig
         request: EdgeRequest & {
           origin: {
-            custom: {
+            s3: {
               customHeaders: EdgeHeaders
               domainName: string
               path: string
