@@ -1,5 +1,6 @@
 import { ResponseStream } from '../types/ResponseStream.js'
 import { AwsLambda } from '../types/awslambda.js'
+import { qualified } from './qualified.js'
 
 export const runStream = ({
   response,
@@ -16,13 +17,15 @@ export const runStream = ({
     responseHeadersEntries.push([key, value])
   })
 
-  responseStream = awslambda.HttpResponseStream.from(responseStream, {
+  responseStream = qualified(responseStream, {
     statusCode: response.status,
-    headers: Object.fromEntries(responseHeadersEntries)
+    headers: Object.fromEntries(responseHeadersEntries),
+    awslambda
   })
 
   if (!response.body) {
-    return responseStream.end()
+    responseStream.end()
+    return
   }
 
   const reader = response.body.getReader()
@@ -39,5 +42,5 @@ export const runStream = ({
     return reader.read().then(readNext)
   }
 
-  return reader.read().then(readNext)
+  reader.read().then(readNext)
 }

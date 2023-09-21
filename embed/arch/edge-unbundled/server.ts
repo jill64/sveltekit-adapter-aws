@@ -1,5 +1,5 @@
-import { bridgeAuthToken } from '../../external/params.js'
 import type { AwsLambda } from '../../external/types/awslambda.js'
+import { isDirectAccess } from '../../external/utils/isDirectAccess.js'
 import { respond } from '../../external/utils/respond.js'
 import { runStream } from '../../external/utils/runStream.js'
 
@@ -15,25 +15,8 @@ export const handler = awslambda.streamifyResponse(
       isBase64Encoded
     } = request
 
-    const setResponseHeader = (
-      statusCode: number,
-      headers: Record<string, string>
-    ) => {
-      responseStream = awslambda.HttpResponseStream.from(responseStream, {
-        statusCode,
-        headers
-      })
-    }
-
-    const closeResponseStream = () => {
-      responseStream.write('')
-      responseStream.end()
-    }
-
-    if (headers['bridge-authorization'] !== `Plain ${bridgeAuthToken}`) {
-      setResponseHeader(403, {})
-      responseStream.write('403 Forbidden')
-      return closeResponseStream()
+    if (isDirectAccess({ headers, responseStream, awslambda })) {
+      return
     }
 
     const {
