@@ -1,14 +1,10 @@
 import 'dotenv/config.js'
-import {
-  appDir,
-  base,
-  domainName,
-  staticAssetsPaths
-} from '../external/params.js'
+import { domainName } from '../external/params.js'
 import type { ViewerRequestHandler } from '../external/types/edge/ViewerRequestHandler.js'
 import { forbiddenHeaderPrefix } from '../external/utils/edge/forbiddenHeaderPrefix.js'
 import { forbiddenHeaders } from '../external/utils/edge/forbiddenHeaders.js'
 import { respond } from '../external/utils/respond.js'
+import { verdictStaticAssets } from '../external/utils/verdictStaticAssets.js'
 
 export const handler: ViewerRequestHandler = async ({
   Records: [
@@ -22,22 +18,14 @@ export const handler: ViewerRequestHandler = async ({
 }) => {
   const { uri, querystring, method, clientIp: sourceIp } = request
 
-  if (method === 'GET' || method === 'HEAD') {
-    // Handling static asset requests
-    if (uri.startsWith(`${base}/${appDir}/`) || staticAssetsPaths.has(uri)) {
-      return request
-    }
+  const assetPath = verdictStaticAssets({
+    method,
+    path: uri
+  })
 
-    // SSG requests fallback
-    if (uri.endsWith('/') && staticAssetsPaths.has(`${uri}index.html`)) {
-      request.uri = `${uri}index.html`
-      return request
-    }
-
-    if (staticAssetsPaths.has(`${uri}.html`)) {
-      request.uri = `${uri}.html`
-      return request
-    }
+  if (assetPath) {
+    request.uri = assetPath
+    return request
   }
 
   // Rewrite origin header from pre-defined FQDN
