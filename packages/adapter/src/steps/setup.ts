@@ -1,10 +1,16 @@
+import { writeFile } from 'fs/promises'
 import { nanoid } from 'nanoid'
 import path from 'path'
 import type { Context } from '../types/Context.js'
 import { copy } from '../utils/copy.js'
 import { root } from '../utils/root.js'
 
-export const setup = async ({ builder, tmp, options, out }: Context) => {
+export const setup = async ({ builder, tmp, options }: Context) => {
+  const {
+    appDir,
+    paths: { base }
+  } = builder.config.kit
+
   builder.log.minor('Setup...')
 
   builder.copy(
@@ -14,43 +20,57 @@ export const setup = async ({ builder, tmp, options, out }: Context) => {
 
   const cdkPath = path.join(root, 'cdk')
 
-  builder.copy(path.resolve(cdkPath, 'cdk.json'), path.join(out, 'cdk.json'))
+  builder.copy(
+    path.resolve(cdkPath, 'cdk.json'),
+    path.join(options.out, 'cdk.json')
+  )
 
   builder.copy(
     path.resolve(cdkPath, 'package.json'),
-    path.join(out, 'package.json')
+    path.join(options.out, 'package.json')
   )
 
   builder.copy(
     path.resolve(cdkPath, 'mock', 'synth.ts'),
-    path.join(out, 'bin', 'synth.ts'),
+    path.join(options.out, 'bin', 'synth.ts'),
     {
       replace: {
-        __CDK_STACK_NAME__: options?.name ?? 'SvelteKit-App-Default'
+        __CDK_STACK_NAME__: options.name
       }
     }
   )
 
-  const {
-    appDir,
-    paths: { base }
-  } = builder.config.kit
-
   const bridgeAuthToken = nanoid()
 
-  builder.mkdirp(path.join(out, 'external'))
+  builder.mkdirp(path.join(options.out, 'external'))
   await copy(
     path.join(cdkPath, 'external', 'params.ts'),
-    path.join(out, 'external', 'params.ts'),
+    path.join(options.out, 'external', 'params.ts'),
     {
-      '128 /* $$__MEMORY_SIZE__$$ */': (options?.memory ?? 128).toString(),
-      'false /* $$__ENABLE_CDN__$$ */': options?.cdn ? 'true' : 'false',
+      '128 /* $$__MEMORY_SIZE__$$ */': options.memory.toString(),
+      'false /* $$__ENABLE_CDN__$$ */': options.cdn.toString(),
       __APP_DIR__: appDir,
       __BASE_PATH__: base,
       __BRIDGE_AUTH_TOKEN__: bridgeAuthToken,
-      __DOMAIN_NAME__: options?.domain?.fqdn ?? '',
-      __CERTIFICATE_ARN__: options?.domain?.certificateArn ?? '',
-      '{} /* $$__ENVIRONMENT__$$ */': JSON.stringify(options?.env ?? {})
+      __DOMAIN_NAME__: options.domain?.fqdn ?? '',
+      __CERTIFICATE_ARN__: options.domain?.certificateArn ?? '',
+      '{} /* $$__ENVIRONMENT__$$ */': JSON.stringify(options.env ?? {})
     }
+  )
+
+  builder.copy(
+    path.join(root, 'cdk', 'arch', `${options.architecture}.ts`),
+    path.join(options.out, 'bin', 'cdk-stack.ts')
+  )
+
+  builder.writeServer(tmp)
+
+  await writeFile(
+    path.join(tmp, 'manifest.js'),
+    `export const manifest = ${builder.generateManifest({
+      relativePath: './'
+    })};\n\nexport const prerendered = new Set(${JSON.stringify(
+      builder.prerendered.paths
+    )});\n`
   )
 }

@@ -8,13 +8,11 @@ export const handler: OriginRequestHandler = async ({
     }
   ]
 }) => {
-  const { uri, method } = request
-
-  console.log('request', JSON.stringify(request, null, 2))
+  const { uri: pathname, method } = request
 
   const assetsPath = verdictStaticAssets({
     method,
-    path: uri
+    pathname
   })
 
   if (assetsPath) {
@@ -26,7 +24,7 @@ export const handler: OriginRequestHandler = async ({
 
   request.headers['host'][0].value = lambdaDomain
 
-  const rewroteRequest = {
+  return {
     ...request,
     origin: {
       custom: {
@@ -41,8 +39,4 @@ export const handler: OriginRequestHandler = async ({
       }
     }
   }
-
-  console.log('rewrote request', JSON.stringify(rewroteRequest, null, 2))
-
-  return rewroteRequest
 }

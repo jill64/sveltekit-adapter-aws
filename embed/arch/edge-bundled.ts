@@ -16,11 +16,11 @@ export const handler: ViewerRequestHandler = async ({
     }
   ]
 }) => {
-  const { uri, querystring, method, clientIp: sourceIp } = request
+  const { uri: pathname, querystring, method, clientIp: sourceIp } = request
 
   const assetPath = verdictStaticAssets({
     method,
-    path: uri
+    pathname
   })
 
   if (assetPath) {
@@ -40,24 +40,20 @@ export const handler: ViewerRequestHandler = async ({
 
   const isBase64Encoded = hasBody ? request.body?.encoding === 'base64' : false
 
-  const url = `https://${distributionDomainName}${uri}${
-    querystring ? `?${querystring}` : ''
-  }`
-
-  const response = await respond(
-    url,
-    {
-      method,
-      body: hasBody ? request.body?.data : undefined,
-      headers: Object.entries(request.headers).map(
-        ([, [{ key, value }]]) => [key, value] satisfies [string, string]
-      )
-    },
-    {
-      sourceIp,
-      isBase64Encoded
-    }
+  const headers = Object.entries(request.headers).map(
+    ([, [{ key, value }]]) => [key, value] satisfies [string, string]
   )
+
+  const response = await respond({
+    method,
+    body: hasBody ? request.body?.data : undefined,
+    headers,
+    sourceIp,
+    domain: distributionDomainName,
+    pathname,
+    queryString: querystring,
+    isBase64Encoded
+  })
 
   // TODO: If the response header is too long, a 502 error will occur on Gateway, so delete it.
   response.headers.delete('link')

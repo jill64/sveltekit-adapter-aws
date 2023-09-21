@@ -1,17 +1,25 @@
 import { Server } from '../../index.js'
 import { manifest } from '../../manifest.js'
 
-export const respond = async (
-  input: RequestInfo | URL,
-  init: RequestInit,
-  {
-    sourceIp,
-    isBase64Encoded
-  }: {
-    sourceIp: string
-    isBase64Encoded: boolean
-  }
-) => {
+export const respond = async ({
+  domain,
+  pathname,
+  queryString,
+  sourceIp,
+  isBase64Encoded,
+  method,
+  body,
+  headers
+}: {
+  domain: string
+  pathname: string
+  queryString: string
+  sourceIp: string
+  method: string
+  body: BodyInit | null | undefined
+  headers: HeadersInit
+  isBase64Encoded: boolean
+}) => {
   const env = Object.fromEntries(
     Object.entries(process.env).map(([key, value]) => [key, value ?? ''])
   )
@@ -20,10 +28,21 @@ export const respond = async (
 
   await app.init({ env })
 
-  const response = await app.respond(new Request(input, init), {
-    getClientAddress: () => sourceIp,
-    platform: { isBase64Encoded }
-  })
+  const url = `https://${domain}${pathname}${
+    queryString ? `?${queryString}` : ''
+  }`
+
+  const response = await app.respond(
+    new Request(url, {
+      method,
+      body,
+      headers
+    }),
+    {
+      getClientAddress: () => sourceIp,
+      platform: { isBase64Encoded }
+    }
+  )
 
   return response
 }

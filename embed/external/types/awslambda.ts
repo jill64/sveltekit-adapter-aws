@@ -1,6 +1,6 @@
 import { ResponseStream } from './ResponseStream.js'
 
-export declare const awslambda: {
+export type AwsLambda = {
   streamifyResponse: (
     handler: (
       event: {
