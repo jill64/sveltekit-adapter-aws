@@ -7,3 +7,6 @@ export const memorySize = 128 /* $$__MEMORY_SIZE__$$ */
 export const environment = {} /* $$__ENVIRONMENT__$$ */
 export const cdn = false /* $$__ENABLE_CDN__$$ */
 export const bridgeAuthToken = '__BRIDGE_AUTH_TOKEN__'
+export const staticAssetsPaths: Set<string> = new Set(
+  [] /* $$__STATIC_ASSETS_PATHS__$$ */
+)
