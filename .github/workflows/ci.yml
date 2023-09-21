@@ -3,7 +3,13 @@ name: CI
 on: push
 
 jobs:
-  ci:
+  list:
+    uses: jill64/reusable-workflow/.github/workflows/lint.yml@main
+  build-adapter:
+    uses: jill64/reusable-workflow/.github/workflows/build.yml@main
+    with:
+      build-command: pnpm build:adapter
+  check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -19,9 +25,6 @@ jobs:
         with:
           version: latest
           run_install: true
-
-      - name: Lint
-        run: pnpm lint
 
       - name: Build Adapter
         run: pnpm build:adapter
