@@ -14,7 +14,7 @@ export const handler: OriginRequestHandler = async (event) => {
     // Handling static asset requests
     if (staticAssetsPaths.has(uri)) {
       request.origin.custom.domainName = s3Domain
-      request.headers['host'] = [{ key: 'Host', value: s3Domain }]
+      request.headers['host'] = [{ key: 'host', value: s3Domain }]
       request.origin.custom.path = uri
 
       console.log('rewrote request', JSON.stringify(request, null, 2))
