@@ -6,6 +6,7 @@ export const handler: OriginRequestHandler = async (event) => {
   const { uri, method } = request
 
   console.log('request', request)
+  console.log('custom headers', request.origin.custom.customHeaders)
 
   if (method === 'GET' || method === 'HEAD') {
     const s3Domain = request.origin.custom.customHeaders['S3-Domain']
