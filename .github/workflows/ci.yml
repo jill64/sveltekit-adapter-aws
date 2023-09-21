@@ -31,5 +31,3 @@ jobs:
 
       - name: Check
         run: pnpm check
-        env:
-          PUBLIC_SENTRY_DSN: ${{secrets.PUBLIC_SENTRY_DSN}}

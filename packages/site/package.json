@@ -7,7 +7,6 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json"
   },
   "devDependencies": {
-    "@jill64/sentry-sveltekit-cloudflare": "0.4.3",
     "@jill64/svelte-toast": "0.1.0",
     "svelte": "4.2.1",
     "svelte-check": "3.5.2",
