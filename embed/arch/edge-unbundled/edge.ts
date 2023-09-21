@@ -9,7 +9,7 @@ export const handler: OriginRequestHandler = async (event) => {
 
   if (method === 'GET' || method === 'HEAD') {
     const s3Domain =
-      request.origin.custom.customHeaders['S3-Domain']?.[0]?.value
+      request.origin.custom.customHeaders['s3-domain']?.[0]?.value
 
     // Handling static asset requests
     if (staticAssetsPaths.has(uri)) {
