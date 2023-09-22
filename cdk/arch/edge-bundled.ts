@@ -11,7 +11,12 @@ import {
   aws_s3_deployment
 } from 'aws-cdk-lib'
 import { Construct } from 'constructs'
-import { appPath, certificateArn, domainName } from '../external/params'
+import {
+  appPath,
+  certificateArn,
+  domainName,
+  memorySize
+} from '../external/params'
 
 export class CDKStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -21,13 +26,13 @@ export class CDKStack extends Stack {
       code: aws_lambda.Code.fromAsset('edge'),
       handler: 'server.handler',
       runtime: aws_lambda.Runtime.NODEJS_18_X,
-      timeout: Duration.seconds(5)
+      timeout: Duration.seconds(30),
+      memorySize
     })
 
     const s3 = new aws_s3.Bucket(this, 'Bucket')
 
     const behaviorBase = {
-      cachePolicy: aws_cloudfront.CachePolicy.CACHING_OPTIMIZED,
       viewerProtocolPolicy:
         aws_cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
       originRequestPolicy:
@@ -46,11 +51,12 @@ export class CDKStack extends Stack {
         : undefined,
       defaultBehavior: {
         ...behaviorBase,
+        cachePolicy: aws_cloudfront.CachePolicy.CACHING_DISABLED,
         allowedMethods: aws_cloudfront.AllowedMethods.ALLOW_ALL,
         edgeLambdas: [
           {
             functionVersion: edge,
-            eventType: aws_cloudfront.LambdaEdgeEventType.VIEWER_REQUEST,
+            eventType: aws_cloudfront.LambdaEdgeEventType.ORIGIN_REQUEST,
             includeBody: true
           }
         ]

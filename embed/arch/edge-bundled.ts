@@ -1,12 +1,12 @@
 import 'dotenv/config.js'
 import { domainName } from '../external/params.js'
-import type { ViewerRequestHandler } from '../external/types/edge/ViewerRequestHandler.js'
 import { forbiddenHeaderPrefix } from '../external/utils/edge/forbiddenHeaderPrefix.js'
 import { forbiddenHeaders } from '../external/utils/edge/forbiddenHeaders.js'
 import { respond } from '../external/utils/respond.js'
 import { verdictStaticAssets } from '../external/utils/verdictStaticAssets.js'
+import { OriginRequestHandler } from '../external/types/edge/OriginRequestHandler.js'
 
-export const handler: ViewerRequestHandler = async ({
+export const handler: OriginRequestHandler = async ({
   Records: [
     {
       cf: {
