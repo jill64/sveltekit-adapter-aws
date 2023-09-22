@@ -22,7 +22,7 @@ export const setup = async ({ builder, tmp, options }: Context) => {
     bundle: true,
     entryPoints: [path.join(utilsPath, 'lookupMimeTypes.ts')],
     outfile: path.join(utilsPath, 'lookupMimeTypes.js'),
-    platform: 'node',
+    platform: 'node'
   })
 
   builder.copy(
