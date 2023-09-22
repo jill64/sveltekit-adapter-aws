@@ -25,13 +25,15 @@ export class CDKStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props)
 
+    const timeout = Duration.seconds(30)
+
     const lambdaURL = new aws_lambda.Function(this, 'Server', {
       runtime: aws_lambda.Runtime.NODEJS_18_X,
       code: aws_lambda.Code.fromAsset('lambda'),
       handler: 'server.handler',
       architecture: aws_lambda.Architecture.ARM_64,
       memorySize,
-      timeout: Duration.seconds(30),
+      timeout,
       environment
     }).addFunctionUrl({
       authType: aws_lambda.FunctionUrlAuthType.NONE,
@@ -42,7 +44,7 @@ export class CDKStack extends Stack {
       code: aws_lambda.Code.fromAsset('edge'),
       handler: 'server.handler',
       runtime: aws_lambda.Runtime.NODEJS_18_X,
-      timeout: Duration.seconds(5)
+      timeout
     })
 
     const s3 = new aws_s3.Bucket(this, 'Bucket')
