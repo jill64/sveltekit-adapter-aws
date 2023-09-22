@@ -4,6 +4,8 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "module": "NodeNext",
-    "moduleResolution": "NodeNext"
-  }
+    "moduleResolution": "NodeNext",
+    "noEmit": true
+  },
+  "exclude": ["./packages/site/*"]
 }
