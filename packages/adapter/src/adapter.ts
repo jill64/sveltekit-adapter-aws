@@ -1,5 +1,4 @@
 import type { Adapter } from '@sveltejs/kit'
-import { match } from 'ts-pattern'
 import { edgeBundled } from './arch/edge-bundled.js'
 import { edgeUnbundled } from './arch/edge-unbundled.js'
 import { lambdaMono } from './arch/lambda-mono.js'
@@ -35,12 +34,16 @@ export const adapter = (options?: AdapterOptions): Adapter => {
 
       await setup(context)
 
-      const process = match(context.options.architecture)
-        .with('lambda-mono', () => lambdaMono)
-        .with('lambda-s3', () => lambdaS3)
-        .with('edge-bundled', () => edgeBundled)
-        .with('edge-unbundled', () => edgeUnbundled)
-        .exhaustive()
+      const arch = context.options.architecture
+
+      const process =
+        arch === 'lambda-s3'
+          ? lambdaS3
+          : arch === 'edge-bundled'
+          ? edgeBundled
+          : arch === 'edge-unbundled'
+          ? edgeUnbundled
+          : lambdaMono
 
       builder.log.minor('Building...')
 

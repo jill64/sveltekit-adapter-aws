@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@jill64/unfurl':
-        specifier: ^1.0.0
-        version: 1.0.0
       '@sveltejs/kit':
         specifier: 1.25.0
         version: 1.25.0(svelte@4.2.1)(vite@4.4.9)
@@ -41,9 +38,6 @@ importers:
       nanoid:
         specifier: ^5.0.1
         version: 5.0.1
-      ts-pattern:
-        specifier: ^5.0.5
-        version: 5.0.5
       tsx:
         specifier: ^3.12.10
         version: 3.12.10
@@ -598,10 +592,6 @@ packages:
       svelte: 4.2.1
       svelte-french-toast: 1.2.0(svelte@4.2.1)
     dev: true
-
-  /@jill64/unfurl@1.0.0:
-    resolution: {integrity: sha512-GATeq/02khpxTA2AnlqYoxFx6tQ9JVn/z0ZFY05ZFLHDiX1vtS9l3sDF1qH0WdW0WRr8XC6+5L6Kw6wFXJG8Lw==}
-    dev: false
 
   /@jridgewell/gen-mapping@0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}
@@ -2389,10 +2379,6 @@ packages:
     dependencies:
       typescript: 5.2.2
     dev: true
-
-  /ts-pattern@5.0.5:
-    resolution: {integrity: sha512-tL0w8U/pgaacOmkb9fRlYzWEUDCfVjjv9dD4wHTgZ61MjhuMt46VNWTG747NqW6vRzoWIKABVhFSOJ82FvXrfA==}
-    dev: false
 
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
