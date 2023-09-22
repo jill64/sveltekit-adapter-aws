@@ -22,6 +22,12 @@ If you want to use always-on servers (not serverless), consider EC2 (ECR) + [ada
 npm i -D @jill64/sveltekit-aws-adapter
 ```
 
+4. (If use pnpm) Install additional dependents
+
+```sh
+pnpm i tsx
+```
+
 ## Quick Example
 
 ```js
