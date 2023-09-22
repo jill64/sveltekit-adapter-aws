@@ -18,13 +18,13 @@ export const adapter = (options?: AdapterOptions): Adapter => {
       const context = {
         builder,
         options: {
-          out: 'build',
-          architecture: 'lambda-mono' as const,
-          name: 'SvelteKit-App-Default',
-          memory: 128,
-          deploy: false,
-          cdn: false,
-          ...options
+          ...options,
+          out: options?.architecture ?? 'build',
+          architecture: options?.architecture ?? ('lambda-mono' as const),
+          name: options?.name ?? 'SvelteKit-App-Default',
+          memory: options?.memory ?? 128,
+          deploy: options?.deploy ?? false,
+          cdn: options?.cdn ?? false
         },
         tmp
       }
