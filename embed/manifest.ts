@@ -1,5 +1,5 @@
 export const manifest = (() => {
-  function __memo(fn) {
+  function __memo(fn: () => unknown) {
     let value
     return () => (value ??= value = fn())
   }
@@ -27,20 +27,14 @@ export const manifest = (() => {
         stylesheets: ['_app/immutable/assets/toast.3a6d0da3.css'],
         fonts: []
       },
-      nodes: [
-        __memo(() => import('./nodes/0.js')),
-        __memo(() => import('./nodes/1.js')),
-        __memo(() => import('./nodes/2.js')),
-        __memo(() => import('./nodes/3.js')),
-        __memo(() => import('./nodes/4.js'))
-      ],
+      nodes: [],
       routes: [
         {
           id: '/',
           pattern: /^\/$/,
           params: [],
           page: { layouts: [0], errors: [1], leaf: 2 },
-          endpoint: __memo(() => import('./entries/endpoints/_server.ts.js'))
+          endpoint: __memo(() => null)
         },
         {
           id: '/csr',

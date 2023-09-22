@@ -36,7 +36,7 @@
     "build:adapter": "cd packages/adapter && pnpm build",
     "build:site": "cd packages/site && pnpm build",
     "preview": "pnpm build:adapter && cd packages/site && pnpm preview",
-    "check": "cd packages/site && pnpm check",
+    "check": "tsc && cd packages/site && pnpm check",
     "test": "playwright test",
     "format": "prettier --write . --plugin prettier-plugin-svelte .",
     "lint": "prettier --check . --plugin prettier-plugin-svelte . && eslint ."
