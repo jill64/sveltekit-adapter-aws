@@ -1,5 +1,5 @@
 import { createReadStream } from 'fs'
-import { lookup } from 'mime-types'
+import { lookupMimeTypes } from './lookupMimeTypes.js'
 import path from 'path'
 import { base } from '../params.js'
 import { ResponseStream } from '../types/ResponseStream.js'
@@ -16,7 +16,7 @@ export const streamFile = ({
   awslambda: AwsLambda
 }) => {
   const filePath = assetPath.replace(base, '')
-  const type = lookup(filePath)
+  const type = lookupMimeTypes(filePath)
 
   responseStream = qualified(responseStream, {
     awslambda,

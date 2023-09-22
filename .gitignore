@@ -10,3 +10,4 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .cdk.staging
 cdk.out
+embed/external/utils/lookupMimeTypes.js

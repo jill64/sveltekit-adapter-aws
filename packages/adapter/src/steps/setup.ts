@@ -1,3 +1,4 @@
+import { build } from 'esbuild'
 import { writeFile } from 'fs/promises'
 import { nanoid } from 'nanoid'
 import path from 'path'
@@ -12,6 +13,17 @@ export const setup = async ({ builder, tmp, options }: Context) => {
   } = builder.config.kit
 
   builder.log.minor('Setup...')
+
+  const utilsPath = path.join(root, 'embed', 'external', 'utils')
+
+  // bundle 'mime-types' for pnpm
+  await build({
+    format: 'esm',
+    bundle: true,
+    entryPoints: [path.join(utilsPath, 'lookupMimeTypes.ts')],
+    outfile: path.join(utilsPath, 'lookupMimeTypes.js'),
+    platform: 'node'
+  })
 
   builder.copy(
     path.resolve(root, 'embed', 'external'),
@@ -58,6 +70,7 @@ export const setup = async ({ builder, tmp, options }: Context) => {
     }
   )
 
+  console.log('options.architecture', options.architecture)
   builder.copy(
     path.join(root, 'cdk', 'arch', `${options.architecture}.ts`),
     path.join(options.out, 'bin', 'cdk-stack.ts')
