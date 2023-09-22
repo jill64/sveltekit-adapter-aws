@@ -21,7 +21,7 @@ export const buildEdge = async (
     format: 'cjs',
     bundle: true,
     minify: true,
-    external: ['node:*'],
+    external: ['node:*', '@aws-sdk/*'],
     ...options?.esbuild,
     entryPoints: [edgeEntryPoint],
     outfile: path.join(options.out, 'edge', 'server.js'),
