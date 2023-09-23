@@ -78,8 +78,8 @@ importers:
   packages/site:
     devDependencies:
       '@fontsource/fira-mono':
-        specifier: 4.5.10
-        version: 4.5.10
+        specifier: 5.0.8
+        version: 5.0.8
       '@jill64/svelte-toast':
         specifier: 0.1.0
         version: 0.1.0(svelte@4.2.1)
@@ -567,8 +567,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@fontsource/fira-mono@4.5.10:
-    resolution: {integrity: sha512-bxUnRP8xptGRo8YXeY073DSpfK74XpSb0ZyRNpHV9WvLnJ7TwPOjZll8hTMin7zLC6iOp59pDZ8EQDj1gzgAQQ==}
+  /@fontsource/fira-mono@5.0.8:
+    resolution: {integrity: sha512-8OJiUK2lzJjvDlkmamEfhtpL1cyFApg1Pk4kE5Pw5UTf1ETF3Yy/pprgwV5I+LQPDjuFvinsinT9xSUZ2b/zuQ==}
     dev: true
 
   /@humanwhocodes/config-array@0.11.11:
