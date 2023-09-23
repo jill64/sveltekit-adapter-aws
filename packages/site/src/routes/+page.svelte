@@ -1,53 +1,59 @@
 <script lang="ts">
-  import { toast } from '@jill64/svelte-toast'
-
-  export let data
-
-  $: ({ loadAt, routes } = data)
+  import Counter from './Counter.svelte'
+  import welcome from '$lib/images/svelte-welcome.webp'
+  import welcome_fallback from '$lib/images/svelte-welcome.png'
 </script>
 
-<p>Load at {loadAt} from Server</p>
-<ul>
-  {#each routes as href}
-    <li>
-      <a {href}>{href}</a>
-    </li>
-  {/each}
-</ul>
-<button
-  on:click={() => {
-    $toast.error('Error from client')
-    throw new Error('Error from client')
-  }}
->
-  Throw Error
-</button>
-{#each ['POST', 'PUT', 'PATCH', 'DELETE'] as method}
-  <button
-    on:click={async () => {
-      const res = await fetch('/', {
-        method
-      })
+<svelte:head>
+  <title>Home</title>
+  <meta name="description" content="Svelte demo app" />
+</svelte:head>
 
-      const text = await res.text()
+<section>
+  <h1>
+    <span class="welcome">
+      <picture>
+        <source srcset={welcome} type="image/webp" />
+        <img src={welcome_fallback} alt="Welcome" />
+      </picture>
+    </span>
 
-      res.ok
-        ? $toast.success(`${res.status} ${text}`)
-        : $toast.error(`${res.status} ${text}`)
-    }}
-  >
-    {method}
-  </button>
-{/each}
+    to your new<br />SvelteKit app
+  </h1>
+
+  <h2>
+    try editing <strong>src/routes/+page.svelte</strong>
+  </h2>
+
+  <Counter />
+</section>
 
 <style>
-  @media (prefers-color-scheme: dark) {
-    :global(body) {
-      background: #111;
-      color: #eee;
-    }
-    a {
-      color: #3442ac;
-    }
+  section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 0.6;
+  }
+
+  h1 {
+    width: 100%;
+  }
+
+  .welcome {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding: 0 0 calc(100% * 495 / 2048) 0;
+  }
+
+  .welcome img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    display: block;
   }
 </style>
