@@ -45,6 +45,6 @@ jobs:
     strategy:
       matrix:
         architecture: [lambda-mono, lambda-s3, edge-bundled, edge-unbundled]
-    uses: jill64/reusable-workflow/.github/workflows/test.yml@main
+    uses: jill64/workflows/.github/workflows/test.yml@main
     with:
       test-command: ${{ format('pnpx playwright install && export ADAPTER_FQDN={0}.adapter-aws.com && pnpm test', matrix.architecture) }}

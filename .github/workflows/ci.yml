@@ -4,8 +4,8 @@ on: push
 
 jobs:
   list:
-    uses: jill64/reusable-workflow/.github/workflows/lint.yml@main
+    uses: jill64/workflows/.github/workflows/lint.yml@main
   check:
-    uses: jill64/reusable-workflow/.github/workflows/check.yml@main
+    uses: jill64/workflows/.github/workflows/check.yml@main
     with:
       pre-check: pnpm build:adapter

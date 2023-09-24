@@ -1,0 +1,10 @@
+name: PR
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  auto-merge:
+    uses: jill64/workflows/.github/workflows/auto-merge.yml@main
