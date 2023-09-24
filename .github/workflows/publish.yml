@@ -6,7 +6,7 @@ on:
 
 jobs:
   publish:
-    uses: jill64/reusable-workflow/.github/workflows/publish-npm.yml@main
+    uses: jill64/workflows/.github/workflows/publish-npm.yml@main
     with:
       pre-publish: pnpm build:adapter
     secrets: inherit
