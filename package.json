@@ -56,7 +56,7 @@
     "publint": "0.2.2"
   },
   "dependencies": {
-    "@sveltejs/kit": "1.25.0",
+    "@sveltejs/kit": "1.25.1",
     "@types/mime-types": "^2.1.1",
     "@types/node": "^20.6.2",
     "aws-cdk": "^2.96.2",
