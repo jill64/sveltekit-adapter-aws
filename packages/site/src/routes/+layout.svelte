@@ -3,6 +3,11 @@
   import './styles.css'
 </script>
 
+<svelte:head>
+  {#if browser}
+    <meta data-testid="hydrated" />
+  {/if}
+</svelte:head>
 <div class="app">
   <Header />
 
