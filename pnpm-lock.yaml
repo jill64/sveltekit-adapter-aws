@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@sveltejs/kit':
-        specifier: 1.25.0
-        version: 1.25.0(svelte@4.2.1)(vite@4.4.9)
+        specifier: 1.25.1
+        version: 1.25.1(svelte@4.2.1)(vite@4.4.9)
       '@types/mime-types':
         specifier: ^2.1.1
         version: 2.1.1
@@ -81,14 +81,14 @@ importers:
         specifier: 5.0.8
         version: 5.0.8
       '@jill64/svelte-toast':
-        specifier: 0.1.0
-        version: 0.1.0(svelte@4.2.1)
+        specifier: 0.1.1
+        version: 0.1.1(svelte@4.2.1)
       '@neoconfetti/svelte':
         specifier: 1.0.0
         version: 1.0.0
       '@sveltejs/kit':
-        specifier: 1.25.0
-        version: 1.25.0(svelte@4.2.1)(vite@4.4.9)
+        specifier: 1.25.1
+        version: 1.25.1(svelte@4.2.1)(vite@4.4.9)
       '@types/cookie':
         specifier: 0.5.2
         version: 0.5.2
@@ -591,20 +591,20 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@jill64/svelte-device-theme@0.1.0(svelte@4.2.1):
-    resolution: {integrity: sha512-EJ0clKWKrQPfFMHf9JaWul3lNNzqSq4xi5PnLyX5CxYf4Ea8RAHpXpxvGjjcU/48z9mfNnRQk6u/uzjHAT1tCg==}
+  /@jill64/svelte-device-theme@1.0.1(svelte@4.2.1):
+    resolution: {integrity: sha512-YQYrpEMJDqMA6orStb2l8RQwbSR4qWpyuMPo3dB4hYFsMhwcFKRX6d7yIm3fUYZcbh1bfNQ5VglV8Dn2sJdprA==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
       svelte: 4.2.1
     dev: true
 
-  /@jill64/svelte-toast@0.1.0(svelte@4.2.1):
-    resolution: {integrity: sha512-opKBookGHnIAuzGuKeOnsnZxt9y2ib9RAmBg4Q8QKf25Qf+qx3IHOPnzMfC6B7oUV/4MLFofyR73MxpszCiARQ==}
+  /@jill64/svelte-toast@0.1.1(svelte@4.2.1):
+    resolution: {integrity: sha512-CaeTeIvXOSj1xlrMraasSBM1Spc4x8fwNwSCTF6oiPry44NW2ottxteEzBRHwvYPtDl1N0w9vEyAey3wYH8gBA==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
-      '@jill64/svelte-device-theme': 0.1.0(svelte@4.2.1)
+      '@jill64/svelte-device-theme': 1.0.1(svelte@4.2.1)
       svelte: 4.2.1
       svelte-french-toast: 1.2.0(svelte@4.2.1)
     dev: true
@@ -670,8 +670,8 @@ packages:
   /@polka/url@1.0.0-next.23:
     resolution: {integrity: sha512-C16M+IYz0rgRhWZdCmK+h58JMv8vijAA61gmz2rspCSwKwzBebpdcsiUmwrtJRdphuY30i6BSLEOP8ppbNLyLg==}
 
-  /@sveltejs/kit@1.25.0(svelte@4.2.1)(vite@4.4.9):
-    resolution: {integrity: sha512-+VqMWJJYtcLoF8hYkdqY2qs/MPaawrMwA/gNBJW2o2UrcuYdNiy0ZZnjQQuPD33df/VcAulnoeyzF5ZtaajFEw==}
+  /@sveltejs/kit@1.25.1(svelte@4.2.1)(vite@4.4.9):
+    resolution: {integrity: sha512-pD8XsvNJNgTNkFngNlM60my/X8dXWPKVzN5RghEQr0NjGZmuCjy49AfFu2cGbZjNf5pBcqd2RCNMW912P5fkhA==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
@@ -692,7 +692,7 @@ packages:
       sirv: 2.0.3
       svelte: 4.2.1
       tiny-glob: 0.2.9
-      undici: 5.23.0
+      undici: 5.25.2
       vite: 4.4.9(@types/node@20.6.2)
     transitivePeerDependencies:
       - supports-color
@@ -2411,8 +2411,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  /undici@5.23.0:
-    resolution: {integrity: sha512-1D7w+fvRsqlQ9GscLBwcAJinqcZGHUKjbOmXdlE/v8BvEGXjeWAax+341q44EuTcHXXnfyKNbKRq4Lg7OzhMmg==}
+  /undici@5.25.2:
+    resolution: {integrity: sha512-tch8RbCfn1UUH1PeVCXva4V8gDpGAud/w0WubD6sHC46vYQ3KDxL+xv1A2UxK0N6jrVedutuPHxe1XIoqerwMw==}
     engines: {node: '>=14.0'}
     dependencies:
       busboy: 1.6.0
