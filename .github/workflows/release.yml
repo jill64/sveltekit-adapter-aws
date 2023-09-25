@@ -1,0 +1,12 @@
+name: Release
+
+on:
+  push:
+    branches: main
+
+jobs:
+  release:
+    uses: jill64/workflows/.github/workflows/release.yml@main
+    with:
+      pre-publish: pnpm build:adapter
+    secrets: inherit

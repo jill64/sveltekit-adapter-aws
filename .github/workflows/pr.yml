@@ -2,9 +2,9 @@ name: PR
 
 on:
   pull_request:
-    branches:
-      - main
+    branches: main
 
 jobs:
-  auto-merge:
-    uses: jill64/workflows/.github/workflows/auto-merge.yml@main
+  version-bump:
+    uses: jill64/workflows/.github/workflows/version-bump.yml@main
+    secrets: inherit
