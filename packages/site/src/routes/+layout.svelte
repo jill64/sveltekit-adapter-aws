@@ -1,8 +1,14 @@
-<script>
+<script lang="ts">
+  import { browser } from '$app/environment'
   import Header from './Header.svelte'
   import './styles.css'
 </script>
 
+<svelte:head>
+  {#if browser}
+    <meta data-testid="hydrated" />
+  {/if}
+</svelte:head>
 <div class="app">
   <Header />
 
