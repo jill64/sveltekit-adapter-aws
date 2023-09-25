@@ -18,7 +18,7 @@ export const buildServer = async (
   builder.copy(path.join(root, 'embed', 'arch', source), serverEntryPoint)
 
   await build({
-    format: 'cjs',
+    format: 'esm',
     bundle: true,
     minify: true,
     external: ['node:*', '@aws-sdk/*'],
