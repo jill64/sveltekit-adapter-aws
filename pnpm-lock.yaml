@@ -81,8 +81,8 @@ importers:
         specifier: 5.0.8
         version: 5.0.8
       '@jill64/svelte-toast':
-        specifier: 0.1.0
-        version: 0.1.0(svelte@4.2.1)
+        specifier: 0.1.1
+        version: 0.1.1(svelte@4.2.1)
       '@neoconfetti/svelte':
         specifier: 1.0.0
         version: 1.0.0
@@ -591,20 +591,20 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@jill64/svelte-device-theme@0.1.0(svelte@4.2.1):
-    resolution: {integrity: sha512-EJ0clKWKrQPfFMHf9JaWul3lNNzqSq4xi5PnLyX5CxYf4Ea8RAHpXpxvGjjcU/48z9mfNnRQk6u/uzjHAT1tCg==}
+  /@jill64/svelte-device-theme@1.0.1(svelte@4.2.1):
+    resolution: {integrity: sha512-YQYrpEMJDqMA6orStb2l8RQwbSR4qWpyuMPo3dB4hYFsMhwcFKRX6d7yIm3fUYZcbh1bfNQ5VglV8Dn2sJdprA==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
       svelte: 4.2.1
     dev: true
 
-  /@jill64/svelte-toast@0.1.0(svelte@4.2.1):
-    resolution: {integrity: sha512-opKBookGHnIAuzGuKeOnsnZxt9y2ib9RAmBg4Q8QKf25Qf+qx3IHOPnzMfC6B7oUV/4MLFofyR73MxpszCiARQ==}
+  /@jill64/svelte-toast@0.1.1(svelte@4.2.1):
+    resolution: {integrity: sha512-CaeTeIvXOSj1xlrMraasSBM1Spc4x8fwNwSCTF6oiPry44NW2ottxteEzBRHwvYPtDl1N0w9vEyAey3wYH8gBA==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
-      '@jill64/svelte-device-theme': 0.1.0(svelte@4.2.1)
+      '@jill64/svelte-device-theme': 1.0.1(svelte@4.2.1)
       svelte: 4.2.1
       svelte-french-toast: 1.2.0(svelte@4.2.1)
     dev: true
