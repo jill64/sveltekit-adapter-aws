@@ -1,3 +1,4 @@
+import * as crypto from 'crypto'
 import { bridgeAuthToken } from '../params.js'
 import { ResponseStream } from '../types/ResponseStream.js'
 import { AwsLambda } from '../types/awslambda.js'
@@ -12,18 +13,21 @@ export const isDirectAccess = ({
   responseStream: ResponseStream
   awslambda: AwsLambda
 }) => {
-  if (headers['bridge-authorization'] !== `Plain ${bridgeAuthToken}`) {
-    responseStream = qualified(responseStream, {
-      awslambda,
-      statusCode: 403,
-      headers: {}
-    })
+  const headerStr = headers['bridge-authorization']
+  const headerToken = headerStr ? Buffer.from(headerStr) : null
+  const token = Buffer.from(`Plain ${bridgeAuthToken}`)
 
-    responseStream.write('403 Forbidden')
-    responseStream.end()
-
-    return true
+  if (headerToken && crypto.timingSafeEqual(headerToken, token)) {
+    return false
   }
 
-  return false
+  responseStream = qualified(responseStream, {
+    awslambda,
+    statusCode: headerToken ? 401 : 403,
+    headers: {}
+  })
+
+  responseStream.end()
+
+  return true
 }
