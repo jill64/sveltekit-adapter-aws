@@ -7,15 +7,13 @@ function handler({ request }) {
     querystring
   } = request
 
-  var hostName = host?.value
-
-  if (!hostName) {
+  if (!host) {
     return {
       statusCode: 400
     }
   }
 
-  if (hostName === domainName) {
+  if (host.value === domainName) {
     return request
   }
 
