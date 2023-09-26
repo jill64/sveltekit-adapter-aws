@@ -19,12 +19,11 @@ function handler(event) {
     return request
   }
 
+  var keys = Object.keys(querystring)
   var search = ''
 
-  if (querystring) {
+  if (keys.length) {
     search = '?'
-
-    var keys = Object.keys(querystring)
 
     keys.forEach((key) => {
       var val = querystring[key]
