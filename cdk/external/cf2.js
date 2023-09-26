@@ -7,6 +7,8 @@ function handler({ request }) {
     querystring
   } = request
 
+  console.log('request', request)
+
   if (!host) {
     return {
       statusCode: 400
