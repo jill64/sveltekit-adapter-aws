@@ -109,7 +109,7 @@ export class CDKStack extends Stack {
             ? [
                 {
                   function: cf2,
-                  eventType: aws_cloudfront.FunctionEventType.VIEWER_RESPONSE
+                  eventType: aws_cloudfront.FunctionEventType.VIEWER_REQUEST
                 }
               ]
             : []
