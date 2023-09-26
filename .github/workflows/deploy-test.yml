@@ -2,8 +2,9 @@ name: Deploy - Test
 
 on:
   pull_request:
-    branches:
-      - main
+    branches: main
+
+concurrency: 'deploy-test'
 
 jobs:
   deploy:
