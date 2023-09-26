@@ -1,3 +1,5 @@
+var domainName = '__DOMAIN_NAME__'
+
 function handler({ request }) {
   var {
     headers: { host },
@@ -5,15 +7,13 @@ function handler({ request }) {
     querystring
   } = request
 
-  var domainName = '__DOMAIN_NAME__'
-
   if (!host) {
     return {
       statusCode: 400
     }
   }
 
-  if (host.value === domainName) {
+  if (host.value === domainName || !domainName) {
     return request
   }
 

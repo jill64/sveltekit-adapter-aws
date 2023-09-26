@@ -88,7 +88,7 @@ export const setup = async ({ builder, tmp, options }: Context) => {
   )
 
   builder.copy(
-    path.join(root, 'embed', 'external', 'cf2', 'index.js'),
+    path.join(root, 'cdk', 'external', 'cf2.js'),
     path.join(options.out, 'cf2', 'index.js'),
     {
       replace: {

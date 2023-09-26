@@ -12,7 +12,6 @@ import {
   aws_s3_deployment
 } from 'aws-cdk-lib'
 import { Construct } from 'constructs'
-import { readFileSync } from 'fs'
 import {
   appPath,
   bridgeAuthToken,
@@ -50,13 +49,9 @@ export class CDKStack extends Stack {
 
     const cf2 = domainName
       ? new aws_cloudfront.Function(this, 'CF2', {
-          functionName: 'handler',
-          code: aws_cloudfront.FunctionCode.fromInline(
-            readFileSync('external/cf2.js', 'utf8').replace(
-              '__DOMAIN_NAME__',
-              domainName
-            )
-          )
+          code: aws_cloudfront.FunctionCode.fromFile({
+            filePath: 'cf2/index.js'
+          })
         })
       : null
 
@@ -95,16 +90,14 @@ export class CDKStack extends Stack {
             eventType: aws_cloudfront.LambdaEdgeEventType.ORIGIN_REQUEST
           }
         ],
-        ...(cf2
-          ? {
-              functionAssociations: [
-                {
-                  function: cf2,
-                  eventType: aws_cloudfront.FunctionEventType.VIEWER_RESPONSE
-                }
-              ]
-            }
-          : {})
+        functionAssociations: cf2
+          ? [
+              {
+                function: cf2,
+                eventType: aws_cloudfront.FunctionEventType.VIEWER_RESPONSE
+              }
+            ]
+          : []
       },
       httpVersion: aws_cloudfront.HttpVersion.HTTP2_AND_3,
       additionalBehaviors: {
@@ -112,16 +105,14 @@ export class CDKStack extends Stack {
           viewerProtocolPolicy,
           originRequestPolicy,
           origin: new aws_cloudfront_origins.S3Origin(s3),
-          ...(cf2
-            ? {
-                functionAssociations: [
-                  {
-                    function: cf2,
-                    eventType: aws_cloudfront.FunctionEventType.VIEWER_RESPONSE
-                  }
-                ]
-              }
-            : {})
+          functionAssociations: cf2
+            ? [
+                {
+                  function: cf2,
+                  eventType: aws_cloudfront.FunctionEventType.VIEWER_RESPONSE
+                }
+              ]
+            : []
         }
       }
     })
