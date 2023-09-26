@@ -8,8 +8,8 @@ import { verdictStaticAssets } from '../external/utils/verdictStaticAssets.js'
 declare const awslambda: AwsLambda
 
 export const handler = awslambda.streamifyResponse(
-  async (
-    {
+  async (request, responseStream) => {
+    const {
       requestContext: {
         http: { method, sourceIp },
         domainName
@@ -19,10 +19,9 @@ export const handler = awslambda.streamifyResponse(
       rawQueryString,
       body,
       isBase64Encoded
-    },
-    responseStream
-  ) => {
-    if (isDirectAccess({ headers, responseStream, awslambda })) {
+    } = request
+
+    if (isDirectAccess({ request, responseStream, awslambda })) {
       return
     }
 
