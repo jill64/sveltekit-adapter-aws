@@ -47,16 +47,14 @@ export class CDKStack extends Stack {
       originRequestPolicy:
         aws_cloudfront.OriginRequestPolicy.ALL_VIEWER_EXCEPT_HOST_HEADER,
       origin: new aws_cloudfront_origins.S3Origin(s3),
-      ...(cf2
-        ? {
-            functionAssociations: [
-              {
-                function: cf2,
-                eventType: aws_cloudfront.FunctionEventType.VIEWER_RESPONSE
-              }
-            ]
-          }
-        : {})
+      functionAssociations: cf2
+        ? [
+            {
+              function: cf2,
+              eventType: aws_cloudfront.FunctionEventType.VIEWER_RESPONSE
+            }
+          ]
+        : []
     }
 
     const cdn = new aws_cloudfront.Distribution(this, 'CloudFront', {
