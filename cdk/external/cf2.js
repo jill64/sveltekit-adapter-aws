@@ -1,11 +1,11 @@
-var domainName = '__DOMAIN_NAME__'
-
 function handler({ request }) {
   var {
     headers: { host },
     uri,
     querystring
   } = request
+
+  var domainName = '__DOMAIN_NAME__'
 
   if (!host) {
     return {

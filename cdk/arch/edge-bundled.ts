@@ -11,6 +11,7 @@ import {
   aws_s3_deployment
 } from 'aws-cdk-lib'
 import { Construct } from 'constructs'
+import { readFileSync } from 'fs'
 import {
   appPath,
   certificateArn,
@@ -33,9 +34,12 @@ export class CDKStack extends Stack {
     const cf2 = domainName
       ? new aws_cloudfront.Function(this, 'CF2', {
           functionName: 'handler',
-          code: aws_cloudfront.FunctionCode.fromFile({
-            filePath: './cf2/index.js'
-          })
+          code: aws_cloudfront.FunctionCode.fromInline(
+            readFileSync('external/cf2.js', 'utf8').replace(
+              '__DOMAIN_NAME__',
+              domainName
+            )
+          )
         })
       : null
 
