@@ -34,7 +34,7 @@ export class CDKStack extends Stack {
       ? new aws_cloudfront.Function(this, 'CF2', {
           functionName: 'handler',
           code: aws_cloudfront.FunctionCode.fromFile({
-            filePath: 'cf2/index.js'
+            filePath: './cf2/index.js'
           })
         })
       : null
