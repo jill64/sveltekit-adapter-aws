@@ -1,13 +1,13 @@
 var domainName = '__DOMAIN_NAME__'
 
 function handler(event) {
+  console.log('event', event)
+
   var request = event.request
 
   var host = request.headers.host
   var uri = request.uri
   var querystring = request.querystring
-
-  console.log('request', request)
 
   if (!host) {
     return {
