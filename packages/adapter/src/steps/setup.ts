@@ -87,25 +87,13 @@ export const setup = async ({ builder, tmp, options }: Context) => {
     )});\n`
   )
 
-  const cf2EntryPoint = path.join(tmp, 'external', 'cf2', 'index.ts')
-
   builder.copy(
-    path.join(root, 'embed', 'external', 'cf2', 'index.ts'),
-    cf2EntryPoint,
+    path.join(root, 'embed', 'external', 'cf2', 'index.js'),
+    path.join(options.out, 'cf2', 'index.js'),
     {
       replace: {
         __DOMAIN_NAME__: options.domain?.fqdn ?? ''
       }
     }
   )
-
-  // Build external CF2 handler
-  await build({
-    format: 'esm',
-    bundle: true,
-    entryPoints: [cf2EntryPoint],
-    outfile: path.join(options.out, 'cf2', 'index.js'),
-    platform: 'neutral',
-    target: 'es6'
-  })
 }
