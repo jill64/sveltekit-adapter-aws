@@ -1,11 +1,11 @@
 var domainName = '__DOMAIN_NAME__'
 
-function handler({ request }) {
-  var {
-    headers: { host },
-    uri,
-    querystring
-  } = request
+function handler(event) {
+  var request = event.request
+
+  var host = request.headers.host
+  var uri = request.uri
+  var querystring = request.querystring
 
   console.log('request', request)
 
@@ -27,7 +27,9 @@ function handler({ request }) {
     var keys = Object.keys(querystring)
 
     keys.forEach((key) => {
-      var { value, multiValue } = querystring[key]
+      var val = querystring[key]
+      var value = val.value
+      var multiValue = val.multiValue
 
       if (search !== '?') {
         search = search + '&'
