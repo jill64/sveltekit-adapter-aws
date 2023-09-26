@@ -30,6 +30,15 @@ export class CDKStack extends Stack {
       memorySize
     })
 
+    const cf2 = domainName
+      ? new aws_cloudfront.Function(this, 'CF2', {
+          functionName: 'handler',
+          code: aws_cloudfront.FunctionCode.fromFile({
+            filePath: 'cf2/index.js'
+          })
+        })
+      : null
+
     const s3 = new aws_s3.Bucket(this, 'Bucket')
 
     const behaviorBase = {
@@ -37,7 +46,17 @@ export class CDKStack extends Stack {
         aws_cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
       originRequestPolicy:
         aws_cloudfront.OriginRequestPolicy.ALL_VIEWER_EXCEPT_HOST_HEADER,
-      origin: new aws_cloudfront_origins.S3Origin(s3)
+      origin: new aws_cloudfront_origins.S3Origin(s3),
+      ...(cf2
+        ? {
+            functionAssociations: [
+              {
+                function: cf2,
+                eventType: aws_cloudfront.FunctionEventType.VIEWER_RESPONSE
+              }
+            ]
+          }
+        : {})
     }
 
     const cdn = new aws_cloudfront.Distribution(this, 'CloudFront', {
