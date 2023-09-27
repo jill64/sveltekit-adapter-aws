@@ -11,3 +11,4 @@ vite.config.ts.timestamp-*
 pnpm-lock.yaml
 embed/external/utils/lookupMimeTypes.js
 cdk/external/cf2.js
+/test-results
