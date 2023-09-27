@@ -35,7 +35,7 @@ export const respond = async (request: {
   await app.init({ env })
 
   const url = `https://${domain}${pathname}${
-    queryString ? `?${queryString}` : ''
+    queryString ? `?${decodeURIComponent(queryString)}` : ''
   }`
 
   const response = await app.respond(
