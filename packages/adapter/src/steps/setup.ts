@@ -86,4 +86,14 @@ export const setup = async ({ builder, tmp, options }: Context) => {
       builder.prerendered.paths
     )});\n`
   )
+
+  builder.copy(
+    path.join(root, 'cdk', 'external', 'cf2.js'),
+    path.join(options.out, 'cf2', 'index.js'),
+    {
+      replace: {
+        __DOMAIN_NAME__: options.domain?.fqdn ?? ''
+      }
+    }
+  )
 }
