@@ -1,15 +1,15 @@
 import * as crypto from 'crypto'
-import { bridgeAuthToken } from '../params.js'
+import { bridgeAuthToken, domainName } from '../params.js'
 import { ResponseStream } from '../types/ResponseStream.js'
 import { AwsLambda } from '../types/awslambda.js'
 import { qualified } from './qualified.js'
 
 export const isDirectAccess = ({
-  headers,
+  request: { headers, rawPath, rawQueryString },
   responseStream,
   awslambda
 }: {
-  headers: Record<string, string>
+  request: Parameters<Parameters<AwsLambda['streamifyResponse']>[0]>[0]
   responseStream: ResponseStream
   awslambda: AwsLambda
 }) => {
@@ -21,11 +21,28 @@ export const isDirectAccess = ({
     return false
   }
 
-  responseStream = qualified(responseStream, {
-    awslambda,
-    statusCode: headerToken ? 401 : 403,
-    headers: {}
-  })
+  const cfHost = headers['via']?.split(' ')?.[1]
+
+  const domain = domainName ? domainName : cfHost ? cfHost : ''
+
+  responseStream = qualified(
+    responseStream,
+    domain
+      ? {
+          awslambda,
+          statusCode: 308,
+          headers: {
+            location: `https://${domain}${rawPath}${
+              rawQueryString ? `?${rawQueryString}` : ''
+            }`
+          }
+        }
+      : {
+          awslambda,
+          statusCode: headerToken ? 401 : 403,
+          headers: {}
+        }
+  )
 
   responseStream.end()
 
