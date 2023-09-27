@@ -22,9 +22,7 @@ function handler(event) {
     request.querystring = {}
 
     keys.forEach((key, index) => {
-      request.querystring[encodeURIComponent(key)] = encodeURIComponent(
-        values[index]
-      )
+      request.querystring[encodeURIComponent(key)] = values[index]
     })
 
     return request
