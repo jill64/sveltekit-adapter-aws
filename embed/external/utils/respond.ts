@@ -45,10 +45,7 @@ export const respond = async (request: {
       headers
     }),
     {
-      getClientAddress: () => sourceIp,
-      platform: {
-        isBase64Encoded
-      }
+      getClientAddress: () => sourceIp
     }
   )
 
