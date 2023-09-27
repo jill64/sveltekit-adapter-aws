@@ -16,6 +16,8 @@ export const handler: OriginRequestHandler = async ({
     }
   ]
 }) => {
+  console.log('request', request)
+
   const { uri: pathname, querystring, method, clientIp: sourceIp } = request
 
   const assetPath = verdictStaticAssets({

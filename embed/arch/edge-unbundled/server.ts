@@ -7,6 +7,8 @@ declare const awslambda: AwsLambda
 
 export const handler = awslambda.streamifyResponse(
   async (request, responseStream) => {
+    console.log('request', request)
+
     const {
       requestContext: {
         http: { method, sourceIp },
