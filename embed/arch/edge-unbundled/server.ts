@@ -1,3 +1,4 @@
+import { domainName } from '../../external/params.js'
 import type { AwsLambda } from '../../external/types/awslambda.js'
 import { isDirectAccess } from '../../external/utils/isDirectAccess.js'
 import { respond } from '../../external/utils/respond.js'
@@ -12,7 +13,7 @@ export const handler = awslambda.streamifyResponse(
     const {
       requestContext: {
         http: { method, sourceIp },
-        domainName
+        domainName: lambdaDomainName
       },
       headers,
       rawPath,
@@ -25,8 +26,21 @@ export const handler = awslambda.streamifyResponse(
       return
     }
 
+    const cfDomainName = headers['via']?.split(' ')?.[1]
+
+    // Rewrite origin header from pre-defined FQDN or CDN
+    if (
+      headers.origin === `https://${domainName ? domainName : cfDomainName}`
+    ) {
+      headers.origin = `https://${lambdaDomainName}`
+    }
+
     const response = await respond({
-      domain: domainName,
+      domain: domainName
+        ? domainName
+        : cfDomainName
+        ? cfDomainName
+        : lambdaDomainName,
       pathname: rawPath,
       queryString: rawQueryString,
       method,

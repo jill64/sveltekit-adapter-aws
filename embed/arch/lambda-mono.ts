@@ -1,4 +1,4 @@
-import { cdn } from '../external/params.js'
+import { cdn, domainName } from '../external/params.js'
 import type { AwsLambda } from '../external/types/awslambda.js'
 import { isDirectAccess } from '../external/utils/isDirectAccess.js'
 import { respond } from '../external/utils/respond.js'
@@ -15,7 +15,7 @@ export const handler = awslambda.streamifyResponse(
     const {
       requestContext: {
         http: { method, sourceIp },
-        domainName
+        domainName: lambdaDomainName
       },
       headers,
       rawPath: pathname,
@@ -26,6 +26,17 @@ export const handler = awslambda.streamifyResponse(
 
     if (cdn && isDirectAccess({ request, responseStream, awslambda })) {
       return
+    }
+
+    const cfDomainName = headers['via']?.split(' ')?.[1]
+
+    // Rewrite origin header from pre-defined FQDN or CDN
+    if (cdn) {
+      if (
+        headers.origin === `https://${domainName ? domainName : cfDomainName}`
+      ) {
+        headers.origin = `https://${lambdaDomainName}`
+      }
     }
 
     const assetPath = verdictStaticAssets({
@@ -42,7 +53,11 @@ export const handler = awslambda.streamifyResponse(
     }
 
     const response = await respond({
-      domain: domainName,
+      domain: domainName
+        ? domainName
+        : cfDomainName
+        ? cfDomainName
+        : lambdaDomainName,
       pathname,
       queryString: rawQueryString,
       method,

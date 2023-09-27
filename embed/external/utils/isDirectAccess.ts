@@ -21,9 +21,9 @@ export const isDirectAccess = ({
     return false
   }
 
-  const cfHost = headers['via']?.split(' ')?.[1]
+  const cfDomainName = headers['via']?.split(' ')?.[1]
 
-  const domain = domainName ? domainName : cfHost ? cfHost : ''
+  const domain = domainName ? domainName : cfDomainName ? cfDomainName : ''
 
   responseStream = qualified(
     responseStream,
