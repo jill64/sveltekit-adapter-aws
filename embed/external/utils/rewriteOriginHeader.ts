@@ -1,16 +1,17 @@
 import { domainName } from '../params.js'
 import { LambdaIncomingRequest } from '../types/LambdaIncomingRequest.js'
+import { generateCanonicalOrigin } from './generateCanonicalOrigin.js'
 import { getCloudFrontDomain } from './getCloudFrontDomain.js'
 
 export const rewriteOriginHeader = (
-  {
-    headers,
-    requestContext: { domainName: lambdaDomainName }
-  }: LambdaIncomingRequest,
+  request: LambdaIncomingRequest,
   setOriginHeader: (origin: string) => unknown
 ) => {
+  const { headers } = request
   const cfDomainName = getCloudFrontDomain(headers)
+
   if (headers.origin === `https://${domainName ? domainName : cfDomainName}`) {
-    setOriginHeader(`https://${lambdaDomainName}`)
+    const origin = generateCanonicalOrigin(request)
+    setOriginHeader(origin)
   }
 }
