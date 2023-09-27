@@ -8,9 +8,11 @@ export const generateCanonicalOrigin = ({
 }: LambdaIncomingRequest) => {
   const cfDomainName = getCloudFrontDomain(headers)
 
-  return domainName
+  const domain = domainName
     ? domainName
     : cfDomainName
     ? cfDomainName
     : lambdaDomainName
+
+  return `https://${domain}`
 }
