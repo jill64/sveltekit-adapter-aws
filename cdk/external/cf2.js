@@ -15,11 +15,19 @@ function handler(event) {
     }
   }
 
+  var keys = Object.keys(querystring)
+  var values = Object.values(querystring)
+
   if (host.value === domainName || !domainName) {
+    request.querystring = {}
+
+    keys.forEach((key, index) => {
+      request.querystring[encodeURIComponent(key)] = values[index]
+    })
+
     return request
   }
 
-  var keys = Object.keys(querystring)
   var search = ''
 
   if (keys.length) {
