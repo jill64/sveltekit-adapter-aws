@@ -37,6 +37,8 @@ export const respond = async ({
     queryString ? `?${decodeURIComponent(queryString)}` : ''
   }`
 
+  console.log('headers', headers)
+
   const response = await app.respond(
     new Request(url, {
       method,
