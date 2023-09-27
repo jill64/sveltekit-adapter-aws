@@ -46,38 +46,52 @@ export class CDKStack extends Stack {
           )
         : undefined
 
-      const originStr = Fn.select(2, Fn.split('/', lambdaURL.url))
-      const origin = new aws_cloudfront_origins.HttpOrigin(originStr, {
-        protocolPolicy: aws_cloudfront.OriginProtocolPolicy.HTTPS_ONLY,
-        originSslProtocols: [aws_cloudfront.OriginSslPolicy.TLS_V1_2],
-        customHeaders: {
-          'Bridge-Authorization': `Plain ${bridgeAuthToken}`
-        }
-      })
+      const cf2 = domainName
+        ? new aws_cloudfront.Function(this, 'CF2', {
+            code: aws_cloudfront.FunctionCode.fromFile({
+              filePath: 'cf2/index.js'
+            })
+          })
+        : null
 
-      const originRequestPolicy =
-        aws_cloudfront.OriginRequestPolicy.ALL_VIEWER_EXCEPT_HOST_HEADER
-
-      const viewerProtocolPolicy =
-        aws_cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS
+      const behaviorBase = {
+        origin: new aws_cloudfront_origins.HttpOrigin(
+          Fn.select(2, Fn.split('/', lambdaURL.url)),
+          {
+            protocolPolicy: aws_cloudfront.OriginProtocolPolicy.HTTPS_ONLY,
+            originSslProtocols: [aws_cloudfront.OriginSslPolicy.TLS_V1_2],
+            customHeaders: {
+              'Bridge-Authorization': `Plain ${bridgeAuthToken}`
+            }
+          }
+        ),
+        viewerProtocolPolicy:
+          aws_cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+        originRequestPolicy:
+          aws_cloudfront.OriginRequestPolicy.ALL_VIEWER_EXCEPT_HOST_HEADER,
+        functionAssociations: cf2
+          ? [
+              {
+                function: cf2,
+                eventType: aws_cloudfront.FunctionEventType.VIEWER_REQUEST
+              }
+            ]
+          : []
+      }
 
       const cloudfront = new aws_cloudfront.Distribution(this, 'CloudFront', {
         domainNames: domainName ? [domainName] : undefined,
         certificate,
         defaultBehavior: {
+          ...behaviorBase,
           allowedMethods: aws_cloudfront.AllowedMethods.ALLOW_ALL,
-          cachePolicy: aws_cloudfront.CachePolicy.CACHING_DISABLED,
-          viewerProtocolPolicy,
-          originRequestPolicy,
-          origin
+          cachePolicy: aws_cloudfront.CachePolicy.CACHING_DISABLED
         },
         httpVersion: aws_cloudfront.HttpVersion.HTTP2_AND_3,
         additionalBehaviors: {
           [appPath]: {
-            cachePolicy: aws_cloudfront.CachePolicy.CACHING_OPTIMIZED,
-            viewerProtocolPolicy,
-            originRequestPolicy,
-            origin
+            ...behaviorBase,
+            cachePolicy: aws_cloudfront.CachePolicy.CACHING_OPTIMIZED
           }
         }
       })
