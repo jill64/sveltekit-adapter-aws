@@ -8,6 +8,8 @@ export const handler: OriginRequestHandler = async ({
     }
   ]
 }) => {
+  console.log('request', request)
+
   const { uri: pathname, method } = request
 
   const assetsPath = verdictStaticAssets({

@@ -10,3 +10,4 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 pnpm-lock.yaml
 embed/external/utils/lookupMimeTypes.js
+/test-results
