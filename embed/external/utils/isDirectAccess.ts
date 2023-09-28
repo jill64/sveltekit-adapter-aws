@@ -1,5 +1,6 @@
 import * as crypto from 'crypto'
 import { bridgeAuthToken, domainName } from '../params.js'
+import { LambdaIncomingRequest } from '../types/LambdaIncomingRequest.js'
 import { ResponseStream } from '../types/ResponseStream.js'
 import { AwsLambda } from '../types/awslambda.js'
 import { qualified } from './qualified.js'
@@ -9,7 +10,7 @@ export const isDirectAccess = ({
   responseStream,
   awslambda
 }: {
-  request: Parameters<Parameters<AwsLambda['streamifyResponse']>[0]>[0]
+  request: LambdaIncomingRequest
   responseStream: ResponseStream
   awslambda: AwsLambda
 }) => {
@@ -21,9 +22,9 @@ export const isDirectAccess = ({
     return false
   }
 
-  const cfHost = headers['via']?.split(' ')?.[1]
+  const cfDomainName = headers['via']?.split(' ')?.[1]
 
-  const domain = domainName ? domainName : cfHost ? cfHost : ''
+  const domain = domainName ? domainName : cfDomainName ? cfDomainName : ''
 
   responseStream = qualified(
     responseStream,

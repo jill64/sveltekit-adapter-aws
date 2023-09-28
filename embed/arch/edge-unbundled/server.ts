@@ -1,16 +1,19 @@
 import type { AwsLambda } from '../../external/types/awslambda.js'
+import { generateCanonicalOrigin } from '../../external/utils/generateCanonicalOrigin.js'
 import { isDirectAccess } from '../../external/utils/isDirectAccess.js'
 import { respond } from '../../external/utils/respond.js'
+import { rewriteOriginHeader } from '../../external/utils/rewriteOriginHeader.js'
 import { runStream } from '../../external/utils/runStream.js'
 
 declare const awslambda: AwsLambda
 
 export const handler = awslambda.streamifyResponse(
   async (request, responseStream) => {
+    console.log('request', request)
+
     const {
       requestContext: {
-        http: { method, sourceIp },
-        domainName
+        http: { method, sourceIp }
       },
       headers,
       rawPath,
@@ -23,8 +26,12 @@ export const handler = awslambda.streamifyResponse(
       return
     }
 
+    rewriteOriginHeader(request, (origin) => {
+      headers.origin = origin
+    })
+
     const response = await respond({
-      domain: domainName,
+      origin: generateCanonicalOrigin(request),
       pathname: rawPath,
       queryString: rawQueryString,
       method,
