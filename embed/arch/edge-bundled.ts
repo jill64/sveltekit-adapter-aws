@@ -63,9 +63,6 @@ export const handler: OriginRequestHandler = async ({
     isBase64Encoded
   })
 
-  // TODO: If the response header is too long, a 502 error will occur on Gateway, so delete it.
-  response.headers.delete('link')
-
   const responseHeadersEntries = [] as [string, string][]
 
   response.headers.forEach((value, key) => {

@@ -58,9 +58,6 @@ export const handler = awslambda.streamifyResponse(
       isBase64Encoded
     })
 
-    // TODO: If the response header is too long, a 502 error will occur on Gateway, so delete it.
-    response.headers.delete('link')
-
     return runStream({
       response,
       responseStream,
