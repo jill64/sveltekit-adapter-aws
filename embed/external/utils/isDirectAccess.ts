@@ -1,8 +1,10 @@
+import type {
+  awslambda as AwsLambda,
+  LambdaRequestPayload,
+  ResponseStream
+} from '@jill64/types-lambda'
 import * as crypto from 'crypto'
 import { bridgeAuthToken, domainName } from '../params.js'
-import { LambdaIncomingRequest } from '../types/LambdaIncomingRequest.js'
-import { ResponseStream } from '../types/ResponseStream.js'
-import { AwsLambda } from '../types/awslambda.js'
 import { qualified } from './qualified.js'
 
 export const isDirectAccess = ({
@@ -10,9 +12,9 @@ export const isDirectAccess = ({
   responseStream,
   awslambda
 }: {
-  request: LambdaIncomingRequest
+  request: LambdaRequestPayload
   responseStream: ResponseStream
-  awslambda: AwsLambda
+  awslambda: typeof AwsLambda
 }) => {
   const headerStr = headers['bridge-authorization']
   const headerToken = headerStr ? Buffer.from(headerStr) : null

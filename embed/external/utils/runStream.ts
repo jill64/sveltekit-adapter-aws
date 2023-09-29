@@ -1,5 +1,7 @@
-import { ResponseStream } from '../types/ResponseStream.js'
-import { AwsLambda } from '../types/awslambda.js'
+import type {
+  awslambda as AwsLambda,
+  ResponseStream
+} from '@jill64/types-lambda'
 import { qualified } from './qualified.js'
 
 export const runStream = ({
@@ -9,7 +11,7 @@ export const runStream = ({
 }: {
   response: Response
   responseStream: ResponseStream
-  awslambda: AwsLambda
+  awslambda: typeof AwsLambda
 }) => {
   const responseHeadersEntries = [] as [string, string][]
 
