@@ -56,7 +56,7 @@
     "publint": "0.2.3"
   },
   "dependencies": {
-    "@jill64/types-lambda": "^0.1.7",
+    "@jill64/types-lambda": "^0.1.8",
     "@sveltejs/kit": "1.25.1",
     "@types/mime-types": "^2.1.1",
     "@types/node": "^20.6.2",

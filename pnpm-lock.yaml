@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@jill64/types-lambda':
-        specifier: ^0.1.7
-        version: 0.1.7(typescript@5.2.2)
+        specifier: ^0.1.8
+        version: 0.1.8(typescript@5.2.2)
       '@sveltejs/kit':
         specifier: 1.25.1
         version: 1.25.1(svelte@4.2.1)(vite@4.4.9)
@@ -612,8 +612,8 @@ packages:
       svelte-french-toast: 1.2.0(svelte@4.2.1)
     dev: true
 
-  /@jill64/types-lambda@0.1.7(typescript@5.2.2):
-    resolution: {integrity: sha512-mnkrxkna2mdXRe5LOrxRni2bOjSCa71IS7UFXiEwGcWXuijY6pisjXCSkKRwhpUc6RudlPm3J0IsbV5p/p9Lbw==}
+  /@jill64/types-lambda@0.1.8(typescript@5.2.2):
+    resolution: {integrity: sha512-VnyfYmm/LZUMkO9LF08AP0dZm3twQgPLO43652SCIzGEv5bkXSAmZGeXIUsctE7E5Laff4w4MYOj3jufXZV0aQ==}
     peerDependencies:
       typescript: ^5.0.0
     dependencies:
