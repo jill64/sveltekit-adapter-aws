@@ -1,11 +1,9 @@
-import type { AwsLambda } from '../../external/types/awslambda.js'
+import { awslambda } from '@jill64/types-lambda'
 import { generateCanonicalOrigin } from '../../external/utils/generateCanonicalOrigin.js'
 import { isDirectAccess } from '../../external/utils/isDirectAccess.js'
 import { respond } from '../../external/utils/respond.js'
 import { rewriteOriginHeader } from '../../external/utils/rewriteOriginHeader.js'
 import { runStream } from '../../external/utils/runStream.js'
-
-declare const awslambda: AwsLambda
 
 export const handler = awslambda.streamifyResponse(
   async (request, responseStream) => {
