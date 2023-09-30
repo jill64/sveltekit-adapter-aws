@@ -29,7 +29,7 @@ export const setup = async ({ builder, tmp, options }: Context) => {
     path.resolve(root, 'embed', 'external'),
     path.join(tmp, 'external'),
     {
-      filter: (file) => file !== 'params.js',
+      filter: (file) => file !== 'params.js'
     }
   )
 
