@@ -1,4 +1,4 @@
-import { awslambda } from '@jill64/types-lambda'
+import type { awslambda as AwsLambda } from '@jill64/types-lambda'
 import { cdn } from '../external/params.js'
 import { generateCanonicalOrigin } from '../external/utils/generateCanonicalOrigin.js'
 import { isDirectAccess } from '../external/utils/isDirectAccess.js'
@@ -7,6 +7,8 @@ import { rewriteOriginHeader } from '../external/utils/rewriteOriginHeader.js'
 import { runStream } from '../external/utils/runStream.js'
 import { streamFile } from '../external/utils/streamFile.js'
 import { verdictStaticAssets } from '../external/utils/verdictStaticAssets.js'
+
+declare const awslambda: typeof AwsLambda
 
 export const handler = awslambda.streamifyResponse(
   async (request, responseStream) => {
