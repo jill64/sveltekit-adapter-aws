@@ -10,8 +10,8 @@ export const edgeBundled = async (context: Context) => {
   await writeAssets(context, path.join('s3', builder.config.kit.paths.base))
 
   await buildEdge(context, {
-    source: 'edge-bundled.ts',
-    entryPoint: path.join('edge', 'index.ts')
+    source: 'edge-bundled.js',
+    entryPoint: path.join('edge', 'index.js')
   })
 
   // Make .env file
