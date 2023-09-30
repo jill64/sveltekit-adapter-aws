@@ -27,7 +27,10 @@ export const setup = async ({ builder, tmp, options }: Context) => {
 
   builder.copy(
     path.resolve(root, 'embed', 'external'),
-    path.join(tmp, 'external')
+    path.join(tmp, 'external'),
+    {
+      filter: (file) => file !== 'params.js',
+    }
   )
 
   const cdkPath = path.join(root, 'cdk')
