@@ -24,7 +24,7 @@ export const buildEdge = async (
     external: ['node:*', '@aws-sdk/*'],
     ...options?.esbuild,
     entryPoints: [edgeEntryPoint],
-    outfile: path.join(options.out, 'edge', 'server.js'),
+    outfile: path.join(options.out, 'edge', 'server.mjs'),
     platform: 'node',
     inject: [path.join(root, 'embed', 'shims.ts')]
   })

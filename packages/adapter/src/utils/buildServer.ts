@@ -18,13 +18,13 @@ export const buildServer = async (
   builder.copy(path.join(root, 'embed', 'arch', source), serverEntryPoint)
 
   await build({
-    format: 'cjs',
+    format: 'esm',
     bundle: true,
     minify: true,
     external: ['node:*', '@aws-sdk/*'],
     ...options.esbuild,
     entryPoints: [serverEntryPoint],
-    outfile: path.join(options.out, 'lambda', 'server.js'),
+    outfile: path.join(options.out, 'lambda', 'server.mjs'),
     platform: 'node',
     inject: [path.join(root, 'embed', 'shims.ts')]
   })
