@@ -1,7 +1,7 @@
-import type { OriginRequestHandler } from '../../external/types/edge/OriginRequestHandler.js'
+import { OriginRequestHandler } from '@jill64/types-lambda'
 import { verdictStaticAssets } from '../../external/utils/verdictStaticAssets.js'
 
-export const handler: OriginRequestHandler = async ({
+export const handler: OriginRequestHandler<'s3'> = async ({
   Records: [
     {
       cf: { request }

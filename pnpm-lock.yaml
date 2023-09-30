@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@jill64/types-lambda':
+        specifier: ^0.1.8
+        version: 0.1.8(typescript@5.2.2)
       '@sveltejs/kit':
         specifier: 1.25.1
         version: 1.25.1(svelte@4.2.1)(vite@4.4.9)
@@ -609,6 +612,15 @@ packages:
       svelte-french-toast: 1.2.0(svelte@4.2.1)
     dev: true
 
+  /@jill64/types-lambda@0.1.8(typescript@5.2.2):
+    resolution: {integrity: sha512-VnyfYmm/LZUMkO9LF08AP0dZm3twQgPLO43652SCIzGEv5bkXSAmZGeXIUsctE7E5Laff4w4MYOj3jufXZV0aQ==}
+    peerDependencies:
+      typescript: ^5.0.0
+    dependencies:
+      '@types/node': 20.7.2
+      typescript: 5.2.2
+    dev: false
+
   /@jridgewell/gen-mapping@0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}
     engines: {node: '>=6.0.0'}
@@ -747,6 +759,10 @@ packages:
 
   /@types/node@20.6.2:
     resolution: {integrity: sha512-Y+/1vGBHV/cYk6OI1Na/LHzwnlNCAfU3ZNGrc1LdRe/LAIbdDPTTv/HU3M7yXN448aTVDq3eKRm2cg7iKLb8gw==}
+
+  /@types/node@20.7.2:
+    resolution: {integrity: sha512-RcdC3hOBOauLP+r/kRt27NrByYtDjsXyAuSbR87O6xpsvi763WI+5fbSIvYJrXnt9w4RuxhV6eAXfIs7aaf/FQ==}
+    dev: false
 
   /@types/pug@2.0.6:
     resolution: {integrity: sha512-SnHmG9wN1UVmagJOnyo/qkk0Z7gejYxOYYmaAwr5u2yFYfsupN3sg10kyzN8Hep/2zbHxCnsumxOoRIRMBwKCg==}

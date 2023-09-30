@@ -1,12 +1,12 @@
+import { OriginRequestHandler } from '@jill64/types-lambda'
 import 'dotenv/config.js'
 import { domainName } from '../external/params.js'
-import { OriginRequestHandler } from '../external/types/edge/OriginRequestHandler.js'
 import { forbiddenHeaderPrefix } from '../external/utils/edge/forbiddenHeaderPrefix.js'
 import { forbiddenHeaders } from '../external/utils/edge/forbiddenHeaders.js'
 import { respond } from '../external/utils/respond.js'
 import { verdictStaticAssets } from '../external/utils/verdictStaticAssets.js'
 
-export const handler: OriginRequestHandler = async ({
+export const handler: OriginRequestHandler<'s3', 'include-body'> = async ({
   Records: [
     {
       cf: {

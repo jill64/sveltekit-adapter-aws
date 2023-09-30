@@ -1,7 +1,7 @@
 {
   "name": "@jill64/sveltekit-adapter-aws",
   "description": "AWS adapter for SvelteKit with multiple architecture",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "type": "module",
   "main": "dist/index.js",
   "license": "MIT",
@@ -33,7 +33,8 @@
   "scripts": {
     "dev": "pnpm build:adapter && cd packages/site && pnpm dev",
     "build": "pnpm build:adapter && pnpm build:site && publint",
-    "build:adapter": "cd packages/adapter && pnpm build",
+    "build:adapter": "pnpm transpile:embed && cd packages/adapter && pnpm build",
+    "transpile:embed": "cd embed && pnpm run transpile",
     "build:site": "cd packages/site && pnpm build",
     "preview": "pnpm build:adapter && cd packages/site && pnpm preview",
     "check": "tsc && cd packages/site && pnpm check",
@@ -56,6 +57,7 @@
     "publint": "0.2.3"
   },
   "dependencies": {
+    "@jill64/types-lambda": "^0.1.8",
     "@sveltejs/kit": "1.25.1",
     "@types/mime-types": "^2.1.1",
     "@types/node": "^20.6.2",

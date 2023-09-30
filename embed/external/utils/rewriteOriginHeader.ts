@@ -1,10 +1,10 @@
+import { LambdaRequestPayload } from '@jill64/types-lambda'
 import { domainName } from '../params.js'
-import { LambdaIncomingRequest } from '../types/LambdaIncomingRequest.js'
 import { generateCanonicalOrigin } from './generateCanonicalOrigin.js'
 import { getCloudFrontDomain } from './getCloudFrontDomain.js'
 
 export const rewriteOriginHeader = (
-  request: LambdaIncomingRequest,
+  request: LambdaRequestPayload,
   setOriginHeader: (origin: string) => unknown
 ) => {
   const { headers } = request

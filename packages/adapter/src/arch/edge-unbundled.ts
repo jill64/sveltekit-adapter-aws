@@ -11,12 +11,12 @@ export const edgeUnbundled = async (context: Context) => {
   )
 
   await buildEdge(context, {
-    source: path.join('edge-unbundled', 'edge.ts'),
-    entryPoint: path.join('server', 'edge', 'index.ts')
+    source: path.join('edge-unbundled', 'edge.js'),
+    entryPoint: path.join('server', 'edge', 'index.js')
   })
 
   await buildServer(context, {
-    source: path.join('edge-unbundled', 'server.ts'),
-    entryPoint: path.join('server', 'lambda', 'index.ts')
+    source: path.join('edge-unbundled', 'server.js'),
+    entryPoint: path.join('server', 'lambda', 'index.js')
   })
 }

@@ -1,5 +1,7 @@
-import { ResponseStream } from '../types/ResponseStream.js'
-import { AwsLambda } from '../types/awslambda.js'
+import type {
+  awslambda as AwsLambda,
+  ResponseStream
+} from '@jill64/types-lambda'
 
 export const qualified = (
   responseStream: ResponseStream,
@@ -10,7 +12,7 @@ export const qualified = (
   }: {
     statusCode: number
     headers: Record<string, string>
-    awslambda: AwsLambda
+    awslambda: typeof AwsLambda
   }
 ) =>
   awslambda.HttpResponseStream.from(responseStream, {

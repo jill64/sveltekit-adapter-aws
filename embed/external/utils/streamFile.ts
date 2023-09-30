@@ -1,9 +1,11 @@
+import type {
+  awslambda as AwsLambda,
+  ResponseStream
+} from '@jill64/types-lambda'
 import { createReadStream } from 'fs'
-import { lookupMimeTypes } from './lookupMimeTypes.js'
 import path from 'path'
 import { base } from '../params.js'
-import { ResponseStream } from '../types/ResponseStream.js'
-import { AwsLambda } from '../types/awslambda.js'
+import { lookupMimeTypes } from './lookupMimeTypes.js'
 import { qualified } from './qualified.js'
 
 export const streamFile = ({
@@ -13,7 +15,7 @@ export const streamFile = ({
 }: {
   assetPath: string
   responseStream: ResponseStream
-  awslambda: AwsLambda
+  awslambda: typeof AwsLambda
 }) => {
   const filePath = assetPath.replace(base, '')
   const type = lookupMimeTypes(filePath)
