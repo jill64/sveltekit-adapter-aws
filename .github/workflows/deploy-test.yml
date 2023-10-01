@@ -49,7 +49,6 @@ jobs:
           ADAPTER_FQDN: ${{ format('{0}.adapter-aws.com', matrix.architecture) }}
           ADAPTER_CERTIFICATE_ARN: ${{ (matrix.architecture == 'lambda-mono' && secrets.LAMBDA_MONO_CERTIFICATE_ARN) || (matrix.architecture == 'lambda-s3' && secrets.LAMBDA_S3_CERTIFICATE_ARN) || (matrix.architecture == 'edge-bundled' && secrets.EDGE_BUNDLED_CERTIFICATE_ARN) || (matrix.architecture == 'edge-unbundled' && secrets.EDGE_UNBUNDLED_CERTIFICATE_ARN)}}
 
-  
   test-dev:
     needs: deploy
     if: vars.STAGE != 'prod'
