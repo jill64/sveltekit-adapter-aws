@@ -7,16 +7,22 @@ const config = {
   kit: {
     adapter: adapter({
       name: process.env.ADAPTER_ARCHITECTURE
-        ? `${process.env.ADAPTER_ARCHITECTURE}-preview-site`
+        ? `${process.env.ADAPTER_ARCHITECTURE}-preview-site${
+            process.env.STAGE === 'prod' ? '' : '-dev'
+          }`
         : undefined,
       architecture: process.env.ADAPTER_ARCHITECTURE,
       deploy: process.env.CI,
       memory: 256,
       cdn: true,
-      domain: {
-        fqdn: process.env.ADAPTER_FQDN,
-        certificateArn: process.env.ADAPTER_CERTIFICATE_ARN
-      },
+      ...(process.env.STAGE === 'prod'
+        ? {
+            domain: {
+              fqdn: process.env.ADAPTER_FQDN,
+              certificateArn: process.env.ADAPTER_CERTIFICATE_ARN
+            }
+          }
+        : {}),
       env: {
         KEY1: 'VALUE1',
         KEY2: 'VALUE2',
