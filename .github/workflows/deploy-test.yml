@@ -43,8 +43,19 @@ jobs:
           ADAPTER_FQDN: ${{ format('{0}.adapter-aws.com', matrix.architecture) }}
           ADAPTER_CERTIFICATE_ARN: ${{ (matrix.architecture == 'lambda-mono' && secrets.LAMBDA_MONO_CERTIFICATE_ARN) || (matrix.architecture == 'lambda-s3' && secrets.LAMBDA_S3_CERTIFICATE_ARN) || (matrix.architecture == 'edge-bundled' && secrets.EDGE_BUNDLED_CERTIFICATE_ARN) || (matrix.architecture == 'edge-unbundled' && secrets.EDGE_UNBUNDLED_CERTIFICATE_ARN)}}
 
-  test:
+  test-dev:
     needs: deploy
+    if: vars.STAGE != 'prod'
+    strategy:
+      matrix:
+        architecture: [lambda-mono, lambda-s3, edge-bundled, edge-unbundled]
+    uses: jill64/workflows/.github/workflows/test.yml@main
+    with:
+      test-command: ${{ format('pnpx playwright install && export ADAPTER_FQDN={0} && pnpm test', (matrix.architecture == 'lambda-mono' && vars.LAMBDA_MONO_PREVIEW_URL) || (matrix.architecture == 'lambda-s3' && vars.LAMBDA_S3_PREVIEW_URL) || (matrix.architecture == 'edge-bundled' && vars.EDGE_BUNDLED_PREVIEW_URL) || (matrix.architecture == 'edge-unbundled' && vars.EDGE_UNBUNDLED_PREVIEW_URL)) }}
+  
+  test-prod:
+    needs: deploy
+    if: vars.STAGE == 'prod'
     strategy:
       matrix:
         architecture: [lambda-mono, lambda-s3, edge-bundled, edge-unbundled]
