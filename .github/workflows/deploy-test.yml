@@ -45,38 +45,17 @@ jobs:
 
   test-dev:
     needs: deploy
-    if: vars.STAGE != 'prod'
+    if: github.event_name == 'pull_request'
     strategy:
       matrix:
         architecture: [lambda-mono, lambda-s3, edge-bundled, edge-unbundled]
-
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3
-        with:
-          node-version: 20
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: latest
-          run_install: true
-
-      - name: Install Playwright
-        run: pnpx playwright install
-
-      - name: Test
-        run: pnpm test
-        env:
-          ADAPTER_FQDN: ${{ (matrix.architecture == 'lambda-mono' && vars.LAMBDA_MONO_PREVIEW_URL) || (matrix.architecture == 'lambda-s3' && vars.LAMBDA_S3_PREVIEW_URL) || (matrix.architecture == 'edge-bundled' && vars.EDGE_BUNDLED_PREVIEW_URL) || (matrix.architecture == 'edge-unbundled' && vars.EDGE_UNBUNDLED_PREVIEW_URL) }}
+    uses: jill64/workflows/.github/workflows/test.yml@main
+    with:
+      test-command: ${{ format('pnpx playwright install && export ADAPTER_FQDN={0} && pnpm test', (matrix.architecture == 'lambda-mono' && vars.LAMBDA_MONO_PREVIEW_URL) || (matrix.architecture == 'lambda-s3' && vars.LAMBDA_S3_PREVIEW_URL) || (matrix.architecture == 'edge-bundled' && vars.EDGE_BUNDLED_PREVIEW_URL) || (matrix.architecture == 'edge-unbundled' && vars.EDGE_UNBUNDLED_PREVIEW_URL)) }}
 
   test-prod:
     needs: deploy
-    if: vars.STAGE == 'prod'
+    if: github.event_name != 'pull_request'
     strategy:
       matrix:
         architecture: [lambda-mono, lambda-s3, edge-bundled, edge-unbundled]
