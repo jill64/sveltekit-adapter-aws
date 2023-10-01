@@ -72,7 +72,7 @@ jobs:
       - name: Test
         run: pnpm test
         env:
-          ADAPTER_FQDN: ${{ matrix.architecture == 'lambda-mono' && vars.LAMBDA_MONO_PREVIEW_URL) || (matrix.architecture == 'lambda-s3' && vars.LAMBDA_S3_PREVIEW_URL) || (matrix.architecture == 'edge-bundled' && vars.EDGE_BUNDLED_PREVIEW_URL) || (matrix.architecture == 'edge-unbundled' && vars.EDGE_UNBUNDLED_PREVIEW_URL }}
+          ADAPTER_FQDN: ${{ (matrix.architecture == 'lambda-mono' && vars.LAMBDA_MONO_PREVIEW_URL) || (matrix.architecture == 'lambda-s3' && vars.LAMBDA_S3_PREVIEW_URL) || (matrix.architecture == 'edge-bundled' && vars.EDGE_BUNDLED_PREVIEW_URL) || (matrix.architecture == 'edge-unbundled' && vars.EDGE_UNBUNDLED_PREVIEW_URL) }}
 
   test-prod:
     needs: deploy
