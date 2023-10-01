@@ -1,5 +1,5 @@
 {
-  "app": "tsx bin/synth.ts",
+  "app": "npx tsx bin/synth.ts",
   "watch": {
     "include": ["**"],
     "exclude": [
