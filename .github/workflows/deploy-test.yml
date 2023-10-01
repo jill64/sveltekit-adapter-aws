@@ -52,7 +52,7 @@ jobs:
     uses: jill64/workflows/.github/workflows/test.yml@main
     with:
       test-command: ${{ format('pnpx playwright install && export ADAPTER_FQDN={0} && pnpm test', (matrix.architecture == 'lambda-mono' && vars.LAMBDA_MONO_PREVIEW_URL) || (matrix.architecture == 'lambda-s3' && vars.LAMBDA_S3_PREVIEW_URL) || (matrix.architecture == 'edge-bundled' && vars.EDGE_BUNDLED_PREVIEW_URL) || (matrix.architecture == 'edge-unbundled' && vars.EDGE_UNBUNDLED_PREVIEW_URL)) }}
-  
+
   test-prod:
     needs: deploy
     if: vars.STAGE == 'prod'
