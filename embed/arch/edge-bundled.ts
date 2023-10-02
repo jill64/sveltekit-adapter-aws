@@ -30,14 +30,6 @@ export const handler: OriginRequestHandler<'s3', 'include-body'> = async ({
     return request
   }
 
-  // Rewrite origin header from pre-defined FQDN
-  if (
-    domainName &&
-    request.headers.origin?.[0]?.value === `https://${domainName}`
-  ) {
-    request.headers.origin[0].value = `https://${distributionDomainName}`
-  }
-
   const hasBody = method !== 'GET' && method !== 'HEAD'
 
   if (hasBody && request.body?.inputTruncated) {
@@ -57,7 +49,7 @@ export const handler: OriginRequestHandler<'s3', 'include-body'> = async ({
     body: hasBody ? request.body?.data : undefined,
     headers,
     sourceIp,
-    origin: `https://${distributionDomainName}`,
+    origin: `https://${domainName ? domainName : distributionDomainName}`,
     pathname,
     queryString: querystring,
     isBase64Encoded
