@@ -1,7 +1,8 @@
 import type { awslambda as AwsLambda } from '@jill64/types-lambda'
-import { domainName } from '../external/params.js'
+import { generateCanonicalOrigin } from '../external/utils/generateCanonicalOrigin.js'
 import { isDirectAccess } from '../external/utils/isDirectAccess.js'
 import { respond } from '../external/utils/respond.js'
+import { rewriteOriginHeader } from '../external/utils/rewriteOriginHeader.js'
 import { runStream } from '../external/utils/runStream.js'
 import { streamFile } from '../external/utils/streamFile.js'
 import { verdictStaticAssets } from '../external/utils/verdictStaticAssets.js'
@@ -27,6 +28,10 @@ export const handler = awslambda.streamifyResponse(
       return
     }
 
+    rewriteOriginHeader(request, (origin) => {
+      headers.origin = origin
+    })
+
     const assetPath = verdictStaticAssets({
       method,
       pathname
@@ -41,7 +46,7 @@ export const handler = awslambda.streamifyResponse(
     }
 
     const response = await respond({
-      origin: domainName ? `https://${domainName}` : headers.origin,
+      origin: generateCanonicalOrigin(request),
       pathname,
       queryString: rawQueryString,
       method,
