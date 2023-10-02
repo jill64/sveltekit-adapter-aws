@@ -68,7 +68,6 @@
     "esbuild": "^0.19.3",
     "mime-types": "^2.1.35",
     "nanoid": "^5.0.1",
-    "tsx": "^3.12.10",
     "typescript": "5.2.2"
   }
 }
