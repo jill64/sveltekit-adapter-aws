@@ -1,7 +1,7 @@
 {
   "name": "@jill64/sveltekit-adapter-aws",
   "description": "AWS adapter for SvelteKit with multiple architecture",
-  "version": "0.4.8",
+  "version": "0.4.9",
   "type": "module",
   "main": "dist/index.js",
   "license": "MIT",
@@ -68,7 +68,6 @@
     "esbuild": "^0.19.3",
     "mime-types": "^2.1.35",
     "nanoid": "^5.0.1",
-    "tsx": "^3.12.10",
     "typescript": "5.2.2"
   }
 }
