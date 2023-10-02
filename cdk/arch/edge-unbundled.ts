@@ -47,13 +47,11 @@ export class CDKStack extends Stack {
       timeout
     })
 
-    const cf2 = domainName
-      ? new aws_cloudfront.Function(this, 'CF2', {
-          code: aws_cloudfront.FunctionCode.fromFile({
-            filePath: 'cf2/index.js'
-          })
-        })
-      : null
+    const cf2 = new aws_cloudfront.Function(this, 'CF2', {
+      code: aws_cloudfront.FunctionCode.fromFile({
+        filePath: 'cf2/index.js'
+      })
+    })
 
     const s3 = new aws_s3.Bucket(this, 'Bucket')
 
@@ -90,14 +88,12 @@ export class CDKStack extends Stack {
             eventType: aws_cloudfront.LambdaEdgeEventType.ORIGIN_REQUEST
           }
         ],
-        functionAssociations: cf2
-          ? [
-              {
-                function: cf2,
-                eventType: aws_cloudfront.FunctionEventType.VIEWER_REQUEST
-              }
-            ]
-          : []
+        functionAssociations: [
+          {
+            function: cf2,
+            eventType: aws_cloudfront.FunctionEventType.VIEWER_REQUEST
+          }
+        ]
       },
       httpVersion: aws_cloudfront.HttpVersion.HTTP2_AND_3,
       additionalBehaviors: {
@@ -105,14 +101,12 @@ export class CDKStack extends Stack {
           viewerProtocolPolicy,
           originRequestPolicy,
           origin: new aws_cloudfront_origins.S3Origin(s3),
-          functionAssociations: cf2
-            ? [
-                {
-                  function: cf2,
-                  eventType: aws_cloudfront.FunctionEventType.VIEWER_REQUEST
-                }
-              ]
-            : []
+          functionAssociations: [
+            {
+              function: cf2,
+              eventType: aws_cloudfront.FunctionEventType.VIEWER_REQUEST
+            }
+          ]
         }
       }
     })

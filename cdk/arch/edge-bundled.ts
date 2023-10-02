@@ -30,13 +30,11 @@ export class CDKStack extends Stack {
       memorySize
     })
 
-    const cf2 = domainName
-      ? new aws_cloudfront.Function(this, 'CF2', {
-          code: aws_cloudfront.FunctionCode.fromFile({
-            filePath: 'cf2/index.js'
-          })
-        })
-      : null
+    const cf2 = new aws_cloudfront.Function(this, 'CF2', {
+      code: aws_cloudfront.FunctionCode.fromFile({
+        filePath: 'cf2/index.js'
+      })
+    })
 
     const s3 = new aws_s3.Bucket(this, 'Bucket')
 
@@ -46,14 +44,12 @@ export class CDKStack extends Stack {
       originRequestPolicy:
         aws_cloudfront.OriginRequestPolicy.ALL_VIEWER_EXCEPT_HOST_HEADER,
       origin: new aws_cloudfront_origins.S3Origin(s3),
-      functionAssociations: cf2
-        ? [
-            {
-              function: cf2,
-              eventType: aws_cloudfront.FunctionEventType.VIEWER_REQUEST
-            }
-          ]
-        : []
+      functionAssociations: [
+        {
+          function: cf2,
+          eventType: aws_cloudfront.FunctionEventType.VIEWER_REQUEST
+        }
+      ]
     }
 
     const cdn = new aws_cloudfront.Distribution(this, 'CloudFront', {

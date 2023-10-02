@@ -46,13 +46,11 @@ export class CDKStack extends Stack {
           )
         : undefined
 
-      const cf2 = domainName
-        ? new aws_cloudfront.Function(this, 'CF2', {
-            code: aws_cloudfront.FunctionCode.fromFile({
-              filePath: 'cf2/index.js'
-            })
-          })
-        : null
+      const cf2 = new aws_cloudfront.Function(this, 'CF2', {
+        code: aws_cloudfront.FunctionCode.fromFile({
+          filePath: 'cf2/index.js'
+        })
+      })
 
       const behaviorBase = {
         origin: new aws_cloudfront_origins.HttpOrigin(
@@ -69,14 +67,12 @@ export class CDKStack extends Stack {
           aws_cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
         originRequestPolicy:
           aws_cloudfront.OriginRequestPolicy.ALL_VIEWER_EXCEPT_HOST_HEADER,
-        functionAssociations: cf2
-          ? [
-              {
-                function: cf2,
-                eventType: aws_cloudfront.FunctionEventType.VIEWER_REQUEST
-              }
-            ]
-          : []
+        functionAssociations: [
+          {
+            function: cf2,
+            eventType: aws_cloudfront.FunctionEventType.VIEWER_REQUEST
+          }
+        ]
       }
 
       const cloudfront = new aws_cloudfront.Distribution(this, 'CloudFront', {
