@@ -21,6 +21,10 @@ function handler(event) {
   if (host.value === domainName || !domainName) {
     request.querystring = {}
 
+    request.headers['x-forwarded-host'] = {
+      value: host.value
+    }
+
     keys.forEach((key, index) => {
       request.querystring[encodeURIComponent(key)] = values[index]
     })
