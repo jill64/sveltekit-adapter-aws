@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "@sveltejs/kit": "1.25.1",
-    "@jill64/svelte-toast": "0.1.5",
+    "@jill64/svelte-toast": "0.1.6",
     "@fontsource/fira-mono": "5.0.8",
     "@neoconfetti/svelte": "1.0.0",
     "@types/cookie": "0.5.2",
