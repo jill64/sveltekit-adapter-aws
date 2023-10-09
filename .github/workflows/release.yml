@@ -6,7 +6,7 @@ on:
 
 jobs:
   release:
-    uses: jill64/workflows/.github/workflows/release.yml@main
+    uses: jill64/semantic-manager/.github/workflows/release-npm.yml@main
     with:
       pre-publish: pnpm build:adapter
     secrets: inherit

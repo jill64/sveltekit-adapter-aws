@@ -12,3 +12,5 @@ vite.config.ts.timestamp-*
 cdk.out
 embed/**/*.js
 /test-results
+package-lock.json
+pnpm-lock.yaml
