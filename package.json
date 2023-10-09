@@ -55,7 +55,7 @@
   },
   "dependencies": {
     "@jill64/types-lambda": "0.1.9",
-    "@sveltejs/kit": "1.25.1",
+    "@sveltejs/kit": "1.25.2",
     "@types/mime-types": "2.1.2",
     "@types/node": "20.8.4",
     "aws-cdk": "2.100.0",
