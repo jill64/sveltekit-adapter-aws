@@ -1,7 +1,7 @@
 {
   "name": "@jill64/sveltekit-adapter-aws",
   "description": "AWS adapter for SvelteKit with multiple architecture",
-  "version": "0.4.16",
+  "version": "0.4.17",
   "type": "module",
   "main": "dist/index.js",
   "license": "MIT",
@@ -54,17 +54,17 @@
     "prettier-plugin-svelte": "3.0.3"
   },
   "dependencies": {
-    "@jill64/types-lambda": "^0.1.8",
+    "@jill64/types-lambda": "0.1.9",
     "@sveltejs/kit": "1.25.1",
-    "@types/mime-types": "^2.1.1",
-    "@types/node": "^20.6.2",
-    "aws-cdk": "^2.96.2",
+    "@types/mime-types": "2.1.2",
+    "@types/node": "20.8.3",
+    "aws-cdk": "2.100.0",
     "aws-cdk-lib": "2.99.1",
-    "constructs": "^10.2.70",
-    "dotenv": "^16.3.1",
-    "esbuild": "^0.19.3",
-    "mime-types": "^2.1.35",
-    "nanoid": "^5.0.1",
+    "constructs": "10.3.0",
+    "dotenv": "16.3.1",
+    "esbuild": "0.19.4",
+    "mime-types": "2.1.35",
+    "nanoid": "5.0.1",
     "typescript": "5.2.2"
   }
 }
