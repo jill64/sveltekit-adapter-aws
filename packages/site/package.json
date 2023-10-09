@@ -7,7 +7,7 @@
     "check": "svelte-kit sync && npx svelte-check --tsconfig ./tsconfig.json"
   },
   "devDependencies": {
-    "@sveltejs/kit": "1.25.1",
+    "@sveltejs/kit": "1.25.2",
     "@jill64/svelte-toast": "0.1.10",
     "@fontsource/fira-mono": "5.0.8",
     "@neoconfetti/svelte": "1.0.0",
