@@ -1,7 +1,8 @@
 # sveltekit-adapter-aws
 
-![github-actions-ci](https://github.com/jill64/sveltekit-adapter-aws/actions/workflows/ci.yml/badge.svg)
-![github-actions-deploy-test](https://github.com/jill64/sveltekit-adapter-aws/actions/workflows/deploy-test.yml/badge.svg)
+[![npm](https://img.shields.io/npm/v/%40jill64%2Fsveltekit-adapter-aws)](https://npmjs.com/package/@jill64/sveltekit-adapter-aws)
+[![github-actions-ci](https://github.com/jill64/sveltekit-adapter-aws/actions/workflows/ci.yml/badge.svg)](https://github.com/jill64/sveltekit-adapter-aws/actions/workflows/ci.yml)
+[![github-actions-deploy-test](https://github.com/jill64/sveltekit-adapter-aws/actions/workflows/deploy-test.yml/badge.svg)](https://github.com/jill64/sveltekit-adapter-aws/actions/workflows/deploy-test.yml)
 
 AWS adapter for SvelteKit with multiple architecture
 
