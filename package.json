@@ -1,7 +1,7 @@
 {
   "name": "@jill64/sveltekit-adapter-aws",
   "description": "AWS adapter for SvelteKit with multiple architecture",
-  "version": "0.4.22",
+  "version": "0.4.23",
   "type": "module",
   "main": "dist/index.js",
   "license": "MIT",
@@ -54,7 +54,7 @@
     "prettier-plugin-svelte": "3.0.3"
   },
   "dependencies": {
-    "@jill64/types-lambda": "0.1.9",
+    "@jill64/types-lambda": "0.1.13",
     "@sveltejs/kit": "1.25.2",
     "@types/mime-types": "2.1.2",
     "@types/node": "20.8.4",
