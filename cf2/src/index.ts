@@ -1,6 +1,9 @@
-var domainName = '__DOMAIN_NAME__'
+/* eslint-disable no-var */
+import { ViewerRequestHandler } from 'cf2-builder'
 
-function handler(event) {
+export default ((event) => {
+  var domainName = '__DOMAIN_NAME__'
+
   console.log('event', event)
 
   var request = event.request
@@ -64,4 +67,4 @@ function handler(event) {
       }
     }
   }
-}
+}) satisfies ViewerRequestHandler

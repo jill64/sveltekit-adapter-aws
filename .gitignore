@@ -11,6 +11,7 @@ vite.config.ts.timestamp-*
 .cdk.staging
 cdk.out
 embed/**/*.js
+cdk/external/cf2.js
 /test-results
 package-lock.json
 pnpm-lock.yaml
