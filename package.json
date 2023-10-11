@@ -33,7 +33,8 @@
   "scripts": {
     "dev": "pnpm build:adapter && cd packages/site && pnpm dev",
     "build": "pnpm build:adapter && pnpm build:site && npx publint",
-    "build:adapter": "pnpm transpile:embed && cd packages/adapter && pnpm build",
+    "build:adapter": "pnpm transpile:embed && pnpm build:cf2 && cd packages/adapter && pnpm build",
+    "build:cf2": "npx tsx cf2/scripts/build.ts",
     "transpile:embed": "cd embed && pnpm run transpile",
     "build:site": "cd packages/site && pnpm build",
     "preview": "pnpm build:adapter && cd packages/site && pnpm preview",
@@ -50,6 +51,7 @@
     "@playwright/test": "1.38.1",
     "@typescript-eslint/eslint-plugin": "6.7.5",
     "@typescript-eslint/parser": "6.7.5",
+    "cf2-builder": "^0.0.2",
     "eslint-config-prettier": "9.0.0",
     "eslint-plugin-svelte": "2.34.0",
     "prettier-plugin-svelte": "3.0.3"
