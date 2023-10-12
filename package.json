@@ -1,7 +1,7 @@
 {
   "name": "@jill64/sveltekit-adapter-aws",
   "description": "AWS adapter for SvelteKit with multiple architecture",
-  "version": "0.4.33",
+  "version": "0.4.34",
   "type": "module",
   "main": "dist/index.js",
   "license": "MIT",
@@ -48,7 +48,7 @@
     "@sveltejs/kit": "^1.0.0"
   },
   "devDependencies": {
-    "@playwright/test": "1.38.1",
+    "@playwright/test": "1.39.0",
     "@typescript-eslint/eslint-plugin": "6.7.5",
     "@typescript-eslint/parser": "6.7.5",
     "cf2-builder": "0.0.2",
