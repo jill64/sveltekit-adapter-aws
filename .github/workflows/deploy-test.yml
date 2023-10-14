@@ -37,7 +37,7 @@ jobs:
           aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
 
       - name: Build
-        run: pnpm build
+        run: npm run build:all
         env:
           STAGE: ${{ github.event_name == 'pull_request' && 'dev' || 'prod' }}
           ADAPTER_ARCHITECTURE: ${{ matrix.architecture }}

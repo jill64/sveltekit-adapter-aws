@@ -32,7 +32,7 @@
   },
   "scripts": {
     "dev": "pnpm build:adapter && cd packages/site && pnpm dev",
-    "build": "pnpm build:adapter && pnpm build:site && npx publint",
+    "build:all": "pnpm build:adapter && pnpm build:site && npx publint",
     "build:adapter": "pnpm transpile:embed && pnpm build:cf2 && cd packages/adapter && pnpm build",
     "build:cf2": "npx tsx cf2/scripts/build.ts",
     "transpile:embed": "cd embed && pnpm run transpile",
