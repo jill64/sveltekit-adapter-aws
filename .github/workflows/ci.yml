@@ -1,9 +1,0 @@
-name: CI
-
-on: push
-
-jobs:
-  check:
-    uses: jill64/workflows/.github/workflows/check.yml@main
-    with:
-      check-command: pnpm build:adapter && pnpm check
