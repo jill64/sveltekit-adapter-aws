@@ -63,8 +63,8 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: latest
-          run_install: true    
-          
+          run_install: true
+
       - name: Install Playwright
         run: npx playwright install
 
