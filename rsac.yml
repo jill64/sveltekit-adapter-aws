@@ -2,10 +2,10 @@ branch-protection:
   main:
     required_status_checks:
       contexts:
-        - test-dev (edge-bundled) / test
-        - test-dev (edge-unbundled) / test
-        - test-dev (lambda-mono) / test
-        - test-dev (lambda-s3) / test
+        - test (edge-bundled)
+        - test (edge-unbundled)
+        - test (lambda-mono)
+        - test (lambda-s3)
         - deploy (edge-bundled)
         - deploy (edge-unbundled)
         - deploy (lambda-mono)

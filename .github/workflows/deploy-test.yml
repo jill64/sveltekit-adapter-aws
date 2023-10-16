@@ -16,12 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3
+        uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: latest
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
@@ -44,22 +44,31 @@ jobs:
           ADAPTER_FQDN: ${{ format('{0}.adapter-aws.com', matrix.architecture) }}
           ADAPTER_CERTIFICATE_ARN: ${{ (matrix.architecture == 'lambda-mono' && secrets.LAMBDA_MONO_CERTIFICATE_ARN) || (matrix.architecture == 'lambda-s3' && secrets.LAMBDA_S3_CERTIFICATE_ARN) || (matrix.architecture == 'edge-bundled' && secrets.EDGE_BUNDLED_CERTIFICATE_ARN) || (matrix.architecture == 'edge-unbundled' && secrets.EDGE_UNBUNDLED_CERTIFICATE_ARN)}}
 
-  test-dev:
+  test:
     needs: deploy
-    if: github.event_name == 'pull_request'
     strategy:
       matrix:
         architecture: [lambda-mono, lambda-s3, edge-bundled, edge-unbundled]
-    uses: jill64/workflows/.github/workflows/test.yml@main
-    with:
-      test-command: ${{ format('pnpx playwright install && export ADAPTER_FQDN="{0}" && pnpm test', (matrix.architecture == 'lambda-mono' && vars.LAMBDA_MONO_PREVIEW_URL) || (matrix.architecture == 'lambda-s3' && vars.LAMBDA_S3_PREVIEW_URL) || (matrix.architecture == 'edge-bundled' && vars.EDGE_BUNDLED_PREVIEW_URL) || (matrix.architecture == 'edge-unbundled' && vars.EDGE_UNBUNDLED_PREVIEW_URL)) }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-  test-prod:
-    needs: deploy
-    if: github.event_name != 'pull_request'
-    strategy:
-      matrix:
-        architecture: [lambda-mono, lambda-s3, edge-bundled, edge-unbundled]
-    uses: jill64/workflows/.github/workflows/test.yml@main
-    with:
-      test-command: ${{ format('pnpx playwright install && export ADAPTER_FQDN={0}.adapter-aws.com && pnpm test', matrix.architecture) }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: latest
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+          run_install: true
+
+      - name: Install Playwright
+        run: npx playwright install
+
+      - name: Test
+        run: playwright test
+        env:
+          ADAPTER_FQDN: ${{ github.event_name == 'pull_request' && ((matrix.architecture == 'lambda-mono' && vars.LAMBDA_MONO_PREVIEW_URL) || (matrix.architecture == 'lambda-s3' && vars.LAMBDA_S3_PREVIEW_URL) || (matrix.architecture == 'edge-bundled' && vars.EDGE_BUNDLED_PREVIEW_URL) || (matrix.architecture == 'edge-unbundled' && vars.EDGE_UNBUNDLED_PREVIEW_URL)) || format('{0}.adapter-aws.com', matrix.architecture) }}
