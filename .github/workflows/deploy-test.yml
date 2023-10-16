@@ -69,6 +69,6 @@ jobs:
         run: npx playwright install
 
       - name: Test
-        run: npm run test:all
+        run: playwright test
         env:
           ADAPTER_FQDN: ${{ github.event_name == 'pull_request' && (matrix.architecture == 'lambda-mono' && vars.LAMBDA_MONO_PREVIEW_URL) || (matrix.architecture == 'lambda-s3' && vars.LAMBDA_S3_PREVIEW_URL) || (matrix.architecture == 'edge-bundled' && vars.EDGE_BUNDLED_PREVIEW_URL) || (matrix.architecture == 'edge-unbundled' && vars.EDGE_UNBUNDLED_PREVIEW_URL)) || format('{0}.adapter-aws.com', matrix.architecture) }}
