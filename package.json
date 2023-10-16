@@ -41,7 +41,6 @@
     "preview": "pnpm build:adapter && cd packages/site && npm run preview",
     "check": "pnpm build:adapter && tsc && pnpm check:site",
     "check:site": "cd packages/site && pnpm run check",
-    "test": "playwright test",
     "prepack": "npm run build:adapter",
     "format": "npx prettier --write . --plugin prettier-plugin-svelte .",
     "lint": "npx prettier --check . --plugin prettier-plugin-svelte . && npx eslint && pnpm check"
