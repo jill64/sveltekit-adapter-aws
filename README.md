@@ -2,6 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/%40jill64%2Fsveltekit-adapter-aws)](https://npmjs.com/package/@jill64/sveltekit-adapter-aws)
 [![github-actions-deploy-test](https://github.com/jill64/sveltekit-adapter-aws/actions/workflows/deploy-test.yml/badge.svg)](https://github.com/jill64/sveltekit-adapter-aws/actions/workflows/deploy-test.yml)
+[![npm](https://img.shields.io/npm/l/%40jill64%2Fsveltekit-adapter-aws)](https://npmjs.com/package/@jill64/sveltekit-adapter-aws)
 
 AWS adapter for SvelteKit with multiple architecture
 
@@ -16,13 +17,11 @@ If you want to use always-on servers (not serverless), consider EC2 (ECR) + [ada
 
 2. [Configure authentication and access credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-authentication.html) in AWS CLI
 
-3. Install adapter in your project
+3. Install adapter in your SvelteKit project
 
 ```sh
 npm i -D @jill64/sveltekit-aws-adapter
 ```
-
-## Quick Example
 
 ```js
 // svelte.config.js
@@ -32,8 +31,11 @@ const config = {
   // ...
   kit: {
     adapter: adapter({
+      name: 'Your Application Name',
+      deploy: true,
+      architecture: 'lambda-s3'
       // ...
-      // Adapter Options
+      // Other Adapter Options
       // ...
     })
   }
@@ -42,31 +44,26 @@ const config = {
 export default config
 ```
 
-See [All Adapter Options](./packages/adapter/src/types/AdapterOptions.ts)
+See [Full Adapter Options](./packages/adapter/src/types/AdapterOptions.ts)
 
 ## Architecture
 
 This adapter allows you to choose from multiple architectures depending on your use case.
 
-- [lambda-mono](./docs/lambda-mono/README.md)(Default)
-- [lambda-s3](./docs/lambda-s3/README.md)
-- [edge-bundled](./docs/edge-bundled/README.md)
-- [edge-unbundled](./docs/edge-unbundled/README.md)
+| Name                                                 | Response Streaming | Assets Scaling | Low Round Trip | Unlimited SSG | Demo Site                                      |
+| ---------------------------------------------------- | ------------------ | -------------- | -------------- | ------------- | ---------------------------------------------- |
+| [lambda-mono](./docs/lambda-mono/README.md)(Default) | ✅                 |                | ✅             |               | [Link](https://lambda-mono.adapter-aws.com)    |
+| [lambda-s3](./docs/lambda-s3/README.md)              | ✅                 | ✅             | ✅             |               | [Link](https://lambda-s3.adapter-aws.com)      |
+| [edge-bundled](./docs/edge-bundled/README.md)        |                    | ✅             | ✅             | ✅            | [Link](https://edge-bundled.adapter-aws.com)   |
+| [edge-unbundled](./docs/edge-unbundled/README.md)    | ✅                 | ✅             |                | ✅            | [Link](https://edge-unbundled.adapter-aws.com) |
 
-|                | Response Streaming | Assets Scaling | Low Round Trip | Unlimited SSG |
-| -------------- | ------------------ | -------------- | -------------- | ------------- |
-| lambda-mono    | ✅                 |                | ✅             |               |
-| lambda-s3      | ✅                 | ✅             | ✅             |               |
-| edge-bundled   |                    | ✅             | ✅             | ✅            |
-| edge-unbundled | ✅                 | ✅             |                | ✅            |
-
-## CI/CD
+## CI/CD Pipeline
 
 [GitHub Actions Example](./.github/workflows)
 
-1. Setup AWS CLI
+1. Setup AWS CLI (Not required in GitHub Actions)
 2. Setup AWS Credential
-3. Build Application
+3. Build Application with `deploy: true` option
 
 ## Manual Deploy
 
@@ -81,52 +78,3 @@ cd ./build && npx cdk deploy
 ```sh
 cd ./build && npx cdk destroy --all
 ```
-
-## Preview Sites
-
-- [lambda-mono](https://lambda-mono.adapter-aws.com)
-- [lambda-s3](https://lambda-s3.adapter-aws.com)
-- [edge-bundled](https://edge-bundled.adapter-aws.com)
-- [edge-unbundled](https://edge-unbundled.adapter-aws.com)
-
-## Directory
-
-### Package
-
-- `dist` - Export Adapter
-- `embed` - Server Source
-- `cdk` - AWS-CDK Stacks
-
-### App
-
-|     |                                       |
-| --- | ------------------------------------- |
-| #   | Copy files from package by setup step |
-| $   | Copy files from package by build step |
-| \*  | Injection value by build step         |
-| +   | Generate files by build step          |
-
-- `.sveltekit`
-  - `adapter-aws`
-    - `external`
-      - `params`(\*)
-      - `types`(#)
-      - `utils`(#)
-    - `server`
-      - `index.ts`($)
-    - `edge`
-      - `index.ts`($)
-    - `index.js`
-    - `manifest.js`
-- `build`
-  - `[resource]` - lambda | s3 | edge
-    - `assets`
-      - `_app`(+)
-      - `[pre-rendered]`(+)
-      - ...`static`(+)
-      - ...`pre-rendered`(+)
-    - `server.js`(+)
-  - `bin`
-    - `cdk-stack.ts`($)
-    - `synth.ts`(#)
-  - `cdk.json`(#)
