@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@jill64/types-lambda':
-        specifier: 0.1.18
-        version: 0.1.18(typescript@5.2.2)
+        specifier: 1.0.1
+        version: 1.0.1(typescript@5.2.2)
       '@sveltejs/kit':
         specifier: 1.27.0
         version: 1.27.0(svelte@4.2.2)(vite@4.5.0)
@@ -540,8 +540,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@jill64/types-lambda@0.1.18(typescript@5.2.2):
-    resolution: {integrity: sha512-1fEipnpPxymPBAl9Yrl5Vc6yKzLS8sB7mnWqhIDeyegAs8dI/4iorMonFIQ/GC5l3Cc3VovC2gCeI8XY1qODow==}
+  /@jill64/types-lambda@1.0.1(typescript@5.2.2):
+    resolution: {integrity: sha512-dbtPMzgRYieYcs+VoANaZe8Fvhoqq+jIBhcKzh/BPFlSzwDo5kltHVDB5ZIrwL/RQYr3D7A1erfEki4eF4XAqQ==}
     peerDependencies:
       typescript: ^5.0.0
     dependencies:
