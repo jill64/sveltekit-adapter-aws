@@ -43,7 +43,7 @@
     "check:site": "cd packages/site && pnpm run check",
     "prepack": "npm run build:adapter",
     "format": "npx prettier --write . --plugin prettier-plugin-svelte .",
-    "lint": "npx prettier --check . --plugin prettier-plugin-svelte . && npx eslint && pnpm check"
+    "lint": "npx prettier --check . --plugin prettier-plugin-svelte . && npx eslint . && pnpm check"
   },
   "peerDependencies": {
     "@sveltejs/kit": "^1.0.0"

@@ -66,7 +66,7 @@ jobs:
           run_install: true
 
       - name: Install Playwright
-        run: npx playwright install
+        run: npx playwright install --with-deps
 
       - name: Test
         run: pnpm exec playwright test
