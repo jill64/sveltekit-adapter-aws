@@ -46,7 +46,9 @@ export class CDKStack extends Stack {
         )
       : undefined
 
-    const s3 = new aws_s3.Bucket(this, 'Bucket')
+    const s3 = new aws_s3.Bucket(this, 'Bucket', {
+      transferAcceleration: true
+    })
 
     const cf2 = new aws_cloudfront.Function(this, 'CF2', {
       code: aws_cloudfront.FunctionCode.fromFile({
