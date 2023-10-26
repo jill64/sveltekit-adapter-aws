@@ -35,7 +35,7 @@
     "build:all": "npm run build:adapter && npm run build:site && npx publint",
     "build:adapter": "npm run transpile:embed && npm run build:cf2 && npm run build:adapterOnly",
     "build:adapterOnly": "cd packages/adapter && npm run build",
-    "build:cf2": "npx tsx cf2/scripts/build.ts",
+    "build:cf2": "npx cf2-builder cf2/src/index.ts cdk/external/cf2.js",
     "transpile:embed": "cd embed && npm run transpile",
     "build:site": "cd packages/site && npm run build",
     "preview": "npm run build:adapter && cd packages/site && npm run preview",

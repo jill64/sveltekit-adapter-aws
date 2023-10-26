@@ -36,7 +36,9 @@ export class CDKStack extends Stack {
       })
     })
 
-    const s3 = new aws_s3.Bucket(this, 'Bucket')
+    const s3 = new aws_s3.Bucket(this, 'Bucket', {
+      transferAcceleration: true
+    })
 
     const behaviorBase = {
       viewerProtocolPolicy:
