@@ -1,10 +1,5 @@
-# sveltekit-adapter-aws
-
-[![npm](https://img.shields.io/npm/v/%40jill64%2Fsveltekit-adapter-aws)](https://npmjs.com/package/@jill64/sveltekit-adapter-aws)
-[![github-actions-deploy-test](https://github.com/jill64/sveltekit-adapter-aws/actions/workflows/deploy-test.yml/badge.svg)](https://github.com/jill64/sveltekit-adapter-aws/actions/workflows/deploy-test.yml)
-[![npm](https://img.shields.io/npm/l/%40jill64%2Fsveltekit-adapter-aws)](https://npmjs.com/package/@jill64/sveltekit-adapter-aws)
-
-AWS adapter for SvelteKit with multiple architecture
+<!----- BEGIN GHOST DOCS HEADER ----->
+<!----- END GHOST DOCS HEADER ----->
 
 ## Introduction
 
