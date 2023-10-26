@@ -21,7 +21,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4
         with:
-          node-version: latest
+          node-version: 20
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
@@ -57,7 +57,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4
         with:
-          node-version: latest
+          node-version: 20
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
@@ -69,6 +69,6 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Test
-        run: pnpm exec playwright test
+        run: npx playwright test
         env:
           ADAPTER_FQDN: ${{ github.event_name == 'pull_request' && ((matrix.architecture == 'lambda-mono' && vars.LAMBDA_MONO_PREVIEW_URL) || (matrix.architecture == 'lambda-s3' && vars.LAMBDA_S3_PREVIEW_URL) || (matrix.architecture == 'edge-bundled' && vars.EDGE_BUNDLED_PREVIEW_URL) || (matrix.architecture == 'edge-unbundled' && vars.EDGE_UNBUNDLED_PREVIEW_URL)) || format('{0}.adapter-aws.com', matrix.architecture) }}
