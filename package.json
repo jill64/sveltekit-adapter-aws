@@ -35,7 +35,7 @@
     "build:all": "pnpm build:adapter && pnpm build:site && npx publint",
     "build:adapter": "pnpm transpile:embed && pnpm build:cf2 && pnpm build:adapterOnly",
     "build:adapterOnly": "cd packages/adapter && pnpm run build",
-    "build:cf2": "npx tsx cf2/scripts/build.ts",
+    "build:cf2": "npx cf2-builder cf2/src/index.ts cdk/external/cf2.js",
     "transpile:embed": "cd embed && pnpm run transpile",
     "build:site": "cd packages/site && pnpm build",
     "preview": "pnpm build:adapter && cd packages/site && npm run preview",
