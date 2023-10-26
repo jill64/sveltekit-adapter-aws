@@ -1,4 +1,11 @@
 <!----- BEGIN GHOST DOCS HEADER ----->
+
+# sveltekit-adapter-aws
+
+[![npm-version](https://img.shields.io/npm/v/@jill64/sveltekit-adapter-aws)](https://npmjs.com/package/@jill64/sveltekit-adapter-aws) [![npm-license](https://img.shields.io/npm/l/@jill64/sveltekit-adapter-aws)](https://npmjs.com/package/@jill64/sveltekit-adapter-aws) [![npm-download-month](https://img.shields.io/npm/dm/@jill64/sveltekit-adapter-aws)](https://npmjs.com/package/@jill64/sveltekit-adapter-aws) [![npm-min-size](https://img.shields.io/bundlephobia/min/@jill64/sveltekit-adapter-aws)](https://npmjs.com/package/@jill64/sveltekit-adapter-aws) [![deploy-test.yml](https://github.com/jill64/sveltekit-adapter-aws/actions/workflows/deploy-test.yml/badge.svg)](https://github.com/jill64/sveltekit-adapter-aws/actions/workflows/deploy-test.yml)
+
+AWS adapter for SvelteKit with multiple architecture
+
 <!----- END GHOST DOCS HEADER ----->
 
 ## Introduction
