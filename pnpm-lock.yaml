@@ -57,18 +57,9 @@ importers:
       cf2-builder:
         specifier: 1.0.0
         version: 1.0.0
-      eslint-config-prettier:
-        specifier: 9.0.0
-        version: 9.0.0(eslint@8.52.0)
       eslint-plugin-deprecation:
         specifier: 2.0.0
         version: 2.0.0(eslint@8.52.0)(typescript@5.2.2)
-      eslint-plugin-svelte:
-        specifier: 2.34.0
-        version: 2.34.0(eslint@8.52.0)(svelte@4.2.2)
-      prettier-plugin-svelte:
-        specifier: 3.0.3
-        version: 3.0.3(prettier@3.0.3)(svelte@4.2.2)
 
   packages/adapter: {}
 
@@ -86,12 +77,18 @@ importers:
       '@types/cookie':
         specifier: 0.5.3
         version: 0.5.3
+      eslint-config-prettier:
+        specifier: 9.0.0
+        version: 9.0.0(eslint@8.52.0)
+      eslint-plugin-svelte:
+        specifier: 2.34.0
+        version: 2.34.0(eslint@8.52.0)(svelte@4.2.2)
+      prettier-plugin-svelte:
+        specifier: 3.0.3
+        version: 3.0.3(prettier@3.0.3)(svelte@4.2.2)
       svelte:
         specifier: 4.2.2
         version: 4.2.2
-      tslib:
-        specifier: 2.6.2
-        version: 2.6.2
       vite:
         specifier: 4.5.0
         version: 4.5.0(@types/node@20.8.9)
