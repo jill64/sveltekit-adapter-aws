@@ -1,6 +1,7 @@
 {
   "type": "module",
   "scripts": {
-    "transpile": "tsc"
+    "transpile": "tsc",
+    "lint": "npx eslint ."
   }
 }
