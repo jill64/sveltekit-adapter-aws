@@ -43,8 +43,9 @@
     "format": "npm run format:lib && npm run format:site",
     "format:lib": "npx prettier --write .",
     "format:site": "cd packages/site && npm run format",
-    "lint": "npm run lint:lib && npm run lint:site",
-    "lint:lib": "npx eslint . && tsc && npx depcheck",
+    "lint": "npm run lint:lib && npm run lint:embed && npm run lint:site",
+    "lint:lib": "npx eslint . && tsc",
+    "lint:embed": "cd embed && npm run lint",
     "lint:site": "npm run build:adapter && cd packages/site && npm run lint"
   },
   "peerDependencies": {
