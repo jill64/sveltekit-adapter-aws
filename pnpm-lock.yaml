@@ -55,8 +55,8 @@ importers:
         specifier: 6.9.0
         version: 6.9.0(eslint@8.52.0)(typescript@5.2.2)
       cf2-builder:
-        specifier: 0.1.3
-        version: 0.1.3
+        specifier: 1.0.0
+        version: 1.0.0
       eslint-config-prettier:
         specifier: 9.0.0
         version: 9.0.0(eslint@8.52.0)
@@ -941,8 +941,9 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /cf2-builder@0.1.3:
-    resolution: {integrity: sha512-wvL45GLpWTyQjw3yKLIEPOTDIVhKpe0d/O6QFZ6WS9wGvysv1bEB63ai2d2iZFFixhmDs1ZCaUENcgj+bV8+MA==}
+  /cf2-builder@1.0.0:
+    resolution: {integrity: sha512-jUMVWBc280VTtTlCDsAU1ckqTKH/4J8AQiCtn/XxFpw03Y55lbxXC8qxYvdHwchTsydiuLiqfUZ2kxBUIBdrWA==}
+    hasBin: true
     dependencies:
       esbuild: 0.19.5
     dev: true
