@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@jill64/types-lambda':
-        specifier: 1.0.2
-        version: 1.0.2(typescript@5.2.2)
+        specifier: 1.0.3
+        version: 1.0.3(typescript@5.2.2)
       '@sveltejs/kit':
         specifier: 1.27.2
         version: 1.27.2(svelte@4.2.2)(vite@4.5.0)
@@ -536,12 +536,12 @@ packages:
     resolution: {integrity: sha512-dvuCeX5fC9dXgJn9t+X5atfmgQAzUOWqS1254Gh0m6i8wKd10ebXkfNKiRK+1GWi/yTvvLDHpoxLr0xxxeslWw==}
     dev: true
 
-  /@jill64/types-lambda@1.0.2(typescript@5.2.2):
-    resolution: {integrity: sha512-Uv+6gHnt0orLguSI7w2oo1iCdHLJPATdj0y6UljKFhQBjYI4B9V7qe2PzQfcJfhTGMV/w+7HjBC87N0WltQR+g==}
+  /@jill64/types-lambda@1.0.3(typescript@5.2.2):
+    resolution: {integrity: sha512-wK/qp3euSqwfsslCGByfey54CW46mv74GTECt475fqFli/E4uQdbfR2qSDJokicbzx4Imo7HDW8LbLQ8izGL+Q==}
     peerDependencies:
       typescript: ^5.0.0
     dependencies:
-      '@types/node': 20.8.8
+      '@types/node': 20.8.10
       typescript: 5.2.2
     dev: false
 
@@ -685,12 +685,6 @@ packages:
     resolution: {integrity: sha512-TlgT8JntpcbmKUFzjhsyhGfP2fsiz1Mv56im6enJ905xG1DAYesxJaeSbGqQmAw8OWPdhyJGhGSQGKRNJ45u9w==}
     dependencies:
       undici-types: 5.26.5
-
-  /@types/node@20.8.8:
-    resolution: {integrity: sha512-YRsdVxq6OaLfmR9Hy816IMp33xOBjfyOgUd77ehqg96CFywxAPbDbXvAsuN2KVg2HOT8Eh6uAfU+l4WffwPVrQ==}
-    dependencies:
-      undici-types: 5.25.3
-    dev: false
 
   /@types/semver@7.5.4:
     resolution: {integrity: sha512-MMzuxN3GdFwskAnb6fz0orFvhfqi752yjaXylr0Rp4oDg5H0Zn1IuyRhDVvYOwAXoJirx2xuS16I3WjxnAIHiQ==}
@@ -2037,10 +2031,6 @@ packages:
     resolution: {integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==}
     engines: {node: '>=14.17'}
     hasBin: true
-
-  /undici-types@5.25.3:
-    resolution: {integrity: sha512-Ga1jfYwRn7+cP9v8auvEXN1rX3sWqlayd4HP7OKk4mZWylEmu3KzXDUGrQUN6Ol7qo1gPvB2e5gX6udnyEPgdA==}
-    dev: false
 
   /undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
