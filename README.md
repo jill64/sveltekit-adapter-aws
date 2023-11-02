@@ -6,6 +6,8 @@
 
 AWS adapter for SvelteKit with multiple architecture
 
+
+
 <!----- END GHOST DOCS HEADER ----->
 
 ## Introduction
