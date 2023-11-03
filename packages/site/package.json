@@ -9,7 +9,7 @@
     "format": "npx prettier --write . --plugin prettier-plugin-svelte ."
   },
   "devDependencies": {
-    "@sveltejs/kit": "1.27.2",
+    "@sveltejs/kit": "1.27.3",
     "@fontsource/fira-mono": "5.0.8",
     "@neoconfetti/svelte": "1.0.0",
     "eslint-config-prettier": "9.0.0",
