@@ -12,8 +12,8 @@ importers:
         specifier: 1.0.4
         version: 1.0.4(typescript@5.2.2)
       '@sveltejs/kit':
-        specifier: 1.27.5
-        version: 1.27.5(svelte@4.2.3)(vite@4.5.0)
+        specifier: 1.27.6
+        version: 1.27.6(svelte@4.2.3)(vite@4.5.0)
       '@types/mime-types':
         specifier: 2.1.4
         version: 2.1.4
@@ -72,8 +72,8 @@ importers:
         specifier: 1.0.0
         version: 1.0.0
       '@sveltejs/kit':
-        specifier: 1.27.5
-        version: 1.27.5(svelte@4.2.3)(vite@4.5.0)
+        specifier: 1.27.6
+        version: 1.27.6(svelte@4.2.3)(vite@4.5.0)
       '@types/cookie':
         specifier: 0.5.4
         version: 0.5.4
@@ -606,8 +606,8 @@ packages:
   /@polka/url@1.0.0-next.23:
     resolution: {integrity: sha512-C16M+IYz0rgRhWZdCmK+h58JMv8vijAA61gmz2rspCSwKwzBebpdcsiUmwrtJRdphuY30i6BSLEOP8ppbNLyLg==}
 
-  /@sveltejs/kit@1.27.5(svelte@4.2.3)(vite@4.5.0):
-    resolution: {integrity: sha512-+L1WPs/ZYNjXoBFoFARypD4aZOjkT51vFpRCtQI45+Fmmfi4Y0dH/8VFlmYD6VlGe89ViIPg7lgf/JpGQ2tr7A==}
+  /@sveltejs/kit@1.27.6(svelte@4.2.3)(vite@4.5.0):
+    resolution: {integrity: sha512-GsjTkMbKzXdbeRg0tk8S7HNShQ4879ftRr0ZHaZfjbig1xQwG57Bvcm9U9/mpLJtCapLbLWUnygKrgcLISLC8A==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
