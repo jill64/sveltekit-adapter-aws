@@ -20,7 +20,7 @@ export const adapter = (options?: AdapterOptions): Adapter => {
         options: {
           ...options,
           out: options?.architecture ?? 'build',
-          architecture: options?.architecture ?? ('lambda-mono' as const),
+          architecture: options?.architecture ?? ('lambda-s3' as const),
           name: options?.name ?? 'SvelteKit-App-Default',
           memory: options?.memory ?? 128,
           deploy: options?.deploy ?? false,
