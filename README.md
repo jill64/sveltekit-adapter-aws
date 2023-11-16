@@ -6,7 +6,7 @@
 
 🔌 SveleteKit AWS adapter with multiple architecture
 
-## Install
+## Installation
 
 ```sh
 npm i @jill64/sveltekit-adapter-aws
