@@ -54,12 +54,12 @@ See [Full Adapter Options](./packages/adapter/src/types/AdapterOptions.ts)
 
 This adapter allows you to choose from multiple architectures depending on your use case.
 
-| Name                                                 | Response Streaming | Assets Scaling | Low Round Trip | Unlimited SSG | Demo Site                                      |
-| ---------------------------------------------------- | ------------------ | -------------- | -------------- | ------------- | ---------------------------------------------- |
-| [lambda-mono](./docs/lambda-mono/README.md)(Default) | ✅                 |                | ✅             |               | [Link](https://lambda-mono.adapter-aws.com)    |
-| [lambda-s3](./docs/lambda-s3/README.md)              | ✅                 | ✅             | ✅             |               | [Link](https://lambda-s3.adapter-aws.com)      |
-| [edge-bundled](./docs/edge-bundled/README.md)        |                    | ✅             | ✅             | ✅            | [Link](https://edge-bundled.adapter-aws.com)   |
-| [edge-unbundled](./docs/edge-unbundled/README.md)    | ✅                 | ✅             |                | ✅            | [Link](https://edge-unbundled.adapter-aws.com) |
+| Name                                              | Response Streaming | Assets Scaling | Low Round Trip | Unlimited SSG | Demo Site                                      |
+| ------------------------------------------------- | ------------------ | -------------- | -------------- | ------------- | ---------------------------------------------- |
+| [lambda-mono](./docs/lambda-mono/README.md)       | ✅                 |                | ✅             |               | [Link](https://lambda-mono.adapter-aws.com)    |
+| [lambda-s3](./docs/lambda-s3/README.md)(Default)  | ✅                 | ✅             | ✅             |               | [Link](https://lambda-s3.adapter-aws.com)      |
+| [edge-bundled](./docs/edge-bundled/README.md)     |                    | ✅             | ✅             | ✅            | [Link](https://edge-bundled.adapter-aws.com)   |
+| [edge-unbundled](./docs/edge-unbundled/README.md) | ✅                 | ✅             |                | ✅            | [Link](https://edge-unbundled.adapter-aws.com) |
 
 ## CI/CD Pipeline
 

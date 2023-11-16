@@ -10,7 +10,7 @@ export type AdapterOptions = {
 
   /**
    * Architecture type
-   * @default 'lambda-mono'
+   * @default 'lambda-s3'
    */
   architecture?: ArchitectureType
 
