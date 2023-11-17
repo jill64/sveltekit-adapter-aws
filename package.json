@@ -63,7 +63,7 @@
     "cf2-builder": "1.0.0"
   },
   "dependencies": {
-    "@jill64/types-lambda": "1.0.4",
+    "@jill64/types-lambda": "1.0.5",
     "@sveltejs/kit": "1.27.6",
     "@types/mime-types": "2.1.4",
     "@types/node": "20.9.1",
