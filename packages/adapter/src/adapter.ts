@@ -40,10 +40,10 @@ export const adapter = (options?: AdapterOptions): Adapter => {
         arch === 'lambda-s3'
           ? lambdaS3
           : arch === 'edge-bundled'
-          ? edgeBundled
-          : arch === 'edge-unbundled'
-          ? edgeUnbundled
-          : lambdaMono
+            ? edgeBundled
+            : arch === 'edge-unbundled'
+              ? edgeUnbundled
+              : lambdaMono
 
       builder.log.minor('Building...')
 
