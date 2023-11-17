@@ -11,8 +11,8 @@ export const generateCanonicalOrigin = ({
   const domain = domainName
     ? domainName
     : cfDomainName
-    ? cfDomainName
-    : lambdaDomainName
+      ? cfDomainName
+      : lambdaDomainName
 
   return `https://${domain}`
 }
