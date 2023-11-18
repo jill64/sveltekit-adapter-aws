@@ -7,7 +7,7 @@ extends:
 parserOptions:
   ecmaVersion: 2020
   sourceType: module
-  project: ./eslint.tsconfig.json
+  project: ./tsconfig.json
   extraFileExtensions:
     - .svelte
 plugins:
