@@ -24,7 +24,6 @@
   "keywords": [
     "adapter",
     "aws",
-    "svelte",
     "sveltekit"
   ],
   "repository": {
