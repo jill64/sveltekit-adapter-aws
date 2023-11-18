@@ -3,8 +3,8 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "preview": "npm run build && vite preview",
-    "lint": "npx eslint . && npm run check",
+    "preview": "pnpm build && vite preview",
+    "lint": "pnpm check & npx eslint .",
     "check": "svelte-kit sync && npx svelte-check --tsconfig ./tsconfig.json",
     "format": "npx prettier --write . --plugin prettier-plugin-svelte ."
   },
