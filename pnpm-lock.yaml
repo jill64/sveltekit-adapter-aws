@@ -68,6 +68,9 @@ importers:
       '@fontsource/fira-mono':
         specifier: 5.0.8
         version: 5.0.8
+      '@jill64/sentry-sveltekit-edge':
+        specifier: 0.0.1
+        version: 0.0.1(@sveltejs/kit@1.27.6)
       '@neoconfetti/svelte':
         specifier: 1.0.0
         version: 1.0.0
@@ -556,6 +559,14 @@ packages:
 
   /@humanwhocodes/object-schema@2.0.1:
     resolution: {integrity: sha512-dvuCeX5fC9dXgJn9t+X5atfmgQAzUOWqS1254Gh0m6i8wKd10ebXkfNKiRK+1GWi/yTvvLDHpoxLr0xxxeslWw==}
+    dev: true
+
+  /@jill64/sentry-sveltekit-edge@0.0.1(@sveltejs/kit@1.27.6):
+    resolution: {integrity: sha512-6C5yltb9MXBKVOXFzttw6h44yCU74h1sntpzzBCm3ZIh0bbRkvUYxgIyosAXpxU8G3WNEgLEeyRUbR8rnaGJQQ==}
+    peerDependencies:
+      '@sveltejs/kit': ^1.0.0
+    dependencies:
+      '@sveltejs/kit': 1.27.6(svelte@4.2.5)(vite@5.0.0)
     dev: true
 
   /@jill64/types-lambda@1.0.5(typescript@5.2.2):
