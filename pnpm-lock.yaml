@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@jill64/types-lambda':
-        specifier: 1.0.6
-        version: 1.0.6(typescript@5.3.2)
+        specifier: 1.0.7
+        version: 1.0.7(typescript@5.3.2)
       '@sveltejs/kit':
         specifier: 1.27.6
         version: 1.27.6(svelte@4.2.7)(vite@4.5.0)
@@ -767,12 +767,12 @@ packages:
       '@sveltejs/kit': 1.27.6(svelte@4.2.7)(vite@5.0.0)
     dev: true
 
-  /@jill64/types-lambda@1.0.6(typescript@5.3.2):
-    resolution: {integrity: sha512-GV2attk66DoBBTKItPv3IPrUBst8bd/P/X8m9iy3Tw+QmzXsl/baHVqK9BbLIQnbGjvnJCs1uhAvbuDzdfeG/w==}
+  /@jill64/types-lambda@1.0.7(typescript@5.3.2):
+    resolution: {integrity: sha512-o8gQqoyXsiM25SY7XEIwPuszDoujVh7vljuULZZooPS5WDjYw8J5iI3E7xKZBxq+3dn5moZB7PliIpJXVxsWEw==}
     peerDependencies:
       typescript: ^5.0.0
     dependencies:
-      '@types/node': 20.9.2
+      '@types/node': 20.9.3
       typescript: 5.3.2
     dev: false
 
@@ -1073,12 +1073,6 @@ packages:
 
   /@types/mime-types@2.1.4:
     resolution: {integrity: sha512-lfU4b34HOri+kAY5UheuFMWPDOI+OPceBSHZKp69gEyTL/mmJ4cnU6Y/rlme3UL3GyOn6Y42hyIEw0/q8sWx5w==}
-    dev: false
-
-  /@types/node@20.9.2:
-    resolution: {integrity: sha512-WHZXKFCEyIUJzAwh3NyyTHYSR35SevJ6mZ1nWwJafKtiQbqRTIKSRcw3Ma3acqgsent3RRDqeVwpHntMk+9irg==}
-    dependencies:
-      undici-types: 5.26.5
     dev: false
 
   /@types/node@20.9.3:
