@@ -56,8 +56,8 @@
   },
   "devDependencies": {
     "@playwright/test": "1.40.0",
-    "@typescript-eslint/eslint-plugin": "6.13.0",
-    "@typescript-eslint/parser": "6.13.0",
+    "@typescript-eslint/eslint-plugin": "6.13.1",
+    "@typescript-eslint/parser": "6.13.1",
     "eslint-plugin-deprecation": "2.0.0",
     "cf2-builder": "1.0.3"
   },
