@@ -1,7 +1,7 @@
 {
   "name": "@jill64/sveltekit-adapter-aws",
   "description": "🔌 SveleteKit AWS adapter with multiple architecture",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "type": "module",
   "main": "dist/index.js",
   "license": "MIT",
@@ -65,7 +65,7 @@
     "@jill64/types-lambda": "1.0.10",
     "@sveltejs/kit": "1.27.6",
     "@types/mime-types": "2.1.4",
-    "@types/node": "20.10.0",
+    "@types/node": "20.10.1",
     "aws-cdk": "2.111.0",
     "aws-cdk-lib": "2.111.0",
     "constructs": "10.3.0",
