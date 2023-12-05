@@ -12,7 +12,7 @@
     "@fontsource/fira-mono": "5.0.8",
     "@jill64/sentry-sveltekit-edge": "0.0.1",
     "@neoconfetti/svelte": "1.0.0",
-    "@sveltejs/kit": "1.27.6",
+    "@sveltejs/kit": "1.27.7",
     "@types/cookie": "0.6.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-svelte": "2.35.1",
