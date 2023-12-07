@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@fontsource/fira-mono": "5.0.8",
-    "@jill64/sentry-sveltekit-edge": "0.0.1",
+    "@jill64/sentry-sveltekit-edge": "0.1.0",
     "@neoconfetti/svelte": "1.0.0",
     "@sveltejs/kit": "1.27.7",
     "@types/cookie": "0.6.0",
