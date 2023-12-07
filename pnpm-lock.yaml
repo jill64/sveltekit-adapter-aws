@@ -18,8 +18,8 @@ importers:
         specifier: 2.1.4
         version: 2.1.4
       '@types/node':
-        specifier: 20.10.3
-        version: 20.10.3
+        specifier: 20.10.4
+        version: 20.10.4
       aws-cdk:
         specifier: 2.114.1
         version: 2.114.1
@@ -94,7 +94,7 @@ importers:
         version: 4.2.8
       vite:
         specifier: 5.0.6
-        version: 5.0.6(@types/node@20.10.3)
+        version: 5.0.6(@types/node@20.10.4)
 
 packages:
 
@@ -757,7 +757,7 @@ packages:
       svelte: 4.2.8
       tiny-glob: 0.2.9
       undici: 5.26.5
-      vite: 4.5.0(@types/node@20.10.3)
+      vite: 4.5.0(@types/node@20.10.4)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -785,7 +785,7 @@ packages:
       svelte: 4.2.8
       tiny-glob: 0.2.9
       undici: 5.26.5
-      vite: 5.0.6(@types/node@20.10.3)
+      vite: 5.0.6(@types/node@20.10.4)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -801,7 +801,7 @@ packages:
       '@sveltejs/vite-plugin-svelte': 2.5.3(svelte@4.2.8)(vite@4.5.0)
       debug: 4.3.4
       svelte: 4.2.8
-      vite: 4.5.0(@types/node@20.10.3)
+      vite: 4.5.0(@types/node@20.10.4)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -817,7 +817,7 @@ packages:
       '@sveltejs/vite-plugin-svelte': 2.5.3(svelte@4.2.8)(vite@5.0.6)
       debug: 4.3.4
       svelte: 4.2.8
-      vite: 5.0.6(@types/node@20.10.3)
+      vite: 5.0.6(@types/node@20.10.4)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -836,7 +836,7 @@ packages:
       magic-string: 0.30.5
       svelte: 4.2.8
       svelte-hmr: 0.15.3(svelte@4.2.8)
-      vite: 4.5.0(@types/node@20.10.3)
+      vite: 4.5.0(@types/node@20.10.4)
       vitefu: 0.2.5(vite@4.5.0)
     transitivePeerDependencies:
       - supports-color
@@ -856,7 +856,7 @@ packages:
       magic-string: 0.30.5
       svelte: 4.2.8
       svelte-hmr: 0.15.3(svelte@4.2.8)
-      vite: 5.0.6(@types/node@20.10.3)
+      vite: 5.0.6(@types/node@20.10.4)
       vitefu: 0.2.5(vite@5.0.6)
     transitivePeerDependencies:
       - supports-color
@@ -880,8 +880,8 @@ packages:
     resolution: {integrity: sha512-lfU4b34HOri+kAY5UheuFMWPDOI+OPceBSHZKp69gEyTL/mmJ4cnU6Y/rlme3UL3GyOn6Y42hyIEw0/q8sWx5w==}
     dev: false
 
-  /@types/node@20.10.3:
-    resolution: {integrity: sha512-XJavIpZqiXID5Yxnxv3RUDKTN5b81ddNC3ecsA0SoFXz/QU8OGBwZGMomiq0zw+uuqbL/krztv/DINAQ/EV4gg==}
+  /@types/node@20.10.4:
+    resolution: {integrity: sha512-D08YG6rr8X90YB56tSIuBaddy/UXAA9RKJoFvrsnogAum/0pmjkgi4+2nx96A330FmioegBWmEYQ+syqCFaveg==}
     dependencies:
       undici-types: 5.26.5
 
@@ -2291,7 +2291,7 @@ packages:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
 
-  /vite@4.5.0(@types/node@20.10.3):
+  /vite@4.5.0(@types/node@20.10.4):
     resolution: {integrity: sha512-ulr8rNLA6rkyFAlVWw2q5YJ91v098AFQ2R0PRFwPzREXOUJQPtFUG0t+/ZikhaOCDqFoDhN6/v8Sq0o4araFAw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -2319,7 +2319,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.10.3
+      '@types/node': 20.10.4
       esbuild: 0.18.20
       postcss: 8.4.32
       rollup: 3.29.4
@@ -2327,7 +2327,7 @@ packages:
       fsevents: 2.3.3
     dev: false
 
-  /vite@5.0.6(@types/node@20.10.3):
+  /vite@5.0.6(@types/node@20.10.4):
     resolution: {integrity: sha512-MD3joyAEBtV7QZPl2JVVUai6zHms3YOmLR+BpMzLlX2Yzjfcc4gTgNi09d/Rua3F4EtC8zdwPU8eQYyib4vVMQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -2355,7 +2355,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.10.3
+      '@types/node': 20.10.4
       esbuild: 0.19.8
       postcss: 8.4.32
       rollup: 4.6.0
@@ -2371,7 +2371,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.5.0(@types/node@20.10.3)
+      vite: 4.5.0(@types/node@20.10.4)
     dev: false
 
   /vitefu@0.2.5(vite@5.0.6):
@@ -2382,7 +2382,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 5.0.6(@types/node@20.10.3)
+      vite: 5.0.6(@types/node@20.10.4)
     dev: true
 
   /which@2.0.2:
