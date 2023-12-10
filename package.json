@@ -55,11 +55,12 @@
     "@sveltejs/kit": "^1.0.0"
   },
   "devDependencies": {
+    "@jill64/prettier-config": "^1.0.0",
     "@playwright/test": "1.40.1",
     "@typescript-eslint/eslint-plugin": "6.13.2",
     "@typescript-eslint/parser": "6.13.2",
-    "eslint-plugin-deprecation": "2.0.0",
-    "cf2-builder": "1.0.4"
+    "cf2-builder": "1.0.4",
+    "eslint-plugin-deprecation": "2.0.0"
   },
   "dependencies": {
     "@jill64/types-lambda": "1.1.0",
