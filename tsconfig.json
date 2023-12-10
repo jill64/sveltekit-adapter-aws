@@ -5,7 +5,8 @@
     "strict": true,
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "noEmit": true
+    "noEmit": true,
+    "skipLibCheck": true
   },
-  "exclude": ["./packages/site/*"]
+  "exclude": ["packages/site", "dist", "cdk/external/cf2.js"]
 }
