@@ -59,7 +59,7 @@
     "@typescript-eslint/eslint-plugin": "6.13.2",
     "@typescript-eslint/parser": "6.13.2",
     "eslint-plugin-deprecation": "2.0.0",
-    "cf2-builder": "1.0.3"
+    "cf2-builder": "1.0.4"
   },
   "dependencies": {
     "@jill64/types-lambda": "1.1.0",
