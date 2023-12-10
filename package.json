@@ -1,7 +1,7 @@
 {
   "name": "@jill64/sveltekit-adapter-aws",
   "description": "🔌 SveleteKit AWS adapter with multiple architecture",
-  "version": "1.0.31",
+  "version": "1.1.0",
   "type": "module",
   "main": "dist/index.js",
   "license": "MIT",
@@ -16,9 +16,7 @@
   "files": [
     "dist",
     "embed",
-    "cdk",
-    "!*.test.*",
-    "!*.spec.*"
+    "cdk"
   ],
   "exports": {
     ".": {
@@ -40,47 +38,46 @@
     "access": "public"
   },
   "scripts": {
-    "dev": "npm run build:adapter && cd packages/site && npm run dev",
-    "build:all": "npm run build:adapter && npm run build:site && npx publint",
-    "build:adapter": "npm run transpile:embed && npm run build:cf2 && npm run build:adapterOnly",
-    "build:adapterOnly": "cd packages/adapter && npm run build",
+    "dev": "pnpm build:adapter && cd packages/site && pnpm dev",
+    "build:all": "pnpm build:adapter && pnpm build:site && npx publint",
+    "build:adapter": "pnpm transpile:embed && pnpm build:cf2 && pnpm build:adapterOnly",
+    "build:adapterOnly": "cd packages/adapter && pnpm build",
     "build:cf2": "npx cf2-builder cf2/src/index.ts cdk/external/cf2.js",
-    "transpile:embed": "cd embed && npm run transpile",
-    "build:site": "cd packages/site && npm run build",
-    "preview": "npm run build:adapter && cd packages/site && npm run preview",
-    "prepack": "npm run build:adapter",
-    "format": "npm run format:lib && npm run format:site",
-    "format:lib": "npx prettier --write .",
-    "format:site": "cd packages/site && npm run format",
-    "lint": "npm run lint:lib && npm run lint:embed && npm run lint:site",
+    "transpile:embed": "cd embed && pnpm transpile",
+    "build:site": "cd packages/site && pnpm build",
+    "preview": "pnpm build:adapter && cd packages/site && pnpm preview",
+    "prepack": "pnpm build:adapter",
+    "format": "pnpm format:lib && pnpm format:site",
+    "format:lib": "npx prettier -w .",
+    "format:site": "cd packages/site && pnpm format",
+    "lint": "pnpm lint:lib && pnpm lint:embed && pnpm lint:site",
     "lint:lib": "npx eslint . && tsc",
-    "lint:embed": "cd embed && npm run lint",
-    "lint:site": "npm run build:adapter && cd packages/site && npm run lint"
+    "lint:embed": "cd embed && pnpm lint",
+    "lint:site": "pnpm build:adapter && cd packages/site && pnpm lint"
   },
   "peerDependencies": {
     "@sveltejs/kit": "^1.0.0"
   },
   "devDependencies": {
+    "@jill64/eslint-config-ts": "1.0.1",
     "@jill64/prettier-config": "1.0.0",
+    "@jill64/playwright-config": "2.2.0",
+    "@sveltejs/kit": "1.27.7",
+    "@types/node": "20.10.4",
     "@playwright/test": "1.40.1",
-    "@typescript-eslint/eslint-plugin": "6.13.2",
-    "@typescript-eslint/parser": "6.13.2",
     "cf2-builder": "1.0.4",
-    "eslint-plugin-deprecation": "2.0.0"
+    "typescript": "5.3.3"
   },
   "dependencies": {
     "@jill64/types-lambda": "1.1.0",
-    "@sveltejs/kit": "1.27.7",
     "@types/mime-types": "2.1.4",
-    "@types/node": "20.10.4",
     "aws-cdk": "2.114.1",
     "aws-cdk-lib": "2.114.1",
     "constructs": "10.3.0",
     "dotenv": "16.3.1",
     "esbuild": "0.19.9",
     "mime-types": "2.1.35",
-    "nanoid": "5.0.4",
-    "typescript": "5.3.3"
+    "nanoid": "5.0.4"
   },
   "prettier": "@jill64/prettier-config"
 }
