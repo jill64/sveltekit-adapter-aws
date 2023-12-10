@@ -6,12 +6,6 @@
 
 🔌 SveleteKit AWS adapter with multiple architecture
 
-## Installation
-
-```sh
-npm i @jill64/sveltekit-adapter-aws
-```
-
 <!----- END GHOST DOCS HEADER ----->
 
 ## Introduction
