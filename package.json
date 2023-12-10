@@ -74,5 +74,6 @@
     "mime-types": "2.1.35",
     "nanoid": "5.0.4",
     "typescript": "5.3.3"
-  }
+  },
+  "prettier": "@jill64/prettier-config"
 }
