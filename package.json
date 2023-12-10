@@ -1,11 +1,16 @@
 {
   "name": "@jill64/sveltekit-adapter-aws",
   "description": "🔌 SveleteKit AWS adapter with multiple architecture",
-  "version": "1.0.30",
+  "version": "1.0.31",
   "type": "module",
   "main": "dist/index.js",
   "license": "MIT",
-  "author": "jill64 <intents.turrets0h@icloud.com> (https://github.com/jill64)",
+  "author": {
+    "name": "jill64",
+    "email": "143883742+jill64@users.noreply.github.com",
+    "url": "https://github.com/jill64",
+    "image": "https://avatars.githubusercontent.com/u/143883742?v=4"
+  },
   "bugs": "https://github.com/jill64/sveltekit-adapter-aws/issues",
   "homepage": "https://github.com/jill64/sveltekit-adapter-aws#readme",
   "files": [
@@ -28,7 +33,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/jill64/sveltekit-adapter-aws.git"
+    "url": "https://github.com/jill64/sveltekit-adapter-aws.git",
+    "image": "https://opengraph.githubassets.com/16ef0d45b840e3dbe1848b8d84828d3c1a195e732bcf2b967292f21338edfc9e/jill64/sveltekit-adapter-aws"
   },
   "publishConfig": {
     "access": "public"
@@ -55,11 +61,12 @@
     "@sveltejs/kit": "^1.0.0"
   },
   "devDependencies": {
+    "@jill64/prettier-config": "^1.0.0",
     "@playwright/test": "1.40.1",
     "@typescript-eslint/eslint-plugin": "6.13.2",
     "@typescript-eslint/parser": "6.13.2",
-    "eslint-plugin-deprecation": "2.0.0",
-    "cf2-builder": "1.0.4"
+    "cf2-builder": "1.0.4",
+    "eslint-plugin-deprecation": "2.0.0"
   },
   "dependencies": {
     "@jill64/types-lambda": "1.1.0",
@@ -70,9 +77,10 @@
     "aws-cdk-lib": "2.114.1",
     "constructs": "10.3.0",
     "dotenv": "16.3.1",
-    "esbuild": "0.19.8",
+    "esbuild": "0.19.9",
     "mime-types": "2.1.35",
     "nanoid": "5.0.4",
     "typescript": "5.3.3"
-  }
+  },
+  "prettier": "@jill64/prettier-config"
 }
