@@ -49,8 +49,8 @@ importers:
         specifier: 1.40.1
         version: 1.40.1
       '@sveltejs/kit':
-        specifier: 1.27.7
-        version: 1.27.7(svelte@4.2.8)(vite@4.5.1)
+        specifier: 1.28.0
+        version: 1.28.0(svelte@4.2.8)(vite@4.5.1)
       '@types/node':
         specifier: 20.10.4
         version: 20.10.4
@@ -73,13 +73,13 @@ importers:
         version: 1.0.1(svelte@4.2.8)(typescript@5.3.3)
       '@jill64/sentry-sveltekit-edge':
         specifier: 0.1.0
-        version: 0.1.0(@sveltejs/kit@1.27.7)(svelte@4.2.8)
+        version: 0.1.0(@sveltejs/kit@1.28.0)(svelte@4.2.8)
       '@neoconfetti/svelte':
         specifier: 1.0.0
         version: 1.0.0
       '@sveltejs/kit':
-        specifier: 1.27.7
-        version: 1.27.7(svelte@4.2.8)(vite@5.0.7)
+        specifier: 1.28.0
+        version: 1.28.0(svelte@4.2.8)(vite@5.0.7)
       '@types/cookie':
         specifier: 0.6.0
         version: 0.6.0
@@ -635,13 +635,13 @@ packages:
     resolution: {integrity: sha512-KuryQDStqkQ/zKR9Q7JXiW927m7SvwirQo6Oohss1Q9cRyYS2JOyhtcBavZnoEhH4pHJkaigfjUXA3em4n6egA==}
     dev: true
 
-  /@jill64/sentry-sveltekit-edge@0.1.0(@sveltejs/kit@1.27.7)(svelte@4.2.8):
+  /@jill64/sentry-sveltekit-edge@0.1.0(@sveltejs/kit@1.28.0)(svelte@4.2.8):
     resolution: {integrity: sha512-+Hq4Ww6HDeLEaYfEaUBAXihVuyrFqADYZCb7vZmX6HBXSwi2Q1PxfY4ZfqUei22anYEWQQW0btp2U4EIZ4XOUg==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
-      '@sentry/sveltekit': 7.86.0(@sveltejs/kit@1.27.7)(svelte@4.2.8)
-      '@sveltejs/kit': 1.27.7(svelte@4.2.8)(vite@5.0.7)
+      '@sentry/sveltekit': 7.86.0(@sveltejs/kit@1.28.0)(svelte@4.2.8)
+      '@sveltejs/kit': 1.28.0(svelte@4.2.8)(vite@5.0.7)
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -1011,7 +1011,7 @@ packages:
       svelte: 4.2.8
     dev: true
 
-  /@sentry/sveltekit@7.86.0(@sveltejs/kit@1.27.7)(svelte@4.2.8):
+  /@sentry/sveltekit@7.86.0(@sveltejs/kit@1.28.0)(svelte@4.2.8):
     resolution: {integrity: sha512-u1s/Bek5CoxXkfstGctF8uvT9ynmKitCIZ08uZazMMwhTL4W3lYsuqbQD5wphjLWlJkh9F8vU/VUkeKZksQAdw==}
     engines: {node: '>=16'}
     peerDependencies:
@@ -1025,7 +1025,7 @@ packages:
       '@sentry/types': 7.86.0
       '@sentry/utils': 7.86.0
       '@sentry/vite-plugin': 0.6.1
-      '@sveltejs/kit': 1.27.7(svelte@4.2.8)(vite@5.0.7)
+      '@sveltejs/kit': 1.28.0(svelte@4.2.8)(vite@5.0.7)
       magicast: 0.2.8
       sorcery: 0.11.0
     transitivePeerDependencies:
@@ -1063,9 +1063,10 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit@1.27.7(svelte@4.2.8)(vite@4.5.1):
-    resolution: {integrity: sha512-AzXYDoYt42clCBwLF9GTHsXyg2DFR31Ncyt8yxu8Aw4tgB433V+w+hcr1RTfAN9zKW2J2PY9FMQ8FoX/4Vw8CA==}
+  /@sveltejs/kit@1.28.0(svelte@4.2.8)(vite@4.5.1):
+    resolution: {integrity: sha512-T9hoS6XM840W4ZUgf3kKAoBt2dsupumUxBtlxt3ddu2yRLrqsKcC3gledBB/e5NtTC8zEZyR5qWBNFT9WAWmIA==}
     engines: {node: ^16.14 || >=18}
+    hasBin: true
     requiresBuild: true
     peerDependencies:
       svelte: ^3.54.0 || ^4.0.0-next.0 || ^5.0.0-next.0
@@ -1090,9 +1091,10 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit@1.27.7(svelte@4.2.8)(vite@5.0.7):
-    resolution: {integrity: sha512-AzXYDoYt42clCBwLF9GTHsXyg2DFR31Ncyt8yxu8Aw4tgB433V+w+hcr1RTfAN9zKW2J2PY9FMQ8FoX/4Vw8CA==}
+  /@sveltejs/kit@1.28.0(svelte@4.2.8)(vite@5.0.7):
+    resolution: {integrity: sha512-T9hoS6XM840W4ZUgf3kKAoBt2dsupumUxBtlxt3ddu2yRLrqsKcC3gledBB/e5NtTC8zEZyR5qWBNFT9WAWmIA==}
     engines: {node: ^16.14 || >=18}
+    hasBin: true
     requiresBuild: true
     peerDependencies:
       svelte: ^3.54.0 || ^4.0.0-next.0 || ^5.0.0-next.0
@@ -1772,6 +1774,7 @@ packages:
 
   /eslint-config-prettier@9.1.0(eslint@8.55.0):
     resolution: {integrity: sha512-NSWl5BFQWEPi1j4TjVNItzYV7dZXZ+wP6I6ZhrBGpChQhZRUaElihE9uRRkcbRnNb76UMKDF3r+WTmNcGPKsqw==}
+    hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
     dependencies:
@@ -3043,6 +3046,7 @@ packages:
   /vite@5.0.7(@types/node@20.10.4):
     resolution: {integrity: sha512-B4T4rJCDPihrQo2B+h1MbeGL/k/GMAHzhQ8S0LjQ142s6/+l3hHTT095ORvsshj4QCkoWu3Xtmob5mazvakaOw==}
     engines: {node: ^18.0.0 || >=20.0.0}
+    hasBin: true
     peerDependencies:
       '@types/node': ^18.0.0 || >=20.0.0
       less: '*'
