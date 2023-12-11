@@ -9,7 +9,7 @@
     "format": "npx @jill64/psx"
   },
   "devDependencies": {
-    "@jill64/eslint-config-svelte": "1.0.1",
+    "@jill64/eslint-config-svelte": "1.0.2",
     "@fontsource/fira-mono": "5.0.8",
     "@jill64/sentry-sveltekit-edge": "0.1.0",
     "@neoconfetti/svelte": "1.0.0",
