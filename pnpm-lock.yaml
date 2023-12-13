@@ -72,8 +72,8 @@ importers:
         specifier: 1.0.3
         version: 1.0.3(svelte@4.2.8)(typescript@5.3.3)
       '@jill64/sentry-sveltekit-edge':
-        specifier: 0.1.0
-        version: 0.1.0(@sveltejs/kit@1.30.1)(svelte@4.2.8)
+        specifier: 1.0.0
+        version: 1.0.0(@sveltejs/kit@1.30.1)(svelte@4.2.8)
       '@neoconfetti/svelte':
         specifier: 1.0.0
         version: 1.0.0
@@ -130,6 +130,7 @@ packages:
   /@babel/parser@7.23.5:
     resolution: {integrity: sha512-hOOqoiNXrmGdFbhgCzu6GiURxUgM27Xwd/aPuu8RfHEZPBzL1Z54okAHAQjXfcQNwvrlkAmAp4SlRTZ45vlthQ==}
     engines: {node: '>=6.0.0'}
+    hasBin: true
     dependencies:
       '@babel/types': 7.23.5
     dev: true
@@ -635,8 +636,8 @@ packages:
     resolution: {integrity: sha512-KuryQDStqkQ/zKR9Q7JXiW927m7SvwirQo6Oohss1Q9cRyYS2JOyhtcBavZnoEhH4pHJkaigfjUXA3em4n6egA==}
     dev: true
 
-  /@jill64/sentry-sveltekit-edge@0.1.0(@sveltejs/kit@1.30.1)(svelte@4.2.8):
-    resolution: {integrity: sha512-+Hq4Ww6HDeLEaYfEaUBAXihVuyrFqADYZCb7vZmX6HBXSwi2Q1PxfY4ZfqUei22anYEWQQW0btp2U4EIZ4XOUg==}
+  /@jill64/sentry-sveltekit-edge@1.0.0(@sveltejs/kit@1.30.1)(svelte@4.2.8):
+    resolution: {integrity: sha512-QLbBaB68ZRpdpR3DeEWSCZeRCZ9+HpQrhfuUsCnP1/Wu/Yt/GHTvwdeFj/u6RMbr/+/MEPGG9OorJRsHSOUOJQ==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
@@ -938,6 +939,7 @@ packages:
   /@sentry/cli@2.23.0:
     resolution: {integrity: sha512-xFTv7YOaKWMCSPgN8A1jZpxJQhwdES89pqMTWjJOgjmkwFvziuaTM7O7kazps/cACDhJp2lK2j6AT6imhr4t9w==}
     engines: {node: '>= 10'}
+    hasBin: true
     dependencies:
       https-proxy-agent: 5.0.1
       node-fetch: 2.7.0
@@ -1902,6 +1904,7 @@ packages:
   /esprima@4.0.1:
     resolution: {integrity: sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==}
     engines: {node: '>=4'}
+    hasBin: true
     dev: true
 
   /esquery@1.5.0:
@@ -2430,6 +2433,7 @@ packages:
 
   /mkdirp@0.5.6:
     resolution: {integrity: sha512-FP+p8RB8OWpF3YZBCrP5gtADmtXApB5AMLn+vdyA+PyxCjrCs00mjyUozssO33cwDeT3wNGdLxJ5M//YqtHAJw==}
+    hasBin: true
     dependencies:
       minimist: 1.2.8
     dev: true
@@ -2819,6 +2823,7 @@ packages:
 
   /sorcery@0.11.0:
     resolution: {integrity: sha512-J69LQ22xrQB1cIFJhPfgtLuI6BpWRiWu1Y3vSsIwK/eAScqJxd/+CJlUuHQRdX2C9NGFamq+KqNywGgaThwfHw==}
+    hasBin: true
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.15
       buffer-crc32: 0.2.13
