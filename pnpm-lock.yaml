@@ -49,8 +49,8 @@ importers:
         specifier: 1.40.1
         version: 1.40.1
       '@sveltejs/kit':
-        specifier: 1.29.1
-        version: 1.29.1(svelte@4.2.8)(vite@4.5.1)
+        specifier: 1.30.0
+        version: 1.30.0(svelte@4.2.8)(vite@4.5.1)
       '@types/node':
         specifier: 20.10.4
         version: 20.10.4
@@ -73,13 +73,13 @@ importers:
         version: 1.0.3(svelte@4.2.8)(typescript@5.3.3)
       '@jill64/sentry-sveltekit-edge':
         specifier: 0.1.0
-        version: 0.1.0(@sveltejs/kit@1.29.1)(svelte@4.2.8)
+        version: 0.1.0(@sveltejs/kit@1.30.0)(svelte@4.2.8)
       '@neoconfetti/svelte':
         specifier: 1.0.0
         version: 1.0.0
       '@sveltejs/kit':
-        specifier: 1.29.1
-        version: 1.29.1(svelte@4.2.8)(vite@5.0.8)
+        specifier: 1.30.0
+        version: 1.30.0(svelte@4.2.8)(vite@5.0.8)
       '@types/cookie':
         specifier: 0.6.0
         version: 0.6.0
@@ -635,13 +635,13 @@ packages:
     resolution: {integrity: sha512-KuryQDStqkQ/zKR9Q7JXiW927m7SvwirQo6Oohss1Q9cRyYS2JOyhtcBavZnoEhH4pHJkaigfjUXA3em4n6egA==}
     dev: true
 
-  /@jill64/sentry-sveltekit-edge@0.1.0(@sveltejs/kit@1.29.1)(svelte@4.2.8):
+  /@jill64/sentry-sveltekit-edge@0.1.0(@sveltejs/kit@1.30.0)(svelte@4.2.8):
     resolution: {integrity: sha512-+Hq4Ww6HDeLEaYfEaUBAXihVuyrFqADYZCb7vZmX6HBXSwi2Q1PxfY4ZfqUei22anYEWQQW0btp2U4EIZ4XOUg==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
-      '@sentry/sveltekit': 7.86.0(@sveltejs/kit@1.29.1)(svelte@4.2.8)
-      '@sveltejs/kit': 1.29.1(svelte@4.2.8)(vite@5.0.8)
+      '@sentry/sveltekit': 7.86.0(@sveltejs/kit@1.30.0)(svelte@4.2.8)
+      '@sveltejs/kit': 1.30.0(svelte@4.2.8)(vite@5.0.8)
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -1011,7 +1011,7 @@ packages:
       svelte: 4.2.8
     dev: true
 
-  /@sentry/sveltekit@7.86.0(@sveltejs/kit@1.29.1)(svelte@4.2.8):
+  /@sentry/sveltekit@7.86.0(@sveltejs/kit@1.30.0)(svelte@4.2.8):
     resolution: {integrity: sha512-u1s/Bek5CoxXkfstGctF8uvT9ynmKitCIZ08uZazMMwhTL4W3lYsuqbQD5wphjLWlJkh9F8vU/VUkeKZksQAdw==}
     engines: {node: '>=16'}
     peerDependencies:
@@ -1025,7 +1025,7 @@ packages:
       '@sentry/types': 7.86.0
       '@sentry/utils': 7.86.0
       '@sentry/vite-plugin': 0.6.1
-      '@sveltejs/kit': 1.29.1(svelte@4.2.8)(vite@5.0.8)
+      '@sveltejs/kit': 1.30.0(svelte@4.2.8)(vite@5.0.8)
       magicast: 0.2.8
       sorcery: 0.11.0
     transitivePeerDependencies:
@@ -1063,8 +1063,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit@1.29.1(svelte@4.2.8)(vite@4.5.1):
-    resolution: {integrity: sha512-zbHS6hy2OZLWTmkTktx7jpPaE5Qg9tk3li+wh06ISSLEYeiPrLlPMuhzmI2gM5d6ParNfDx7YCiPTeRr23IpMw==}
+  /@sveltejs/kit@1.30.0(svelte@4.2.8)(vite@4.5.1):
+    resolution: {integrity: sha512-HK7XE8ZAL7cGreRRxCCVEpcNA3x2KM0mfJlDv7geEyCElYjJsdBoANEb00HcYlvs/2ShNAsX8lY/A60s9Xdfew==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
@@ -1091,8 +1091,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit@1.29.1(svelte@4.2.8)(vite@5.0.8):
-    resolution: {integrity: sha512-zbHS6hy2OZLWTmkTktx7jpPaE5Qg9tk3li+wh06ISSLEYeiPrLlPMuhzmI2gM5d6ParNfDx7YCiPTeRr23IpMw==}
+  /@sveltejs/kit@1.30.0(svelte@4.2.8)(vite@5.0.8):
+    resolution: {integrity: sha512-HK7XE8ZAL7cGreRRxCCVEpcNA3x2KM0mfJlDv7geEyCElYjJsdBoANEb00HcYlvs/2ShNAsX8lY/A60s9Xdfew==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
