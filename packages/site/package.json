@@ -13,9 +13,10 @@
     "@fontsource/fira-mono": "5.0.8",
     "@jill64/sentry-sveltekit-edge": "1.1.0",
     "@neoconfetti/svelte": "1.0.0",
-    "@sveltejs/kit": "1.30.3",
+    "@sveltejs/kit": "2.0.0",
     "@types/cookie": "0.6.0",
     "svelte": "4.2.8",
-    "vite": "5.0.9"
+    "vite": "5.0.9",
+    "@sveltejs/vite-plugin-svelte": "3.0.1"
   }
 }

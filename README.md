@@ -21,6 +21,10 @@ If you want to use always-on servers (not serverless), consider EC2 (ECR) + [ada
 
 3. Install adapter in your SvelteKit project
 
+```sh
+npm i -D @jill64/sveltekit-aws-adapter
+```
+
 ```js
 // svelte.config.js
 import adapter from '@jill64/sveltekit-aws-adapter'
