@@ -15,11 +15,11 @@ importers:
         specifier: 2.1.4
         version: 2.1.4
       aws-cdk:
-        specifier: 2.114.1
-        version: 2.114.1
+        specifier: 2.115.0
+        version: 2.115.0
       aws-cdk-lib:
-        specifier: 2.114.1
-        version: 2.114.1(constructs@10.3.0)
+        specifier: 2.115.0
+        version: 2.115.0(constructs@10.3.0)
       constructs:
         specifier: 10.3.0
         version: 10.3.0
@@ -1195,8 +1195,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /aws-cdk-lib@2.114.1(constructs@10.3.0):
-    resolution: {integrity: sha512-pJy+Sa3+s6K9I0CXYGU8J5jumw9uQEbl8zPK8EMA+A6hP9qb1JN+a8ohyw6a1O1cb4D5S6gwH+hE7Fq7hGPY3A==}
+  /aws-cdk-lib@2.115.0(constructs@10.3.0):
+    resolution: {integrity: sha512-PGIwmjo9BcviKxuMfMlUCwevUjwXnaS5h8fxZOM6bN1HXCS/wIusft4tMmkiNYjPiNE1sHJbCDIbxxntCQ/7jg==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
@@ -1218,8 +1218,8 @@ packages:
       - table
       - yaml
 
-  /aws-cdk@2.114.1:
-    resolution: {integrity: sha512-iLOCPb3WAJOgVYQ4GvAnrjtScJfPwcczlB4995h3nUYQdHbus0jNffFv13zBShdWct3cuX+bqLuZ4JyEmJ9+rg==}
+  /aws-cdk@2.115.0:
+    resolution: {integrity: sha512-jf+5j+ygk/DqxLzYyjFnCOOlRgvL/fwcYhyanhpb1OEQEe1FF6NGUb1TYsnQc3Ly67qLOKkQgdeyeXgzkKoSOQ==}
     engines: {node: '>= 14.15.0'}
     hasBin: true
     optionalDependencies:
