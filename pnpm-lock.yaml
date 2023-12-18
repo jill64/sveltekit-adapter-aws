@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@jill64/types-lambda':
-        specifier: 1.1.0
-        version: 1.1.0(typescript@5.3.3)
+        specifier: 1.1.1
+        version: 1.1.1(typescript@5.3.3)
       '@types/mime-types':
         specifier: 2.1.4
         version: 2.1.4
@@ -449,8 +449,8 @@ packages:
       - svelte
     dev: true
 
-  /@jill64/types-lambda@1.1.0(typescript@5.3.3):
-    resolution: {integrity: sha512-2I2NRd+2w6e55DYEoDMv0YXlKNWS4gTuq4YNn4lQpHWt90nYP+aPxF9Os9hwVy8YwVWTutQcV0WjuGoa+kqXRg==}
+  /@jill64/types-lambda@1.1.1(typescript@5.3.3):
+    resolution: {integrity: sha512-AlSQTxwhe7Ar1WXP0g3OFfWlKPlRwffHjhS/c0E7CWplx7/K5S1jmhP6dBVAfuu1w0tqPAoolp0EI24YlgcRvg==}
     peerDependencies:
       typescript: ^5.0.0
     dependencies:
