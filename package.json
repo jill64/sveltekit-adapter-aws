@@ -7,7 +7,7 @@
   "license": "MIT",
   "author": {
     "name": "jill64",
-    "email": "143883742+jill64@users.noreply.github.com",
+    "email": "intents.turrets0h@icloud.com",
     "url": "https://github.com/jill64",
     "image": "https://avatars.githubusercontent.com/u/143883742?v=4"
   },
@@ -65,7 +65,7 @@
     "@sveltejs/kit": "2.0.3",
     "@types/node": "20.10.5",
     "@playwright/test": "1.40.1",
-    "cf2-builder": "1.0.4",
+    "cf2-builder": "1.0.5",
     "typescript": "5.3.3"
   },
   "dependencies": {
