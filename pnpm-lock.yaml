@@ -75,8 +75,8 @@ importers:
         specifier: 1.1.0
         version: 1.1.0(@sveltejs/kit@2.0.3)(svelte@4.2.8)
       '@neoconfetti/svelte':
-        specifier: 2.0.0
-        version: 2.0.0
+        specifier: 2.1.0
+        version: 2.1.0
       '@sveltejs/kit':
         specifier: 2.0.3
         version: 2.0.3(@sveltejs/vite-plugin-svelte@3.0.1)(svelte@4.2.8)(vite@5.0.10)
@@ -716,8 +716,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@neoconfetti/svelte@2.0.0:
-    resolution: {integrity: sha512-n/Uu7/XmHc8w0uBci0QWBjgbRzLhfWsH8yPJ5pMaseIvzSwabXvB30nb3JjzEYNBp9uGt4eCeY7LUmxAjnJV8A==}
+  /@neoconfetti/svelte@2.1.0:
+    resolution: {integrity: sha512-JuOYR+CpQ1uXZRijuyD5PsMoAZco9Mjt+9A+FvM6T/nBku+wp/JQLHY6/egXTCANWYLF+lUYCRHbtReG5DRXkQ==}
     dev: true
 
   /@nodelib/fs.scandir@2.1.5:
