@@ -72,8 +72,8 @@ importers:
         specifier: 1.0.5
         version: 1.0.5(svelte@4.2.8)(typescript@5.3.3)
       '@jill64/sentry-sveltekit-edge':
-        specifier: 1.1.0
-        version: 1.1.0(@sveltejs/kit@2.0.3)(svelte@4.2.8)
+        specifier: 1.1.4
+        version: 1.1.4(@sveltejs/kit@2.0.3)(svelte@4.2.8)
       '@neoconfetti/svelte':
         specifier: 2.1.0
         version: 2.1.0
@@ -642,10 +642,10 @@ packages:
     resolution: {integrity: sha512-KuryQDStqkQ/zKR9Q7JXiW927m7SvwirQo6Oohss1Q9cRyYS2JOyhtcBavZnoEhH4pHJkaigfjUXA3em4n6egA==}
     dev: true
 
-  /@jill64/sentry-sveltekit-edge@1.1.0(@sveltejs/kit@2.0.3)(svelte@4.2.8):
-    resolution: {integrity: sha512-oolakHvf1m/sk4IBbjZ+fpKu63ixqztKT7sjsaBbZMXH1ZCgpefi7jspyVQfFMk/DoPnASp74Lv3jBlfUfispA==}
+  /@jill64/sentry-sveltekit-edge@1.1.4(@sveltejs/kit@2.0.3)(svelte@4.2.8):
+    resolution: {integrity: sha512-+KDAYZ4MmTrWD4UoLgLnFIR6m0pwGQ9ej3+EPqHGtX2lZMJtIwH50qdfoUINciQj1XxlW/txjTAYGHdRvQPLUg==}
     peerDependencies:
-      '@sveltejs/kit': ^2.0.0
+      '@sveltejs/kit': '>=1.0.0'
     dependencies:
       '@sentry/sveltekit': 7.88.0(@sveltejs/kit@2.0.3)(svelte@4.2.8)
       '@sveltejs/kit': 2.0.3(@sveltejs/vite-plugin-svelte@3.0.1)(svelte@4.2.8)(vite@5.0.10)
