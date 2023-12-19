@@ -80,3 +80,10 @@ cd ./build && npx cdk deploy
 ```sh
 cd ./build && npx cdk destroy --all
 ```
+<!----- BEGIN GHOST DOCS FOOTER ----->
+
+## License
+
+MIT
+
+<!----- END GHOST DOCS FOOTER ----->
