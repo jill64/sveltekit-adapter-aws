@@ -1,8 +1,12 @@
 <!----- BEGIN GHOST DOCS HEADER ----->
 
-# sveltekit-adapter-aws
+# @jill64/sveltekit-adapter-aws
 
-<!----- BEGIN GHOST DOCS BADGES -----><a href="https://npmjs.com/package/@jill64/sveltekit-adapter-aws"><img src="https://img.shields.io/npm/v/@jill64/sveltekit-adapter-aws" alt="npm-version" /></a> <a href="https://npmjs.com/package/@jill64/sveltekit-adapter-aws"><img src="https://img.shields.io/npm/l/@jill64/sveltekit-adapter-aws" alt="npm-license" /></a> <a href="https://npmjs.com/package/@jill64/sveltekit-adapter-aws"><img src="https://img.shields.io/npm/dm/@jill64/sveltekit-adapter-aws" alt="npm-download-month" /></a> <a href="https://npmjs.com/package/@jill64/sveltekit-adapter-aws"><img src="https://img.shields.io/bundlephobia/min/@jill64/sveltekit-adapter-aws" alt="npm-min-size" /></a> <a href="https://github.com/jill64/sveltekit-adapter-aws/actions/workflows/deploy-test.yml"><img src="https://github.com/jill64/sveltekit-adapter-aws/actions/workflows/deploy-test.yml/badge.svg" alt="deploy-test.yml" /></a><!----- END GHOST DOCS BADGES ----->
+
+<!----- BEGIN GHOST DOCS BADGES ----->
+<a href="https://npmjs.com/package/@jill64/sveltekit-adapter-aws"><img src="https://img.shields.io/npm/v/@jill64/sveltekit-adapter-aws" alt="npm-version" /></a> <a href="https://npmjs.com/package/@jill64/sveltekit-adapter-aws"><img src="https://img.shields.io/npm/l/@jill64/sveltekit-adapter-aws" alt="npm-license" /></a> <a href="https://npmjs.com/package/@jill64/sveltekit-adapter-aws"><img src="https://img.shields.io/npm/dm/@jill64/sveltekit-adapter-aws" alt="npm-download-month" /></a> <a href="https://npmjs.com/package/@jill64/sveltekit-adapter-aws"><img src="https://img.shields.io/bundlephobia/min/@jill64/sveltekit-adapter-aws" alt="npm-min-size" /></a> <a href="https://github.com/jill64/sveltekit-adapter-aws/actions/workflows/deploy-test.yml"><img src="https://github.com/jill64/sveltekit-adapter-aws/actions/workflows/deploy-test.yml/badge.svg" alt="deploy-test.yml" /></a>
+<!----- END GHOST DOCS BADGES ----->
+
 
 🔌 SveleteKit AWS adapter with multiple architecture
 
