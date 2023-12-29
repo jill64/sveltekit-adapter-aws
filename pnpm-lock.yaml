@@ -55,8 +55,8 @@ importers:
         specifier: 20.10.5
         version: 20.10.5
       cf2-builder:
-        specifier: 1.0.5
-        version: 1.0.5
+        specifier: 1.1.1
+        version: 1.1.1
       typescript:
         specifier: 5.3.3
         version: 5.3.3
@@ -626,6 +626,16 @@ packages:
     transitivePeerDependencies:
       - supports-color
       - svelte
+    dev: true
+
+  /@jill64/transform@1.0.0:
+    resolution: {integrity: sha512-pwyMLSxedzcOnSqd9ylutdsV8/9hejjwbox65uJQBDVOy7m+QS4OUYi1+VXsxG3do1l58E2WrXgzB3d7sxUMKQ==}
+    dev: true
+
+  /@jill64/ts-cli@0.2.6:
+    resolution: {integrity: sha512-yRDB2Tdlyoj62zE646wor+JaQGmg6LNrUq2DvJ6kHLT8dHFnf/BuhA9Nfmkbcr13NOF9Uzk6AgMfhg4VCyiF+Q==}
+    dependencies:
+      '@jill64/transform': 1.0.0
     dev: true
 
   /@jill64/types-lambda@1.1.1(typescript@5.3.3):
@@ -1259,10 +1269,11 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /cf2-builder@1.0.5:
-    resolution: {integrity: sha512-8dD997RRFcGdsT+eG7CzCThcgoHmgOj0mlSGmlP4Y/oaOHH5aEKqrXZO72b4/1eBLSWiNlQkuvbAUnjq6TjD2g==}
+  /cf2-builder@1.1.1:
+    resolution: {integrity: sha512-jWBq+ej6TsMjkpnMcX/86v9VkgTv8+tqsH3Wl0Q+vk1sGyugdGx6zOxD3EJ7PZHfuP2ufpFldejZ5kaA9/82yw==}
     hasBin: true
     dependencies:
+      '@jill64/ts-cli': 0.2.6
       esbuild: 0.19.10
     dev: true
 
