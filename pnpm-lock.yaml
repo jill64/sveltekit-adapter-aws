@@ -69,8 +69,8 @@ importers:
         specifier: 5.0.8
         version: 5.0.8
       '@jill64/eslint-config-svelte':
-        specifier: 1.0.12
-        version: 1.0.12(svelte@4.2.8)(typescript@5.3.3)
+        specifier: 1.0.13
+        version: 1.0.13(svelte@4.2.8)(typescript@5.3.3)
       '@jill64/sentry-sveltekit-edge':
         specifier: 1.2.1
         version: 1.2.1(@sveltejs/kit@2.3.0)(svelte@4.2.8)
@@ -365,13 +365,13 @@ packages:
     resolution: {integrity: sha512-dvuCeX5fC9dXgJn9t+X5atfmgQAzUOWqS1254Gh0m6i8wKd10ebXkfNKiRK+1GWi/yTvvLDHpoxLr0xxxeslWw==}
     dev: true
 
-  /@jill64/eslint-config-svelte@1.0.12(svelte@4.2.8)(typescript@5.3.3):
-    resolution: {integrity: sha512-UD1UcfwckYKUhO+DIZqb5lukuD5BJY4jBQihMj5QHWtP74dAD4QJTuaLuGEfGRgA29IN6VUwNq9SS5MckDKi8w==}
+  /@jill64/eslint-config-svelte@1.0.13(svelte@4.2.8)(typescript@5.3.3):
+    resolution: {integrity: sha512-Fh/RVyPAtPV6oWwJQNqUZpEizK+3jr2rUrQ1zBzoaShsuk8uQ0MPZAPlONJ8yMJwC8P0tvP5DkbYVwjflAzh1A==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
       '@eslint/js': 8.56.0
-      '@types/eslint': 8.56.1
+      '@types/eslint': 8.56.2
       '@types/eslint-config-prettier': 6.11.3
       '@types/eslint__js': 8.42.3
       '@typescript-eslint/eslint-plugin': 6.18.1(@typescript-eslint/parser@6.18.1)(eslint@8.56.0)(typescript@5.3.3)
@@ -783,10 +783,17 @@ packages:
       '@types/json-schema': 7.0.15
     dev: true
 
+  /@types/eslint@8.56.2:
+    resolution: {integrity: sha512-uQDwm1wFHmbBbCZCqAlq6Do9LYwByNZHWzXppSnay9SuwJ+VRbjkbLABer54kcPnMSlG6Fdiy2yaFXm/z9Z5gw==}
+    dependencies:
+      '@types/estree': 1.0.5
+      '@types/json-schema': 7.0.15
+    dev: true
+
   /@types/eslint__js@8.42.3:
     resolution: {integrity: sha512-alfG737uhmPdnvkrLdZLcEKJ/B8s9Y4hrZ+YAdzUeoArBlSUERA2E87ROfOaS4jd/C45fzOoZzidLc1IPwLqOw==}
     dependencies:
-      '@types/eslint': 8.56.1
+      '@types/eslint': 8.56.2
     dev: true
 
   /@types/estree@1.0.5:
