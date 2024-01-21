@@ -55,8 +55,8 @@ importers:
         specifier: 20.11.5
         version: 20.11.5
       cf2-builder:
-        specifier: 1.1.2
-        version: 1.1.2
+        specifier: 1.1.3
+        version: 1.1.3
       typescript:
         specifier: 5.3.3
         version: 5.3.3
@@ -430,14 +430,14 @@ packages:
       - svelte
     dev: true
 
-  /@jill64/transform@1.0.0:
-    resolution: {integrity: sha512-pwyMLSxedzcOnSqd9ylutdsV8/9hejjwbox65uJQBDVOy7m+QS4OUYi1+VXsxG3do1l58E2WrXgzB3d7sxUMKQ==}
+  /@jill64/transform@1.0.1:
+    resolution: {integrity: sha512-Z4paRUK0nVsULhCIekMG7kiJ0jvriSlvLSnRFzHERBRIHL8+Ip/NpaSFS44ZcRH7zZZ67xNwoMqpOl9dnj9EPA==}
     dev: true
 
-  /@jill64/ts-cli@0.2.6:
-    resolution: {integrity: sha512-yRDB2Tdlyoj62zE646wor+JaQGmg6LNrUq2DvJ6kHLT8dHFnf/BuhA9Nfmkbcr13NOF9Uzk6AgMfhg4VCyiF+Q==}
+  /@jill64/ts-cli@0.2.7:
+    resolution: {integrity: sha512-kbwTfJtKjSAZNhw5WM078tj4tXj+X8/aWPbRuuBt5NYqNQzPf5jy/D2trow1x0tXeqI1nlSu4bYPkYfNoEjxCA==}
     dependencies:
-      '@jill64/transform': 1.0.0
+      '@jill64/transform': 1.0.1
     dev: true
 
   /@jill64/types-lambda@1.1.1(typescript@5.3.3):
@@ -1072,11 +1072,11 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /cf2-builder@1.1.2:
-    resolution: {integrity: sha512-zasTi9qQh0UfQqLEavvAJuNl78YkUDMepzLeT3plVl9YAW/uxZtuDOWhmxhb2Y2KdqgUn32NgGb0jC8IqXn8CQ==}
+  /cf2-builder@1.1.3:
+    resolution: {integrity: sha512-SsY6CdLY9eSfPUChqKQOMSIbSj7oDdFTNYDmoKiPJTu07LrFRARt1TXTKkFL10mWYN0O9b6HwI47OXPtU+9U4A==}
     hasBin: true
     dependencies:
-      '@jill64/ts-cli': 0.2.6
+      '@jill64/ts-cli': 0.2.7
       esbuild: 0.19.11
     dev: true
 
