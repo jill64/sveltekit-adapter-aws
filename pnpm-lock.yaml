@@ -15,11 +15,11 @@ importers:
         specifier: 2.1.4
         version: 2.1.4
       aws-cdk:
-        specifier: 2.122.0
-        version: 2.122.0
+        specifier: 2.123.0
+        version: 2.123.0
       aws-cdk-lib:
-        specifier: 2.122.0
-        version: 2.122.0(constructs@10.3.0)
+        specifier: 2.123.0
+        version: 2.123.0(constructs@10.3.0)
       constructs:
         specifier: 10.3.0
         version: 10.3.0
@@ -108,8 +108,8 @@ packages:
       '@jridgewell/trace-mapping': 0.3.20
     dev: true
 
-  /@aws-cdk/asset-awscli-v1@2.2.201:
-    resolution: {integrity: sha512-INZqcwDinNaIdb5CtW3ez5s943nX5stGBQS6VOP2JDlOFP81hM3fds/9NDknipqfUkZM43dx+HgVvkXYXXARCQ==}
+  /@aws-cdk/asset-awscli-v1@2.2.202:
+    resolution: {integrity: sha512-JqlF0D4+EVugnG5dAsNZMqhu3HW7ehOXm5SDMxMbXNDMdsF0pxtQKNHRl52z1U9igsHmaFpUgSGjbhAJ+0JONg==}
     dev: false
 
   /@aws-cdk/asset-kubectl-v20@2.1.2:
@@ -1213,13 +1213,13 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /aws-cdk-lib@2.122.0(constructs@10.3.0):
-    resolution: {integrity: sha512-NBUfYk/SialvKFsvBG/Ucd7lM+BID3Uy3EEOnIBbioDpnMotm5SDaU/RUm4APS4sxzQZX1DjduD5ZUFNHnEWhQ==}
+  /aws-cdk-lib@2.123.0(constructs@10.3.0):
+    resolution: {integrity: sha512-KSfX1ex52N/v25hjOlec1D9iCBLbGpegTR8rB4kYVqdQCdCWbKAwZjo6f38JZqkDlEJn+g249p8xiniq/gDniQ==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
     dependencies:
-      '@aws-cdk/asset-awscli-v1': 2.2.201
+      '@aws-cdk/asset-awscli-v1': 2.2.202
       '@aws-cdk/asset-kubectl-v20': 2.1.2
       '@aws-cdk/asset-node-proxy-agent-v6': 2.0.1
       constructs: 10.3.0
@@ -1236,8 +1236,8 @@ packages:
       - table
       - yaml
 
-  /aws-cdk@2.122.0:
-    resolution: {integrity: sha512-WqiVTedcuW4LjH4WqtQncliUdeDa9j9xgu3II8Qd1HmCZotbzBorYIHDvOJ+m3ovIzd9DL+hNq9PPUqxtBe0VQ==}
+  /aws-cdk@2.123.0:
+    resolution: {integrity: sha512-JvGNN1FobSaGwirJJQZ1oIkaHFfQoLbRyuxzFNQSs2wlVltwFb1VdR7FNxh0sVzugM2RsYQu8xQPUa53ZnDlyg==}
     engines: {node: '>= 14.15.0'}
     hasBin: true
     optionalDependencies:
