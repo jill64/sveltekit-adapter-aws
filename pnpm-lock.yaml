@@ -72,8 +72,8 @@ importers:
         specifier: 1.0.15
         version: 1.0.15(svelte@4.2.9)(typescript@5.3.3)
       '@jill64/sentry-sveltekit-edge':
-        specifier: 1.2.2
-        version: 1.2.2(@sveltejs/kit@2.4.3)(svelte@4.2.9)
+        specifier: 1.2.3
+        version: 1.2.3(@sveltejs/kit@2.4.3)(svelte@4.2.9)
       '@neoconfetti/svelte':
         specifier: 2.2.1
         version: 2.2.1
@@ -624,8 +624,8 @@ packages:
     resolution: {integrity: sha512-KuryQDStqkQ/zKR9Q7JXiW927m7SvwirQo6Oohss1Q9cRyYS2JOyhtcBavZnoEhH4pHJkaigfjUXA3em4n6egA==}
     dev: true
 
-  /@jill64/sentry-sveltekit-edge@1.2.2(@sveltejs/kit@2.4.3)(svelte@4.2.9):
-    resolution: {integrity: sha512-ZsVzw0UGdHAJteFDZemMzDZTO7erYz1alc34ZlONSpVt1aTIFfmZAODsh3CFHfzhmSVrLXFMFEVpteR90YPhtA==}
+  /@jill64/sentry-sveltekit-edge@1.2.3(@sveltejs/kit@2.4.3)(svelte@4.2.9):
+    resolution: {integrity: sha512-2+Y1e4jbiQj5vp+f+mWEGe97j6U/SDeQ2GxdHp6ADv6ZS7MUTcrnt/CeMiuNW1XZ6nB8/yKKum44tec2XW72sg==}
     peerDependencies:
       '@sveltejs/kit': 1.x || 2.x
     dependencies:
