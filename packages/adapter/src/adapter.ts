@@ -19,7 +19,7 @@ export const adapter = (options?: AdapterOptions): Adapter => {
         builder,
         options: {
           ...options,
-          out: options?.architecture ?? 'build',
+          out: options?.out ?? 'build',
           architecture: options?.architecture ?? ('lambda-s3' as const),
           name: options?.name ?? 'SvelteKit-App-Default',
           memory: options?.memory ?? 128,
