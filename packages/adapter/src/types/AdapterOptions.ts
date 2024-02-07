@@ -53,6 +53,12 @@ export type AdapterOptions = {
   env?: Record<string, string>
 
   /**
+   * Skip AWS CDK bootstrap step
+   * @default false
+   */
+  skipBootstrap?: boolean
+
+  /**
    * Custom domain of CloudFront distribution
    * @default undefined
    */

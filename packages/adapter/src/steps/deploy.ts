@@ -3,7 +3,7 @@ import { Context } from '../types/Context.js'
 
 export const deploy = async ({
   builder,
-  options: { deploy: deployStep, out }
+  options: { deploy: deployStep, out, skipBootstrap }
 }: Context) => {
   const run = (cmd: string) =>
     new Promise<void>((resolve, reject) => {
@@ -24,7 +24,9 @@ export const deploy = async ({
       })
     })
 
-  await run('npx cdk bootstrap')
+  if (!skipBootstrap) {
+    await run('npx cdk bootstrap')
+  }
 
   if (deployStep) {
     builder.log.minor('Deploying...')

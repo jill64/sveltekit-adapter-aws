@@ -71,6 +71,20 @@ This adapter allows you to choose from multiple architectures depending on your 
 2. Setup AWS Credential
 3. Build Application with `deploy: true` option
 
+## CDK Bootstrap
+
+The first time the AWS CDK stack is deployed, `bootstrap` must be run.
+Normally this is handled automatically by the adapter.
+However, this requires additional permissions, so you can optionally skip the `bootstrap` step.
+
+```js
+{
+  // Adapter Option
+  skipBootstrap: true
+  // ...
+}
+```
+
 ## Manual Deploy
 
 If the automatic deployment option is false, you can deploy the app at any time by running the following command after the app build is complete.
