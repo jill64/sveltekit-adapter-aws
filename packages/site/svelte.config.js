@@ -23,6 +23,7 @@ const config = {
             }
           }
         : {}),
+      skipBootstrap: process.env.CI,
       env: {
         KEY1: 'VALUE1',
         KEY2: 'VALUE2',
