@@ -69,8 +69,8 @@ importers:
         specifier: 5.0.8
         version: 5.0.8
       '@jill64/eslint-config-svelte':
-        specifier: 1.0.17
-        version: 1.0.17(svelte@4.2.10)(typescript@5.3.3)
+        specifier: 1.1.0
+        version: 1.1.0(svelte@4.2.10)(typescript@5.3.3)
       '@jill64/sentry-sveltekit-edge':
         specifier: 1.2.4
         version: 1.2.4(@sveltejs/kit@2.5.0)(svelte@4.2.10)
@@ -572,15 +572,13 @@ packages:
     resolution: {integrity: sha512-dvuCeX5fC9dXgJn9t+X5atfmgQAzUOWqS1254Gh0m6i8wKd10ebXkfNKiRK+1GWi/yTvvLDHpoxLr0xxxeslWw==}
     dev: true
 
-  /@jill64/eslint-config-svelte@1.0.17(svelte@4.2.10)(typescript@5.3.3):
-    resolution: {integrity: sha512-0qDXORI0WLgvk0/DV4CTIVpzj5pWGZ/tShsw1mBauWx7I8MmHm5nqQJ1wDmt9h41O8JGfGnsyOZD8wAN1mXP/Q==}
+  /@jill64/eslint-config-svelte@1.1.0(svelte@4.2.10)(typescript@5.3.3):
+    resolution: {integrity: sha512-cGwCYh3PP2nQ8fcfRps6uMxhl6BkkhWwfmVO8Mp1m6KQ43ds6SMdVJ7L1eBNaO9SsBynfLd4+J+7ZSkrcuEwcQ==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
       '@eslint/js': 8.56.0
       '@types/eslint': 8.56.2
-      '@types/eslint-config-prettier': 6.11.3
-      '@types/eslint__js': 8.42.3
       '@typescript-eslint/eslint-plugin': 6.21.0(@typescript-eslint/parser@6.21.0)(eslint@8.56.0)(typescript@5.3.3)
       '@typescript-eslint/parser': 6.21.0(eslint@8.56.0)(typescript@5.3.3)
       eslint: 8.56.0
@@ -977,21 +975,11 @@ packages:
     resolution: {integrity: sha512-4Kh9a6B2bQciAhf7FSuMRRkUWecJgJu9nPnx3yzpsfXX/c50REIqpHY4C82bXP90qrLtXtkDxTZosYO3UpOwlA==}
     dev: true
 
-  /@types/eslint-config-prettier@6.11.3:
-    resolution: {integrity: sha512-3wXCiM8croUnhg9LdtZUJQwNcQYGWxxdOWDjPe1ykCqJFPVpzAKfs/2dgSoCtAvdPeaponcWPI7mPcGGp9dkKQ==}
-    dev: true
-
   /@types/eslint@8.56.2:
     resolution: {integrity: sha512-uQDwm1wFHmbBbCZCqAlq6Do9LYwByNZHWzXppSnay9SuwJ+VRbjkbLABer54kcPnMSlG6Fdiy2yaFXm/z9Z5gw==}
     dependencies:
       '@types/estree': 1.0.5
       '@types/json-schema': 7.0.15
-    dev: true
-
-  /@types/eslint__js@8.42.3:
-    resolution: {integrity: sha512-alfG737uhmPdnvkrLdZLcEKJ/B8s9Y4hrZ+YAdzUeoArBlSUERA2E87ROfOaS4jd/C45fzOoZzidLc1IPwLqOw==}
-    dependencies:
-      '@types/eslint': 8.56.2
     dev: true
 
   /@types/estree@1.0.5:
