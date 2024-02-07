@@ -4,7 +4,8 @@
     "outDir": "../../dist",
     "declaration": true,
     "module": "NodeNext",
-    "moduleResolution": "NodeNext"
+    "moduleResolution": "NodeNext",
+    "skipLibCheck": true
   },
   "include": ["./src/*"]
 }
