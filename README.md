@@ -103,6 +103,6 @@ cd ./build && npx cdk destroy --all
 
 ## License
 
-MIT
+[MIT](LICENSE)
 
 <!----- END GHOST DOCS FOOTER ----->
