@@ -69,8 +69,8 @@ importers:
         specifier: 5.0.8
         version: 5.0.8
       '@jill64/eslint-config-svelte':
-        specifier: 1.1.1
-        version: 1.1.1(svelte@4.2.11)(typescript@5.3.3)
+        specifier: 1.2.0
+        version: 1.2.0(svelte@4.2.11)(typescript@5.3.3)
       '@jill64/sentry-sveltekit-edge':
         specifier: 1.2.5
         version: 1.2.5(@sveltejs/kit@2.5.0)(svelte@4.2.11)
@@ -802,8 +802,8 @@ packages:
     resolution: {integrity: sha512-dvuCeX5fC9dXgJn9t+X5atfmgQAzUOWqS1254Gh0m6i8wKd10ebXkfNKiRK+1GWi/yTvvLDHpoxLr0xxxeslWw==}
     dev: true
 
-  /@jill64/eslint-config-svelte@1.1.1(svelte@4.2.11)(typescript@5.3.3):
-    resolution: {integrity: sha512-TKzHi7JxT0oLx97v7lzCCMCgoA6e2iPRWFaJNz5dTkE4fpMPNYboph35OZAWjEcD5x1W4uBbTRIqsf3hFaAdLA==}
+  /@jill64/eslint-config-svelte@1.2.0(svelte@4.2.11)(typescript@5.3.3):
+    resolution: {integrity: sha512-KQkh/xwB+I9BQzOfMqTbqO0LeB5l+PcUug7ndD6OZh+EIExRUVn5EDLtrLZHOHz09LFzpOYsdvXMBcCqNYYB2Q==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
