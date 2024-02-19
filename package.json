@@ -75,7 +75,7 @@
     "aws-cdk-lib": "2.128.0",
     "constructs": "10.3.0",
     "dotenv": "16.4.4",
-    "esbuild": "0.20.0",
+    "esbuild": "0.20.1",
     "mime-types": "2.1.35",
     "nanoid": "5.0.5"
   },
