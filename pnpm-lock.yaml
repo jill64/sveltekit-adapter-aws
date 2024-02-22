@@ -49,8 +49,8 @@ importers:
         specifier: 1.41.2
         version: 1.41.2
       '@sveltejs/kit':
-        specifier: 2.5.0
-        version: 2.5.0(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.11)(vite@5.1.4)
+        specifier: 2.5.1
+        version: 2.5.1(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.11)(vite@5.1.4)
       '@types/node':
         specifier: 20.11.19
         version: 20.11.19
@@ -73,13 +73,13 @@ importers:
         version: 1.2.1(svelte@4.2.11)(typescript@5.3.3)
       '@jill64/sentry-sveltekit-edge':
         specifier: 1.2.5
-        version: 1.2.5(@sveltejs/kit@2.5.0)(svelte@4.2.11)
+        version: 1.2.5(@sveltejs/kit@2.5.1)(svelte@4.2.11)
       '@neoconfetti/svelte':
         specifier: 2.2.1
         version: 2.2.1
       '@sveltejs/kit':
-        specifier: 2.5.0
-        version: 2.5.0(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.11)(vite@5.1.4)
+        specifier: 2.5.1
+        version: 2.5.1(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.11)(vite@5.1.4)
       '@sveltejs/vite-plugin-svelte':
         specifier: 3.0.2
         version: 3.0.2(svelte@4.2.11)(vite@5.1.4)
@@ -621,14 +621,14 @@ packages:
     resolution: {integrity: sha512-KuryQDStqkQ/zKR9Q7JXiW927m7SvwirQo6Oohss1Q9cRyYS2JOyhtcBavZnoEhH4pHJkaigfjUXA3em4n6egA==}
     dev: true
 
-  /@jill64/sentry-sveltekit-edge@1.2.5(@sveltejs/kit@2.5.0)(svelte@4.2.11):
+  /@jill64/sentry-sveltekit-edge@1.2.5(@sveltejs/kit@2.5.1)(svelte@4.2.11):
     resolution: {integrity: sha512-VbJ31/xYdHDZD98l+PP0rXjlmpM+HRVGj6ZpbF+HweahwXfbRHlwyd3pKu75QL91dSTj6sCd9mbqDLEL3tEQSA==}
     peerDependencies:
       '@sveltejs/kit': 1.x || 2.x
     dependencies:
       '@sentry/node': 7.100.1
       '@sentry/svelte': 7.100.1(svelte@4.2.11)
-      '@sveltejs/kit': 2.5.0(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.11)(vite@5.1.4)
+      '@sveltejs/kit': 2.5.1(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.11)(vite@5.1.4)
     transitivePeerDependencies:
       - svelte
     dev: true
@@ -917,8 +917,8 @@ packages:
       '@sentry/types': 7.100.1
     dev: true
 
-  /@sveltejs/kit@2.5.0(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.11)(vite@5.1.4):
-    resolution: {integrity: sha512-1uyXvzC2Lu1FZa30T4y5jUAC21R309ZMRG0TPt+PPPbNUoDpy8zSmSNVWYaBWxYDqLGQ5oPNWvjvvF2IjJ1jmA==}
+  /@sveltejs/kit@2.5.1(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.11)(vite@5.1.4):
+    resolution: {integrity: sha512-TKj08o3mJCoQNLTdRdGkHPePTCPUGTgkew65RDqjVU3MtPVxljsofXQYfXndHfq0P7KoPRO/0/reF6HesU0Djw==}
     engines: {node: '>=18.13'}
     hasBin: true
     requiresBuild: true
