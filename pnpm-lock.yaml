@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@jill64/types-lambda':
-        specifier: 1.1.2
-        version: 1.1.2(typescript@5.3.3)
+        specifier: 1.1.3
+        version: 1.1.3(typescript@5.3.3)
       '@types/mime-types':
         specifier: 2.1.4
         version: 2.1.4
@@ -643,8 +643,8 @@ packages:
       '@jill64/transform': 1.0.1
     dev: true
 
-  /@jill64/types-lambda@1.1.2(typescript@5.3.3):
-    resolution: {integrity: sha512-88d5NkqAlRqe8vsi4kZozWk1/OtGkGzv6fQzl0KuZ8MtcuYe1+idoMhxUqpw2wOuFy6hczHHspKUinPpI1j1Ww==}
+  /@jill64/types-lambda@1.1.3(typescript@5.3.3):
+    resolution: {integrity: sha512-vGgZ0lUNsALGC/DZurW6ydDZJS/dlFiHTnYRyNWQAXz62FxECoa9WVbesmGsnn8u+BeajJHFG8SlACbUAEcheQ==}
     peerDependencies:
       typescript: ^5.0.0
     dependencies:
