@@ -40,8 +40,8 @@ importers:
         specifier: 1.1.8
         version: 1.1.8(typescript@5.3.3)
       '@jill64/playwright-config':
-        specifier: 2.2.3
-        version: 2.2.3(@playwright/test@1.42.0)
+        specifier: 2.2.4
+        version: 2.2.4(@playwright/test@1.42.0)
       '@jill64/prettier-config':
         specifier: 1.0.0
         version: 1.0.0
@@ -609,8 +609,8 @@ packages:
       - typescript
     dev: true
 
-  /@jill64/playwright-config@2.2.3(@playwright/test@1.42.0):
-    resolution: {integrity: sha512-VSdJympTs9kj27vLlFp0Y07C5yZQwVnOGSkGrFY48rbdFl99oTXUCSPPuBygIjtn4w+Zx0Oo0xUMEqyl/Pj6nA==}
+  /@jill64/playwright-config@2.2.4(@playwright/test@1.42.0):
+    resolution: {integrity: sha512-eV+G/WnrDEgaFMnegXmjaIpjfeKnfWU3YNcMwZsFn3QsoYJ+CS66gspqW2O2shxMbTAuJc2Dj7kPo402AKI+zA==}
     peerDependencies:
       '@playwright/test': ^1.40.0
     dependencies:
