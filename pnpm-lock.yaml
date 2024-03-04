@@ -69,8 +69,8 @@ importers:
   packages/site:
     devDependencies:
       '@fontsource/fira-mono':
-        specifier: 5.0.8
-        version: 5.0.8
+        specifier: 5.0.12
+        version: 5.0.12
       '@jill64/eslint-config-svelte':
         specifier: 1.2.6
         version: 1.2.6(svelte@4.2.12)(typescript@5.3.3)
@@ -528,8 +528,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@fontsource/fira-mono@5.0.8:
-    resolution: {integrity: sha512-8OJiUK2lzJjvDlkmamEfhtpL1cyFApg1Pk4kE5Pw5UTf1ETF3Yy/pprgwV5I+LQPDjuFvinsinT9xSUZ2b/zuQ==}
+  /@fontsource/fira-mono@5.0.12:
+    resolution: {integrity: sha512-1uFRjqCcxVv4F31PjyLm8o4oNlT5ywwh6OwcDGkZbafOeFZHXekvholS9IlfZkRsZvVhSbFRHT/5iDib4KTtpg==}
     dev: true
 
   /@humanwhocodes/config-array@0.11.14:
