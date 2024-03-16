@@ -65,7 +65,7 @@
     "@sveltejs/kit": "2.5.4",
     "@types/node": "20.11.28",
     "@playwright/test": "1.42.1",
-    "cf2-builder": "1.1.8",
+    "cf2-builder": "1.1.9",
     "typescript": "5.4.2"
   },
   "dependencies": {
