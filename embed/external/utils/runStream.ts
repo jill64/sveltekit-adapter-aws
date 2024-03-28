@@ -26,7 +26,7 @@ export const runStream = ({
   })
 
   if (!response.body) {
-    responseStream.write("")
+    responseStream.write('')
     responseStream.end()
     return
   }
