@@ -25,7 +25,7 @@ export const adapter = (options?: AdapterOptions): Adapter => {
           memory: options?.memory ?? 128,
           deploy: options?.deploy ?? false,
           cdn: options?.cdn ?? false,
-          stream: options?.stream ?? true,
+          stream: options?.stream ?? true
         },
         tmp
       }
