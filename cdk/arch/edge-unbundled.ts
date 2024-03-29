@@ -18,7 +18,8 @@ import {
   certificateArn,
   domainName,
   environment,
-  memorySize
+  memorySize,
+  stream
 } from '../external/params'
 
 export class CDKStack extends Stack {
@@ -37,7 +38,9 @@ export class CDKStack extends Stack {
       environment
     }).addFunctionUrl({
       authType: aws_lambda.FunctionUrlAuthType.NONE,
-      invokeMode: aws_lambda.InvokeMode.RESPONSE_STREAM
+      invokeMode: stream
+        ? aws_lambda.InvokeMode.RESPONSE_STREAM
+        : aws_lambda.InvokeMode.BUFFERED
     })
 
     const edge = new aws_cloudfront.experimental.EdgeFunction(this, 'Edge', {

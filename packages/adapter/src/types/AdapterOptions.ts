@@ -59,6 +59,13 @@ export type AdapterOptions = {
   skipBootstrap?: boolean
 
   /**
+   * Whether to enable AWS Lambda streaming.
+   * @default true
+   * @see https://aws.amazon.com/blogs/compute/introducing-aws-lambda-response-streaming
+   */
+  stream?: boolean
+
+  /**
    * Custom domain of CloudFront distribution
    * @default undefined
    */

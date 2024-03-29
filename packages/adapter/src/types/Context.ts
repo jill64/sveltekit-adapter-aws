@@ -8,7 +8,7 @@ export type Context = {
     Required<
       Pick<
         AdapterOptions,
-        'name' | 'out' | 'memory' | 'architecture' | 'deploy' | 'cdn'
+        'name' | 'out' | 'memory' | 'architecture' | 'deploy' | 'cdn' | 'stream'
       >
     >
 }

@@ -23,7 +23,7 @@ export const lambdaS3 = async (context: Context) => {
   await rm(lambdaApp, { recursive: true })
 
   await buildServer(context, {
-    source: 'lambda-s3.js',
+    source: `lambda-s3${context.options.stream ? '' : '-buffered'}.js`,
     entryPoint: path.join('lambda', 'index.js')
   })
 }

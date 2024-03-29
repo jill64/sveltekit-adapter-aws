@@ -64,6 +64,7 @@ export const setup = async ({ builder, tmp, options }: Context) => {
     {
       '128 /* $$__MEMORY_SIZE__$$ */': options.memory.toString(),
       'false /* $$__ENABLE_CDN__$$ */': options.cdn.toString(),
+      'true /* $$__ENABLE_STREAM__$$ */': options.stream.toString(),
       __APP_DIR__: appDir,
       __BASE_PATH__: base,
       __BRIDGE_AUTH_TOKEN__: bridgeAuthToken,

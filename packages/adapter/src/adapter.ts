@@ -24,7 +24,8 @@ export const adapter = (options?: AdapterOptions): Adapter => {
           name: options?.name ?? 'SvelteKit-App-Default',
           memory: options?.memory ?? 128,
           deploy: options?.deploy ?? false,
-          cdn: options?.cdn ?? false
+          cdn: options?.cdn ?? false,
+          stream: options?.stream ?? true
         },
         tmp
       }

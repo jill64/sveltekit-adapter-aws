@@ -1,4 +1,4 @@
-name: Deploy - Test (Streaming)
+name: Deploy - Test (Buffered)
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
   deploy:
     strategy:
       matrix:
-        architecture: [lambda-mono, lambda-s3, edge-bundled, edge-unbundled]
+        architecture: [lambda-mono, lambda-s3, edge-unbundled]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -40,15 +40,16 @@ jobs:
         run: npm run build:all
         env:
           STAGE: ${{ github.event_name == 'pull_request' && 'dev' || 'prod' }}
+          BUFFERED_RESPONSE: 'TRUE'
           ADAPTER_ARCHITECTURE: ${{ matrix.architecture }}
-          ADAPTER_FQDN: ${{ format('{0}.adapter-aws.com', matrix.architecture) }}
-          ADAPTER_CERTIFICATE_ARN: ${{ (matrix.architecture == 'lambda-mono' && secrets.LAMBDA_MONO_CERTIFICATE_ARN) || (matrix.architecture == 'lambda-s3' && secrets.LAMBDA_S3_CERTIFICATE_ARN) || (matrix.architecture == 'edge-bundled' && secrets.EDGE_BUNDLED_CERTIFICATE_ARN) || (matrix.architecture == 'edge-unbundled' && secrets.EDGE_UNBUNDLED_CERTIFICATE_ARN)}}
+          ADAPTER_FQDN: ${{ format('buffered.{0}.adapter-aws.com', matrix.architecture) }}
+          ADAPTER_CERTIFICATE_ARN: ${{ (matrix.architecture == 'lambda-mono' && secrets.BUFFERED_LAMBDA_MONO_CERTIFICATE_ARN) || (matrix.architecture == 'lambda-s3' && secrets.BUFFERED_LAMBDA_S3_CERTIFICATE_ARN) || (matrix.architecture == 'edge-unbundled' && secrets.BUFFERED_EDGE_UNBUNDLED_CERTIFICATE_ARN)}}
 
   test:
     needs: deploy
     strategy:
       matrix:
-        architecture: [lambda-mono, lambda-s3, edge-bundled, edge-unbundled]
+        architecture: [lambda-mono, lambda-s3, edge-unbundled]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -71,4 +72,4 @@ jobs:
       - name: Test
         run: npx playwright test
         env:
-          ADAPTER_FQDN: ${{ github.event_name == 'pull_request' && ((matrix.architecture == 'lambda-mono' && vars.LAMBDA_MONO_PREVIEW_URL) || (matrix.architecture == 'lambda-s3' && vars.LAMBDA_S3_PREVIEW_URL) || (matrix.architecture == 'edge-bundled' && vars.EDGE_BUNDLED_PREVIEW_URL) || (matrix.architecture == 'edge-unbundled' && vars.EDGE_UNBUNDLED_PREVIEW_URL)) || format('{0}.adapter-aws.com', matrix.architecture) }}
+          ADAPTER_FQDN: ${{ github.event_name == 'pull_request' && ((matrix.architecture == 'lambda-mono' && vars.BUFFERED_LAMBDA_MONO_PREVIEW_URL) || (matrix.architecture == 'lambda-s3' && vars.BUFFERED_LAMBDA_S3_PREVIEW_URL) || (matrix.architecture == 'edge-unbundled' && vars.BUFFERED_EDGE_UNBUNDLED_PREVIEW_URL)) || format('buffered.{0}.adapter-aws.com', matrix.architecture) }}
