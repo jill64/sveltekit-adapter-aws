@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: main
 
-concurrency: deploy-test${{ (github.event_name == 'pull_request' && '-dev') || '' }}
+concurrency: deploy-test-buffered${{ (github.event_name == 'pull_request' && '-dev') || '' }}
 
 jobs:
   deploy:
