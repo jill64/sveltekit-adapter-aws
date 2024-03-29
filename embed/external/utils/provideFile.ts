@@ -12,7 +12,7 @@ export const provideFile = async (
 
   const body = await readFile(
     path.join(process.cwd(), 'assets', filePath),
-    'utf-8'
+    'base64'
   )
 
   return {
@@ -20,6 +20,7 @@ export const provideFile = async (
     body,
     headers: {
       'content-type': type ? type : 'application/octet-stream'
-    }
+    },
+    isBase64Encoded: true
   }
 }
