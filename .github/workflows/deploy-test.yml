@@ -1,4 +1,4 @@
-name: Deploy - Test
+name: Deploy - Test (Streaming)
 
 on:
   push:
