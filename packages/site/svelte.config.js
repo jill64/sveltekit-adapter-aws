@@ -7,7 +7,7 @@ const config = {
   kit: {
     adapter: adapter({
       name: process.env.ADAPTER_ARCHITECTURE
-        ? `${process.env.ADAPTER_ARCHITECTURE}-preview-site${
+        ? `${process.env.ADAPTER_ARCHITECTURE}-preview-site${process.env.BUFFERED_RESPONSE === 'TRUE' ? '-buffered' : ''}${
             process.env.STAGE === 'prod' ? '' : '-dev'
           }`
         : undefined,
