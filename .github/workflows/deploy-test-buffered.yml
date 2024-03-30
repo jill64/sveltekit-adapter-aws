@@ -9,7 +9,7 @@ on:
 concurrency: deploy-test-buffered${{ (github.event_name == 'pull_request' && '-dev') || '' }}
 
 jobs:
-  deploy:
+  buffered-deploy:
     strategy:
       matrix:
         architecture: [lambda-mono, lambda-s3, edge-unbundled]
@@ -45,8 +45,8 @@ jobs:
           ADAPTER_FQDN: ${{ format('buffered.{0}.adapter-aws.com', matrix.architecture) }}
           ADAPTER_CERTIFICATE_ARN: ${{ (matrix.architecture == 'lambda-mono' && secrets.BUFFERED_LAMBDA_MONO_CERTIFICATE_ARN) || (matrix.architecture == 'lambda-s3' && secrets.BUFFERED_LAMBDA_S3_CERTIFICATE_ARN) || (matrix.architecture == 'edge-unbundled' && secrets.BUFFERED_EDGE_UNBUNDLED_CERTIFICATE_ARN)}}
 
-  test:
-    needs: deploy
+  buffered-test:
+    needs: buffered-deploy
     strategy:
       matrix:
         architecture: [lambda-mono, lambda-s3, edge-unbundled]
