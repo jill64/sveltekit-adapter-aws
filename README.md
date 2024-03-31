@@ -29,6 +29,12 @@ If you want to use always-on servers (not serverless), consider EC2 (ECR) + [ada
 npm i -D @jill64/sveltekit-adapter-aws
 ```
 
+4. If using pnpm, additional dependency is required.
+
+```sh
+pnpm i -D aws-cdk-lib
+```
+
 ```js
 // svelte.config.js
 import adapter from '@jill64/sveltekit-adapter-aws'
