@@ -75,8 +75,8 @@ importers:
         specifier: 1.2.13
         version: 1.2.13(svelte@4.2.12)(typescript@5.4.3)
       '@jill64/sentry-sveltekit-edge':
-        specifier: 1.2.14
-        version: 1.2.14(@sveltejs/kit@2.5.5)(svelte@4.2.12)
+        specifier: 1.2.15
+        version: 1.2.15(@sveltejs/kit@2.5.5)(svelte@4.2.12)
       '@neoconfetti/svelte':
         specifier: 2.2.1
         version: 2.2.1
@@ -903,15 +903,15 @@ packages:
     resolution: {integrity: sha512-KuryQDStqkQ/zKR9Q7JXiW927m7SvwirQo6Oohss1Q9cRyYS2JOyhtcBavZnoEhH4pHJkaigfjUXA3em4n6egA==}
     dev: true
 
-  /@jill64/sentry-sveltekit-edge@1.2.14(@sveltejs/kit@2.5.5)(svelte@4.2.12):
-    resolution: {integrity: sha512-GS4VbC6eCgbvWx+Ck2sPGiswR4uzjhUaA8widD+CVTrjvspUPgyrWG/TXIvuwWR7KbSnn5Zq7XVm1n1zVClFRw==}
+  /@jill64/sentry-sveltekit-edge@1.2.15(@sveltejs/kit@2.5.5)(svelte@4.2.12):
+    resolution: {integrity: sha512-URSjReVXiiQaUfCc/8UJ+3KUSFpw6M1mSVr24/iT//zITMcIU7OCzt9YxHPATBGOKDsIjYBpfFXPJLmR9/R47Q==}
     peerDependencies:
       '@sveltejs/kit': 1.x || 2.x
     dependencies:
       '@sentry/node': 7.109.0
       '@sentry/svelte': 7.109.0(svelte@4.2.12)
       '@sveltejs/kit': 2.5.5(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.2.8)
-      wrangler: 3.44.0
+      wrangler: 3.45.0
     transitivePeerDependencies:
       - '@cloudflare/workers-types'
       - bufferutil
@@ -2584,8 +2584,8 @@ packages:
     hasBin: true
     dev: true
 
-  /miniflare@3.20240329.0:
-    resolution: {integrity: sha512-kdHlMwhV241kck5oh8uyKPIhCusP1BL4+iOSeJZgcJ46EATA6crWtYqlARNU9t/iYXhzKhXOlOPJjjlCJuOgTA==}
+  /miniflare@3.20240329.1:
+    resolution: {integrity: sha512-YUn1SwfxLqFWT8S0DeFtInIOSOAuZhIOiy8NSe4J4WeDx2/KkL7ksEyQ4iOM8VyPAReLzPV3KSUk+ARpkoTBWQ==}
     engines: {node: '>=16.13'}
     hasBin: true
     dependencies:
@@ -3249,8 +3249,8 @@ packages:
       '@cloudflare/workerd-windows-64': 1.20240329.0
     dev: true
 
-  /wrangler@3.44.0:
-    resolution: {integrity: sha512-7tMJslGQX3f2zD18k7oPY1YcE+mYe93DSX9XXuusf/lxOPgaaSaS01qXL3zYlOIn+3wG1LkxPH/0CqUk4jZarQ==}
+  /wrangler@3.45.0:
+    resolution: {integrity: sha512-uR3xn4Au79NTit1xsPQRcgj17R9epsi/TfHoovOcNySlumrxoJKV89DRLKaPcjsmQXZiegnCsu9jlYLmaTdgKA==}
     engines: {node: '>=16.17.0'}
     hasBin: true
     peerDependencies:
@@ -3265,7 +3265,7 @@ packages:
       blake3-wasm: 2.1.5
       chokidar: 3.6.0
       esbuild: 0.17.19
-      miniflare: 3.20240329.0
+      miniflare: 3.20240329.1
       nanoid: 3.3.7
       path-to-regexp: 6.2.1
       resolve: 1.22.8
