@@ -75,8 +75,8 @@ importers:
         specifier: 1.2.14
         version: 1.2.14(svelte@4.2.12)(typescript@5.4.4)
       '@jill64/sentry-sveltekit-edge':
-        specifier: 1.2.18
-        version: 1.2.18(@sveltejs/kit@2.5.5)(svelte@4.2.12)
+        specifier: 1.2.19
+        version: 1.2.19(@sveltejs/kit@2.5.5)(svelte@4.2.12)
       '@neoconfetti/svelte':
         specifier: 2.2.1
         version: 2.2.1
@@ -903,15 +903,15 @@ packages:
     resolution: {integrity: sha512-KuryQDStqkQ/zKR9Q7JXiW927m7SvwirQo6Oohss1Q9cRyYS2JOyhtcBavZnoEhH4pHJkaigfjUXA3em4n6egA==}
     dev: true
 
-  /@jill64/sentry-sveltekit-edge@1.2.18(@sveltejs/kit@2.5.5)(svelte@4.2.12):
-    resolution: {integrity: sha512-mI7+uHcGnNep8cANR8w36Xp73+dccdFvLn8VCy+2zKo4Mo0/LTgeebDFwwDYA1KuZtz2p84Jq7q8tujpBrmkFA==}
+  /@jill64/sentry-sveltekit-edge@1.2.19(@sveltejs/kit@2.5.5)(svelte@4.2.12):
+    resolution: {integrity: sha512-AQjXs/X7ghcKuoiaj2RKN+Ml/C1fcGGIOWW3ZW3AgEG80fNwDlW0xRcTJSRuGGNnSTp0b/3E+D9jx20FMyxQIw==}
     peerDependencies:
       '@sveltejs/kit': 1.x || 2.x
     dependencies:
       '@sentry/node': 7.109.0
       '@sentry/svelte': 7.109.0(svelte@4.2.12)
       '@sveltejs/kit': 2.5.5(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.2.8)
-      wrangler: 3.47.1
+      wrangler: 3.48.0
     transitivePeerDependencies:
       - '@cloudflare/workers-types'
       - bufferutil
@@ -3117,8 +3117,8 @@ packages:
       '@cloudflare/workerd-windows-64': 1.20240404.0
     dev: true
 
-  /wrangler@3.47.1:
-    resolution: {integrity: sha512-KEnYxAnhpn8vkAV3thrdCB79CK43Wr+L5xvUmfUSZu9j9HFm0I2z9HHPKzzIwdhpcvdC3WtZZz+n5NS2NQ1yzA==}
+  /wrangler@3.48.0:
+    resolution: {integrity: sha512-Wv7JS6FyX1j9HkaM6WL3fmTzBMAYc4hPSyZCuxuH55hkJDX/7ts+YAgsaN1U8rKoDrV3FVSgBfI9TyqP9iuM8Q==}
     engines: {node: '>=16.17.0'}
     hasBin: true
     peerDependencies:
