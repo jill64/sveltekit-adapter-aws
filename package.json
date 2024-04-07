@@ -1,7 +1,7 @@
 {
   "name": "@jill64/sveltekit-adapter-aws",
   "description": "🔌 SveleteKit AWS adapter with multiple architecture",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "type": "module",
   "main": "dist/index.js",
   "license": "MIT",
@@ -78,7 +78,7 @@
     "dotenv": "16.4.5",
     "esbuild": "0.20.2",
     "mime-types": "2.1.35",
-    "nanoid": "5.0.6"
+    "nanoid": "5.0.7"
   },
   "prettier": "@jill64/prettier-config"
 }
