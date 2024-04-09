@@ -72,8 +72,8 @@ importers:
         specifier: 5.0.12
         version: 5.0.12
       '@jill64/eslint-config-svelte':
-        specifier: 1.2.17
-        version: 1.2.17(svelte@4.2.12)(typescript@5.4.4)
+        specifier: 1.2.18
+        version: 1.2.18(svelte@4.2.12)(typescript@5.4.4)
       '@jill64/sentry-sveltekit-edge':
         specifier: 1.2.19
         version: 1.2.19(@sveltejs/kit@2.5.5)(svelte@4.2.12)
@@ -854,8 +854,8 @@ packages:
     resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
     dev: true
 
-  /@jill64/eslint-config-svelte@1.2.17(svelte@4.2.12)(typescript@5.4.4):
-    resolution: {integrity: sha512-OSwoMwJI+L7fMLAJ32fSjsFH0KpM7qgMVy5nVHtS1MIEDUthhlEDjApoleJYybeNoEw3PWPP7cBCEDEK8TRNOQ==}
+  /@jill64/eslint-config-svelte@1.2.18(svelte@4.2.12)(typescript@5.4.4):
+    resolution: {integrity: sha512-F5eSMoe2KQPdguq2i1BYWLaHm8EDudGsIoDgT03CyHtWS2dPg1m9I0ARRqf+AVq877ThPwgjBSGXV63VzOE4Yw==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
@@ -868,7 +868,7 @@ packages:
       eslint-plugin-deprecation: 2.0.0(eslint@8.57.0)(typescript@5.4.4)
       eslint-plugin-svelte: 2.36.0(eslint@8.57.0)(svelte@4.2.12)
       svelte: 4.2.12
-      svelte-eslint-parser: 0.34.0(svelte@4.2.12)
+      svelte-eslint-parser: 0.34.1(svelte@4.2.12)
     transitivePeerDependencies:
       - supports-color
       - ts-node
@@ -1969,7 +1969,7 @@ packages:
       postcss-selector-parser: 6.0.16
       semver: 7.6.0
       svelte: 4.2.12
-      svelte-eslint-parser: 0.34.0(svelte@4.2.12)
+      svelte-eslint-parser: 0.34.1(svelte@4.2.12)
     transitivePeerDependencies:
       - supports-color
       - ts-node
@@ -2912,8 +2912,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /svelte-eslint-parser@0.34.0(svelte@4.2.12):
-    resolution: {integrity: sha512-jOozxWbHVtIFt6fvettJK9T9aK1AyrcWBJzqcjqJxkr7QfgMYWjHNVlG/qFFOr72cw8mUVS/D/8BO6HlPEtNug==}
+  /svelte-eslint-parser@0.34.1(svelte@4.2.12):
+    resolution: {integrity: sha512-9+uLA1pqI9AZioKVGJzYYmlOZWxfoCXSbAM9iaNm7H01XlYlzRTtJfZgl9o3StQGN41PfGJIbkKkfk3e/pHFfA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       svelte: ^3.37.0 || ^4.0.0 || ^5.0.0-next.94
