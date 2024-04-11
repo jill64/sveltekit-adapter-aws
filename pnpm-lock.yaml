@@ -72,8 +72,8 @@ importers:
         specifier: 5.0.12
         version: 5.0.12
       '@jill64/eslint-config-svelte':
-        specifier: 1.2.18
-        version: 1.2.18(svelte@4.2.13)(typescript@5.4.5)
+        specifier: 1.2.19
+        version: 1.2.19(svelte@4.2.13)(typescript@5.4.5)
       '@jill64/sentry-sveltekit-edge':
         specifier: 1.2.20
         version: 1.2.20(@sveltejs/kit@2.5.5)(svelte@4.2.13)
@@ -854,8 +854,8 @@ packages:
     resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
     dev: true
 
-  /@jill64/eslint-config-svelte@1.2.18(svelte@4.2.13)(typescript@5.4.5):
-    resolution: {integrity: sha512-F5eSMoe2KQPdguq2i1BYWLaHm8EDudGsIoDgT03CyHtWS2dPg1m9I0ARRqf+AVq877ThPwgjBSGXV63VzOE4Yw==}
+  /@jill64/eslint-config-svelte@1.2.19(svelte@4.2.13)(typescript@5.4.5):
+    resolution: {integrity: sha512-kOJvAwlHBlGkJUnm09CQFdtUll3OEg5tDD6cdoWbPEhGw3XfxKbavm7RHgl18SFXFekiEhfDSxYiUqAZzU1CUw==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
@@ -866,7 +866,7 @@ packages:
       eslint: 8.57.0
       eslint-config-prettier: 9.1.0(eslint@8.57.0)
       eslint-plugin-deprecation: 2.0.0(eslint@8.57.0)(typescript@5.4.5)
-      eslint-plugin-svelte: 2.36.0(eslint@8.57.0)(svelte@4.2.13)
+      eslint-plugin-svelte: 2.37.0(eslint@8.57.0)(svelte@4.2.13)
       svelte: 4.2.13
       svelte-eslint-parser: 0.34.1(svelte@4.2.13)
     transitivePeerDependencies:
@@ -1951,8 +1951,8 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-svelte@2.36.0(eslint@8.57.0)(svelte@4.2.13):
-    resolution: {integrity: sha512-D30hSj13Y8YEn7yGXos7EYp0lpEb3Z2V/M+6a3MZ13KGVhaefdW2A9j8IBIcW4YR+j6fo901USzLeXQz/XbWeQ==}
+  /eslint-plugin-svelte@2.37.0(eslint@8.57.0)(svelte@4.2.13):
+    resolution: {integrity: sha512-H/2Gz7agYHEMEEzRuLYuCmAIdjuBnbhFG9hOK0yCdSBvvJGJMkjo+lR6j67OIvLOavgp4L7zA5LnDKi8WqdPhQ==}
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0-0 || ^9.0.0-0
