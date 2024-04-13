@@ -64,7 +64,7 @@
     "@jill64/playwright-config": "2.2.5",
     "@sveltejs/kit": "2.5.5",
     "@types/node": "20.12.7",
-    "@playwright/test": "1.43.0",
+    "@playwright/test": "1.43.1",
     "cf2-builder": "1.1.10",
     "typescript": "5.4.5"
   },
