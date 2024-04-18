@@ -2,12 +2,6 @@
 
 # @hearchco/sveltekit-adapter-aws
 
-<!----- BEGIN GHOST DOCS BADGES ----->
-
-<a href="https://npmjs.com/package/@hearchco/sveltekit-adapter-aws"><img src="https://img.shields.io/npm/v/@hearchco/sveltekit-adapter-aws" alt="npm-version" /></a> <a href="https://npmjs.com/package/@hearchco/sveltekit-adapter-aws"><img src="https://img.shields.io/npm/l/@hearchco/sveltekit-adapter-aws" alt="npm-license" /></a> <a href="https://npmjs.com/package/@hearchco/sveltekit-adapter-aws"><img src="https://img.shields.io/npm/dm/@hearchco/sveltekit-adapter-aws" alt="npm-download-month" /></a> <a href="https://npmjs.com/package/@hearchco/sveltekit-adapter-aws"><img src="https://img.shields.io/bundlephobia/min/@hearchco/sveltekit-adapter-aws" alt="npm-min-size" /></a>
-
-<!----- END GHOST DOCS BADGES ----->
-
 SvelteKit AWS adapter with multiple architectures (only adapter, no deployment)
 
 <!----- END GHOST DOCS HEADER ----->
