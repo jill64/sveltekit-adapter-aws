@@ -23,7 +23,7 @@ If you want to use always-on servers (not serverless), consider EC2 (ECR) + [ada
 
 ## Install
 
-1. Install adapter in your SvelteKit project
+1. Install adapter in your SvelteKit project (using Github as npm repo)
 
 ```sh
 npm i -D hearchco/sveltekit-adapter-aws
@@ -31,7 +31,7 @@ npm i -D hearchco/sveltekit-adapter-aws
 
 ```js
 // svelte.config.js
-import adapter from 'hearchco/sveltekit-adapter-aws';
+import adapter from '@hearchco/sveltekit-adapter-aws';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
