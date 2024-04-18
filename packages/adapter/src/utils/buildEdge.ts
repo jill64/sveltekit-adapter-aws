@@ -13,9 +13,9 @@ export const buildEdge = async (
     entryPoint: string
   }
 ) => {
-  const edgeEntryPoint = path.join(tmp, entryPoint)
+  const entryPointPath = path.join(tmp, entryPoint)
 
-  builder.copy(path.join(root, 'embed', 'arch', source), edgeEntryPoint)
+  builder.copy(path.join(root, 'embed', 'arch', source), entryPointPath)
 
   await build({
     format: 'cjs',
@@ -23,7 +23,7 @@ export const buildEdge = async (
     minify: true,
     external: ['node:*', '@aws-sdk/*'],
     ...options?.esbuild,
-    entryPoints: [edgeEntryPoint],
+    entryPoints: [entryPointPath],
     outfile: path.join(options.out, 'edge', 'server.js'),
     platform: 'node',
     inject: [path.join(root, 'embed', 'shims.ts')]

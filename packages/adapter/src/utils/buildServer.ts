@@ -1,7 +1,7 @@
 import { build } from 'esbuild'
 import path from 'path'
 import { Context } from '../types/Context.js'
-import { root } from '../utils/root.js'
+import { root } from './root.js'
 
 export const buildServer = async (
   { tmp, builder, options }: Context,
@@ -13,9 +13,9 @@ export const buildServer = async (
     entryPoint: string
   }
 ) => {
-  const serverEntryPoint = path.join(tmp, entryPoint)
+  const entryPointPath = path.join(tmp, entryPoint)
 
-  builder.copy(path.join(root, 'embed', 'arch', source), serverEntryPoint)
+  builder.copy(path.join(root, 'embed', 'arch', source), entryPointPath)
 
   await build({
     format: 'cjs',
@@ -23,7 +23,7 @@ export const buildServer = async (
     minify: true,
     external: ['node:*', '@aws-sdk/*'],
     ...options?.esbuild,
-    entryPoints: [serverEntryPoint],
+    entryPoints: [entryPointPath],
     outfile: path.join(options.out, 'lambda', 'server.js'),
     platform: 'node',
     inject: [path.join(root, 'embed', 'shims.ts')]
