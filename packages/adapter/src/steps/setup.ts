@@ -36,23 +36,8 @@ export const setup = async ({ builder, tmp, options }: Context) => {
   const cdkPath = path.join(root, 'cdk')
 
   builder.copy(
-    path.resolve(cdkPath, 'cdk.json'),
-    path.join(options.out, 'cdk.json')
-  )
-
-  builder.copy(
     path.resolve(cdkPath, 'package.json'),
     path.join(options.out, 'package.json')
-  )
-
-  builder.copy(
-    path.resolve(cdkPath, 'mock', 'synth.ts'),
-    path.join(options.out, 'bin', 'synth.ts'),
-    {
-      replace: {
-        __CDK_STACK_NAME__: options.name
-      }
-    }
   )
 
   const bridgeAuthToken = nanoid()
@@ -62,23 +47,13 @@ export const setup = async ({ builder, tmp, options }: Context) => {
     path.join(cdkPath, 'external', 'params.ts'),
     path.join(options.out, 'external', 'params.ts'),
     {
-      '128 /* $$__MEMORY_SIZE__$$ */': options.memory.toString(),
-      'false /* $$__ENABLE_CDN__$$ */': options.cdn.toString(),
-      'true /* $$__ENABLE_STREAM__$$ */': options.stream.toString(),
       __APP_DIR__: appDir,
       __BASE_PATH__: base,
       __BRIDGE_AUTH_TOKEN__: bridgeAuthToken,
-      __DOMAIN_NAME__: options.domain?.fqdn ?? '',
-      __CERTIFICATE_ARN__: options.domain?.certificateArn ?? '',
-      '{} /* $$__ENVIRONMENT__$$ */': JSON.stringify(options.env ?? {})
     }
   )
 
   console.log('options.architecture', options.architecture)
-  builder.copy(
-    path.join(root, 'cdk', 'arch', `${options.architecture}.ts`),
-    path.join(options.out, 'bin', 'cdk-stack.ts')
-  )
 
   builder.writeServer(tmp)
 
@@ -89,15 +64,5 @@ export const setup = async ({ builder, tmp, options }: Context) => {
     })};\n\nexport const prerendered = new Set(${JSON.stringify(
       builder.prerendered.paths
     )});\n`
-  )
-
-  builder.copy(
-    path.join(root, 'cdk', 'external', 'cf2.js'),
-    path.join(options.out, 'cf2', 'index.js'),
-    {
-      replace: {
-        __DOMAIN_NAME__: options.domain?.fqdn ?? ''
-      }
-    }
   )
 }

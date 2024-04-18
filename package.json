@@ -1,18 +1,18 @@
 {
-  "name": "@jill64/sveltekit-adapter-aws",
-  "description": "🔌 SveleteKit AWS adapter with multiple architecture",
-  "version": "1.5.7",
+  "name": "@hearchco/sveltekit-adapter-aws",
+  "description": "SvelteKit AWS adapter with multiple architectures (only adapter, no deployment)",
+  "version": "0.0.1",
   "type": "module",
   "main": "dist/index.js",
   "license": "MIT",
   "author": {
-    "name": "jill64",
-    "email": "intents.turrets0h@icloud.com",
-    "url": "https://github.com/jill64",
-    "image": "https://avatars.githubusercontent.com/u/143883742?v=4"
+    "name": "Hearchco",
+    "email": "hello@hearch.co",
+    "url": "https://github.com/hearchco",
+    "image": "https://avatars.githubusercontent.com/u/152706942?s=200&v=4"
   },
-  "bugs": "https://github.com/jill64/sveltekit-adapter-aws/issues",
-  "homepage": "https://github.com/jill64/sveltekit-adapter-aws#readme",
+  "bugs": "https://github.com/hearchco/sveltekit-adapter-aws/issues",
+  "homepage": "https://github.com/hearchco/sveltekit-adapter-aws#readme",
   "files": [
     "dist",
     "embed",
@@ -31,29 +31,23 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/jill64/sveltekit-adapter-aws.git",
-    "image": "https://opengraph.githubassets.com/c32f66289531733b2f960e3b9bc9f3d2bfa03a8e056cf4068888b2d2d9a32ecf/jill64/sveltekit-adapter-aws"
+    "url": "https://github.com/hearchco/sveltekit-adapter-aws.git",
+    "image": "https://opengraph.githubassets.com/c32f66289531733b2f960e3b9bc9f3d2bfa03a8e056cf4068888b2d2d9a32ecf/hearchco/sveltekit-adapter-aws"
   },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "dev": "pnpm build:adapter && cd packages/site && pnpm dev",
     "build:all": "pnpm build:adapter && pnpm build:site && npx publint",
-    "build:adapter": "pnpm transpile:embed && pnpm build:cf2 && pnpm build:adapterOnly",
+    "build:adapter": "pnpm transpile:embed && pnpm build:adapterOnly",
     "build:adapterOnly": "cd packages/adapter && pnpm build",
-    "build:cf2": "npx cf2-builder cf2/src/index.ts cdk/external/cf2.js",
     "transpile:embed": "cd embed && pnpm transpile",
-    "build:site": "cd packages/site && pnpm build",
-    "preview": "pnpm build:adapter && cd packages/site && pnpm preview",
     "prepack": "pnpm build:adapter",
     "format": "pnpm format:lib && pnpm format:site",
     "format:lib": "npx prettier -w .",
-    "format:site": "cd packages/site && pnpm format",
-    "lint": "pnpm lint:lib && pnpm lint:embed && pnpm lint:site",
+    "lint": "pnpm lint:lib && pnpm lint:embed",
     "lint:lib": "npx eslint . && tsc",
-    "lint:embed": "cd embed && pnpm lint",
-    "lint:site": "pnpm build:adapter && cd packages/site && pnpm lint"
+    "lint:embed": "cd embed && pnpm lint"
   },
   "peerDependencies": {
     "@sveltejs/kit": "^2.0.0"
@@ -64,15 +58,11 @@
     "@jill64/playwright-config": "2.2.5",
     "@sveltejs/kit": "2.5.6",
     "@types/node": "20.12.7",
-    "@playwright/test": "1.43.1",
-    "cf2-builder": "1.1.10",
     "typescript": "5.4.5"
   },
   "dependencies": {
     "@jill64/types-lambda": "1.1.4",
     "@types/mime-types": "2.1.4",
-    "aws-cdk": "2.137.0",
-    "aws-cdk-lib": "2.137.0",
     "tsx": "4.7.2",
     "constructs": "10.3.0",
     "dotenv": "16.4.5",
@@ -80,5 +70,5 @@
     "mime-types": "2.1.35",
     "nanoid": "5.0.7"
   },
-  "prettier": "@jill64/prettier-config"
+  "prettier": "@hearchco/prettier-config"
 }

@@ -3,7 +3,7 @@ import type {
   LambdaResponsePayload
 } from '@jill64/types-lambda'
 import * as crypto from 'crypto'
-import { bridgeAuthToken, domainName } from '../params.js'
+import { bridgeAuthToken } from '../params.js'
 
 export const isDirectAccess = (
   payload: LambdaRequestPayload
@@ -20,7 +20,7 @@ export const isDirectAccess = (
 
   const cfDomainName = headers['via']?.split(' ')?.[1]
 
-  const domain = domainName ? domainName : cfDomainName ? cfDomainName : ''
+  const domain = cfDomainName ? cfDomainName : ''
 
   if (domain) {
     return {

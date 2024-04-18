@@ -4,7 +4,7 @@ import type {
   ResponseStream
 } from '@jill64/types-lambda'
 import * as crypto from 'crypto'
-import { bridgeAuthToken, domainName } from '../params.js'
+import { bridgeAuthToken } from '../params.js'
 import { qualified } from './qualified.js'
 
 export const isDirectAccess = ({
@@ -26,7 +26,7 @@ export const isDirectAccess = ({
 
   const cfDomainName = headers['via']?.split(' ')?.[1]
 
-  const domain = domainName ? domainName : cfDomainName ? cfDomainName : ''
+  const domain = cfDomainName ? cfDomainName : ''
 
   responseStream = qualified(
     responseStream,

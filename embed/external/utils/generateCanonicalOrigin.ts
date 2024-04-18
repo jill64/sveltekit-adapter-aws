@@ -1,5 +1,4 @@
 import { LambdaRequestPayload } from '@jill64/types-lambda'
-import { domainName } from '../params.js'
 import { getCloudFrontDomain } from './getCloudFrontDomain.js'
 
 export const generateCanonicalOrigin = ({
@@ -8,11 +7,7 @@ export const generateCanonicalOrigin = ({
 }: LambdaRequestPayload) => {
   const cfDomainName = getCloudFrontDomain(headers)
 
-  const domain = domainName
-    ? domainName
-    : cfDomainName
-      ? cfDomainName
-      : lambdaDomainName
+  const domain = cfDomainName ? cfDomainName : lambdaDomainName
 
   return `https://${domain}`
 }

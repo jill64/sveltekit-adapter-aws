@@ -5,10 +5,7 @@ build
 .env
 .env.*
 !.env.example
-.cdk.staging
-cdk.out
 embed/**/*.js
 !embed/eslint.config.js
-cdk/external/cf2.js
 /test-results
 package-lock.json

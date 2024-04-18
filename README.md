@@ -1,16 +1,20 @@
 <!----- BEGIN GHOST DOCS HEADER ----->
 
-# @jill64/sveltekit-adapter-aws
+# @hearchco/sveltekit-adapter-aws
 
 <!----- BEGIN GHOST DOCS BADGES ----->
 
-<a href="https://npmjs.com/package/@jill64/sveltekit-adapter-aws"><img src="https://img.shields.io/npm/v/@jill64/sveltekit-adapter-aws" alt="npm-version" /></a> <a href="https://npmjs.com/package/@jill64/sveltekit-adapter-aws"><img src="https://img.shields.io/npm/l/@jill64/sveltekit-adapter-aws" alt="npm-license" /></a> <a href="https://npmjs.com/package/@jill64/sveltekit-adapter-aws"><img src="https://img.shields.io/npm/dm/@jill64/sveltekit-adapter-aws" alt="npm-download-month" /></a> <a href="https://npmjs.com/package/@jill64/sveltekit-adapter-aws"><img src="https://img.shields.io/bundlephobia/min/@jill64/sveltekit-adapter-aws" alt="npm-min-size" /></a> <a href="https://github.com/jill64/sveltekit-adapter-aws/actions/workflows/deploy-test-buffered.yml"><img src="https://github.com/jill64/sveltekit-adapter-aws/actions/workflows/deploy-test-buffered.yml/badge.svg" alt="deploy-test-buffered.yml" /></a> <a href="https://github.com/jill64/sveltekit-adapter-aws/actions/workflows/deploy-test.yml"><img src="https://github.com/jill64/sveltekit-adapter-aws/actions/workflows/deploy-test.yml/badge.svg" alt="deploy-test.yml" /></a>
+<a href="https://npmjs.com/package/@hearchco/sveltekit-adapter-aws"><img src="https://img.shields.io/npm/v/@hearchco/sveltekit-adapter-aws" alt="npm-version" /></a> <a href="https://npmjs.com/package/@hearchco/sveltekit-adapter-aws"><img src="https://img.shields.io/npm/l/@hearchco/sveltekit-adapter-aws" alt="npm-license" /></a> <a href="https://npmjs.com/package/@hearchco/sveltekit-adapter-aws"><img src="https://img.shields.io/npm/dm/@hearchco/sveltekit-adapter-aws" alt="npm-download-month" /></a> <a href="https://npmjs.com/package/@hearchco/sveltekit-adapter-aws"><img src="https://img.shields.io/bundlephobia/min/@hearchco/sveltekit-adapter-aws" alt="npm-min-size" /></a>
 
 <!----- END GHOST DOCS BADGES ----->
 
-🔌 SveleteKit AWS adapter with multiple architecture
+SvelteKit AWS adapter with multiple architectures (only adapter, no deployment)
 
 <!----- END GHOST DOCS HEADER ----->
+
+## Acknowledgements
+
+This project is a fork of [jill64/sveltekit-adapter-aws](https://github.com/jill64/sveltekit-adapter-aws) repository, stripped of CDK deployment code. The point of this repo is to provide a simple adapter for SvelteKit which produces a build that can be afterwards deployed to AWS using any IaC tool (like OpenTofu / Terraform). **This is NOT meant to be an "all-in-one" solution for deploying a SvelteKit app to AWS.**
 
 ## Introduction
 
@@ -19,41 +23,34 @@ If you want to use always-on servers (not serverless), consider EC2 (ECR) + [ada
 
 ## Install
 
-1. Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) in local machine
-
-2. [Configure authentication and access credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-authentication.html) in AWS CLI
-
-3. Install adapter in your SvelteKit project
+1. Install adapter in your SvelteKit project
 
 ```sh
-npm i -D @jill64/sveltekit-adapter-aws
-```
-
-4. If using pnpm, additional dependency is required.
-
-```sh
-pnpm i -D aws-cdk-lib
+npm i -D @hearchco/sveltekit-adapter-aws
 ```
 
 ```js
 // svelte.config.js
-import adapter from '@jill64/sveltekit-adapter-aws'
+import adapter from '@hearchco/sveltekit-adapter-aws';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
+/** @type {import('@sveltejs/kit').Config} */
 const config = {
-  // ...
-  kit: {
-    adapter: adapter({
-      name: 'Your Application Name',
-      deploy: true,
-      architecture: 'lambda-s3'
-      // ...
-      // Other Adapter Options
-      // ...
-    })
-  }
-}
+	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
+	// for more information about preprocessors
+	preprocess: vitePreprocess(),
 
-export default config
+	kit: {
+		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
+		// If your environment is not supported or you settled on a specific environment, switch out the adapter.
+		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
+		adapter: adapter({
+      architecture: 'lambda-s3'
+    })
+	}
+};
+
+export default config;
 ```
 
 See [Full Adapter Options](./packages/adapter/src/types/AdapterOptions.ts)
@@ -68,42 +65,6 @@ This adapter allows you to choose from multiple architectures depending on your 
 | [lambda-s3](./docs/lambda-s3/README.md)(Default)  | ✅                 | ✅             | ✅             |               | [Link](https://lambda-s3.adapter-aws.com)      | [Link](https://buffered.lambda-s3.adapter-aws.com)      |
 | [edge-bundled](./docs/edge-bundled/README.md)     |                    | ✅             | ✅             | ✅            |                                                | [Link](https://edge-bundled.adapter-aws.com)            |
 | [edge-unbundled](./docs/edge-unbundled/README.md) | ✅                 | ✅             |                | ✅            | [Link](https://edge-unbundled.adapter-aws.com) | [Link](https://buffered.edge-unbundled.adapter-aws.com) |
-
-## CI/CD Pipeline
-
-[GitHub Actions Example](./.github/workflows)
-
-1. Setup AWS CLI (Not required in GitHub Actions)
-2. Setup AWS Credential
-3. Build Application with `deploy: true` option
-
-## CDK Bootstrap
-
-The first time the AWS CDK stack is deployed, `bootstrap` must be run.
-Normally this is handled automatically by the adapter.
-However, this requires additional permissions, so you can optionally skip the `bootstrap` step.
-
-```js
-{
-  // Adapter Option
-  skipBootstrap: true
-  // ...
-}
-```
-
-## Manual Deploy
-
-If the automatic deployment option is false, you can deploy the app at any time by running the following command after the app build is complete.
-
-```sh
-cd ./build && npx cdk deploy
-```
-
-## Delete All Resources
-
-```sh
-cd ./build && npx cdk destroy --all
-```
 
 <!----- BEGIN GHOST DOCS FOOTER ----->
 

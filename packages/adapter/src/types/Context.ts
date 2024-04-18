@@ -5,10 +5,5 @@ export type Context = {
   readonly builder: Builder
   readonly tmp: string
   readonly options: AdapterOptions &
-    Required<
-      Pick<
-        AdapterOptions,
-        'name' | 'out' | 'memory' | 'architecture' | 'deploy' | 'cdn' | 'stream'
-      >
-    >
+    Required<Pick<AdapterOptions, 'out' | 'architecture'>>
 }

@@ -18,7 +18,7 @@ export const edgeUnbundled = async (context: Context) => {
   await buildServer(context, {
     source: path.join(
       'edge-unbundled',
-      `server${context.options.stream ? '' : '-buffered'}.js`
+      `server.js`
     ),
     entryPoint: path.join('server', 'lambda', 'index.js')
   })

@@ -3,7 +3,6 @@ import { edgeBundled } from './arch/edge-bundled.js'
 import { edgeUnbundled } from './arch/edge-unbundled.js'
 import { lambdaMono } from './arch/lambda-mono.js'
 import { lambdaS3 } from './arch/lambda-s3.js'
-import { deploy } from './steps/deploy.js'
 import { setup } from './steps/setup.js'
 import type { AdapterOptions } from './types/AdapterOptions.js'
 
@@ -20,12 +19,7 @@ export const adapter = (options?: AdapterOptions): Adapter => {
         options: {
           ...options,
           out: options?.out ?? 'build',
-          architecture: options?.architecture ?? ('lambda-s3' as const),
-          name: options?.name ?? 'SvelteKit-App-Default',
-          memory: options?.memory ?? 128,
-          deploy: options?.deploy ?? false,
-          cdn: options?.cdn ?? false,
-          stream: options?.stream ?? true
+          architecture: options?.architecture ?? ('lambda-s3' as const)
         },
         tmp
       }
@@ -41,16 +35,14 @@ export const adapter = (options?: AdapterOptions): Adapter => {
         arch === 'lambda-s3'
           ? lambdaS3
           : arch === 'edge-bundled'
-            ? edgeBundled
-            : arch === 'edge-unbundled'
-              ? edgeUnbundled
-              : lambdaMono
+          ? edgeBundled
+          : arch === 'edge-unbundled'
+          ? edgeUnbundled
+          : lambdaMono
 
       builder.log.minor('Building...')
 
       await process(context)
-
-      await deploy(context)
     }
   }
 }

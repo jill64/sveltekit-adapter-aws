@@ -1,5 +1,4 @@
 import type { LambdaHandler, LambdaResponsePayload } from '@jill64/types-lambda'
-import { cdn } from '../external/params.js'
 import { generateCanonicalOrigin } from '../external/utils/generateCanonicalOrigin.js'
 import { isDirectAccess } from '../external/utils/isDirectAccess-buffered.js'
 import { provideFile } from '../external/utils/provideFile.js'
@@ -19,7 +18,7 @@ export const handler: LambdaHandler = async (payload) => {
     body
   } = payload
 
-  if (cdn) {
+  if (true) {
     const response = isDirectAccess(payload)
 
     if (response) {

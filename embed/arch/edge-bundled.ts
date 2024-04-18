@@ -1,6 +1,5 @@
 import { OriginRequestHandler } from '@jill64/types-lambda'
 import 'dotenv/config.js'
-import { domainName } from '../external/params.js'
 import { forbiddenHeaderPrefix } from '../external/utils/edge/forbiddenHeaderPrefix.js'
 import { forbiddenHeaders } from '../external/utils/edge/forbiddenHeaders.js'
 import { respond } from '../external/utils/respond.js'
@@ -49,7 +48,7 @@ export const handler: OriginRequestHandler<'s3', 'include-body'> = async ({
     body: hasBody ? request.body?.data : undefined,
     headers,
     sourceIp,
-    origin: `https://${domainName ? domainName : distributionDomainName}`,
+    origin: `https://${distributionDomainName}`,
     pathname,
     queryString: querystring,
     isBase64Encoded
