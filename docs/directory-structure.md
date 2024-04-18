@@ -4,7 +4,6 @@
 
 - `dist` - Export Adapter
 - `embed` - Server Source
-- `cdk` - AWS-CDK Stacks
 
 ## App
 
@@ -35,7 +34,3 @@
       - ...`static`(+)
       - ...`pre-rendered`(+)
     - `server.js`(+)
-  - `bin`
-    - `cdk-stack.ts`($)
-    - `synth.ts`(#)
-  - `cdk.json`(#)

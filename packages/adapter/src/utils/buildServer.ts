@@ -22,7 +22,7 @@ export const buildServer = async (
     bundle: true,
     minify: true,
     external: ['node:*', '@aws-sdk/*'],
-    ...options.esbuild,
+    ...options?.esbuild,
     entryPoints: [serverEntryPoint],
     outfile: path.join(options.out, 'lambda', 'server.js'),
     platform: 'node',

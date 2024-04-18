@@ -1,17 +1,12 @@
+import path from 'path'
+import { nanoid } from 'nanoid'
 import { build } from 'esbuild'
 import { writeFile } from 'fs/promises'
-import { nanoid } from 'nanoid'
-import path from 'path'
-import type { Context } from '../types/Context.js'
 import { copy } from '../utils/copy.js'
 import { root } from '../utils/root.js'
+import type { Context } from '../types/Context.js'
 
 export const setup = async ({ builder, tmp, options }: Context) => {
-  const {
-    appDir,
-    paths: { base }
-  } = builder.config.kit
-
   builder.log.minor('Setup...')
 
   const utilsPath = path.join(root, 'embed', 'external', 'utils')
@@ -33,22 +28,15 @@ export const setup = async ({ builder, tmp, options }: Context) => {
     }
   )
 
-  const cdkPath = path.join(root, 'cdk')
-
-  builder.copy(
-    path.resolve(cdkPath, 'package.json'),
-    path.join(options.out, 'package.json')
-  )
-
   const bridgeAuthToken = nanoid()
 
   builder.mkdirp(path.join(options.out, 'external'))
   await copy(
-    path.join(cdkPath, 'external', 'params.ts'),
+    path.join(root, 'embed', 'external', 'params.ts'),
     path.join(options.out, 'external', 'params.ts'),
     {
-      __APP_DIR__: appDir,
-      __BASE_PATH__: base,
+      __APP_DIR__: builder.config.kit.appDir,
+      __BASE_PATH__: builder.config.kit.paths.base,
       __BRIDGE_AUTH_TOKEN__: bridgeAuthToken,
     }
   )

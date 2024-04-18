@@ -14,15 +14,10 @@ export const writeAssets = async (
 
   const list = await listFiles(assetsPath)
 
-  const {
-    appDir,
-    paths: { base }
-  } = builder.config.kit
-
   const staticAssetsPaths = list
     .map((file) => file.replace(assetsPath, ''))
-    .filter((file) => !file.startsWith(`/${appDir}/`))
-    .map((file) => path.join(base, file))
+    .filter((file) => !file.startsWith(`/${builder.config.kit.appDir}/`))
+    .map((file) => path.join(builder.config.kit.paths.base, file))
 
   await copy(
     path.join(options.out, 'external', 'params.ts'),

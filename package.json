@@ -1,7 +1,7 @@
 {
   "name": "@hearchco/sveltekit-adapter-aws",
   "description": "SvelteKit AWS adapter with multiple architectures (only adapter, no deployment)",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "main": "dist/index.js",
   "license": "MIT",
@@ -15,8 +15,7 @@
   "homepage": "https://github.com/hearchco/sveltekit-adapter-aws#readme",
   "files": [
     "dist",
-    "embed",
-    "cdk"
+    "embed"
   ],
   "exports": {
     ".": {
