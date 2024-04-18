@@ -38,7 +38,7 @@
     "access": "public"
   },
   "scripts": {
-    "build:all": "pnpm build:adapter && pnpm build:site && npx publint",
+    "build:all": "pnpm build:adapter && npx publint",
     "build:adapter": "pnpm transpile:embed && pnpm build:adapterOnly",
     "build:adapterOnly": "cd packages/adapter && pnpm build",
     "transpile:embed": "cd embed && pnpm transpile",
