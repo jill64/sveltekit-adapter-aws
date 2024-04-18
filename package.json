@@ -39,11 +39,10 @@
   "scripts": {
     "build:all": "pnpm build:adapter && npx publint",
     "build:adapter": "pnpm transpile:embed && pnpm build:adapterOnly",
-    "build:adapterOnly": "cd packages/adapter && pnpm build",
+    "build:adapterOnly": "cd adapter && pnpm build",
     "transpile:embed": "cd embed && pnpm transpile",
     "prepack": "pnpm build:adapter",
-    "format": "pnpm format:lib && pnpm format:site",
-    "format:lib": "npx prettier -w .",
+    "format": "npx prettier -w .",
     "lint": "pnpm lint:lib && pnpm lint:embed",
     "lint:lib": "npx eslint . && tsc",
     "lint:embed": "cd embed && pnpm lint"
@@ -69,5 +68,5 @@
     "mime-types": "2.1.35",
     "nanoid": "5.0.7"
   },
-  "prettier": "@hearchco/prettier-config"
+  "prettier": "@jill64/prettier-config"
 }

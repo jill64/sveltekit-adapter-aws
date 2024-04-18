@@ -1,7 +1,7 @@
 import path from 'path'
 import { Context } from '../types/Context.js'
-import { copy } from '../utils/copy.js'
-import { listFiles } from '../utils/listFiles.js'
+import { copy } from './copy.js'
+import { listFiles } from './listFiles.js'
 
 export const writeAssets = async (
   { builder, options, tmp }: Context,
