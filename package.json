@@ -7,7 +7,7 @@
   "license": "MIT",
   "author": {
     "name": "jill64",
-    "email": "intents.turrets0h@icloud.com",
+    "email": "contact@jill64.dev",
     "url": "https://github.com/jill64",
     "image": "https://avatars.githubusercontent.com/u/143883742?v=4"
   },
@@ -32,7 +32,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jill64/sveltekit-adapter-aws.git",
-    "image": "https://opengraph.githubassets.com/467ba6375357caa6bae900701c3f8cd0bc0e566762e814a0c816a43191c6dbdf/jill64/sveltekit-adapter-aws"
+    "image": "https://opengraph.githubassets.com/040bbaefb96c9227476d931a627c734936b6e8a8d3f936b18e16530b04c7eae6/jill64/sveltekit-adapter-aws"
   },
   "publishConfig": {
     "access": "public"
