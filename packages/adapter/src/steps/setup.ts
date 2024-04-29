@@ -70,6 +70,7 @@ export const setup = async ({ builder, tmp, options }: Context) => {
       __BRIDGE_AUTH_TOKEN__: bridgeAuthToken,
       __DOMAIN_NAME__: options.domain?.fqdn ?? '',
       __CERTIFICATE_ARN__: options.domain?.certificateArn ?? '',
+      __LAMBDA_RUNTIME__: options.runtime ?? 'NODE_LATEST',
       '{} /* $$__ENVIRONMENT__$$ */': JSON.stringify(options.env ?? {})
     }
   )
