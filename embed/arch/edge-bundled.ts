@@ -75,7 +75,17 @@ export const handler: OriginRequestHandler<'s3', 'include-body'> = async ({
     headers: Object.fromEntries(
       responseHeadersEntries.map(([key, value]) => [
         key.toLowerCase(),
-        [{ key, value }]
+        key === 'set-cookie'
+          ? response.headers.getSetCookie().map((val) => ({
+              key,
+              value: val
+            }))
+          : [
+              {
+                key,
+                value
+              }
+            ]
       ])
     )
   }
