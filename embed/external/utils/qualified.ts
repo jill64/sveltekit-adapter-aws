@@ -8,11 +8,12 @@ export const qualified = (
   {
     awslambda,
     statusCode,
-    headers
+    headers,
+    cookies
   }: {
     statusCode: number
     headers: Record<string, string>
-    cookies: string[]
+    cookies?: string[]
     awslambda: typeof AwsLambda
   }
 ) =>
