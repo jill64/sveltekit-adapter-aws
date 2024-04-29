@@ -69,7 +69,7 @@
     "typescript": "5.4.5"
   },
   "dependencies": {
-    "@jill64/types-lambda": "1.1.4",
+    "@jill64/types-lambda": "1.2.0",
     "@types/mime-types": "2.1.4",
     "aws-cdk": "2.139.0",
     "aws-cdk-lib": "2.139.0",
