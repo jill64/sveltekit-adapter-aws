@@ -65,7 +65,6 @@ export type AdapterOptions = {
    */
   stream?: boolean
 
-
   /**
    * Lambda runtime environment
    * @default 'NODE_LATEST'

@@ -30,8 +30,8 @@ export class CDKStack extends Stack {
         lambdaRuntime === 'NODE_18'
           ? aws_lambda.Runtime.NODEJS_18_X
           : lambdaRuntime === 'NODE_20'
-          ? aws_lambda.Runtime.NODEJS_20_X
-          : aws_lambda.Runtime.NODEJS_LATEST,
+            ? aws_lambda.Runtime.NODEJS_20_X
+            : aws_lambda.Runtime.NODEJS_LATEST,
       timeout: Duration.seconds(30),
       memorySize
     })
