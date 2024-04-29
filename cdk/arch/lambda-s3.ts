@@ -18,6 +18,7 @@ import {
   certificateArn,
   domainName,
   environment,
+  lambdaRuntime,
   memorySize,
   stream
 } from '../external/params'
@@ -27,7 +28,12 @@ export class CDKStack extends Stack {
     super(scope, id, props)
 
     const lambdaURL = new aws_lambda.Function(this, 'Server', {
-      runtime: aws_lambda.Runtime.NODEJS_18_X,
+      runtime:
+        lambdaRuntime === 'NODE_18'
+          ? aws_lambda.Runtime.NODEJS_18_X
+          : lambdaRuntime === 'NODE_20'
+          ? aws_lambda.Runtime.NODEJS_20_X
+          : aws_lambda.Runtime.NODEJS_LATEST,
       code: aws_lambda.Code.fromAsset('lambda'),
       handler: 'server.handler',
       architecture: aws_lambda.Architecture.ARM_64,

@@ -65,6 +65,13 @@ export type AdapterOptions = {
    */
   stream?: boolean
 
+
+  /**
+   * Lambda runtime environment
+   * @default 'NODE_LATEST'
+   */
+  runtime?: 'NODE_LATEST' | 'NODE_20' | 'NODE_18'
+
   /**
    * Custom domain of CloudFront distribution
    * @default undefined

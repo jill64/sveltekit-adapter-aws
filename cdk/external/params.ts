@@ -8,6 +8,8 @@ export const environment = {} /* $$__ENVIRONMENT__$$ */
 export const cdn = false /* $$__ENABLE_CDN__$$ */
 export const stream = true /* $$__ENABLE_STREAM__$$ */
 export const bridgeAuthToken = '__BRIDGE_AUTH_TOKEN__'
+export const lambdaRuntime: 'NODE_LATEST' | 'NODE_20' | 'NODE_18' =
+  '__LAMBDA_RUNTIME__' as 'NODE_LATEST'
 export const staticAssetsPaths: Set<string> = new Set(
   [] /* $$__STATIC_ASSETS_PATHS__$$ */
 )
