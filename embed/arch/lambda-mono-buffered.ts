@@ -51,7 +51,7 @@ export const handler: LambdaHandler = async (payload) => {
     isBase64Encoded
   })
 
-  const cookies = response.headers.get('set-cookie')?.split(',')
+  const cookies = response.headers.getSetCookie()
 
   return {
     statusCode: response.status,
