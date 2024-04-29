@@ -8,14 +8,17 @@ export const qualified = (
   {
     awslambda,
     statusCode,
-    headers
+    headers,
+    cookies
   }: {
     statusCode: number
     headers: Record<string, string>
+    cookies?: string[]
     awslambda: typeof AwsLambda
   }
 ) =>
   awslambda.HttpResponseStream.from(responseStream, {
     statusCode,
-    headers
+    headers,
+    cookies
   })

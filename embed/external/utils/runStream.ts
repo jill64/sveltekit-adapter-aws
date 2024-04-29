@@ -22,6 +22,7 @@ export const runStream = ({
   responseStream = qualified(responseStream, {
     statusCode: response.status,
     headers: Object.fromEntries(responseHeadersEntries),
+    cookies: response.headers.getSetCookie(),
     awslambda
   })
 
