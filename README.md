@@ -32,7 +32,7 @@ npm i -D @jill64/sveltekit-adapter-aws
 4. If using pnpm, additional dependency is required.
 
 ```sh
-pnpm i -D aws-cdk-lib
+pnpm i -D aws-cdk-lib dotenv
 ```
 
 ```js
