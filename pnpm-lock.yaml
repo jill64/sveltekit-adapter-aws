@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@jill64/types-lambda':
-        specifier: 1.1.4
-        version: 1.1.4(typescript@5.4.5)
+        specifier: 1.2.0
+        version: 1.2.0(typescript@5.4.5)
       '@types/mime-types':
         specifier: 2.1.4
         version: 2.1.4
@@ -634,8 +634,8 @@ packages:
   '@jill64/ts-cli@1.0.2':
     resolution: {integrity: sha512-uWqluGTIrvq43u/kIn0vvd/HocGRkzcKzusM0hZl75OD78roS4PhUo2ht8i6yZCNwOXLwsc9q/nJyUY1ZJioDw==}
 
-  '@jill64/types-lambda@1.1.4':
-    resolution: {integrity: sha512-PyGQvh7YVY7H5B2N7WU7SoqoJIqaVJn+3SFNILV83tz7WmnLq06PssvZJdunLuCSckaAWTCmycwQ6ddKYwR5/A==}
+  '@jill64/types-lambda@1.2.0':
+    resolution: {integrity: sha512-YGjubhTtZlqOj0UrjH3GmK0I5W+/WzkPdTXiBjTgNdZMXaZMl5iGxNmLclurhJcPXcwREHCu2siQumPwcq3SbA==}
     peerDependencies:
       typescript: ^5.0.0
 
@@ -2231,7 +2231,7 @@ snapshots:
     dependencies:
       '@jill64/transform': 1.0.2
 
-  '@jill64/types-lambda@1.1.4(typescript@5.4.5)':
+  '@jill64/types-lambda@1.2.0(typescript@5.4.5)':
     dependencies:
       typescript: 5.4.5
 
