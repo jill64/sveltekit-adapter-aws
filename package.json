@@ -32,7 +32,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jill64/sveltekit-adapter-aws.git",
-    "image": "https://opengraph.githubassets.com/26d0fd0d00991a66ab3b041ca25a668ac381893417bda60fb098d45d38afc517/jill64/sveltekit-adapter-aws"
+    "image": "https://opengraph.githubassets.com/82d6714ff1dff953774a370a4eb28137c5de04c9c3aee1db87f7022a7f65a8e9/jill64/sveltekit-adapter-aws"
   },
   "publishConfig": {
     "access": "public"
