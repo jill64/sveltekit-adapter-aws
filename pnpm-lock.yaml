@@ -58,8 +58,8 @@ importers:
         specifier: 20.12.10
         version: 20.12.10
       cf2-builder:
-        specifier: 1.1.12
-        version: 1.1.12
+        specifier: 1.1.13
+        version: 1.1.13
       typescript:
         specifier: 5.4.5
         version: 5.4.5
@@ -1028,8 +1028,8 @@ packages:
   capnp-ts@0.7.0:
     resolution: {integrity: sha512-XKxXAC3HVPv7r674zP0VC3RTXz+/JKhfyw94ljvF80yynK6VkTnqE3jMuN8b3dUVmmc43TjyxjW4KTsmB3c86g==}
 
-  cf2-builder@1.1.12:
-    resolution: {integrity: sha512-TqJMWk947YJH6L8fL0DN0O6uH97UDi64kP8099s5ygRKr/kn0TWOyoOH6nw5uuqCQZnMkvMmZAfWSYv9zrN8Ew==}
+  cf2-builder@1.1.13:
+    resolution: {integrity: sha512-V/CrDh36C4UkL1K/wqcvYgTmXUIl7GhO4OWiPdDXHg0SLI6E5VK7EQaYBDT20NqKlQynuVNwiaRqCLGYi2QCHA==}
     hasBin: true
 
   chalk@4.1.2:
@@ -2664,10 +2664,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  cf2-builder@1.1.12:
+  cf2-builder@1.1.13:
     dependencies:
       '@jill64/ts-cli': 1.0.3
-      esbuild: 0.20.2
+      esbuild: 0.21.0
 
   chalk@4.1.2:
     dependencies:
