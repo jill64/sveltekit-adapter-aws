@@ -58,8 +58,8 @@ importers:
         specifier: 20.12.10
         version: 20.12.10
       cf2-builder:
-        specifier: 1.1.14
-        version: 1.1.14
+        specifier: 1.1.15
+        version: 1.1.15
       typescript:
         specifier: 5.4.5
         version: 5.4.5
@@ -631,8 +631,8 @@ packages:
   '@jill64/transform@1.0.2':
     resolution: {integrity: sha512-pDbIK3cXRT9YTylnynvWRBmM7WjLtkuqRJ9Y1EwQAytZ+rf678wtevGAljGrMuGk/NtELuiQLVSbGkVFXVLFSg==}
 
-  '@jill64/ts-cli@1.0.3':
-    resolution: {integrity: sha512-f1X1wTHDQmt9L2FXduNfjrFUBzEf0MQ1Gj3BG1Mgfe98QHoGLZ1+AxtXDeX7AHWFDBGeRpb+T55G9rhnidjS1w==}
+  '@jill64/ts-cli@1.1.0':
+    resolution: {integrity: sha512-hjXebAJugIj9v43a1BoR96o76e2T1gyK9MQ6m+pPwxDJvHbenn/MCLugf1u/b7TO1p1nOCQxXIEEW1CYTKpilA==}
 
   '@jill64/types-lambda@1.2.1':
     resolution: {integrity: sha512-m9DPz9pBLVLx69yAe/IQ+UZOYMIGv2pqySK256VaFSv7sgxvZ6OEs3zxY/OVntk8rIXRRmALzFRECtea9g04+g==}
@@ -1028,8 +1028,8 @@ packages:
   capnp-ts@0.7.0:
     resolution: {integrity: sha512-XKxXAC3HVPv7r674zP0VC3RTXz+/JKhfyw94ljvF80yynK6VkTnqE3jMuN8b3dUVmmc43TjyxjW4KTsmB3c86g==}
 
-  cf2-builder@1.1.14:
-    resolution: {integrity: sha512-Z/9ZjU+fyCEBJSJL/8KLgyWfS6I8TSYzpuh99FPirttgcS59C2Cuy/Vg42SEO3H6vrH0N+QXNBRkV2LlIKB+iQ==}
+  cf2-builder@1.1.15:
+    resolution: {integrity: sha512-5M5nPMR3V1D0GtfaR5APodLaK36NrEcYAriAdnYE+w1K8pbtHdbMCbkPlsv5LU5AjdcyGIxmw3oB2Z1HOSQy/g==}
     hasBin: true
 
   chalk@4.1.2:
@@ -2227,7 +2227,7 @@ snapshots:
 
   '@jill64/transform@1.0.2': {}
 
-  '@jill64/ts-cli@1.0.3':
+  '@jill64/ts-cli@1.1.0':
     dependencies:
       '@jill64/transform': 1.0.2
 
@@ -2664,9 +2664,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  cf2-builder@1.1.14:
+  cf2-builder@1.1.15:
     dependencies:
-      '@jill64/ts-cli': 1.0.3
+      '@jill64/ts-cli': 1.1.0
       esbuild: 0.21.1
 
   chalk@4.1.2:
