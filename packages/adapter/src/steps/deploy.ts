@@ -24,11 +24,11 @@ export const deploy = async ({
       })
     })
 
-  if (!skipBootstrap) {
-    await run('npx cdk bootstrap')
-  }
-
   if (deployStep) {
+    if (!skipBootstrap) {
+      await run('npx cdk bootstrap')
+    }
+
     builder.log.minor('Deploying...')
 
     await run('npx cdk deploy --require-approval never --all')
