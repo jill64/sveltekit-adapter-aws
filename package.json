@@ -76,7 +76,7 @@
     "tsx": "4.10.2",
     "constructs": "10.3.0",
     "dotenv": "16.4.5",
-    "esbuild": "0.21.2",
+    "esbuild": "0.21.3",
     "mime-types": "2.1.35",
     "nanoid": "5.0.7"
   },
