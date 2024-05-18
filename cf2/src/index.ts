@@ -4,7 +4,7 @@ import { ViewerRequestHandler } from 'cf2-builder'
 export default ((event) => {
   var domainName = '__DOMAIN_NAME__'
 
-  console.log('event', event)
+  console.log(event)
 
   var request = event.request
 
