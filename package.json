@@ -73,7 +73,7 @@
     "@types/mime-types": "2.1.4",
     "aws-cdk": "2.142.1",
     "aws-cdk-lib": "2.142.1",
-    "tsx": "4.10.5",
+    "tsx": "4.11.0",
     "constructs": "10.3.0",
     "dotenv": "16.4.5",
     "esbuild": "0.21.3",
