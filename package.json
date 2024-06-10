@@ -32,7 +32,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jill64/sveltekit-adapter-aws.git",
-    "image": "https://opengraph.githubassets.com/bff3d3ab4fc72826bef8f039546eb91f05896d13e93be9af29648734e90a895f/jill64/sveltekit-adapter-aws"
+    "image": "https://opengraph.githubassets.com/965dde757c676fc79fee1f2612f9bb2ffb98a579032d6f0cf3a3e4909ba43942/jill64/sveltekit-adapter-aws"
   },
   "publishConfig": {
     "access": "public"
@@ -59,7 +59,7 @@
     "@sveltejs/kit": "^2.0.0"
   },
   "devDependencies": {
-    "@jill64/eslint-config-ts": "1.1.24",
+    "@jill64/eslint-config-ts": "1.1.25",
     "@jill64/prettier-config": "1.0.0",
     "@jill64/playwright-config": "2.3.0",
     "@sveltejs/kit": "2.5.10",
