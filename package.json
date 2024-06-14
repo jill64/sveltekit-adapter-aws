@@ -62,7 +62,7 @@
     "@jill64/eslint-config-ts": "1.1.25",
     "@jill64/prettier-config": "1.0.0",
     "@jill64/playwright-config": "2.3.0",
-    "@sveltejs/kit": "2.5.13",
+    "@sveltejs/kit": "2.5.14",
     "@types/node": "20.14.2",
     "@playwright/test": "1.44.1",
     "cf2-builder": "1.1.21",
