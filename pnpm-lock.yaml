@@ -58,8 +58,8 @@ importers:
         specifier: 20.14.3
         version: 20.14.3
       cf2-builder:
-        specifier: 1.1.21
-        version: 1.1.21
+        specifier: 1.1.22
+        version: 1.1.22
       typescript:
         specifier: 5.4.5
         version: 5.4.5
@@ -492,11 +492,11 @@ packages:
     peerDependencies:
       '@sveltejs/kit': 1.x || 2.x
 
-  '@jill64/transform@1.0.2':
-    resolution: {integrity: sha512-pDbIK3cXRT9YTylnynvWRBmM7WjLtkuqRJ9Y1EwQAytZ+rf678wtevGAljGrMuGk/NtELuiQLVSbGkVFXVLFSg==}
+  '@jill64/transform@1.0.3':
+    resolution: {integrity: sha512-NdnqxL3yIE3vx6WIALtUWHktwP2igo40iIZb9q9mc2ionDOyNpq37HbdiDy/z1x/e95Czty6N3dicrGtuCOf+A==}
 
-  '@jill64/ts-cli@1.3.1':
-    resolution: {integrity: sha512-r56IyZONZSdSeJ3YKmiu9XBbPzcWJkJ2WyoVwgspQ59+0gP8a6hUphAycVxHD9wcYhUvng1PmI88wiSaAf0uQQ==}
+  '@jill64/ts-cli@1.3.2':
+    resolution: {integrity: sha512-Pgo/ffTnpKqMCkaSprVDFqglcfSpGbsb127Hvbw+IosV/zCO1z/b6jpG8FuHHG5L+QZqXi965IbF/HqtVuz+Tw==}
 
   '@jill64/types-lambda@1.2.1':
     resolution: {integrity: sha512-m9DPz9pBLVLx69yAe/IQ+UZOYMIGv2pqySK256VaFSv7sgxvZ6OEs3zxY/OVntk8rIXRRmALzFRECtea9g04+g==}
@@ -920,8 +920,8 @@ packages:
   capnp-ts@0.7.0:
     resolution: {integrity: sha512-XKxXAC3HVPv7r674zP0VC3RTXz+/JKhfyw94ljvF80yynK6VkTnqE3jMuN8b3dUVmmc43TjyxjW4KTsmB3c86g==}
 
-  cf2-builder@1.1.21:
-    resolution: {integrity: sha512-SYrfmfPjcygCwbcrELEMsAqj7Fd9Fnz29M/PBqj8YURx23tLOvu61cUho2/D8E3s/sqSk1sXoT702htqv4cc4g==}
+  cf2-builder@1.1.22:
+    resolution: {integrity: sha512-Lw9G3niW9+vq8Mjb8uWAKtJyakqT9/DIbNIkXMJdgEAmZKykie0eXMeRKjBMAkjN5LHO2GCwVloiHgLnO0M9Qg==}
     hasBin: true
 
   chalk@4.1.2:
@@ -2052,11 +2052,11 @@ snapshots:
       - svelte
       - utf-8-validate
 
-  '@jill64/transform@1.0.2': {}
+  '@jill64/transform@1.0.3': {}
 
-  '@jill64/ts-cli@1.3.1':
+  '@jill64/ts-cli@1.3.2':
     dependencies:
-      '@jill64/transform': 1.0.2
+      '@jill64/transform': 1.0.3
 
   '@jill64/types-lambda@1.2.1(typescript@5.4.5)':
     dependencies:
@@ -2524,9 +2524,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  cf2-builder@1.1.21:
+  cf2-builder@1.1.22:
     dependencies:
-      '@jill64/ts-cli': 1.3.1
+      '@jill64/ts-cli': 1.3.2
       esbuild: 0.21.5
 
   chalk@4.1.2:
