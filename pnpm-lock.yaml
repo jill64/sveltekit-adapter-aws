@@ -75,8 +75,8 @@ importers:
         specifier: 1.2.30
         version: 1.2.30(svelte@4.2.18)(typescript@5.4.5)
       '@jill64/sentry-sveltekit-edge':
-        specifier: 1.2.34
-        version: 1.2.34(@sveltejs/kit@2.5.14(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.3.1(@types/node@20.14.3)))(svelte@4.2.18)(vite@5.3.1(@types/node@20.14.3)))(svelte@4.2.18)
+        specifier: 1.2.35
+        version: 1.2.35(@sveltejs/kit@2.5.14(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.3.1(@types/node@20.14.3)))(svelte@4.2.18)(vite@5.3.1(@types/node@20.14.3)))(svelte@4.2.18)
       '@neoconfetti/svelte':
         specifier: 2.2.1
         version: 2.2.1
@@ -487,8 +487,8 @@ packages:
   '@jill64/prettier-config@1.0.0':
     resolution: {integrity: sha512-KuryQDStqkQ/zKR9Q7JXiW927m7SvwirQo6Oohss1Q9cRyYS2JOyhtcBavZnoEhH4pHJkaigfjUXA3em4n6egA==}
 
-  '@jill64/sentry-sveltekit-edge@1.2.34':
-    resolution: {integrity: sha512-CKOUk7P6IGCdtYYqhoLixbBrkyhp0MVBo2qDKSX2yGph2OYKbE8jFLC0zuRzKmDRvHIOhHDOLFz1z3mYe4aOUA==}
+  '@jill64/sentry-sveltekit-edge@1.2.35':
+    resolution: {integrity: sha512-kZ4X7ZPoDbjsCXN2B6L/HEcWQt7JwK9sH2pP+5M8UMgKqYrHGDavPvXrqYLjY6g4FDlq2c73aMSNSfZR1VJfUg==}
     peerDependencies:
       '@sveltejs/kit': 1.x || 2.x
 
@@ -2039,7 +2039,7 @@ snapshots:
 
   '@jill64/prettier-config@1.0.0': {}
 
-  '@jill64/sentry-sveltekit-edge@1.2.34(@sveltejs/kit@2.5.14(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.3.1(@types/node@20.14.3)))(svelte@4.2.18)(vite@5.3.1(@types/node@20.14.3)))(svelte@4.2.18)':
+  '@jill64/sentry-sveltekit-edge@1.2.35(@sveltejs/kit@2.5.14(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.3.1(@types/node@20.14.3)))(svelte@4.2.18)(vite@5.3.1(@types/node@20.14.3)))(svelte@4.2.18)':
     dependencies:
       '@sentry/node': 7.114.0
       '@sentry/svelte': 7.114.0(svelte@4.2.18)
