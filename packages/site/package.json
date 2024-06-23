@@ -13,7 +13,7 @@
     "@fontsource/fira-mono": "5.0.13",
     "@jill64/sentry-sveltekit-edge": "1.2.35",
     "@neoconfetti/svelte": "2.2.1",
-    "@sveltejs/kit": "2.5.14",
+    "@sveltejs/kit": "2.5.17",
     "@types/cookie": "0.6.0",
     "svelte": "4.2.18",
     "vite": "5.3.1",
