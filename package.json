@@ -63,7 +63,7 @@
     "@jill64/prettier-config": "1.0.0",
     "@jill64/playwright-config": "2.3.1",
     "@sveltejs/kit": "2.5.17",
-    "@types/node": "20.14.8",
+    "@types/node": "20.14.9",
     "@playwright/test": "1.45.0",
     "cf2-builder": "1.1.22",
     "typescript": "5.5.2"
