@@ -66,7 +66,7 @@
     "@types/node": "20.14.9",
     "@playwright/test": "1.45.0",
     "cf2-builder": "1.1.22",
-    "typescript": "5.5.2"
+    "typescript": "5.5.3"
   },
   "dependencies": {
     "@jill64/types-lambda": "1.2.2",
