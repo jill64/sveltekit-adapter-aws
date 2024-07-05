@@ -15,8 +15,8 @@ importers:
         specifier: 2.1.4
         version: 2.1.4
       aws-cdk:
-        specifier: 2.147.3
-        version: 2.147.3
+        specifier: 2.148.0
+        version: 2.148.0
       aws-cdk-lib:
         specifier: 2.147.3
         version: 2.147.3(constructs@10.3.0)
@@ -971,8 +971,8 @@ packages:
       - yaml
       - mime-types
 
-  aws-cdk@2.147.3:
-    resolution: {integrity: sha512-Y+o2eONCMQ2xwLpeUevwOeShxhlmW42Qx1uBWreF9fKzCeFkZ/in66FlaCBKlLXtKPQOdhmWNWKJ9A+pE+L+5A==}
+  aws-cdk@2.148.0:
+    resolution: {integrity: sha512-nuCWY8I0xkIz7B2LjIL4h/xLHWTFhINL8i2fdA0BPq8t0byhLaNw5wggvztDjWH5xq5I1DM3laiv4/q5S21Xrg==}
     engines: {node: '>= 14.15.0'}
     hasBin: true
 
@@ -2572,7 +2572,7 @@ snapshots:
       '@aws-cdk/asset-node-proxy-agent-v6': 2.0.3
       constructs: 10.3.0
 
-  aws-cdk@2.147.3:
+  aws-cdk@2.148.0:
     optionalDependencies:
       fsevents: 2.3.2
 
