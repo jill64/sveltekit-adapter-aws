@@ -18,8 +18,8 @@ importers:
         specifier: 2.148.0
         version: 2.148.0
       aws-cdk-lib:
-        specifier: 2.147.3
-        version: 2.147.3(constructs@10.3.0)
+        specifier: 2.148.0
+        version: 2.148.0(constructs@10.3.0)
       constructs:
         specifier: 10.3.0
         version: 10.3.0
@@ -953,8 +953,8 @@ packages:
   as-table@1.0.55:
     resolution: {integrity: sha512-xvsWESUJn0JN421Xb9MQw6AsMHRCUknCe0Wjlxvjud80mU4E6hQf1A6NzQKcYNmYw62MfzEtXc+badstZP3JpQ==}
 
-  aws-cdk-lib@2.147.3:
-    resolution: {integrity: sha512-GX07otmLydgR3CX51OaDtDr/MXRbsl9HZ2txVQpEV3pkF0UpJVc7XLShYuHmVv0uyStnAQfEN6W89cXMK64Nlg==}
+  aws-cdk-lib@2.148.0:
+    resolution: {integrity: sha512-Pa0pyIHlhnsqtMkPJS3tnptYhoOSNDOgoFurNB4Qfa0vnAkjYQ+JKQkR1tNNr8+UtO9jUfXRklQgjEqlFlrgBA==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
@@ -2565,7 +2565,7 @@ snapshots:
     dependencies:
       printable-characters: 1.0.42
 
-  aws-cdk-lib@2.147.3(constructs@10.3.0):
+  aws-cdk-lib@2.148.0(constructs@10.3.0):
     dependencies:
       '@aws-cdk/asset-awscli-v1': 2.2.202
       '@aws-cdk/asset-kubectl-v20': 2.1.2
