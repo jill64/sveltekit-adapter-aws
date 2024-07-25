@@ -75,8 +75,8 @@ importers:
         specifier: 1.3.0
         version: 1.3.0(svelte@4.2.18)(typescript@5.5.4)
       '@jill64/sentry-sveltekit-edge':
-        specifier: 1.2.43
-        version: 1.2.43(@sveltejs/kit@2.5.18(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.3.5(@types/node@20.14.12)))(svelte@4.2.18)(vite@5.3.5(@types/node@20.14.12)))(svelte@4.2.18)
+        specifier: 1.2.44
+        version: 1.2.44(@sveltejs/kit@2.5.18(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.3.5(@types/node@20.14.12)))(svelte@4.2.18)(vite@5.3.5(@types/node@20.14.12)))(svelte@4.2.18)
       '@neoconfetti/svelte':
         specifier: 2.2.1
         version: 2.2.1
@@ -631,8 +631,8 @@ packages:
   '@jill64/prettier-config@1.0.0':
     resolution: {integrity: sha512-KuryQDStqkQ/zKR9Q7JXiW927m7SvwirQo6Oohss1Q9cRyYS2JOyhtcBavZnoEhH4pHJkaigfjUXA3em4n6egA==}
 
-  '@jill64/sentry-sveltekit-edge@1.2.43':
-    resolution: {integrity: sha512-AP6UE7U9rFKrgE95jETOFHNhgx67bOQqpU13oUnp8/psQ9aajUtQx9bhnjBozUZMISPWA69XjMu3YGwFwa9log==}
+  '@jill64/sentry-sveltekit-edge@1.2.44':
+    resolution: {integrity: sha512-FT17rsdch9zlKjALrcD7vnhokR95sH9ZUaa+8xbq9NZT2ZoKHxCXc3Nd42lyRHOCUUW6XQBoWG2yJE9E+jqpHA==}
     peerDependencies:
       '@sveltejs/kit': 1.x || 2.x
 
@@ -1882,8 +1882,8 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
 
-  wrangler@3.66.0:
-    resolution: {integrity: sha512-5fEyXsP8qvrUeR13kCfA3OG1z/ABx+/a8hzIA55nCUM2/tjI67ZkfeN1VdOmG6cipZDvs4HfN8rp7j+e+21nKA==}
+  wrangler@3.67.0:
+    resolution: {integrity: sha512-elun6p9rAmGr/CtnCixhUXWeKT+LnFbHDsLLizgAlFJbsgCPV/O1if7uMjTGD/fUJNXrwbTVRpxvInz5X9gE2Q==}
     engines: {node: '>=16.17.0'}
     hasBin: true
     peerDependencies:
@@ -2255,12 +2255,12 @@ snapshots:
 
   '@jill64/prettier-config@1.0.0': {}
 
-  '@jill64/sentry-sveltekit-edge@1.2.43(@sveltejs/kit@2.5.18(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.3.5(@types/node@20.14.12)))(svelte@4.2.18)(vite@5.3.5(@types/node@20.14.12)))(svelte@4.2.18)':
+  '@jill64/sentry-sveltekit-edge@1.2.44(@sveltejs/kit@2.5.18(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.3.5(@types/node@20.14.12)))(svelte@4.2.18)(vite@5.3.5(@types/node@20.14.12)))(svelte@4.2.18)':
     dependencies:
       '@sentry/node': 7.114.0
       '@sentry/svelte': 7.114.0(svelte@4.2.18)
       '@sveltejs/kit': 2.5.18(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.3.5(@types/node@20.14.12)))(svelte@4.2.18)(vite@5.3.5(@types/node@20.14.12))
-      wrangler: 3.66.0
+      wrangler: 3.67.0
     transitivePeerDependencies:
       - '@cloudflare/workers-types'
       - bufferutil
@@ -3597,7 +3597,7 @@ snapshots:
       '@cloudflare/workerd-linux-arm64': 1.20240718.0
       '@cloudflare/workerd-windows-64': 1.20240718.0
 
-  wrangler@3.66.0:
+  wrangler@3.67.0:
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.4
       '@esbuild-plugins/node-globals-polyfill': 0.2.3(esbuild@0.17.19)
