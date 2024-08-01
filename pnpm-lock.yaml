@@ -43,8 +43,8 @@ importers:
         specifier: 1.1.33
         version: 1.1.33(typescript@5.5.4)
       '@jill64/playwright-config':
-        specifier: 2.4.0
-        version: 2.4.0(@playwright/test@1.45.3)
+        specifier: 2.4.1
+        version: 2.4.1(@playwright/test@1.45.3)
       '@jill64/prettier-config':
         specifier: 1.0.0
         version: 1.0.0
@@ -623,8 +623,8 @@ packages:
   '@jill64/eslint-config-ts@1.1.33':
     resolution: {integrity: sha512-WKcUQMbjnpuy7yS93Az1Gx8RzlnLUxVEr2BvbDlRAzeRE89Ccr4RYQZTP4IuixNkCk/TrNNECJM4MbwzNECWSg==}
 
-  '@jill64/playwright-config@2.4.0':
-    resolution: {integrity: sha512-Gwp56wpXL74cLuKRNCLdOHs4QtJL5k1ArJrR4J6/IcoZRLB1+aW3gNwWIyXgrXyR26QMmXPk8hNYF4eSRsB8Tw==}
+  '@jill64/playwright-config@2.4.1':
+    resolution: {integrity: sha512-7GsgcCL8qVIW0jnKwavdhLXaGY0iUcF3ca26LA74C65lyE5xnrHrSHigRcaskawrvzkzg/D4hx9SHX3RravGrg==}
     peerDependencies:
       '@playwright/test': ^1.40.0
 
@@ -2248,7 +2248,7 @@ snapshots:
       - supports-color
       - typescript
 
-  '@jill64/playwright-config@2.4.0(@playwright/test@1.45.3)':
+  '@jill64/playwright-config@2.4.1(@playwright/test@1.45.3)':
     dependencies:
       '@playwright/test': 1.45.3
 
