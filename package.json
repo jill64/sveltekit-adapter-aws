@@ -32,7 +32,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jill64/sveltekit-adapter-aws.git",
-    "image": "https://opengraph.githubassets.com/a66e42b6c29eef1e898463f283802fc8c18691275e98dfb35400e4cd70eab267/jill64/sveltekit-adapter-aws"
+    "image": "https://opengraph.githubassets.com/d38b699003d797484c6e3963cd4ecfed290b4b9760a4f22f1a3cdf7e3ab3504f/jill64/sveltekit-adapter-aws"
   },
   "publishConfig": {
     "access": "public"
@@ -64,7 +64,7 @@
     "@jill64/playwright-config": "2.4.1",
     "@sveltejs/kit": "2.5.22",
     "@types/node": "20.15.0",
-    "@playwright/test": "1.46.0",
+    "@playwright/test": "1.46.1",
     "cf2-builder": "1.1.24",
     "typescript": "5.5.4"
   },
