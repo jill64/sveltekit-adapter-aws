@@ -71,8 +71,8 @@
   "dependencies": {
     "@jill64/types-lambda": "1.2.2",
     "@types/mime-types": "2.1.4",
-    "aws-cdk": "2.153.0",
-    "aws-cdk-lib": "2.153.0",
+    "aws-cdk": "2.154.0",
+    "aws-cdk-lib": "2.154.0",
     "tsx": "4.17.0",
     "constructs": "10.3.0",
     "dotenv": "16.4.5",
