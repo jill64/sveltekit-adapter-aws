@@ -69,8 +69,8 @@ importers:
   packages/site:
     devDependencies:
       '@fontsource/fira-mono':
-        specifier: 5.0.15
-        version: 5.0.15
+        specifier: 5.1.0
+        version: 5.1.0
       '@jill64/eslint-config-svelte':
         specifier: 1.3.6
         version: 1.3.6(svelte@4.2.19)(typescript@5.6.2)
@@ -754,8 +754,8 @@ packages:
     resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
     engines: {node: '>=14'}
 
-  '@fontsource/fira-mono@5.0.15':
-    resolution: {integrity: sha512-wc3TpF2GBbtFDKNbb444BrC3mEKuoPLITSYCKweNIrqBvAalIfJGloY/MVrmSGaMNgaAKUpdgy4eAWPLkUVzaA==}
+  '@fontsource/fira-mono@5.1.0':
+    resolution: {integrity: sha512-6+nftSKApXyN0I9FC5GJuG5TUCh+in5OehtrXRIsHJvq38Pm//oA1kZZYNdXv99JYzLzJ3lzsTAavmS+xGLGDw==}
 
   '@humanwhocodes/config-array@0.11.14':
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
@@ -2479,7 +2479,7 @@ snapshots:
 
   '@fastify/busboy@2.1.1': {}
 
-  '@fontsource/fira-mono@5.0.15': {}
+  '@fontsource/fira-mono@5.1.0': {}
 
   '@humanwhocodes/config-array@0.11.14':
     dependencies:
