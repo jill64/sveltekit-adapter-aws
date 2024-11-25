@@ -1,7 +1,7 @@
 {
   "name": "@jill64/sveltekit-adapter-aws",
   "description": "🔌 SveleteKit AWS adapter with multiple architecture",
-  "version": "1.9.65",
+  "version": "1.9.66",
   "type": "module",
   "main": "dist/index.js",
   "license": "MIT",
@@ -32,7 +32,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jill64/sveltekit-adapter-aws.git",
-    "image": "https://opengraph.githubassets.com/50d738463d1c0ef6923f7f5f670a3cbd72e74d4d09770b2813ffd14fadb1bbba/jill64/sveltekit-adapter-aws"
+    "image": "https://opengraph.githubassets.com/f532f078c972aff6fd512e45bdd3d62e8058056d347ae8fbd2cef846ed920da6/jill64/sveltekit-adapter-aws"
   },
   "publishConfig": {
     "access": "public"
@@ -69,7 +69,7 @@
     "typescript": "5.6.3"
   },
   "dependencies": {
-    "@jill64/types-lambda": "1.2.2",
+    "@jill64/types-lambda": "1.2.3",
     "@types/mime-types": "2.1.4",
     "aws-cdk": "2.155.0",
     "aws-cdk-lib": "2.155.0",
