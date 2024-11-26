@@ -78,7 +78,7 @@
     "dotenv": "16.4.5",
     "esbuild": "0.24.0",
     "mime-types": "2.1.35",
-    "nanoid": "5.0.8"
+    "nanoid": "5.0.9"
   },
   "prettier": "@jill64/prettier-config"
 }
