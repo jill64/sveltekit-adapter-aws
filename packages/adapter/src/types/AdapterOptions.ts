@@ -1,5 +1,6 @@
 import { BuildOptions } from 'esbuild'
 import type { ArchitectureType } from './ArchitectureType.js'
+import { aws_lambda } from 'aws-cdk-lib'
 
 export type AdapterOptions = {
   /**
@@ -89,4 +90,6 @@ export type AdapterOptions = {
      */
     certificateArn: string
   }
+
+  lambdaModifier?: (lambdaFunction: aws_lambda.Function) => { }
 }

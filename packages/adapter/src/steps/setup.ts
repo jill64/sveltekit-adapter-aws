@@ -5,6 +5,7 @@ import path from 'path'
 import type { Context } from '../types/Context.js'
 import { copy } from '../utils/copy.js'
 import { root } from '../utils/root.js'
+import { aws_lambda } from 'aws-cdk-lib'
 
 export const setup = async ({ builder, tmp, options }: Context) => {
   const {
@@ -71,7 +72,8 @@ export const setup = async ({ builder, tmp, options }: Context) => {
       __DOMAIN_NAME__: options.domain?.fqdn ?? '',
       __CERTIFICATE_ARN__: options.domain?.certificateArn ?? '',
       __LAMBDA_RUNTIME__: options.runtime ?? 'NODE_LATEST',
-      '{} /* $$__ENVIRONMENT__$$ */': JSON.stringify(options.env ?? {})
+      '{} /* $$__ENVIRONMENT__$$ */': JSON.stringify(options.env ?? {}),
+      '(lambdaFunction: aws_lambda.Function) => {} /* $$__LAMBDA_MODIFIER__$$ */': `${options.lambdaModifier ?? '(lambdaFunction: aws_lambda.Function) => {}'}`
     }
   )
 
