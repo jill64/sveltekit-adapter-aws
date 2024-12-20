@@ -1,5 +1,3 @@
-import type * as cdk from 'aws-cdk-lib'
-
 export const appDir = '__APP_DIR__'
 export const base = '__BASE_PATH__'
 export const domainName = '__DOMAIN_NAME__'
@@ -15,4 +13,3 @@ export const lambdaRuntime: 'NODE_LATEST' | 'NODE_20' | 'NODE_18' =
 export const staticAssetsPaths: Set<string> = new Set(
   [] /* $$__STATIC_ASSETS_PATHS__$$ */
 )
-export const lambdaModifier = (lambdaFunction: cdk.aws_lambda.Function) => {} /* $$__LAMBDA_MODIFIER__$$ */

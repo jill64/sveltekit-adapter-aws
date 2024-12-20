@@ -21,8 +21,10 @@ import {
   lambdaRuntime,
   memorySize,
   stream,
-  lambdaModifier,
 } from '../external/params'
+import {
+  lambdaModifier
+} from '../external/cdk-modifiers'
 
 export class CDKStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
