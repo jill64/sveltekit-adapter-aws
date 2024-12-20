@@ -80,7 +80,7 @@ export const setup = async ({ builder, tmp, options }: Context) => {
     path.join(options.out, 'external', 'cdk-modifiers.ts'),
     {
       '/* $$__ADAPTER_IMPORTS__$$ */': options.adapterImports?.join('\n') ?? '',
-      '(lambdaFunction: cdk.aws_lambda.Function) => {} /* $$__LAMBDA_MODIFIER__$$ */': `${options.lambdaModifier ?? '(lambdaFunction: cdk.aws_lambda.Function) => {}'}`
+      '(lambdaFunction: cdk.aws_lambda.Function) => {} /* $$__LAMBDA_MODIFIER__$$ */': options.lambdaModifier?.toString() ?? '(lambdaFunction: cdk.aws_lambda.Function) => {}'
     }
   )
 
