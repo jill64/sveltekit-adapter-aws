@@ -14,6 +14,7 @@ jobs:
       matrix:
         architecture: [lambda-mono, lambda-s3, edge-bundled, edge-unbundled]
     runs-on: ubuntu-latest
+    environment: dev
     steps:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
@@ -50,6 +51,7 @@ jobs:
       matrix:
         architecture: [lambda-mono, lambda-s3, edge-bundled, edge-unbundled]
     runs-on: ubuntu-latest
+    environment: dev
     steps:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
