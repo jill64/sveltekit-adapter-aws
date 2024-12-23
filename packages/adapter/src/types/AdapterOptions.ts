@@ -91,7 +91,7 @@ export type AdapterOptions = {
     certificateArn: string
   }
   /**
-   * Adds imports to the adapter params.ts to allow things like `lambdaModifier` 
+   * Adds imports to the adapter params.ts to allow things like `lambdaModifier`
    * to access types
    * @example ["import { Stack } from 'aws-cdk-lib'"]
    */
@@ -107,5 +107,5 @@ export type AdapterOptions = {
    * }
    * ```
    */
-  lambdaModifier?: (lambdaFunction: aws_lambda.Function) => { }
+  lambdaModifier?: (lambdaFunction: aws_lambda.Function) => {}
 }

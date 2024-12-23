@@ -31,10 +31,10 @@ const config = {
         KEY3: 'VALUE3'
       },
       stream: process.env.BUFFERED_RESPONSE !== 'TRUE',
-      adapterImports: [ "import { Stack } from 'aws-cdk-lib'" ],
+      adapterImports: ["import { Stack } from 'aws-cdk-lib'"],
       lambdaModifier: (fn) => {
         const stack = Stack.of(fn)
-        fn.addEnvironment("abc", "def")
+        fn.addEnvironment('abc', 'def')
       }
     })
   }

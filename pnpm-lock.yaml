@@ -19,10 +19,10 @@ importers:
         version: 2.155.0
       aws-cdk-lib:
         specifier: 2.155.0
-        version: 2.155.0(constructs@10.3.1)
+        version: 2.155.0(constructs@10.4.2)
       constructs:
-        specifier: 10.3.1
-        version: 10.3.1
+        specifier: 10.4.2
+        version: 10.4.2
       dotenv:
         specifier: 16.4.7
         version: 16.4.7
@@ -1451,9 +1451,8 @@ packages:
   concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
-  constructs@10.3.1:
-    resolution: {integrity: sha512-gTyTNR3iHOVnOk4cKPK6QHRrSZWT1nsnEMFnwLa094/w1L+CKToQel4v4oxnYHi4L07PBNm1p3Bt0WVZI4kgkg==}
-    engines: {node: '>= 18.12.0'}
+  constructs@10.4.2:
+    resolution: {integrity: sha512-wsNxBlAott2qg8Zv87q3eYZYgheb9lchtBfjHzzLHtXbttwSrHPs1NNQbBrmbb1YZvYg2+Vh0Dor76w4mFxJkA==}
 
   cookie@0.5.0:
     resolution: {integrity: sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==}
@@ -3305,13 +3304,13 @@ snapshots:
     dependencies:
       printable-characters: 1.0.42
 
-  aws-cdk-lib@2.155.0(constructs@10.3.1):
+  aws-cdk-lib@2.155.0(constructs@10.4.2):
     dependencies:
       '@aws-cdk/asset-awscli-v1': 2.2.202
       '@aws-cdk/asset-kubectl-v20': 2.1.2
       '@aws-cdk/asset-node-proxy-agent-v6': 2.0.3
       '@aws-cdk/cloud-assembly-schema': 36.0.14
-      constructs: 10.3.1
+      constructs: 10.4.2
 
   aws-cdk@2.155.0:
     optionalDependencies:
@@ -3387,7 +3386,7 @@ snapshots:
 
   concat-map@0.0.1: {}
 
-  constructs@10.3.1: {}
+  constructs@10.4.2: {}
 
   cookie@0.5.0: {}
 
