@@ -1,5 +1,6 @@
 import { BuildOptions } from 'esbuild'
 import type { ArchitectureType } from './ArchitectureType.js'
+import { aws_lambda } from 'aws-cdk-lib'
 
 export type AdapterOptions = {
   /**
@@ -89,4 +90,22 @@ export type AdapterOptions = {
      */
     certificateArn: string
   }
+  /**
+   * Adds imports to the adapter params.ts to allow things like `lambdaModifier` 
+   * to access types
+   * @example ["import { Stack } from 'aws-cdk-lib'"]
+   */
+  adapterImports?: string[]
+
+  /**
+   * Allows custom modifications to the Lambda function during CDK stack creation
+   * @param lambdaFunction The Lambda function to modify
+   * @example
+   * ```ts
+   * lambdaModifier: (fn) => {
+   *   fn.addEnvironment('CUSTOM_VAR', 'value');
+   * }
+   * ```
+   */
+  lambdaModifier?: (lambdaFunction: aws_lambda.Function) => { }
 }

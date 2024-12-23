@@ -20,14 +20,17 @@ import {
   environment,
   lambdaRuntime,
   memorySize,
-  stream
+  stream,
 } from '../external/params'
+import {
+  lambdaModifier
+} from '../external/cdk-modifiers'
 
 export class CDKStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props)
 
-    const lambdaURL = new aws_lambda.Function(this, 'Server', {
+    const lambdaFunction = new aws_lambda.Function(this, 'Server', {
       runtime:
         lambdaRuntime === 'NODE_18'
           ? aws_lambda.Runtime.NODEJS_18_X
@@ -40,7 +43,12 @@ export class CDKStack extends Stack {
       memorySize,
       timeout: Duration.seconds(30),
       environment
-    }).addFunctionUrl({
+    });
+    
+    // allow custom modification of CDK lambda function
+    lambdaModifier(lambdaFunction);
+
+    const lambdaURL = lambdaFunction.addFunctionUrl({
       authType: aws_lambda.FunctionUrlAuthType.NONE,
       invokeMode: stream
         ? aws_lambda.InvokeMode.RESPONSE_STREAM
