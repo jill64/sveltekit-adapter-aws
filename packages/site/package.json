@@ -16,7 +16,7 @@
     "@sveltejs/kit": "2.13.0",
     "@types/cookie": "1.0.0",
     "svelte": "4.2.19",
-    "vite": "5.4.11",
+    "vite": "6.0.5",
     "@sveltejs/vite-plugin-svelte": "3.1.2"
   }
 }
