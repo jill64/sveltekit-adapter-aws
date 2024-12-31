@@ -1,7 +1,7 @@
 {
   "name": "@jill64/sveltekit-adapter-aws",
   "description": "🔌 SveleteKit AWS adapter with multiple architecture",
-  "version": "1.9.71",
+  "version": "1.10.0",
   "type": "module",
   "main": "dist/index.js",
   "license": "MIT",
@@ -32,7 +32,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jill64/sveltekit-adapter-aws.git",
-    "image": "https://opengraph.githubassets.com/000accb0cba21a8e7aeb7efe51fb468efe71c43a52fa53f55a0006fa70f840a7/jill64/sveltekit-adapter-aws"
+    "image": "https://opengraph.githubassets.com/1489952fa61841934c190807d164afd94b9086578affd2d39f61cbbc04d29741/jill64/sveltekit-adapter-aws"
   },
   "publishConfig": {
     "access": "public"
@@ -59,13 +59,13 @@
     "@sveltejs/kit": "^2.0.0"
   },
   "devDependencies": {
-    "@jill64/eslint-config-ts": "1.1.44",
+    "@jill64/eslint-config-ts": "2.0.1",
     "@jill64/prettier-config": "1.0.0",
     "@jill64/playwright-config": "2.4.2",
-    "@sveltejs/kit": "2.13.0",
+    "@sveltejs/kit": "2.15.1",
     "@types/node": "22.10.2",
-    "@playwright/test": "1.47.2",
-    "cf2-builder": "1.1.24",
+    "@playwright/test": "1.49.1",
+    "cf2-builder": "1.1.29",
     "typescript": "5.7.2"
   },
   "dependencies": {

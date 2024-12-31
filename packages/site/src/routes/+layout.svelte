@@ -2,6 +2,8 @@
   import { browser } from '$app/environment'
   import Header from './Header.svelte'
   import './styles.css'
+
+  let { children } = $props()
 </script>
 
 <svelte:head>
@@ -13,7 +15,7 @@
   <Header />
 
   <main>
-    <slot />
+    {@render children()}
   </main>
 
   <footer>

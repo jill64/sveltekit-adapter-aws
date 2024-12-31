@@ -1,35 +1,39 @@
 <script lang="ts">
-  import { confetti } from '@neoconfetti/svelte'
   import { enhance } from '$app/forms'
-  import type { PageData, ActionData } from './$types'
+  import { confetti } from '@neoconfetti/svelte'
+  import type { ActionData, PageData } from './$types'
   import { reduced_motion } from './reduced-motion'
 
-  export let data: PageData
-
-  export let form: ActionData
+  let {
+    data,
+    form
+  }: {
+    data: PageData
+    form: ActionData
+  } = $props()
 
   /** Whether or not the user has won */
-  $: won = data.answers.at(-1) === 'xxxxx'
+  let won = $derived(data.answers.at(-1) === 'xxxxx')
 
   /** The index of the current guess */
-  $: i = won ? -1 : data.answers.length
+  let i = $derived(won ? -1 : data.answers.length)
 
   /** Whether the current guess can be submitted */
-  $: submittable = data.guesses[i]?.length === 5
+  let submittable = $derived(data.guesses[i]?.length === 5)
 
   /**
    * A map of classnames for all letters that have been guessed,
    * used for styling the keyboard
    */
-  let classnames: Record<string, 'exact' | 'close' | 'missing'>
+  let classnames: Record<string, 'exact' | 'close' | 'missing'> = $state({})
 
   /**
    * A map of descriptions for all letters that have been guessed,
    * used for adding text for assistive technology (e.g. screen readers)
    */
-  let description: Record<string, string>
+  let description: Record<string, string> = $state({})
 
-  $: {
+  $effect(() => {
     classnames = {}
     description = {}
 
@@ -48,7 +52,7 @@
         }
       }
     })
-  }
+  })
 
   /**
    * Modify the game state without making a trip to the server,
@@ -155,7 +159,10 @@
         >
 
         <button
-          on:click|preventDefault={update}
+          onclick={(e) => {
+            e.preventDefault()
+            update(e)
+          }}
           data-key="backspace"
           formaction="?/update"
           name="key"
@@ -168,7 +175,10 @@
           <div class="row">
             {#each row as letter}
               <button
-                on:click|preventDefault={update}
+                onclick={(e) => {
+                  e.preventDefault()
+                  update(e)
+                }}
                 data-key={letter}
                 class={classnames[letter]}
                 disabled={data.guesses[i].length === 5}
@@ -197,7 +207,7 @@
       stageHeight: window.innerHeight,
       colors: ['#ff3e00', '#40b3ff', '#676778']
     }}
-  />
+  ></div>
 {/if}
 
 <style>
