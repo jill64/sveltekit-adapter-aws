@@ -25,17 +25,34 @@
    * A map of classnames for all letters that have been guessed,
    * used for styling the keyboard
    */
-  let classnames: Record<string, 'exact' | 'close' | 'missing'> = $state({})
+  let classnames: Record<string, 'exact' | 'close' | 'missing'> = $derived.by(
+    () => {
+      const obj: Record<string, 'exact' | 'close' | 'missing'> = {}
+
+      data.answers.forEach((answer, i) => {
+        const guess = data.guesses[i]
+
+        for (let i = 0; i < 5; i += 1) {
+          const letter = guess[i]
+
+          if (answer[i] === 'x') {
+            obj[letter] = 'exact'
+          } else if (!obj[letter]) {
+            obj[letter] = answer[i] === 'c' ? 'close' : 'missing'
+          }
+        }
+      })
+
+      return obj
+    }
+  )
 
   /**
    * A map of descriptions for all letters that have been guessed,
    * used for adding text for assistive technology (e.g. screen readers)
    */
-  let description: Record<string, string> = $state({})
-
-  $effect(() => {
-    classnames = {}
-    description = {}
+  let description: Record<string, string> = $derived.by(() => {
+    const obj: Record<string, string> = {}
 
     data.answers.forEach((answer, i) => {
       const guess = data.guesses[i]
@@ -44,14 +61,14 @@
         const letter = guess[i]
 
         if (answer[i] === 'x') {
-          classnames[letter] = 'exact'
-          description[letter] = 'correct'
+          obj[letter] = 'correct'
         } else if (!classnames[letter]) {
-          classnames[letter] = answer[i] === 'c' ? 'close' : 'missing'
-          description[letter] = answer[i] === 'c' ? 'present' : 'absent'
+          obj[letter] = answer[i] === 'c' ? 'present' : 'absent'
         }
       }
     })
+
+    return obj
   })
 
   /**
