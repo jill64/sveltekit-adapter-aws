@@ -1,4 +1,3 @@
-/* eslint-disable no-var */
 import { ViewerRequestHandler } from 'cf2-builder'
 
 export default ((event) => {
