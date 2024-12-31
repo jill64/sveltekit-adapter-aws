@@ -6,7 +6,7 @@ on:
   pull_request_target:
     branches: main
 
-concurrency: deploy-test-buffered${{ (github.event_name == 'pull_request' && '-dev') || '' }}
+concurrency: deploy-test-buffered${{ (github.event_name == 'pull_request_target' && '-dev') || '' }}
 
 jobs:
   buffered-deploy:
@@ -39,7 +39,7 @@ jobs:
       - name: Build
         run: npm run build:all
         env:
-          STAGE: ${{ github.event_name == 'pull_request' && 'dev' || 'prod' }}
+          STAGE: ${{ github.event_name == 'pull_request_target' && 'dev' || 'prod' }}
           BUFFERED_RESPONSE: 'TRUE'
           ADAPTER_ARCHITECTURE: ${{ matrix.architecture }}
           ADAPTER_FQDN: ${{ format('buffered.{0}.adapter-aws.com', matrix.architecture) }}
@@ -72,5 +72,5 @@ jobs:
       - name: Test
         run: npx playwright test
         env:
-          ADAPTER_FQDN: ${{ github.event_name == 'pull_request' && ((matrix.architecture == 'lambda-mono' && vars.BUFFERED_LAMBDA_MONO_PREVIEW_URL) || (matrix.architecture == 'lambda-s3' && vars.BUFFERED_LAMBDA_S3_PREVIEW_URL) || (matrix.architecture == 'edge-unbundled' && vars.BUFFERED_EDGE_UNBUNDLED_PREVIEW_URL)) || format('buffered.{0}.adapter-aws.com', matrix.architecture) }}
+          ADAPTER_FQDN: ${{ github.event_name == 'pull_request_target' && ((matrix.architecture == 'lambda-mono' && vars.BUFFERED_LAMBDA_MONO_PREVIEW_URL) || (matrix.architecture == 'lambda-s3' && vars.BUFFERED_LAMBDA_S3_PREVIEW_URL) || (matrix.architecture == 'edge-unbundled' && vars.BUFFERED_EDGE_UNBUNDLED_PREVIEW_URL)) || format('buffered.{0}.adapter-aws.com', matrix.architecture) }}
           DEBUG_LOG: ${{ github.event_name }}
