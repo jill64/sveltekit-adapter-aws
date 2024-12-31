@@ -2,15 +2,13 @@
   import { enhance } from '$app/forms'
   import { confetti } from '@neoconfetti/svelte'
   import type { ActionData, PageData } from './$types'
-  import { reduced_motion } from './reduced-motion'
+  import { reducedMotion } from './reduced-motion'
 
-  let {
-    data,
-    form
-  }: {
+  interface Props {
     data: PageData
     form: ActionData
-  } = $props()
+  }
+  let { data, form = $bindable() }: Props = $props()
 
   /** Whether or not the user has won */
   let won = $derived(data.answers.at(-1) === 'xxxxx')
@@ -18,57 +16,42 @@
   /** The index of the current guess */
   let i = $derived(won ? -1 : data.answers.length)
 
+  /** The current guess */
+  // svelte-ignore state_referenced_locally
+  let currentGuess = $state(data.guesses[i] || '')
+
+  $effect(() => {
+    currentGuess = data.guesses[i] || ''
+  })
+
   /** Whether the current guess can be submitted */
-  let submittable = $derived(data.guesses[i]?.length === 5)
+  let submittable = $derived(currentGuess.length === 5)
 
-  /**
-   * A map of classnames for all letters that have been guessed,
-   * used for styling the keyboard
-   */
-  let classnames: Record<string, 'exact' | 'close' | 'missing'> = $derived.by(
-    () => {
-      const obj: Record<string, 'exact' | 'close' | 'missing'> = {}
-
-      data.answers.forEach((answer, i) => {
-        const guess = data.guesses[i]
-
-        for (let i = 0; i < 5; i += 1) {
-          const letter = guess[i]
-
-          if (answer[i] === 'x') {
-            obj[letter] = 'exact'
-          } else if (!obj[letter]) {
-            obj[letter] = answer[i] === 'c' ? 'close' : 'missing'
-          }
-        }
-      })
-
-      return obj
-    }
-  )
-
-  /**
-   * A map of descriptions for all letters that have been guessed,
-   * used for adding text for assistive technology (e.g. screen readers)
-   */
-  let description: Record<string, string> = $derived.by(() => {
-    const obj: Record<string, string> = {}
-
+  const { classnames, description } = $derived.by(() => {
+    /**
+     * A map of classnames for all letters that have been guessed,
+     * used for styling the keyboard
+     */
+    let classnames: Record<string, 'exact' | 'close' | 'missing'> = {}
+    /**
+     * A map of descriptions for all letters that have been guessed,
+     * used for adding text for assistive technology (e.g. screen readers)
+     */
+    let description: Record<string, string> = {}
     data.answers.forEach((answer, i) => {
       const guess = data.guesses[i]
-
       for (let i = 0; i < 5; i += 1) {
         const letter = guess[i]
-
         if (answer[i] === 'x') {
-          obj[letter] = 'correct'
+          classnames[letter] = 'exact'
+          description[letter] = 'correct'
         } else if (!classnames[letter]) {
-          obj[letter] = answer[i] === 'c' ? 'present' : 'absent'
+          classnames[letter] = answer[i] === 'c' ? 'close' : 'missing'
+          description[letter] = answer[i] === 'c' ? 'present' : 'absent'
         }
       }
     })
-
-    return obj
+    return { classnames, description }
   })
 
   /**
@@ -76,14 +59,14 @@
    * if client-side JavaScript is enabled
    */
   function update(event: MouseEvent) {
-    const guess = data.guesses[i]
+    event.preventDefault()
     const key = (event.target as HTMLButtonElement).getAttribute('data-key')
 
     if (key === 'backspace') {
-      data.guesses[i] = guess.slice(0, -1)
+      currentGuess = currentGuess.slice(0, -1)
       if (form?.badGuess) form.badGuess = false
-    } else if (guess.length < 5) {
-      data.guesses[i] += key
+    } else if (currentGuess.length < 5) {
+      currentGuess += key
     }
   }
 
@@ -94,13 +77,15 @@
   function keydown(event: KeyboardEvent) {
     if (event.metaKey) return
 
+    if (event.key === 'Enter' && !submittable) return
+
     document
       .querySelector(`[data-key="${event.key}" i]`)
       ?.dispatchEvent(new MouseEvent('click', { cancelable: true }))
   }
 </script>
 
-<svelte:window on:keydown={keydown} />
+<svelte:window onkeydown={keydown} />
 
 <svelte:head>
   <title>Sverdle</title>
@@ -110,7 +95,7 @@
 <h1 class="visually-hidden">Sverdle</h1>
 
 <form
-  method="POST"
+  method="post"
   action="?/enter"
   use:enhance={() => {
     // prevent default callback from resetting the form
@@ -127,9 +112,10 @@
       <h2 class="visually-hidden">Row {row + 1}</h2>
       <div class="row" class:current>
         {#each Array.from(Array(5).keys()) as column (column)}
+          {@const guess = current ? currentGuess : data.guesses[row]}
           {@const answer = data.answers[row]?.[column]}
-          {@const value = data.guesses[row]?.[column] ?? ''}
-          {@const selected = current && column === data.guesses[row].length}
+          {@const value = guess?.[column] ?? ''}
+          {@const selected = current && column === guess.length}
           {@const exact = answer === 'x'}
           {@const close = answer === 'c'}
           {@const missing = answer === '_'}
@@ -176,10 +162,7 @@
         >
 
         <button
-          onclick={(e) => {
-            e.preventDefault()
-            update(e)
-          }}
+          onclick={update}
           data-key="backspace"
           formaction="?/update"
           name="key"
@@ -192,13 +175,10 @@
           <div class="row">
             {#each row as letter}
               <button
-                onclick={(e) => {
-                  e.preventDefault()
-                  update(e)
-                }}
+                onclick={update}
                 data-key={letter}
                 class={classnames[letter]}
-                disabled={data.guesses[i].length === 5}
+                disabled={submittable}
                 formaction="?/update"
                 name="key"
                 value={letter}
@@ -218,7 +198,7 @@
   <div
     style="position: absolute; left: 50%; top: 30%"
     use:confetti={{
-      particleCount: $reduced_motion ? 0 : undefined,
+      particleCount: $reducedMotion ? 0 : undefined,
       force: 0.7,
       stageWidth: window.innerWidth,
       stageHeight: window.innerHeight,

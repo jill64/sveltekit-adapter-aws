@@ -1,6 +1,6 @@
 import { fail } from '@sveltejs/kit'
-import type { Actions, PageServerLoad } from './$types'
 import { Game } from './game'
+import type { PageServerLoad, Actions } from './$types'
 
 export const load = (({ cookies }) => {
   const game = new Game(cookies.get('sverdle'))
@@ -43,9 +43,7 @@ export const actions = {
       game.guesses[i] += key
     }
 
-    cookies.set('sverdle', game.toString(), {
-      path: '/sverdle'
-    })
+    cookies.set('sverdle', game.toString(), { path: '/' })
   },
 
   /**
@@ -62,14 +60,10 @@ export const actions = {
       return fail(400, { badGuess: true })
     }
 
-    cookies.set('sverdle', game.toString(), {
-      path: '/sverdle'
-    })
+    cookies.set('sverdle', game.toString(), { path: '/' })
   },
 
   restart: async ({ cookies }) => {
-    cookies.delete('sverdle', {
-      path: '/sverdle'
-    })
+    cookies.delete('sverdle', { path: '/' })
   }
 } satisfies Actions
