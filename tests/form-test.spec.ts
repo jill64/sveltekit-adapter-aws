@@ -9,11 +9,17 @@ test('Form Test', async ({ page }) => {
   for await (const _ of new Array(6).fill(0).map((_, i) => i)) {
     await expect(page.locator('div.letter.selected')).toBeVisible()
     await page.keyboard.press('s')
+    await page.waitForTimeout(500)
     await page.keyboard.press('e')
+    await page.waitForTimeout(500)
     await page.keyboard.press('r')
+    await page.waitForTimeout(500)
     await page.keyboard.press('v')
+    await page.waitForTimeout(500)
     await page.keyboard.press('e')
+    await page.waitForTimeout(500)
     await page.keyboard.press('Enter')
+    await page.waitForTimeout(500)
   }
 
   await expect(page.getByText('game over')).toBeVisible()

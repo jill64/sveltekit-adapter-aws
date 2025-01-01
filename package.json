@@ -54,7 +54,7 @@
     "lint:lib": "npx eslint . && tsc",
     "lint:embed": "cd embed && pnpm lint",
     "lint:site": "pnpm build:adapter && cd packages/site && pnpm lint",
-    "test": "pnpm build:all && npx playwright test"
+    "test": "pnpm build:all && npx playwright test --ui"
   },
   "peerDependencies": {
     "@sveltejs/kit": "^2.0.0"
