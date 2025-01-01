@@ -11,7 +11,7 @@
   "devDependencies": {
     "@jill64/eslint-config-svelte": "2.0.2",
     "@fontsource/fira-mono": "5.1.0",
-    "@jill64/sentry-sveltekit-edge": "1.2.55",
+    "@jill64/sentry-sveltekit-edge": "2.0.0",
     "@neoconfetti/svelte": "2.2.1",
     "@sveltejs/kit": "2.15.1",
     "@types/cookie": "1.0.0",

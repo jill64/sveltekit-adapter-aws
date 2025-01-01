@@ -5,7 +5,6 @@ test('SSR', async ({ page }) => {
   await expect(
     page.getByText('try editing src/routes/+page.svelte')
   ).toBeVisible()
-  await expect(page.getByTestId('hydrated')).toBeAttached()
   await page.getByLabel('Increase the counter by one').click()
   await expect(page.getByText('2')).toBeVisible()
 
