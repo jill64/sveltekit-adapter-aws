@@ -1,16 +1,10 @@
 <script lang="ts">
-  import { browser } from '$app/environment'
   import '../app.css'
   import Header from './Header.svelte'
 
   let { children } = $props()
 </script>
 
-<svelte:head>
-  {#if browser}
-    <meta data-testid="hydrated" />
-  {/if}
-</svelte:head>
 <div class="app">
   <Header />
   <main>

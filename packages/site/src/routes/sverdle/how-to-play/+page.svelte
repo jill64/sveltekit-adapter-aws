@@ -3,7 +3,6 @@
   <meta name="description" content="How to play Sverdle" />
 </svelte:head>
 
-<div data-testid="hydrated"></div>
 <div class="text-column">
   <h1>How to play Sverdle</h1>
 
