@@ -7,7 +7,7 @@
 </script>
 
 {#if browser}
-  <div data-test-id="hydrated"></div>
+  <div data-testid="hydrated"></div>
 {/if}
 <div class="app">
   <Header />
