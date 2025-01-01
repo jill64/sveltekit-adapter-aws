@@ -1,15 +1,15 @@
 <script lang="ts">
-  import { Spring } from 'svelte/motion'
+  import { spring } from 'svelte/motion'
 
   let count = $state(0)
 
-  let displayed_count = new Spring(0)
+  // svelte-ignore state_referenced_locally
+  const displayedCount = spring(count)
 
   $effect(() => {
-    displayed_count.set(count)
+    displayedCount.set(count)
   })
-
-  let offset = $derived(modulo(displayed_count.current, 1))
+  let offset = $derived(modulo($displayedCount, 1))
 
   function modulo(n: number, m: number) {
     // handle negative numbers
@@ -30,9 +30,9 @@
       style="transform: translate(0, {100 * offset}%)"
     >
       <strong class="hidden" aria-hidden="true"
-        >{Math.floor(displayed_count.current + 1)}</strong
+        >{Math.floor($displayedCount + 1)}</strong
       >
-      <strong>{Math.floor(displayed_count.current)}</strong>
+      <strong>{Math.floor($displayedCount)}</strong>
     </div>
   </div>
 
