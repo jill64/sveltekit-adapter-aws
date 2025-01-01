@@ -1,13 +1,16 @@
 <script lang="ts">
-  import Header from './Header.svelte'
+  import { browser } from '$app/environment'
   import '../app.css'
+  import Header from './Header.svelte'
 
   let { children } = $props()
 </script>
 
+{#if browser}
+  <div data-test-id="hydrated"></div>
+{/if}
 <div class="app">
   <Header />
-
   <main>
     {@render children()}
   </main>
