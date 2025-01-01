@@ -6,9 +6,11 @@
   let { children } = $props()
 </script>
 
-{#if browser}
-  <div data-testid="hydrated"></div>
-{/if}
+<svelte:head>
+  {#if browser}
+    <meta data-testid="hydrated" />
+  {/if}
+</svelte:head>
 <div class="app">
   <Header />
   <main>
