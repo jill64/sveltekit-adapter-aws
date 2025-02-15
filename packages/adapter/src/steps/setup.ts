@@ -64,6 +64,7 @@ export const setup = async ({ builder, tmp, options }: Context) => {
     {
       '128 /* $$__MEMORY_SIZE__$$ */': options.memory.toString(),
       'false /* $$__ENABLE_CDN__$$ */': options.cdn.toString(),
+      'false /* $$__ENABLE_S3_TRANSFER_ACCELERATION__$$ */': options.s3TransferAcceleration.toString(),
       'true /* $$__ENABLE_STREAM__$$ */': options.stream.toString(),
       __APP_DIR__: appDir,
       __BASE_PATH__: base,

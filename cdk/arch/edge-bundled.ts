@@ -16,7 +16,8 @@ import {
   certificateArn,
   domainName,
   lambdaRuntime,
-  memorySize
+  memorySize,
+  s3TransferAcceleration,
 } from '../external/params'
 
 export class CDKStack extends Stack {
@@ -43,7 +44,7 @@ export class CDKStack extends Stack {
     })
 
     const s3 = new aws_s3.Bucket(this, 'Bucket', {
-      transferAcceleration: true
+      transferAcceleration: s3TransferAcceleration,
     })
 
     const behaviorBase = {

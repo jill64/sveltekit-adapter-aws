@@ -20,7 +20,8 @@ import {
   environment,
   lambdaRuntime,
   memorySize,
-  stream
+  stream,
+  s3TransferAcceleration,
 } from '../external/params'
 import { lambdaModifier } from '../external/cdk-modifiers'
 
@@ -41,7 +42,7 @@ export class CDKStack extends Stack {
       memorySize,
       timeout: Duration.seconds(30),
       environment
-    })
+    });
 
     // allow custom modification of CDK lambda function
     lambdaModifier(lambdaFunction)
@@ -62,7 +63,7 @@ export class CDKStack extends Stack {
       : undefined
 
     const s3 = new aws_s3.Bucket(this, 'Bucket', {
-      transferAcceleration: true
+      transferAcceleration: s3TransferAcceleration
     })
 
     const cf2 = new aws_cloudfront.Function(this, 'CF2', {

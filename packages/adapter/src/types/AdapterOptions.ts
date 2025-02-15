@@ -48,6 +48,14 @@ export type AdapterOptions = {
   cdn?: boolean
 
   /**
+   * Enable S3 Transfer Acceleration for static asset uploads.
+   * This can improve upload speeds for static assets to S3 but may incur additional costs.
+   * Note: Not included in AWS free tier, may cause an error on deployment and additional charges will apply.
+   * @default false
+   */
+  s3TransferAcceleration?: boolean
+
+  /**
    * Environment variables to set in Lambda
    * @default undefined
    */
