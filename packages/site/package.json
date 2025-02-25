@@ -15,7 +15,7 @@
     "@neoconfetti/svelte": "2.2.1",
     "@sveltejs/kit": "2.15.1",
     "@types/cookie": "1.0.0",
-    "svelte": "5.16.0",
+    "svelte": "5.16.1",
     "vite": "6.0.6",
     "@sveltejs/vite-plugin-svelte": "5.0.3"
   }
