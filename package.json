@@ -57,7 +57,8 @@
     "test": "pnpm build:all && npx playwright test --ui"
   },
   "peerDependencies": {
-    "@sveltejs/kit": "^2.0.0"
+    "@sveltejs/kit": "^2.0.0",
+    "awk-cdk-lib": "^2.0.0"
   },
   "devDependencies": {
     "@jill64/eslint-config-ts": "2.0.1",
@@ -66,7 +67,7 @@
     "@sveltejs/kit": "2.15.1",
     "@types/node": "22.10.2",
     "@playwright/test": "1.49.1",
-    "cf2-builder": "1.1.29",
+    "cf2-builder": "1.1.30",
     "typescript": "5.7.2"
   },
   "dependencies": {

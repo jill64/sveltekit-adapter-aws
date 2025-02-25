@@ -6,6 +6,7 @@ export const appPath = `${base}/${appDir}/*`
 export const memorySize = 128 /* $$__MEMORY_SIZE__$$ */
 export const environment = {} /* $$__ENVIRONMENT__$$ */
 export const cdn = false /* $$__ENABLE_CDN__$$ */
+export const s3TransferAcceleration = false /* $$__ENABLE_S3_TRANSFER_ACCELERATION__$$ */
 export const stream = true /* $$__ENABLE_STREAM__$$ */
 export const bridgeAuthToken = '__BRIDGE_AUTH_TOKEN__'
 export const lambdaRuntime: 'NODE_LATEST' | 'NODE_20' | 'NODE_18' =
