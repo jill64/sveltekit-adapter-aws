@@ -42,22 +42,22 @@
   },
   "scripts": {
     "dev": "bun run build:adapter && cd packages/site && bun run dev",
-    "build:all": "bun run build:adapter && bun run build:site && npx publint",
+    "build:all": "bun run build:adapter && bun run build:site && bunx publint",
     "build:adapter": "bun run transpile:embed && bun run build:cf2 && bun run build:adapterOnly",
     "build:adapterOnly": "cd packages/adapter && bun run build",
-    "build:cf2": "npx cf2-builder cf2/src/index.ts cdk/external/cf2.js",
+    "build:cf2": "bunx cf2-builder cf2/src/index.ts cdk/external/cf2.js",
     "transpile:embed": "cd embed && bun run transpile",
     "build:site": "cd packages/site && bun run build",
     "preview": "bun run build:adapter && cd packages/site && bun run preview",
     "prepack": "bun run build:adapter",
     "format": "bun run format:lib && bun run format:site",
-    "format:lib": "npx prettier -w .",
+    "format:lib": "bunx prettier -w .",
     "format:site": "cd packages/site && bun run format",
     "lint": "bun run lint:lib && bun run lint:embed && bun run lint:site",
-    "lint:lib": "npx eslint . && tsc",
+    "lint:lib": "bunx eslint . && bunx tsc",
     "lint:embed": "cd embed && bun run lint",
     "lint:site": "bun run build:adapter && cd packages/site && bun run lint",
-    "test:e2e": "bun run build:all && npx playwright test --ui"
+    "test:e2e": "bun run build:all && bunx playwright test --ui"
   },
   "peerDependencies": {
     "@sveltejs/kit": "^2.0.0"
@@ -75,6 +75,7 @@
   "dependencies": {
     "@jill64/types-lambda": "1.2.3",
     "@types/mime-types": "2.1.4",
+    "@types/cookie": "1.0.0",
     "aws-cdk": "2.1003.0",
     "aws-cdk-lib": "2.183.0",
     "tsx": "4.19.3",
