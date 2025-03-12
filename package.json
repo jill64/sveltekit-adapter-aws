@@ -54,11 +54,11 @@
     "lint:lib": "npx eslint . && tsc",
     "lint:embed": "cd embed && pnpm lint",
     "lint:site": "pnpm build:adapter && cd packages/site && pnpm lint",
-    "test": "pnpm build:all && npx playwright test --ui"
+    "test:e2e": "pnpm build:all && npx playwright test --ui"
   },
   "peerDependencies": {
     "@sveltejs/kit": "^2.0.0",
-    "awk-cdk-lib": "^2.0.0"
+    "aws-cdk-lib": "^2.0.0"
   },
   "devDependencies": {
     "@jill64/eslint-config-ts": "2.0.1",
