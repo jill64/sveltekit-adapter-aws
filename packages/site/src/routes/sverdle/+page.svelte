@@ -79,6 +79,7 @@
 
     if (event.key === 'Enter' && !submittable) return
 
+    // eslint-disable-next-line no-undef
     document
       .querySelector(`[data-key="${event.key}" i]`)
       ?.dispatchEvent(new MouseEvent('click', { cancelable: true }))
@@ -171,9 +172,9 @@
           back
         </button>
 
-        {#each ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'] as row}
+        {#each ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'] as row (row)}
           <div class="row">
-            {#each row as letter}
+            {#each row as letter, index (index)}
               <button
                 onclick={update}
                 data-key={letter}
@@ -200,7 +201,9 @@
     use:confetti={{
       particleCount: $reducedMotion ? 0 : undefined,
       force: 0.7,
+      // eslint-disable-next-line no-undef
       stageWidth: window.innerWidth,
+      // eslint-disable-next-line no-undef
       stageHeight: window.innerHeight,
       colors: ['#ff3e00', '#40b3ff', '#676778']
     }}
