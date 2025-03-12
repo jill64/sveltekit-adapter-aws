@@ -1,4 +1,5 @@
 {
+  "name": "adapter",
   "type": "module",
   "scripts": {
     "build": "tsc"

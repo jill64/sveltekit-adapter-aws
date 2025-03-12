@@ -1,4 +1,5 @@
 {
+  "name": "site",
   "type": "module",
   "scripts": {
     "dev": "vite dev",

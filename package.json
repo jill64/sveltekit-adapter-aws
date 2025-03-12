@@ -5,6 +5,9 @@
   "type": "module",
   "main": "dist/index.js",
   "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
   "author": {
     "name": "jill64",
     "email": "contact@jill64.dev",
@@ -38,27 +41,26 @@
     "access": "public"
   },
   "scripts": {
-    "dev": "pnpm build:adapter && cd packages/site && pnpm dev",
-    "build:all": "pnpm build:adapter && pnpm build:site && npx publint",
-    "build:adapter": "pnpm transpile:embed && pnpm build:cf2 && pnpm build:adapterOnly",
-    "build:adapterOnly": "cd packages/adapter && pnpm build",
+    "dev": "bun run build:adapter && cd packages/site && bun run dev",
+    "build:all": "bun run build:adapter && bun run build:site && npx publint",
+    "build:adapter": "bun run transpile:embed && bun run build:cf2 && bun run build:adapterOnly",
+    "build:adapterOnly": "cd packages/adapter && bun run build",
     "build:cf2": "npx cf2-builder cf2/src/index.ts cdk/external/cf2.js",
-    "transpile:embed": "cd embed && pnpm transpile",
-    "build:site": "cd packages/site && pnpm build",
-    "preview": "pnpm build:adapter && cd packages/site && pnpm preview",
-    "prepack": "pnpm build:adapter",
-    "format": "pnpm format:lib && pnpm format:site",
+    "transpile:embed": "cd embed && bun run transpile",
+    "build:site": "cd packages/site && bun run build",
+    "preview": "bun run build:adapter && cd packages/site && bun run preview",
+    "prepack": "bun run build:adapter",
+    "format": "bun run format:lib && bun run format:site",
     "format:lib": "npx prettier -w .",
-    "format:site": "cd packages/site && pnpm format",
-    "lint": "pnpm lint:lib && pnpm lint:embed && pnpm lint:site",
+    "format:site": "cd packages/site && bun run format",
+    "lint": "bun run lint:lib && bun run lint:embed && bun run lint:site",
     "lint:lib": "npx eslint . && tsc",
-    "lint:embed": "cd embed && pnpm lint",
-    "lint:site": "pnpm build:adapter && cd packages/site && pnpm lint",
-    "test:e2e": "pnpm build:all && npx playwright test --ui"
+    "lint:embed": "cd embed && bun run lint",
+    "lint:site": "bun run build:adapter && cd packages/site && bun run lint",
+    "test:e2e": "bun run build:all && npx playwright test --ui"
   },
   "peerDependencies": {
-    "@sveltejs/kit": "^2.0.0",
-    "aws-cdk-lib": "^2.0.0"
+    "@sveltejs/kit": "^2.0.0"
   },
   "devDependencies": {
     "@jill64/eslint-config-ts": "2.0.17",
