@@ -9,14 +9,14 @@
     "format": "npx psvx"
   },
   "devDependencies": {
-    "@jill64/eslint-config-svelte": "2.0.2",
-    "@fontsource/fira-mono": "5.1.0",
-    "@jill64/sentry-sveltekit-edge": "2.0.0",
-    "@neoconfetti/svelte": "2.2.1",
-    "@sveltejs/kit": "2.15.1",
+    "@jill64/eslint-config-svelte": "2.2.1",
+    "@fontsource/fira-mono": "5.2.5",
+    "@jill64/sentry-sveltekit-edge": "2.0.7",
+    "@neoconfetti/svelte": "2.2.2",
+    "@sveltejs/kit": "2.19.0",
     "@types/cookie": "1.0.0",
-    "svelte": "5.16.0",
-    "vite": "6.0.6",
+    "svelte": "5.23.0",
+    "vite": "6.2.1",
     "@sveltejs/vite-plugin-svelte": "5.0.3"
   }
 }
