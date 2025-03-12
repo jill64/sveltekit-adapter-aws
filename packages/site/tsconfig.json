@@ -5,6 +5,8 @@
     "checkJs": true,
     "strict": true,
     "moduleResolution": "Bundler",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": [],
+    "typeRoots": ["./node_modules/@types"]
   }
 }

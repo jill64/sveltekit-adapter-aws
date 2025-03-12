@@ -1,10 +1,13 @@
 {
   "name": "@jill64/sveltekit-adapter-aws",
   "description": "🔌 SveleteKit AWS adapter with multiple architecture",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "type": "module",
   "main": "dist/index.js",
   "license": "MIT",
+  "workspaces": [
+    "packages/**"
+  ],
   "author": {
     "name": "jill64",
     "email": "contact@jill64.dev",
@@ -32,33 +35,32 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jill64/sveltekit-adapter-aws.git",
-    "image": "https://opengraph.githubassets.com/504ae6134ea744b4af2735c5c03a62ac029b4961c9978b9b9582cb4c20d297e9/jill64/sveltekit-adapter-aws"
+    "image": "https://opengraph.githubassets.com/d687fea2f488aec628555dea770bb7d09e134d3c826b41d9191399c53d933a3f/jill64/sveltekit-adapter-aws"
   },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "dev": "pnpm build:adapter && cd packages/site && pnpm dev",
-    "build:all": "pnpm build:adapter && pnpm build:site && npx publint",
-    "build:adapter": "pnpm transpile:embed && pnpm build:cf2 && pnpm build:adapterOnly",
-    "build:adapterOnly": "cd packages/adapter && pnpm build",
-    "build:cf2": "npx cf2-builder cf2/src/index.ts cdk/external/cf2.js",
-    "transpile:embed": "cd embed && pnpm transpile",
-    "build:site": "cd packages/site && pnpm build",
-    "preview": "pnpm build:adapter && cd packages/site && pnpm preview",
-    "prepack": "pnpm build:adapter",
-    "format": "pnpm format:lib && pnpm format:site",
-    "format:lib": "npx prettier -w .",
-    "format:site": "cd packages/site && pnpm format",
-    "lint": "pnpm lint:lib && pnpm lint:embed && pnpm lint:site",
-    "lint:lib": "npx eslint . && tsc",
-    "lint:embed": "cd embed && pnpm lint",
-    "lint:site": "pnpm build:adapter && cd packages/site && pnpm lint",
-    "test:e2e": "pnpm build:all && npx playwright test --ui"
+    "dev": "bun run build:adapter && cd packages/site && bun run dev",
+    "build:all": "bun run build:adapter && bun run build:site && bunx publint",
+    "build:adapter": "bun run transpile:embed && bun run build:cf2 && bun run build:adapterOnly",
+    "build:adapterOnly": "cd packages/adapter && bun run build",
+    "build:cf2": "bunx cf2-builder cf2/src/index.ts cdk/external/cf2.js",
+    "transpile:embed": "cd embed && bun run transpile",
+    "build:site": "cd packages/site && bun run build",
+    "preview": "bun run build:adapter && cd packages/site && bun run preview",
+    "prepack": "bun run build:adapter",
+    "format": "bun run format:lib && bun run format:site",
+    "format:lib": "bunx prettier -w .",
+    "format:site": "cd packages/site && bun run format",
+    "lint": "bun run lint:lib && bun run lint:embed && bun run lint:site",
+    "lint:lib": "bunx eslint . && bunx tsc",
+    "lint:embed": "cd embed && bun run lint",
+    "lint:site": "bun run build:adapter && cd packages/site && bun run lint",
+    "test:e2e": "bun run build:all && bunx playwright test --ui"
   },
   "peerDependencies": {
-    "@sveltejs/kit": "^2.0.0",
-    "aws-cdk-lib": "^2.0.0"
+    "@sveltejs/kit": "^2.0.0"
   },
   "devDependencies": {
     "@jill64/eslint-config-ts": "2.0.17",
@@ -67,12 +69,12 @@
     "@sveltejs/kit": "2.19.0",
     "@types/node": "22.13.10",
     "@playwright/test": "1.51.0",
-    "cf2-builder": "1.2.2",
     "typescript": "5.8.2"
   },
   "dependencies": {
     "@jill64/types-lambda": "1.2.3",
     "@types/mime-types": "2.1.4",
+    "@types/cookie": "1.0.0",
     "aws-cdk": "2.1003.0",
     "aws-cdk-lib": "2.183.0",
     "tsx": "4.19.3",
@@ -80,7 +82,9 @@
     "dotenv": "16.4.7",
     "esbuild": "0.25.1",
     "mime-types": "2.1.35",
-    "nanoid": "5.1.3"
+    "nanoid": "5.1.3",
+    "eslint": "9.22.0",
+    "cf2-builder": "1.2.2"
   },
   "prettier": "@jill64/prettier-config"
 }
