@@ -21,7 +21,7 @@ import {
   lambdaRuntime,
   memorySize,
   stream,
-  s3TransferAcceleration,
+  s3TransferAcceleration
 } from '../external/params'
 
 export class CDKStack extends Stack {
@@ -69,7 +69,7 @@ export class CDKStack extends Stack {
     })
 
     const s3 = new aws_s3.Bucket(this, 'Bucket', {
-      transferAcceleration: s3TransferAcceleration,
+      transferAcceleration: s3TransferAcceleration
     })
 
     const lambdaOriginStr = Fn.select(2, Fn.split('/', lambdaURL.url))

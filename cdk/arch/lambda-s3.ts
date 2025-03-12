@@ -21,7 +21,7 @@ import {
   lambdaRuntime,
   memorySize,
   stream,
-  s3TransferAcceleration,
+  s3TransferAcceleration
 } from '../external/params'
 import { lambdaModifier } from '../external/cdk-modifiers'
 
@@ -42,7 +42,7 @@ export class CDKStack extends Stack {
       memorySize,
       timeout: Duration.seconds(30),
       environment
-    });
+    })
 
     // allow custom modification of CDK lambda function
     lambdaModifier(lambdaFunction)
