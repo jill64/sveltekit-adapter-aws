@@ -66,7 +66,7 @@
     "@jill64/eslint-config-ts": "2.0.17",
     "@jill64/prettier-config": "1.0.0",
     "@jill64/playwright-config": "3.0.0",
-    "@sveltejs/kit": "2.19.0",
+    "@sveltejs/kit": "2.19.1",
     "@types/node": "22.13.10",
     "@playwright/test": "1.51.0",
     "typescript": "5.8.2"
