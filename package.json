@@ -76,7 +76,7 @@
     "@types/mime-types": "2.1.4",
     "@types/cookie": "1.0.0",
     "aws-cdk": "2.1003.0",
-    "aws-cdk-lib": "2.183.0",
+    "aws-cdk-lib": "2.184.1",
     "tsx": "4.19.3",
     "constructs": "10.4.2",
     "dotenv": "16.4.7",
